@@ -1,0 +1,64 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:FSClient.UWP.Shared.Views.Controls"
+                    xmlns:converters="using:FSClient.UWP.Shared.Converters">
+
+  <Style TargetType="controls:MediaSettings">
+    <Setter Property="Margin" Value="12,6" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="controls:MediaSettings">
+          <StackPanel>
+            <StackPanel.Resources>
+              <controls:StretchTitleConverter x:Key="StretchTitleConverter" />
+            </StackPanel.Resources>
+
+            <Slider x:Name="PlaybackRateSlider"
+                    Header="{Binding ConverterParameter='MediaSettings_PlaybackRate', Converter={StaticResource LocalizationConverter}}"
+                    Margin="0,6,0,6"
+                    Width="140"
+                    Maximum="{Binding MaxPlaybackRate, RelativeSource={RelativeSource TemplatedParent}, Mode=OneTime}"
+                    Minimum="{Binding MinPlaybackRate, RelativeSource={RelativeSource TemplatedParent}, Mode=OneTime}"
+                    StepFrequency="{Binding PlaybackRateStep, RelativeSource={RelativeSource TemplatedParent}, Mode=OneTime}"
+                    TickFrequency="{Binding PlaybackRateStep, RelativeSource={RelativeSource TemplatedParent}, Mode=OneTime}"
+                    SnapsTo="Ticks">
+              <Slider.ThumbToolTipValueConverter>
+                <converters:ToFriendlyStringConverter DefaultFormat="{}{0}x"
+                                                      DefaultLanguage="en" />
+              </Slider.ThumbToolTipValueConverter>
+            </Slider>
+
+            <ComboBox x:Name="StretchSelector"
+                      Header="{Binding ConverterParameter='MediaSettings_Stretch', Converter={StaticResource LocalizationConverter}}"
+                      Margin="0,0,0,6"
+                      Width="140">
+              <ComboBox.ItemTemplate>
+                <DataTemplate>
+                  <TextBlock Text="{Binding Converter={StaticResource StretchTitleConverter}}" />
+                </DataTemplate>
+              </ComboBox.ItemTemplate>
+            </ComboBox>
+
+            <ComboBox x:Name="SubtitleTracksSelector"
+                      Header="{Binding ConverterParameter='MediaSettings_SubtitleTracks', Converter={StaticResource LocalizationConverter}}"
+                      Margin="0,6,0,6"
+                      Width="140"
+                      DisplayMemberPath="Title" />
+
+            <ComboBox x:Name="AudioTracksSelector"
+                      Header="{Binding ConverterParameter='MediaSettings_AudioTracks', Converter={StaticResource LocalizationConverter}}"
+                      Margin="0,6,0,6"
+                      Width="140"
+                      DisplayMemberPath="Title" />
+
+            <ComboBox x:Name="VideoSelector"
+                      Header="{Binding ConverterParameter='MediaSettings_VideoQuality', Converter={StaticResource LocalizationConverter}}"
+                      Margin="0,6,0,0"
+                      Width="140"
+                      DisplayMemberPath="Quality" />
+          </StackPanel>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+</ResourceDictionary>

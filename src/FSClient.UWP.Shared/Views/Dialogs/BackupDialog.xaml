@@ -1,0 +1,27 @@
+﻿<ContentDialog x:Class="FSClient.UWP.Shared.Views.Dialogs.BackupDialog"
+               xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+               PrimaryButtonText="{x:Bind ConverterParameter='ContentDialog_Ok', Converter={StaticResource LocalizationConverter}}"
+               SecondaryButtonText="{x:Bind ConverterParameter='ContentDialog_Cancel', Converter={StaticResource LocalizationConverter}}"
+               Title="{x:Bind DialogInput.Caption}"
+               Tapped="ContentDialog_Tapped">
+
+  <StackPanel>
+    <CheckBox x:Name="HistoryCheckBox"
+              Content="{x:Bind ConverterParameter='BackupDialog_BackupHistory', Converter={StaticResource LocalizationConverter}}"
+              Margin="0,4" />
+    <CheckBox x:Name="FavoritesCheckBox"
+              Content="{x:Bind ConverterParameter='BackupDialog_BackupFavorites', Converter={StaticResource LocalizationConverter}}"
+              Margin="0,4" />
+    <CheckBox x:Name="UserSettingsCheckBox"
+              Content="{x:Bind ConverterParameter='BackupDialog_BackupUserSettings', Converter={StaticResource LocalizationConverter}}"
+              Margin="0,4" />
+    <CheckBox x:Name="StateSettingsCheckBox"
+              Content="{x:Bind ConverterParameter='BackupDialog_BackupStateSettings', Converter={StaticResource LocalizationConverter}}"
+              Margin="0,4" />
+    <CheckBox x:Name="InternalSettingsCheckBox"
+              Content="{x:Bind ConverterParameter='BackupDialog_BackupInternalSettings', Converter={StaticResource LocalizationConverter}}"
+              Visibility="Collapsed"
+              Margin="0,4" />
+  </StackPanel>
+</ContentDialog>

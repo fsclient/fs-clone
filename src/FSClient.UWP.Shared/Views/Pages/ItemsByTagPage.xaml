@@ -1,0 +1,117 @@
+<Page Name="Page"
+      x:Class="FSClient.UWP.Shared.Views.Pages.ItemsByTagPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:windowsstatetriggers="using:WindowsStateTriggers"
+      xmlns:helpers="using:FSClient.Shared.Helpers"
+      xmlns:models="using:FSClient.Shared.Models"
+      xmlns:extensions="using:FSClient.UWP.Shared.Extensions"
+      xmlns:controls="using:FSClient.UWP.Shared.Views.Controls"
+      xmlns:pages="using:FSClient.ViewModels.Pages"
+      xmlns:items="using:FSClient.ViewModels.Items"
+      xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+      NavigationCacheMode="Required">
+
+  <extensions:PageAppBarExtension.Top>
+    <Grid>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="Auto" />
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="Auto" />
+      </Grid.ColumnDefinitions>
+
+      <TextBlock Grid.Column="1"
+                 Margin="8,0"
+                 HorizontalAlignment="Stretch"
+                 Text="{x:Bind ViewModel.Title, Mode=OneWay}"
+                 TextAlignment="Left"
+                 VerticalAlignment="Center" />
+
+      <StackPanel Grid.Column="2"
+                  Orientation="Horizontal">
+        <AppBarButton x:Name="MoreButton"
+                      Icon="More"
+                      Width="{StaticResource NarrowWindowAppBarButtonWidth}"
+                      extensions:CompatExtension.AccessKey="M"
+                      extensions:ToolTipServiceEx.ToolTip="{x:Bind ConverterParameter='PageAppBar_More_Tooltip', Converter={StaticResource LocalizationConverter}}"
+                      Style="{StaticResource ClientAppBarButtonStyle}">
+          <AppBarButton.Flyout>
+            <MenuFlyout x:Name="MenuFlyout">
+              <controls:RadioMenuFlyoutItemsContainerItem Header="{x:Bind ConverterParameter='ListView_Sort', Converter={StaticResource LocalizationConverter}}"
+                                                          Target="{x:Bind MenuFlyout}"
+                                                          ItemsSource="{x:Bind ViewModel.CurrentPage.PageParams.SortTypes, Mode=OneWay}"
+                                                          SelectedItem="{x:Bind ViewModel.CurrentPage.CurrentSortType, Mode=TwoWay, Converter={StaticResource BindToObjectConverter}}"
+                                                          SelectedCommandParameter="True"
+                                                          SelectedCommand="{x:Bind ViewModel.CurrentPage.UpdateCommand, Mode=OneWay}">
+                <controls:RadioMenuFlyoutItemsContainerItem.ItemTemplate>
+                  <DataTemplate x:DataType="x:Object">
+                    <muxc:RadioMenuFlyoutItem Text="{x:Bind helpers:EnumHelper.GetDisplayName((models:SortType))}" />
+                  </DataTemplate>
+                </controls:RadioMenuFlyoutItemsContainerItem.ItemTemplate>
+              </controls:RadioMenuFlyoutItemsContainerItem>
+            </MenuFlyout>
+          </AppBarButton.Flyout>
+        </AppBarButton>
+      </StackPanel>
+    </Grid>
+  </extensions:PageAppBarExtension.Top>
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="*" />
+      <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+
+    <Pivot x:Name="Pivot"
+           extensions:CommandExtension.CommandParameter="False"
+           extensions:CommandExtension.ClickCommand="{x:Bind ViewModel.CurrentPage.UpdateCommand, Mode=OneWay}"
+           SelectedItem="{x:Bind ViewModel.CurrentPage, Mode=TwoWay, Converter={StaticResource BindToObjectConverter}}"
+           ItemsSource="{x:Bind ViewModel.SectionPages, Mode=OneWay}">
+      <Pivot.ItemContainerStyle>
+        <Style TargetType="PivotItem">
+          <Setter Property="Margin" Value="4,0" />
+          <Setter Property="Padding" Value="0" />
+        </Style>
+      </Pivot.ItemContainerStyle>
+      <Pivot.HeaderTemplate>
+        <DataTemplate x:DataType="pages:SectionPageViewModel">
+          <TextBlock Text="{x:Bind Caption}" />
+        </DataTemplate>
+      </Pivot.HeaderTemplate>
+      <Pivot.ItemTemplate>
+        <DataTemplate x:DataType="pages:SectionPageViewModel">
+          <controls:AdaptiveGridView x:Name="ItemsGrid"
+                                     ItemClick="NavigateToItem"
+                                     extensions:ScrollViewerExtensions.EnableMiddleClickScrolling="True"
+                                     ItemsSource="{x:Bind ItemsSource, Mode=OneWay}"
+                                     Style="{StaticResource ItemsListStyle}"
+                                     DesiredWidth="{StaticResource ItemNormalDesiredWidth}"
+                                     Loaded="ItemsGrid_Loaded">
+            <controls:AdaptiveGridView.ItemTemplate>
+              <DataTemplate x:DataType="items:ItemsListItemViewModel">
+                <controls:ItemsListItem ItemInfo="{x:Bind ItemInfo, Mode=OneWay}"
+                                        IsItemPreloading="{x:Bind IsPreloading, Mode=OneWay}"
+                                        DisplayItemMode="{x:Bind DisplayItemMode}"
+                                        ItemPreloadCommand="{x:Bind PreloadItemCommand}" />
+              </DataTemplate>
+            </controls:AdaptiveGridView.ItemTemplate>
+          </controls:AdaptiveGridView>
+        </DataTemplate>
+      </Pivot.ItemTemplate>
+    </Pivot>
+
+    <VisualStateManager.VisualStateGroups>
+
+      <VisualStateGroup x:Name="SortButtonVisibilityGroup">
+        <VisualState>
+          <VisualState.StateTriggers>
+            <windowsstatetriggers:IsFalseStateTrigger Value="{x:Bind ViewModel.CurrentPage.CanSort, Mode=OneWay, FallbackValue=False}" />
+          </VisualState.StateTriggers>
+          <VisualState.Setters>
+            <Setter Target="MoreButton.Visibility" Value="Collapsed" />
+          </VisualState.Setters>
+        </VisualState>
+      </VisualStateGroup>
+
+    </VisualStateManager.VisualStateGroups>
+  </Grid>
+</Page>

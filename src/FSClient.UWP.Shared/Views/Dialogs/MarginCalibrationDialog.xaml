@@ -1,0 +1,94 @@
+﻿<ContentDialog x:Class="FSClient.UWP.Shared.Views.Dialogs.MarginCalibrationDialog"
+               xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+               xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+               PrimaryButtonText="{x:Bind ConverterParameter='ContentDialog_Ok', Converter={StaticResource LocalizationConverter}}"
+               Title="{x:Bind ConverterParameter='MarginCalibrationDialog_Title', Converter={StaticResource LocalizationConverter}}">
+
+  <ContentDialog.Resources>
+    <StaticResource x:Key="SystemControlPageBackgroundMediumAltMediumBrush"
+                    ResourceKey="TransparentBrush" />
+  </ContentDialog.Resources>
+
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition />
+      <RowDefinition />
+      <RowDefinition />
+      <RowDefinition />
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition />
+      <ColumnDefinition />
+      <ColumnDefinition />
+    </Grid.ColumnDefinitions>
+    <TextBlock Grid.ColumnSpan="3"
+               TextWrapping="WrapWholeWords"
+               Text="{x:Bind ConverterParameter='MarginCalibrationDialog_Description', Converter={StaticResource LocalizationConverter}}" />
+    <muxc:NumberBox Grid.Row="2"
+                    Grid.Column="0"
+                    Width="64"
+                    SmallChange="1"
+                    Minimum="-100"
+                    Maximum="100"
+                    HorizontalContentAlignment="Center"
+                    SpinButtonPlacementMode="Compact"
+                    Value="{x:Bind Settings.ApplicationMarginLeft, Mode=TwoWay, Converter={StaticResource TypeConverter}}">
+      <muxc:NumberBox.Header>
+        <FontIcon Grid.Row="0"
+                  Grid.Column="0"
+                  Glyph="&#xE72B;" />
+      </muxc:NumberBox.Header>
+    </muxc:NumberBox>
+    <muxc:NumberBox Grid.Row="1"
+                    Grid.Column="1"
+                    Width="64"
+                    SmallChange="1"
+                    Minimum="-100"
+                    Maximum="100"
+                    HorizontalContentAlignment="Center"
+                    SpinButtonPlacementMode="Compact"
+                    Value="{x:Bind Settings.ApplicationMarginTop, Mode=TwoWay, Converter={StaticResource TypeConverter}}">
+      <muxc:NumberBox.Header>
+        <FontIcon Grid.Row="0"
+                  Grid.Column="0"
+                  Glyph="&#xE74A;" />
+      </muxc:NumberBox.Header>
+    </muxc:NumberBox>
+    <muxc:NumberBox Grid.Row="2"
+                    Grid.Column="2"
+                    Width="64"
+                    SmallChange="1"
+                    Minimum="-100"
+                    Maximum="100"
+                    HorizontalContentAlignment="Center"
+                    SpinButtonPlacementMode="Compact"
+                    Value="{x:Bind Settings.ApplicationMarginRight, Mode=TwoWay, Converter={StaticResource TypeConverter}}">
+      <muxc:NumberBox.Header>
+        <FontIcon Grid.Row="0"
+                  Grid.Column="0"
+                  Glyph="&#xE72A;" />
+      </muxc:NumberBox.Header>
+    </muxc:NumberBox>
+    <muxc:NumberBox Grid.Row="3"
+                    Grid.Column="1"
+                    Width="64"
+                    SmallChange="1"
+                    Minimum="-100"
+                    Maximum="100"
+                    HorizontalContentAlignment="Center"
+                    SpinButtonPlacementMode="Compact"
+                    Value="{x:Bind Settings.ApplicationMarginBottom, Mode=TwoWay, Converter={StaticResource TypeConverter}}">
+      <muxc:NumberBox.Header>
+        <FontIcon Grid.Row="0"
+                  Grid.Column="0"
+                  Glyph="&#xE74A;"
+                  RenderTransformOrigin="0.5 0.5">
+          <FontIcon.RenderTransform>
+            <RotateTransform Angle="180" />
+          </FontIcon.RenderTransform>
+        </FontIcon>
+      </muxc:NumberBox.Header>
+    </muxc:NumberBox>
+  </Grid>
+</ContentDialog>

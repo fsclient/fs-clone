@@ -1,0 +1,64 @@
+﻿<UserControl x:Class="FSClient.UWP.Shared.Views.Controls.YearSelector"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:winTriggers="using:WindowsStateTriggers">
+
+  <Grid>
+    <Grid x:Name="YearsRangeSelectorGrid"
+          x:DeferLoadStrategy="Lazy"
+          Visibility="Collapsed">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="4" />
+        <ColumnDefinition Width="*" />
+      </Grid.ColumnDefinitions>
+      <DatePicker x:Name="FromYearUpDown"
+                  Grid.Column="0"
+                  Header="{x:Bind ConverterParameter='YearSelector_From', Converter={StaticResource LocalizationConverter}}"
+                  DayVisible="False"
+                  MonthVisible="False"
+                  MinWidth="0"
+                  HorizontalAlignment="Stretch"
+                  Loaded="FromYearUpDown_Loaded"
+                  DateChanged="FromYearUpDown_DateChanged" />
+      <DatePicker x:Name="ToYearUpDown"
+                  Grid.Column="2"
+                  Header="{x:Bind ConverterParameter='YearSelector_To', Converter={StaticResource LocalizationConverter}}"
+                  DayVisible="False"
+                  MonthVisible="False"
+                  MinWidth="0"
+                  HorizontalAlignment="Stretch"
+                  Loaded="ToYearUpDown_Loaded"
+                  DateChanged="ToYearUpDown_DateChanged" />
+    </Grid>
+
+    <ComboBox x:Name="SingleYearSelector"
+              x:DeferLoadStrategy="Lazy"
+              Visibility="Collapsed"
+              Header="{x:Bind ConverterParameter='YearSelector_SpecificYear', Converter={StaticResource LocalizationConverter}}"
+              HorizontalAlignment="Stretch"
+              Loaded="SingleYearSelector_Loaded"
+              SelectionChanged="SingleYearSelector_SelectionChanged" />
+
+    <VisualStateManager.VisualStateGroups>
+      <VisualStateGroup>
+        <VisualState>
+          <VisualState.StateTriggers>
+            <StateTrigger IsActive="{x:Bind AllowYearsRange, Mode=OneWay}" />
+          </VisualState.StateTriggers>
+          <VisualState.Setters>
+            <Setter Target="YearsRangeSelectorGrid.Visibility" Value="Visible" />
+          </VisualState.Setters>
+        </VisualState>
+        <VisualState>
+          <VisualState.StateTriggers>
+            <winTriggers:IsFalseStateTrigger Value="{x:Bind AllowYearsRange, Mode=OneWay}" />
+          </VisualState.StateTriggers>
+          <VisualState.Setters>
+            <Setter Target="SingleYearSelector.Visibility" Value="Visible" />
+          </VisualState.Setters>
+        </VisualState>
+      </VisualStateGroup>
+    </VisualStateManager.VisualStateGroups>
+  </Grid>
+</UserControl>

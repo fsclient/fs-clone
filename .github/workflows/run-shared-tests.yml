@@ -1,0 +1,26 @@
+name: Run Shared Tests
+on:
+  pull_request:
+    branches:
+      - '*'
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+    - name: Clone working branch
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+    - uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.x
+    - name: Add msbuild to PATH
+      uses: microsoft/setup-msbuild@v1.0.2
+      with:
+        vs-version: '16.9'
+    - name: MSBuild Restore
+      run: msbuild ./src/FSClient.sln /p:Configuration=Release /target:Restore
+    - name: MSBuild Build FSClient.UWP.Shared
+      run: msbuild ./src/FSClient.UWP.Shared/FSClient.UWP.Shared.csproj /p:Configuration=Release /target:Build
+    - name: DotNet Test FSClient.Shared.Test
+      run: dotnet test src/FSClient.Shared.Test/FSClient.Shared.Test.csproj --configuration Release

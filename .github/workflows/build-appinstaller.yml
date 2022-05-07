@@ -1,0 +1,28 @@
+name: Build and upload AppInstaller
+on:
+  push:
+    branches:
+      - publish
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+    - name: Clone working branch
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+    - uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.x
+    - run: powershell -ExecutionPolicy Unrestricted ./build/build.ps1 --full --IsDevBuild false --GenerateAppInstallerFile
+      env: 
+        SECRETS_CS_BASE64: ${{ secrets.SECRETS_CS_BASE64 }}
+        UWP_STORE_KEY_PFX_PASSWORD: ${{ secrets.UWP_STORE_KEY_PFX_PASSWORD }}
+        UWP_STORE_KEY_THUMBPRINT: ${{ secrets.UWP_STORE_KEY_THUMBPRINT }}
+        APPXMANIFEST_PACKAGE_NAME: 24831TIRRSOFT.FS
+        APPXMANIFEST_PUBLISHER: CN=A3BB68C0-CB4F-4165-B12D-B892AC74D519
+    - name: Upload artifact
+      uses: actions/upload-artifact@v1.0.0
+      with:
+        name: 'FSClient_AppInstaller'
+        path: 'artifacts'

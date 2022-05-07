@@ -1,0 +1,20 @@
+<Project>
+
+  <PropertyGroup>
+    <UwpTargetFramework>uap10.0.17134</UwpTargetFramework>
+
+    <TargetPlatformIdentifier>uap</TargetPlatformIdentifier>
+    <ExtrasUwpMetaPackageVersion>6.2.12</ExtrasUwpMetaPackageVersion>
+    <MicrosoftUiPackageVersion>2.7.0</MicrosoftUiPackageVersion>
+    <MicrosoftUiPackageVersion Condition="'$(TargetFramework)' == 'net5.0'">3.0.0-preview2.200713.0</MicrosoftUiPackageVersion>
+
+    <TargetPlatformVersion Condition="'$(TargetPlatformVersion)' == ''">10.0.19041.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.17134.0</TargetPlatformMinVersion>
+
+    <!-- Removed Language to allow language switch -->
+    <!-- Removed Scale to to fix sideload update bug -->
+    <AppxBundleAutoResourcePackageQualifiers>DXFeatureLevel</AppxBundleAutoResourcePackageQualifiers>
+    <AppxDefaultResourceQualifiers>Language=ru-RU;uk-UA;en-US</AppxDefaultResourceQualifiers>
+  </PropertyGroup>
+
+</Project>

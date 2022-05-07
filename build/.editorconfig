@@ -1,0 +1,12 @@
+﻿#editor config for test project
+
+[*.cs]
+
+# CA2007: Consider calling ConfigureAwait on the awaited task
+dotnet_diagnostic.CA2007.severity = none
+
+# IDE0040: Add accessibility modifiers
+dotnet_style_require_accessibility_modifiers = for_non_interface_members:none
+
+# CA1822: Mark members as static
+dotnet_diagnostic.CA1822.severity = none

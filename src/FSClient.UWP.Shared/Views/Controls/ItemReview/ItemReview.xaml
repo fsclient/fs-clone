@@ -1,0 +1,111 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:FSClient.UWP.Shared.Views.Controls">
+
+  <StaticResource x:Key="ItemReviewCurrentUserAccentBrush"
+                  ResourceKey="SystemControlHighlightAccentBrush" />
+
+  <Style TargetType="controls:ItemReview">
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="controls:ItemReview">
+          <Grid x:Name="ReviewOuterGrid">
+            <ScrollViewer Height="200"
+                          HorizontalScrollMode="Disabled"
+                          VerticalScrollBarVisibility="Auto">
+              <Grid x:Name="ReviewGrid"
+                    Height="200"
+                    Padding="8"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch">
+                <Grid.RowDefinitions>
+                  <RowDefinition Height="Auto"
+                                 MaxHeight="36" />
+                  <RowDefinition Height="*" />
+                  <RowDefinition Height="Auto" />
+                  <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="Auto" />
+                  <ColumnDefinition Width="*" />
+                  <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <!--    -->
+                <Image Grid.Row="0"
+                       Grid.Column="0"
+                       Width="32"
+                       Height="32"
+                       Margin="0,0,8,0"
+                       HorizontalAlignment="Left"
+                       Source="{Binding Review.Avatar, RelativeSource={RelativeSource TemplatedParent}}"
+                       Visibility="{Binding Review.Avatar, Converter={StaticResource BooleanConverter}, RelativeSource={RelativeSource TemplatedParent}}" />
+                <TextBlock Grid.Row="0"
+                           Grid.Column="1"
+                           Grid.ColumnSpan="2"
+                           VerticalAlignment="Center"
+                           FontWeight="Bold"
+                           Opacity="0.8"
+                           Text="{Binding Review.Reviewer, RelativeSource={RelativeSource TemplatedParent}}"
+                           Visibility="{Binding Review.IsUserReview, Converter={StaticResource BooleanConverter}, ConverterParameter=!, RelativeSource={RelativeSource TemplatedParent}}" />
+                <Border Grid.Row="0"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="2"
+                        Padding="4"
+                        VerticalAlignment="Center"
+                        Background="{ThemeResource ItemReviewCurrentUserAccentBrush}"
+                        CornerRadius="4"
+                        Visibility="{Binding Review.IsUserReview, Converter={StaticResource BooleanConverter}, RelativeSource={RelativeSource TemplatedParent}}">
+                  <TextBlock VerticalAlignment="Center"
+                             FontWeight="Bold"
+                             Text="{Binding Review.Reviewer, RelativeSource={RelativeSource TemplatedParent}}" />
+                </Border>
+                <!--    -->
+                <RichTextBlock x:Name="ReviewTextBlock"
+                               Grid.Row="1"
+                               Grid.Column="0"
+                               Grid.ColumnSpan="3"
+                               Padding="0,2"
+                               FontSize="16"
+                               OverflowContentTarget="{Binding ElementName=RichTextBlockOverflow}"
+                               TextTrimming="CharacterEllipsis"
+                               TextWrapping="WrapWholeWords">
+                  <Paragraph>
+                    <Run Text="{Binding Review.Description, RelativeSource={RelativeSource TemplatedParent}}" />
+                  </Paragraph>
+                </RichTextBlock>
+                <RichTextBlockOverflow x:Name="RichTextBlockOverflow"
+                                       Visibility="Collapsed" />
+                <!--    -->
+                <HyperlinkButton x:Name="ShowHideReview"
+                                 Grid.Row="2"
+                                 Grid.Column="0"
+                                 Grid.ColumnSpan="3"
+                                 Margin="0"
+                                 Padding="0"
+                                 Content="{Binding ConverterParameter='ItemReview_ShowHideReview_Open', Converter={StaticResource LocalizationConverter}}"
+                                 FontSize="14"
+                                 ToolTipService.ToolTip="{Binding ConverterParameter='ItemReview_ShowHideReview_ToolTip', Converter={StaticResource LocalizationConverter}}"
+                                 Visibility="{Binding ElementName=ReviewTextBlock, Path=HasOverflowContent, Converter={StaticResource BooleanConverter}}" />
+                <!--    -->
+                <TextBlock Grid.Row="3"
+                           Grid.Column="0"
+                           Grid.ColumnSpan="2"
+                           VerticalAlignment="Center"
+                           Opacity="0.8"
+                           Text="{Binding Review.Date, Converter={StaticResource ToFriendlyStringConverter}, ConverterParameter='dd MMM yyyy', RelativeSource={RelativeSource TemplatedParent}}"
+                           Visibility="{Binding Review.Date, Converter={StaticResource BooleanConverter}, RelativeSource={RelativeSource TemplatedParent}}" />
+
+                <controls:ItemRating Grid.Column="2"
+                                     Grid.Row="3"
+                                     ShowRatingProgress="False"
+                                     Rating="{Binding Review.Rating, RelativeSource={RelativeSource TemplatedParent}}"
+                                     VoteCommand="{Binding Review.VoteCommand, RelativeSource={RelativeSource TemplatedParent}}" />
+              </Grid>
+            </ScrollViewer>
+          </Grid>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+
+</ResourceDictionary>

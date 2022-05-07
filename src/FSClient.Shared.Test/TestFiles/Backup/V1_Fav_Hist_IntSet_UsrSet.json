@@ -1,0 +1,401 @@
+﻿{
+  "Version": 1,
+  "Items": [
+    {
+      "Id": "15417",
+      "Site": "Shikimori",
+      "Title": "Гинтама 3",
+      "Link": "/animes/15417-gintama-enchousen",
+      "Poster": "http://desu.shikimori.org/system/animes/preview/15417.jpg?1518700096",
+      "Section": "cartoonserial"
+    },
+    {
+      "Id": "33337",
+      "Site": "Shikimori",
+      "Title": "АККА: Инспекция по 13 округам",
+      "Link": "/animes/33337-acca-13-ku-kansatsu-ka",
+      "Poster": "http://desu.shikimori.org/system/animes/preview/33337.jpg?1545665810",
+      "Section": "cartoonserial"
+    },
+    {
+      "Id": "31646",
+      "Site": "Shikimori",
+      "Title": "Мартовский лев",
+      "Link": "/animes/31646-3-gatsu-no-lion",
+      "Poster": "http://desu.shikimori.org/system/animes/preview/31646.jpg?1545666947",
+      "Section": "film"
+    },
+    {
+      "Id": "37779",
+      "Site": "Shikimori",
+      "Title": "Обещанный Неверленд",
+      "Link": "/animes/37779-yakusoku-no-neverland",
+      "Poster": "http://desu.shikimori.org/system/animes/preview/37779.jpg?1553230039",
+      "Section": "cartoonserial"
+    },
+    {
+      "Id": "918",
+      "Site": "Shikimori",
+      "Title": "Гинтама",
+      "Link": "/animes/918-gintama",
+      "Poster": "http://desu.shikimori.org/system/animes/preview/918.jpg?1518315607",
+      "Section": "cartoonserial"
+    },
+    {
+      "Id": "37982",
+      "Site": "Shikimori",
+      "Title": "Домашняя девушка",
+      "Link": "/animes/37982-domestic-na-kanojo",
+      "Poster": "http://desu.shikimori.org/system/animes/preview/37982.jpg?1553230018",
+      "Section": "cartoonserial"
+    },
+    {
+      "Id": "37430",
+      "Site": "Shikimori",
+      "Title": "О моём перерождении в слизь",
+      "Link": "/animes/37430-tensei-shitara-slime-datta-ken",
+      "Poster": "http://desu.shikimori.org/system/animes/preview/37430.jpg?1552842980",
+      "Section": "cartoonserial"
+    },
+    {
+      "Id": "37999",
+      "Site": "Shikimori",
+      "Title": "Госпожа Кагуя: в любви как на войне",
+      "Link": "/animes/37999-kaguya-sama-wa-kokurasetai-tensai-tachi-no-renai-zunousen",
+      "Poster": "http://desu.shikimori.org/system/animes/preview/37999.jpg?1553230043",
+      "Section": "cartoonserial"
+    },
+    {
+      "Id": "1",
+      "Site": "Shikimori",
+      "Title": "Ковбой Бибоп",
+      "Link": "/animes/1-cowboy-bebop",
+      "Poster": "http://desu.shikimori.org/system/animes/preview/1.jpg?1517818219",
+      "Section": "cartoonserial"
+    },
+    {
+      "Id": "9969",
+      "Site": "Shikimori",
+      "Title": "Гинтама 2",
+      "Link": "/animes/9969-gintama",
+      "Poster": "http://desu.shikimori.org/system/animes/preview/9969.jpg?1518700490",
+      "Section": "cartoonserial"
+    },
+    {
+      "Id": "30484",
+      "Site": "Shikimori",
+      "Title": "Врата Штейна 0",
+      "Link": "/animes/30484-steins-gate-0",
+      "Poster": "http://desu.shikimori.org/system/animes/preview/30484.jpg?1545610515",
+      "Section": "cartoonserial"
+    },
+    {
+      "Id": "37105",
+      "Site": "Shikimori",
+      "Title": "Необъятный океан",
+      "Link": "/animes/37105-grand-blue",
+      "Poster": "http://desu.shikimori.org/system/animes/preview/37105.jpg?1547307870",
+      "Section": "cartoonserial"
+    },
+    {
+      "Id": "129700",
+      "Site": "Filmix",
+      "AddDateTime": "0001-01-01T02:00:00+02:00",
+      "Title": "Затерянные во льдах",
+      "Link": "/dramy/129700-zateryannye-vo-ldah-2018.html",
+      "Poster": "https://filmix.today/uploads/posters/thumbs/w300/zateryannye-vo-ldah-2018_129700_0.jpg",
+      "Section": "film"
+    },
+    {
+      "Id": "37349",
+      "Site": "Shikimori",
+      "AddDateTime": "0001-01-01T02:00:00+02:00",
+      "Title": "Убийца гоблинов",
+      "Link": "/animes/37349-goblin-slayer",
+      "Poster": "http://desu.shikimori.org/system/animes/preview/37349.jpg?1531142485",
+      "Section": "serial"
+    }
+  ],
+  "Favorites": [
+    {
+      "Id": "15417",
+      "Site": "Shikimori",
+      "KindNameId": "InProcess"
+    },
+    {
+      "Id": "33337",
+      "Site": "Shikimori",
+      "KindNameId": "InProcess"
+    },
+    {
+      "Id": "31646",
+      "Site": "Shikimori",
+      "KindNameId": "InProcess"
+    },
+    {
+      "Id": "37779",
+      "Site": "Shikimori",
+      "KindNameId": "Finished"
+    },
+    {
+      "Id": "918",
+      "Site": "Shikimori",
+      "KindNameId": "Finished"
+    },
+    {
+      "Id": "37982",
+      "Site": "Shikimori",
+      "KindNameId": "Finished"
+    },
+    {
+      "Id": "37430",
+      "Site": "Shikimori",
+      "KindNameId": "Finished"
+    },
+    {
+      "Id": "37999",
+      "Site": "Shikimori",
+      "KindNameId": "Finished"
+    },
+    {
+      "Id": "1",
+      "Site": "Shikimori",
+      "KindNameId": "Finished"
+    },
+    {
+      "Id": "9969",
+      "Site": "Shikimori",
+      "KindNameId": "Finished"
+    },
+    {
+      "Id": "30484",
+      "Site": "Shikimori",
+      "KindNameId": "Finished"
+    },
+    {
+      "Id": "37105",
+      "Site": "Shikimori",
+      "KindNameId": "Finished"
+    }
+  ],
+  "History": [
+    {
+      "Id": "33337",
+      "Site": "Shikimori",
+      "AddDateTime": "2019-04-29T01:04:01.352+03:00",
+      "Episode": "4",
+      "Nodes": [
+        {
+          "Id": "s33337",
+          "Position": 0.325149447
+        },
+        {
+          "Id": "s33337_4",
+          "Position": 0.9796067
+        },
+        {
+          "Id": "s33337_4_1440416",
+          "Position": 0.9796067
+        }
+      ]
+    },
+    {
+      "Id": "33337",
+      "Site": "Shikimori",
+      "AddDateTime": "2019-04-29T00:42:49.287+03:00",
+      "Episode": "3",
+      "Nodes": [
+        {
+          "Id": "s33337",
+          "Position": 0.325149447
+        },
+        {
+          "Id": "s33337_3",
+          "Position": 0.9358528
+        },
+        {
+          "Id": "s33337_3_1435909",
+          "Position": 0.9358528
+        }
+      ]
+    },
+    {
+      "Id": "33337",
+      "Site": "Shikimori",
+      "AddDateTime": "2019-04-29T00:19:37.644+03:00",
+      "Episode": "2",
+      "Nodes": [
+        {
+          "Id": "s33337",
+          "Position": 0.325149447
+        },
+        {
+          "Id": "s33337_2",
+          "Position": 0.9869804
+        },
+        {
+          "Id": "s33337_2_1430989",
+          "Position": 0.9869804
+        }
+      ]
+    },
+    {
+      "Id": "33337",
+      "Site": "Shikimori",
+      "AddDateTime": "2019-04-28T23:54:56.117+03:00",
+      "Episode": "1",
+      "Nodes": [
+        {
+          "Id": "s33337",
+          "Position": 0.325149447
+        },
+        {
+          "Id": "s33337_1",
+          "Position": 1
+        },
+        {
+          "Id": "s33337_1_1413976",
+          "Position": 1
+        }
+      ]
+    },
+    {
+      "Id": "129700",
+      "Site": "Filmix",
+      "AddDateTime": "2019-04-28T20:55:30.756+03:00",
+      "Nodes": [
+        {
+          "Id": "129700_0",
+          "Position": 0.00319628674
+        }
+      ]
+    },
+    {
+      "Id": "37105",
+      "Site": "Shikimori",
+      "AddDateTime": "2019-04-25T01:31:59.356+03:00",
+      "Episode": "12",
+      "Nodes": [
+        {
+          "Id": "37105",
+          "Position": 0.715922832
+        },
+        {
+          "Id": "37105_12",
+          "Position": 0.9999999
+        },
+        {
+          "Id": "37105_12_1835507",
+          "Position": 0.9999999
+        }
+      ]
+    },
+    {
+      "Id": "37105",
+      "Site": "Shikimori",
+      "AddDateTime": "2019-04-25T01:09:21.089+03:00",
+      "Episode": "11",
+      "Nodes": [
+        {
+          "Id": "37105",
+          "Position": 0.715922832
+        },
+        {
+          "Id": "37105_11",
+          "Position": 0.991587
+        },
+        {
+          "Id": "37105_11_1832248",
+          "Position": 0.991587
+        }
+      ]
+    },
+    {
+      "Id": "37105",
+      "Site": "Shikimori",
+      "AddDateTime": "2019-04-25T00:42:44.345+03:00",
+      "Episode": "10",
+      "Nodes": [
+        {
+          "Id": "37105",
+          "Position": 0.715922832
+        },
+        {
+          "Id": "37105_10",
+          "Position": 0.002699502
+        },
+        {
+          "Id": "37105_10_1829455",
+          "Position": 0.002699502
+        }
+      ]
+    },
+    {
+      "Id": "37105",
+      "Site": "Shikimori",
+      "AddDateTime": "2019-04-25T00:42:31.783+03:00",
+      "Episode": "9",
+      "Nodes": [
+        {
+          "Id": "37105",
+          "Position": 0.715922832
+        },
+        {
+          "Id": "37105_9",
+          "Position": 0.9915228
+        },
+        {
+          "Id": "37105_9_1825595",
+          "Position": 0.9915228
+        }
+      ]
+    },
+    {
+      "Id": "37349",
+      "Site": "Shikimori",
+      "AddDateTime": "2019-04-20T01:55:35.214+03:00",
+      "Episode": "6",
+      "Nodes": [
+        {
+          "Id": "s37349",
+          "Position": 0.000853695848
+        },
+        {
+          "Id": "18799_182798",
+          "Position": 0.0117545091
+        },
+        {
+          "Id": "18799_2340291",
+          "Position": 0.0117545091
+        }
+      ]
+    }
+  ],
+  "Settings": {
+    "Local": {
+      "UserSettingsContainer": {
+        "MainSite": "Filmix",
+        "AccentColor": "#FF018574",
+        "OrderedProviders": "Filmix,HDGO,Kodik,SeasonVar,Moonwalk,ExFS,TMDb,Shikimori,anime365,Uafilm,TreeTV,Zona,Kinopoisk,KinoPub",
+        "UserDomain_Filmix": "https://filmix.today/",
+        "InAppLoggerNotifications": true,
+        "CompactPlayer": true,
+        "CompactOverlayEnabled": true
+      },
+      "StateSettingsContainer": {
+        "FavPage": 2,
+        "PlayerSubsLang": "RU",
+        "IsPaneOpen": true,
+        "PlayerVolume": 0.4,
+        "UnionEpisodes": true,
+        "SavedState": "fsclient://settings/"
+      }
+    },
+    "Roaming": {
+      "StateSettingsContainer": {
+        "ShowVideoAttention": false,
+        "ShowCalendarHelpInfo": false
+      }
+    }
+  }
+}

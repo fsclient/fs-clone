@@ -1,0 +1,53 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    x:Class="FSClient.UWP.Shared.Views.Themes.Brushes">
+
+  <SolidColorBrush x:Key="TopBarBackgroundBrush"
+                   Color="{ThemeResource SystemAccentColor}" />
+
+  <SolidColorBrush x:Key="BottomBarBackgroundBrush"
+                   Color="{StaticResource SystemChromeMediumColor}" />
+
+  <SolidColorBrush x:Key="ClientBackgroundBrush"
+                   Color="{StaticResource SystemChromeLowColor}" />
+
+  <SolidColorBrush x:Key="ClientBackgroundNonTransparentBrush"
+                   Color="{StaticResource SystemChromeLowColor}" />
+
+  <!--<muxm:AcrylicBrush x:Key="ItemBackgroundBrush"
+                     BackgroundSource="Backdrop"
+                     TintOpacity="0.8"
+                     TintColor="{StaticResource SystemChromeMediumColor}"
+                     FallbackColor="{StaticResource SystemChromeMediumColor}" />-->
+
+  <SolidColorBrush x:Key="ItemBackgroundBrush"
+                   Color="{StaticResource SystemChromeMediumColor}" />
+
+  <!--<muxm:AcrylicBrush x:Key="PaneBackgroundBrush"
+                     BackgroundSource="Backdrop"
+                     TintOpacity="0.9"
+                     TintColor="{StaticResource SystemChromeMediumColor}"
+                     FallbackColor="{StaticResource SystemChromeMediumColor}" />-->
+
+  <SolidColorBrush x:Key="PaneBackgroundBrush"
+                   Color="{StaticResource SystemChromeMediumColor}" />
+
+  <!--<muxm:AcrylicBrush x:Key="PlayerBackgroundBrush"
+                     BackgroundSource="Backdrop"
+                     TintOpacity="0.6"
+                     Opacity="0.6"
+                     TintColor="{StaticResource SystemAltMediumColor}"
+                     FallbackColor="{StaticResource SystemAltMediumColor}" />-->
+
+  <SolidColorBrush x:Key="PlayerBackgroundBrush"
+                   Opacity="0.6"
+                   Color="{StaticResource SystemAltMediumColor}" />
+
+  <SolidColorBrush x:Key="AccentForegroundBrush"
+                   Color="White" />
+
+  <Color x:Key="PositiveColor">#008E00</Color>
+
+  <Color x:Key="NegativeColor">#DE0000</Color>
+
+</ResourceDictionary>

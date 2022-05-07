@@ -1,0 +1,77 @@
+﻿<Page x:Name="ThisPage"
+      x:Class="FSClient.UWP.Shared.Views.Pages.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+      xmlns:extensions="using:FSClient.UWP.Shared.Extensions"
+      xmlns:controls="using:FSClient.UWP.Shared.Views.Controls"
+      KeyDown="Page_KeyDown"
+      Background="{ThemeResource ClientBackgroundBrush}">
+
+  <Page.Resources>
+    <ResourceDictionary>
+      <x:Double x:Key="NavigationViewTopPaneHeight">0</x:Double>
+      <Thickness x:Key="NavigationViewMinimalHeaderMargin">0,0,0,0</Thickness>
+      <CornerRadius x:Key="ControlCornerRadius">0</CornerRadius>
+    </ResourceDictionary>
+  </Page.Resources>
+
+  <Grid>
+    <Border x:Name="TopBorder"
+            Margin="0,-1,0,0"
+            Height="{StaticResource AppNavigationViewHeaderHeight}"
+            VerticalAlignment="Top"
+            Background="{ThemeResource TopBarBackgroundBrush}" />
+
+    <muxc:NavigationView x:Name="NavigationView"
+                          IsSettingsVisible="True"
+                          MenuItemsSource="{x:Bind Items}"
+                          AlwaysShowHeader="True"
+                          IsBackButtonVisible="Collapsed"
+                          OpenPaneLength="{StaticResource AppNavigationViewOpenPaneLength}"
+                          ExpandedModeThresholdWidth="{StaticResource LargeWindowWidth}"
+                          CompactModeThresholdWidth="{StaticResource NarrowWindowWidth}"
+                          ItemInvoked="NavigationView_ItemInvoked"
+                          DisplayModeChanged="NavigationView_DisplayModeChanged"
+                          PaneOpened="NavigationView_PaneToggled"
+                          PaneClosed="NavigationView_PaneToggled"
+                          BackRequested="NavigationView_BackRequested"
+                          Loaded="NavigationView_Loaded"
+                          extensions:CompatExtension.XYFocusKeyboardNavigation="true">
+      <Grid x:Name="ContentRoot">
+        <ContentPresenter x:Name="ContentGrid"
+                          extensions:CompatExtension.XYFocusKeyboardNavigation="true"
+                          Grid.Row="1" />
+        <Grid x:Name="NavigationViewSwipeGrid"
+              Grid.Row="1"
+              Width="15"
+              HorizontalAlignment="Left"
+              VerticalAlignment="Stretch"
+              Background="Transparent"
+              ManipulationCompleted="UIElement_OnManipulationCompleted"
+              ManipulationMode="TranslateX" />
+        <controls:InAppNotificationControl x:Name="NotificationControl"
+                                           Grid.Row="1" />
+      </Grid>
+    </muxc:NavigationView>
+
+    <VisualStateManager.VisualStateGroups>
+      <VisualStateGroup x:Name="FullWindowGroup">
+        <VisualState x:Name="NormalMode" />
+        <VisualState x:Name="FullWindowMode">
+          <VisualState.Setters>
+            <Setter Target="TopBorder.Visibility" Value="Collapsed" />
+            <Setter Target="NavigationViewSwipeGrid.Visibility" Value="Collapsed" />
+            <Setter Target="NavigationView.IsBackButtonVisible" Value="Collapsed" />
+            <Setter Target="NavigationView.IsPaneToggleButtonVisible" Value="False" />
+            <Setter Target="NavigationView.PaneDisplayMode" Value="Top" />
+            <Setter Target="NavigationView.Header" Value="" />
+            <Setter Target="NavigationView.Margin" Value="0" />
+            <Setter Target="ContentRoot.Margin" Value="0,-48,0,0" />
+            <Setter Target="ThisPage.Background" Value="Black" />
+          </VisualState.Setters>
+        </VisualState>
+      </VisualStateGroup>
+    </VisualStateManager.VisualStateGroups>
+  </Grid>
+</Page>

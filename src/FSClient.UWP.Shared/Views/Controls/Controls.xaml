@@ -1,0 +1,15 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+  <ResourceDictionary.MergedDictionaries>
+    <ResourceDictionary Source="CloseableAlert/CloseableAlert.xaml" />
+    <ResourceDictionary Source="MenuFlyout/MenuFlyoutContentItem.xaml" />
+    <ResourceDictionary Source="MenuFlyout/MenuFlyoutItemsContainerItem.xaml" />
+    <ResourceDictionary Source="NodeProgressControl/NodeProgressControl.xaml" />
+    <ResourceDictionary Source="HideableTextBox/HideableTextBox.xaml" />
+    <ResourceDictionary Source="ItemsListItem/ItemsListItem.xaml" />
+    <ResourceDictionary Source="ItemReview/ItemReview.xaml" />
+    <ResourceDictionary Source="ItemRating/ItemUpDownRating.xaml" />
+    <ResourceDictionary Source="ItemPageDetails/ItemPageDetails.xaml" />
+    <ResourceDictionary Source="MasterDetailsView/MasterDetailsView.xaml" />
+    <ResourceDictionary Source="PlayerControl/CustomTransportControls/CustomTransportControls.xaml" />    
+  </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

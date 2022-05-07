@@ -1,0 +1,144 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:FSClient.UWP.Shared.Views.Controls">
+
+  <ResourceDictionary.MergedDictionaries>
+    <ResourceDictionary Source="../MediaSlider/MediaSlider.xaml" />
+  </ResourceDictionary.MergedDictionaries>
+
+  <Style TargetType="controls:MediaTimeline">
+    <Setter Property="MaxHeight" Value="48" />
+    <Setter Property="Margin" Value="8,0" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="controls:MediaTimeline">
+          <Grid>
+            <Grid.Resources>
+              <Style x:Key="MediaTextBlockStyle"
+                     TargetType="TextBlock">
+                <Setter Property="VerticalAlignment" Value="Center" />
+                <Setter Property="Foreground" Value="{ThemeResource SystemControlForegroundBaseHighBrush}" />
+                <Setter Property="FontFamily" Value="{ThemeResource MTCMediaFontFamily}" />
+              </Style>
+            </Grid.Resources>
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="*" />
+              <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <controls:MediaSlider x:Name="MediaProgressSlider"
+                                       Grid.Column="1"
+                                       Margin="8,0"
+                                       MinWidth="80"
+                                       IsThumbToolTipEnabled="False"
+                                       VerticalAlignment="Center"
+                                       StepFrequency="0.002"
+                                       TickFrequency="0.002"
+                                       TickPlacement="None" />
+            <ProgressBar x:Name="BufferingProgress"
+                         Grid.Column="0"
+                         Grid.ColumnSpan="3"
+                         Height="4"
+                         Maximum="100"
+                         Minimum="0"
+                         IsHitTestVisible="False"
+                         VerticalAlignment="Top"
+                         Margin="0,2,0,0"
+                         Visibility="Collapsed"
+                         Background="Transparent" />
+            <ProgressBar x:Name="LoadingProgress"
+                         Grid.Column="0"
+                         Grid.ColumnSpan="3"
+                         Height="4"
+                         IsHitTestVisible="False"
+                         IsIndeterminate="True"
+                         IsEnabled="True"
+                         VerticalAlignment="Top"
+                         Margin="0,2,0,0"
+                         Visibility="{Binding IsLoading, RelativeSource={RelativeSource Mode=TemplatedParent}, Converter={StaticResource BooleanConverter}}" />
+            <TextBlock x:Name="ElapsedTimeElement"
+                       Grid.Column="0"
+                       Style="{StaticResource MediaTextBlockStyle}"
+                       Margin="0"
+                       Text="00:00"
+                       HorizontalAlignment="Stretch"
+                       TextAlignment="Center"
+                       VerticalAlignment="Center" />
+            <TextBlock x:Name="RemainingTimeElement"
+                       Grid.Column="2"
+                       Style="{StaticResource MediaTextBlockStyle}"
+                       Text="00:00"
+                       HorizontalAlignment="Stretch"
+                       TextAlignment="Center"
+                       VerticalAlignment="Center" />
+            <TextBlock x:Name="DurationTimeElement"
+                       Grid.Column="2"
+                       Style="{StaticResource MediaTextBlockStyle}"
+                       Text="00:00"
+                       Visibility="Collapsed"
+                       HorizontalAlignment="Stretch"
+                       TextAlignment="Center"
+                       VerticalAlignment="Center" />
+            <Border x:Name="TimeRemainingHoverBorder"
+                    Grid.Column="2"
+                    Background="Transparent"
+                    VerticalAlignment="Stretch"
+                    HorizontalAlignment="Stretch" />
+
+            <VisualStateManager.VisualStateGroups>
+              <VisualStateGroup x:Name="WindowWidthStates">
+                <VisualState>
+                  <VisualState.StateTriggers>
+                    <AdaptiveTrigger MinWindowWidth="504" />
+                  </VisualState.StateTriggers>
+                </VisualState>
+                <VisualState>
+                  <VisualState.StateTriggers>
+                    <AdaptiveTrigger MinWindowWidth="436" />
+                  </VisualState.StateTriggers>
+                  <VisualState.Setters>
+                    <Setter Target="MediaProgressSlider.Margin" Value="4, 0" />
+                    <Setter Target="ElapsedTimeElement.Visibility" Value="Collapsed" />
+                    <Setter Target="RemainingTimeElement.Visibility" Value="Collapsed" />
+                    <Setter Target="DurationTimeElement.Visibility" Value="Collapsed" />
+                  </VisualState.Setters>
+                </VisualState>
+                <VisualState>
+                  <VisualState.StateTriggers>
+                    <AdaptiveTrigger MinWindowWidth="340" />
+                  </VisualState.StateTriggers>
+                  <VisualState.Setters>
+                    <Setter Target="MediaProgressSlider.Margin" Value="4, 0" />
+                    <Setter Target="ElapsedTimeElement.Visibility" Value="Collapsed" />
+                    <Setter Target="RemainingTimeElement.Visibility" Value="Collapsed" />
+                    <Setter Target="DurationTimeElement.Visibility" Value="Collapsed" />
+                  </VisualState.Setters>
+                </VisualState>
+                <VisualState>
+                  <VisualState.StateTriggers>
+                    <AdaptiveTrigger MinWindowWidth="280" />
+                  </VisualState.StateTriggers>
+                  <VisualState.Setters>
+                    <Setter Target="MediaProgressSlider.Margin" Value="0" />
+                    <Setter Target="ElapsedTimeElement.Visibility" Value="Collapsed" />
+                    <Setter Target="RemainingTimeElement.Visibility" Value="Collapsed" />
+                  </VisualState.Setters>
+                </VisualState>
+                <VisualState>
+                  <VisualState.StateTriggers>
+                    <AdaptiveTrigger MinWindowWidth="0" />
+                  </VisualState.StateTriggers>
+                  <VisualState.Setters>
+                    <Setter Target="MediaProgressSlider.Margin" Value="0" />
+                    <Setter Target="ElapsedTimeElement.Visibility" Value="Collapsed" />
+                    <Setter Target="RemainingTimeElement.Visibility" Value="Collapsed" />
+                  </VisualState.Setters>
+                </VisualState>
+              </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+          </Grid>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+</ResourceDictionary>

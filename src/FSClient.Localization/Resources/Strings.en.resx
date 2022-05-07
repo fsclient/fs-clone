@@ -1,0 +1,1672 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+		Microsoft ResX Schema
+
+		Version 1.3
+
+		The primary goals of this format is to allow a simple XML format 
+		that is mostly human readable. The generation and parsing of the 
+		various data types are done through the TypeConverter classes 
+		associated with the data types.
+
+		Example:
+
+		... ado.net/XML headers & schema ...
+		<resheader name="resmimetype">text/microsoft-resx</resheader>
+		<resheader name="version">1.3</resheader>
+		<resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+		<resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+		<data name="Name1">this is my long string</data>
+		<data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+		<data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+			[base64 mime encoded serialized .NET Framework object]
+		</data>
+		<data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+			[base64 mime encoded string representing a byte array form of the .NET Framework object]
+		</data>
+
+		There are any number of "resheader" rows that contain simple 
+		name/value pairs.
+
+		Each data row contains a name, and value. The row also contains a 
+		type or mimetype. Type corresponds to a .NET class that support 
+		text/value conversion through the TypeConverter architecture. 
+		Classes that don't support this are serialized and stored with the 
+		mimetype set.
+
+		The mimetype is used for serialized objects, and tells the 
+		ResXResourceReader how to depersist the object. This is currently not 
+		extensible. For a given mimetype the value must be set accordingly:
+
+		Note - application/x-microsoft.net.object.binary.base64 is the format 
+		that the ResXResourceWriter will generate, however the reader can 
+		read any of the formats listed below.
+
+		mimetype: application/x-microsoft.net.object.binary.base64
+		value   : The object must be serialized with 
+			: System.Serialization.Formatters.Binary.BinaryFormatter
+			: and then encoded with base64 encoding.
+
+		mimetype: application/x-microsoft.net.object.soap.base64
+		value   : The object must be serialized with 
+			: System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+			: and then encoded with base64 encoding.
+
+		mimetype: application/x-microsoft.net.object.bytearray.base64
+		value   : The object must be serialized into a byte array 
+			: using a System.ComponentModel.TypeConverter
+			: and then encoded with base64 encoding.
+	-->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>1.3</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Activation_ApplicationUpdated" xml:space="preserve">
+    <value>Application updated</value>
+  </data>
+  <data name="Activation_CheckBackgroundTasks" xml:space="preserve">
+    <value>Reloading background tasks</value>
+  </data>
+  <data name="Activation_CheckSecondaryTiles" xml:space="preserve">
+    <value>Reloading start tiles</value>
+  </data>
+  <data name="Activation_CheckUpdates" xml:space="preserve">
+    <value>Check updates</value>
+  </data>
+  <data name="Activation_ClearCache" xml:space="preserve">
+    <value>Clear cache</value>
+  </data>
+  <data name="Activation_ComponentError" xml:space="preserve">
+    <value>Application components loading error</value>
+  </data>
+  <data name="Activation_DeleteTorrServerTorrents" xml:space="preserve">
+    <value>Deleting active TorrServer torrents</value>
+  </data>
+  <data name="Activation_EnsureDisplayMargin" xml:space="preserve">
+    <value>Checking screen borders</value>
+  </data>
+  <data name="Activation_FavoritesLoading" xml:space="preserve">
+    <value>Favorites loading</value>
+  </data>
+  <data name="Activation_MirrorsWasUpdated" xml:space="preserve">
+    <value>Mirrors were updated
+Restart the program</value>
+  </data>
+  <data name="Activation_NoAccessError" xml:space="preserve">
+    <value>Error: Access Denied</value>
+  </data>
+  <data name="Activation_UpdateMirrors" xml:space="preserve">
+    <value>Mirrors updating</value>
+  </data>
+  <data name="AddReviewDialog_SendReview" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="AddReviewDialog_WriteReview_Header" xml:space="preserve">
+    <value>Write Review</value>
+  </data>
+  <data name="AddReviewDialog_WriteReview_Placeholder" xml:space="preserve">
+    <value>Your Review</value>
+  </data>
+  <data name="AuthStatus_Canceled" xml:space="preserve">
+    <value>Authorization canceled</value>
+  </data>
+  <data name="AuthStatus_Error" xml:space="preserve">
+    <value>Authorization error</value>
+  </data>
+  <data name="AuthStatus_Success" xml:space="preserve">
+    <value>Authorization success</value>
+  </data>
+  <data name="AuthUserControl_AccountAt" xml:space="preserve">
+    <value>Account at</value>
+  </data>
+  <data name="AuthUserControl_Authorize" xml:space="preserve">
+    <value>Authorize</value>
+  </data>
+  <data name="AuthUserControl_LogOut" xml:space="preserve">
+    <value>Logout</value>
+  </data>
+  <data name="AuthUserControl_ProActiveTextBlock" xml:space="preserve">
+    <value>PRO account is active on this provider</value>
+  </data>
+  <data name="AuthUserControl_Register" xml:space="preserve">
+    <value>Registration</value>
+  </data>
+  <data name="BackupDialog_BackupFavorites" xml:space="preserve">
+    <value>Favorites</value>
+  </data>
+  <data name="BackupDialog_BackupHistory" xml:space="preserve">
+    <value>History</value>
+  </data>
+  <data name="BackupDialog_BackupInternalSettings" xml:space="preserve">
+    <value>Internal settings</value>
+  </data>
+  <data name="BackupDialog_BackupStateSettings" xml:space="preserve">
+    <value>Application status</value>
+  </data>
+  <data name="BackupDialog_BackupUserSettings" xml:space="preserve">
+    <value>User settings</value>
+  </data>
+  <data name="CastTo_DeviceDidNotRespond" xml:space="preserve">
+    <value>Device isn't responding</value>
+  </data>
+  <data name="CastTo_DeviceError" xml:space="preserve">
+    <value>Unknown error on device</value>
+  </data>
+  <data name="CastTo_DeviceLocked" xml:space="preserve">
+    <value>Device is locked</value>
+  </data>
+  <data name="CastTo_InvalidCastingSource" xml:space="preserve">
+    <value>Stream isn't supported</value>
+  </data>
+  <data name="CastTo_ProtectedPlaybackFailed" xml:space="preserve">
+    <value>File isn't supported on this device</value>
+  </data>
+  <data name="CastTo_StartCastFailed" xml:space="preserve">
+    <value>Error was occured while trying cast to device</value>
+  </data>
+  <data name="CastTo_Succeeded" xml:space="preserve">
+    <value>Success</value>
+  </data>
+  <data name="CastTo_Unknown" xml:space="preserve">
+    <value>Unknown error was occured while trying cast to device</value>
+  </data>
+  <data name="ChangesDialog_SkipUpdateToNewVersion" xml:space="preserve">
+    <value>Skip update {0}?
+This notification will not appear on next start.
+You can check updates manually in "Settings - About".</value>
+  </data>
+  <data name="ChangesDialog_TitleLastUpdateChanges" xml:space="preserve">
+    <value>Changelog</value>
+  </data>
+  <data name="ChangesDialog_TitleNewUpdateIsAvailable" xml:space="preserve">
+    <value>New update is available {0}</value>
+  </data>
+  <data name="ChangesDialog_UnknownVersion" xml:space="preserve">
+    <value>Unknown version</value>
+  </data>
+  <data name="ChangesDialog_UpdateToNewVersion" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="CheckForUpdatesResult_Available" xml:space="preserve">
+    <value>New update is available</value>
+  </data>
+  <data name="CheckForUpdatesResult_NotSupported" xml:space="preserve">
+    <value>Updates isn't supported</value>
+  </data>
+  <data name="CheckForUpdatesResult_NoUpdates" xml:space="preserve">
+    <value>No updates</value>
+  </data>
+  <data name="CheckForUpdatesResult_Skipped" xml:space="preserve">
+    <value>Update available, but was skipped</value>
+  </data>
+  <data name="CheckForUpdatesResult_UnknownError" xml:space="preserve">
+    <value>Unknown error</value>
+  </data>
+  <data name="ClearCacheModes_None" xml:space="preserve">
+    <value>no</value>
+  </data>
+  <data name="ClearCacheModes_OnExit" xml:space="preserve">
+    <value>on exit</value>
+  </data>
+  <data name="ClearCacheModes_OnStart" xml:space="preserve">
+    <value>on start</value>
+  </data>
+  <data name="ClearCacheModes_OnStartAndExit" xml:space="preserve">
+    <value>on start and exit</value>
+  </data>
+  <data name="ClearCacheModes_OnTimer" xml:space="preserve">
+    <value>on timer</value>
+  </data>
+  <data name="CloseableAlert_CloseAndNotShowAnymore" xml:space="preserve">
+    <value>Not show again</value>
+  </data>
+  <data name="Common_SizeInMegaBytes" xml:space="preserve">
+    <value>{0:### ###} MB</value>
+  </data>
+  <data name="ConfirmDialog_DialogTitle" xml:space="preserve">
+    <value>The confirmation</value>
+  </data>
+  <data name="ConfirmDialog_OpenMissedFeatureLink" xml:space="preserve">
+    <value>App can't find requested extension "{0}". Open link for install?</value>
+  </data>
+  <data name="ContentDialog_Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="ContentDialog_Ok" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="CriticalDialogLogger_ShouldApplicationExit" xml:space="preserve">
+    <value>An critical error was occurred!
+Data can be lost or damaged.
+Exit?
+
+Error description {0}.</value>
+  </data>
+  <data name="Deactivation_ClearCache" xml:space="preserve">
+    <value>Cache clearing</value>
+  </data>
+  <data name="Deactivation_DatabaseCheckpoint" xml:space="preserve">
+    <value>Saving data base</value>
+  </data>
+  <data name="Deactivation_SaveState" xml:space="preserve">
+    <value>Saving state</value>
+  </data>
+  <data name="Deactivation_StopTorrServerTorrents" xml:space="preserve">
+    <value>Stopping active TorrServer torrents</value>
+  </data>
+  <data name="DeviceFlowDialog_Description" xml:space="preserve">
+    <value>For enable this provider you need to authorize on provider site in browser and activate device with code:</value>
+  </data>
+  <data name="DeviceFlowDialog_DeviceCode" xml:space="preserve">
+    <value>Device code</value>
+  </data>
+  <data name="DeviceFlowDialog_DialogTitle" xml:space="preserve">
+    <value>Device activation</value>
+  </data>
+  <data name="DownloadResult_Canceled" xml:space="preserve">
+    <value>Downloading was canceled</value>
+  </data>
+  <data name="DownloadResult_Completed" xml:space="preserve">
+    <value>Download completed</value>
+  </data>
+  <data name="DownloadResult_FailedFileCreate" xml:space="preserve">
+    <value>File creation error</value>
+  </data>
+  <data name="DownloadResult_FailedFolderOpen" xml:space="preserve">
+    <value>Failed to open folder for file</value>
+  </data>
+  <data name="DownloadResult_FailedUnknown" xml:space="preserve">
+    <value>Failed to start downloading</value>
+  </data>
+  <data name="DownloadResult_InProgress" xml:space="preserve">
+    <value>Downloading</value>
+  </data>
+  <data name="DownloadResult_NotSupported" xml:space="preserve">
+    <value>File not supported</value>
+  </data>
+  <data name="DownloadResult_NotSupported_Hls" xml:space="preserve">
+    <value>M3u8 files aren't supported for downloading
+You can allow downloading in "Settings -&gt; Video downloading"</value>
+  </data>
+  <data name="DownloadResult_NotSupported_Magnet" xml:space="preserve">
+    <value>You can't download magnet link</value>
+  </data>
+  <data name="DownloadResult_NotSupported_MultiSource" xml:space="preserve">
+    <value>Video, which contains multiple files, does not supported for downloading</value>
+  </data>
+  <data name="DownloadResult_Unknown" xml:space="preserve">
+    <value>Operation completed with unknown result</value>
+  </data>
+  <data name="DownloadsPage_BackgroundDownloadAlert" xml:space="preserve">
+    <value>Attention! In power saving mode, downloading in background will stop.</value>
+  </data>
+  <data name="DownloadsPage_DeleteSelectedCommand_FromDevice" xml:space="preserve">
+    <value>Delete selected from device</value>
+  </data>
+  <data name="DownloadsPage_DeleteSelectedCommand_FromList" xml:space="preserve">
+    <value>Delete selected from the list</value>
+  </data>
+  <data name="DownloadsPage_DeleteSelectedCommand_ToolTip" xml:space="preserve">
+    <value>Delete selected files</value>
+  </data>
+  <data name="DownloadsPage_File_OpenFile" xml:space="preserve">
+    <value>Open file</value>
+  </data>
+  <data name="DownloadsPage_File_OpenFolder" xml:space="preserve">
+    <value>Open folder</value>
+  </data>
+  <data name="DownloadsPage_File_Pause" xml:space="preserve">
+    <value>Pause</value>
+  </data>
+  <data name="DownloadsPage_File_RemoveFromDevice" xml:space="preserve">
+    <value>Delete file from device</value>
+  </data>
+  <data name="DownloadsPage_File_RemoveFromList" xml:space="preserve">
+    <value>Delete file from the list</value>
+  </data>
+  <data name="DownloadsPage_OpenFolder" xml:space="preserve">
+    <value>Open folder</value>
+  </data>
+  <data name="DownloadsPage_OpenFolder_ToolTip" xml:space="preserve">
+    <value>Open file location</value>
+  </data>
+  <data name="DownloadStatus_Canceled" xml:space="preserve">
+    <value>Downloading is canceled</value>
+  </data>
+  <data name="DownloadStatus_Completed" xml:space="preserve">
+    <value>Completed</value>
+  </data>
+  <data name="DownloadStatus_Error" xml:space="preserve">
+    <value>Unknown error</value>
+  </data>
+  <data name="DownloadStatus_FileMissed" xml:space="preserve">
+    <value>File was deleted</value>
+  </data>
+  <data name="DownloadStatus_Idle" xml:space="preserve">
+    <value>Waiting</value>
+  </data>
+  <data name="DownloadStatus_Idle_With_Total" xml:space="preserve">
+    <value>Waiting: {0:#,0} /{1:#,0} KB</value>
+  </data>
+  <data name="DownloadStatus_NoNetwork" xml:space="preserve">
+    <value>No network</value>
+  </data>
+  <data name="DownloadStatus_Paused" xml:space="preserve">
+    <value>Downloading paused</value>
+  </data>
+  <data name="DownloadStatus_Resuming" xml:space="preserve">
+    <value>Downloading</value>
+  </data>
+  <data name="DownloadStatus_Running" xml:space="preserve">
+    <value>Downloading: {0:#,0} KB</value>
+  </data>
+  <data name="DownloadStatus_Running_With_Total" xml:space="preserve">
+    <value>Downloading: {0:#,0} / {1:#,0} KB</value>
+  </data>
+  <data name="DownloadsViewModel_FileDownloadCompleted" xml:space="preserve">
+    <value>Downloading "{0}" completed</value>
+  </data>
+  <data name="DownloadsViewModel_FileDownloadFailed" xml:space="preserve">
+    <value>Error was occurred while downloading "{0}"</value>
+  </data>
+  <data name="DownloadsViewModel_FileDownloadWasCancelled" xml:space="preserve">
+    <value>Downloading "{0}" is canceled</value>
+  </data>
+  <data name="DownloadsViewModel_FolderIsNotSelected" xml:space="preserve">
+    <value>Please select folder for downloads in settings</value>
+  </data>
+  <data name="EpisodesCalendar_CalendarAlert_Tooltip" xml:space="preserve">
+    <value>Release date may not match with translate date on providers</value>
+  </data>
+  <data name="FavoitesPage_MoveButton" xml:space="preserve">
+    <value>Move</value>
+  </data>
+  <data name="FavoitesPage_MoveButton_ToolTip" xml:space="preserve">
+    <value>Move to another list</value>
+  </data>
+  <data name="FavoriteListKind_Favorites" xml:space="preserve">
+    <value>Favorites</value>
+  </data>
+  <data name="FavoriteListKind_Finished" xml:space="preserve">
+    <value>Finished</value>
+  </data>
+  <data name="FavoriteListKind_ForLater" xml:space="preserve">
+    <value>For Later</value>
+  </data>
+  <data name="FavoriteListKind_InProcess" xml:space="preserve">
+    <value>In progress</value>
+  </data>
+  <data name="FavoriteListKind_None" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="FavoritesPage_GroupItemsBySection" xml:space="preserve">
+    <value>Group</value>
+  </data>
+  <data name="FavoritesPage_SectionFilter" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="Favorites_ErrorDuringLoading" xml:space="preserve">
+    <value>Favorites loading error</value>
+  </data>
+  <data name="Favorites_FavoritesWasMoved" xml:space="preserve">
+    <value>Favorites were moved</value>
+  </data>
+  <data name="Favorites_ItemAlreadyAddedMessage" xml:space="preserve">
+    <value>Item already in the list</value>
+  </data>
+  <data name="Favorites_ItemDoesNotExistInListMessage" xml:space="preserve">
+    <value>No item in list</value>
+  </data>
+  <data name="Favorites_ItemIsNotSupportedByProviderMessage" xml:space="preserve">
+    <value>Item not supported by favorites provider</value>
+  </data>
+  <data name="Favorites_NoListTypeMessage" xml:space="preserve">
+    <value>This category isn't exists</value>
+  </data>
+  <data name="Favorites_NoSourceMessage" xml:space="preserve">
+    <value>Favorites provider not selected</value>
+  </data>
+  <data name="Favorites_SourceIsNotSupported" xml:space="preserve">
+    <value>Provider isn't supported</value>
+  </data>
+  <data name="Favorites_UnknownError" xml:space="preserve">
+    <value>Unknown favorites error</value>
+  </data>
+  <data name="FilesPage_DownloadSelected_Download" xml:space="preserve">
+    <value>Download files</value>
+  </data>
+  <data name="FilesPage_DownloadSelected_DownloadAsM3u8" xml:space="preserve">
+    <value>Download .m3u8 playlist</value>
+  </data>
+  <data name="FilesPage_DownloadSelected_ToolTip" xml:space="preserve">
+    <value>Download selected files</value>
+  </data>
+  <data name="FilesPage_FileIsWatchedSelectedToggle_Off_ToolTip" xml:space="preserve">
+    <value>Not watched</value>
+  </data>
+  <data name="FilesPage_FileIsWatchedSelectedToggle_On_ToolTip" xml:space="preserve">
+    <value>Watched</value>
+  </data>
+  <data name="FilesPage_File_CopyFileLink_ToolTip" xml:space="preserve">
+    <value>Copy file link</value>
+  </data>
+  <data name="FilesPage_File_DownloadFile_ToolTip" xml:space="preserve">
+    <value>Download file</value>
+  </data>
+  <data name="FilesPage_File_OpenVideoFile_ToolTip" xml:space="preserve">
+    <value>Open video</value>
+  </data>
+  <data name="FilesPage_File_SpecificSubtile" xml:space="preserve">
+    <value>Subtitles</value>
+  </data>
+  <data name="FilesPage_GoUpCommand" xml:space="preserve">
+    <value>Return to pervious folder</value>
+  </data>
+  <data name="FilesPage_OpenRemoteCommand_ToolTip" xml:space="preserve">
+    <value>Open on another device</value>
+  </data>
+  <data name="FilesPage_ProviderCategory_Torrent" xml:space="preserve">
+    <value>Torrents</value>
+  </data>
+  <data name="FilesPage_ProviderCategory_Torrent_ToolTip" xml:space="preserve">
+    <value>Torrent files providers</value>
+  </data>
+  <data name="FilesPage_ProviderCategory_Video" xml:space="preserve">
+    <value>Video</value>
+  </data>
+  <data name="FilesPage_ProviderCategory_Video_ToolTip" xml:space="preserve">
+    <value>Video files providers</value>
+  </data>
+  <data name="FilesPage_ProvidersAlertControl" xml:space="preserve">
+    <value>If you have problem with video, try to switch provider ↑</value>
+  </data>
+  <data name="FilesPage_ProviderSearchStrategy_All" xml:space="preserve">
+    <value>Search everywhere</value>
+  </data>
+  <data name="FilesPage_ProviderSearchStrategy_All_ToolTip" xml:space="preserve">
+    <value>Search in all providers at once</value>
+  </data>
+  <data name="FilesPage_ProviderSearchStrategy_Any" xml:space="preserve">
+    <value>Auto</value>
+  </data>
+  <data name="FilesPage_ProviderSearchStrategy_Any_ToolTip" xml:space="preserve">
+    <value>Search with order settings</value>
+  </data>
+  <data name="FilesPage_RefreshFolderCommand" xml:space="preserve">
+    <value>Refresh folder</value>
+  </data>
+  <data name="FilesPage_Torrent_DownloadTorrent" xml:space="preserve">
+    <value>Download torrent file</value>
+  </data>
+  <data name="FilesPage_Torrent_OpenTorrent" xml:space="preserve">
+    <value>Open torrent</value>
+  </data>
+  <data name="FilesPage_Torrent_OpenTorrentRemote" xml:space="preserve">
+    <value>Open torrent on another device</value>
+  </data>
+  <data name="FilesViewModel_ConfirmToManyFilesDownload" xml:space="preserve">
+    <value>Download more than five files isn't recommended.
+Links is time limited, it can throw an error.
+Are you sure?</value>
+  </data>
+  <data name="FilesViewModel_ErrorDuringFilesPreloading" xml:space="preserve">
+    <value>Error was occurred while retrieving file information</value>
+  </data>
+  <data name="FilesViewModel_ErrorDuringFolderRefresh" xml:space="preserve">
+    <value>Reloading page error</value>
+  </data>
+  <data name="FilesViewModel_FileOpeningWasCanceledByOtherOperation" xml:space="preserve">
+    <value>File opening were canceled by other operation</value>
+  </data>
+  <data name="FilesViewModel_FilesPreloadingProcess" xml:space="preserve">
+    <value>Retrieving files information...</value>
+  </data>
+  <data name="FilesViewModel_FoldersDownloadingIsNotAvailable" xml:space="preserve">
+    <value>Folders downloading isn't supported</value>
+  </data>
+  <data name="FilesViewModel_InvalidTorrServerAddress" xml:space="preserve">
+    <value>Invalid TorrServer address</value>
+  </data>
+  <data name="FilesViewModel_LinkCopiedClipboard" xml:space="preserve">
+    <value>Link copied to clipboard</value>
+  </data>
+  <data name="FilesViewModel_NoTrailersFound" xml:space="preserve">
+    <value>Trailers not found</value>
+  </data>
+  <data name="FilesViewModel_TorrentFilesDownloadCompleted" xml:space="preserve">
+    <value>{0} torrent files is downloaded</value>
+  </data>
+  <data name="FilesViewModel_UnableToOpenTorrentFile" xml:space="preserve">
+    <value>Unable to open torrent-file</value>
+  </data>
+  <data name="FilesViewModel_UnableToOpenTrailler" xml:space="preserve">
+    <value>Unable to open trailer</value>
+  </data>
+  <data name="FilesViewModel_VideoFilesDownloadCompleted" xml:space="preserve">
+    <value>Started downloading for {0} video files</value>
+  </data>
+  <data name="File_Episode" xml:space="preserve">
+    <value>Episode</value>
+  </data>
+  <data name="File_EpisodeWithNumber" xml:space="preserve">
+    <value>{0} episode</value>
+  </data>
+  <data name="File_Season" xml:space="preserve">
+    <value>Season</value>
+  </data>
+  <data name="File_SeasonAndEpisodeWithNumber" xml:space="preserve">
+    <value>{0} season {0} episode</value>
+  </data>
+  <data name="File_SeasonWithNumber" xml:space="preserve">
+    <value>{0} season</value>
+  </data>
+  <data name="FolderHeaderControl_ShowProvidersPaneToggleButton" xml:space="preserve">
+    <value>Providers</value>
+  </data>
+  <data name="FolderHeaderControl_ShowProvidersPaneToggleButton_ToolTip" xml:space="preserve">
+    <value>Show providers list</value>
+  </data>
+  <data name="Folders_ItemIsBlocked" xml:space="preserve">
+    <value>Item was blocked by copyright holders request</value>
+  </data>
+  <data name="Folders_NotInGroup" xml:space="preserve">
+    <value>Not in group</value>
+  </data>
+  <data name="HideableTextBox_FolderSearch" xml:space="preserve">
+    <value>Search in folder</value>
+  </data>
+  <data name="HistoryPage_DeleteSelectedCommand" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="HistoryPage_DeleteSelectedCommand_ToolTip" xml:space="preserve">
+    <value>Delete selected files</value>
+  </data>
+  <data name="HistoryPage_DistinctItems" xml:space="preserve">
+    <value>Display only last episode</value>
+  </data>
+  <data name="HistoryPage_GroupItemsByTime" xml:space="preserve">
+    <value>Group by time</value>
+  </data>
+  <data name="HistoryPage_UnionEpisodes" xml:space="preserve">
+    <value>Group by episodes</value>
+  </data>
+  <data name="HomePageModel_Caption" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="HomePageModel_InCinema" xml:space="preserve">
+    <value>In cinema</value>
+  </data>
+  <data name="HomePageModel_New" xml:space="preserve">
+    <value>New</value>
+  </data>
+  <data name="HomePageModel_Popular" xml:space="preserve">
+    <value>Popular</value>
+  </data>
+  <data name="HomePageViewModel_SiteIsNotAvailableNow" xml:space="preserve">
+    <value>{0} isn't available for now</value>
+  </data>
+  <data name="HomePageViewModel_UnableConnectToSiteAndAskForAnotherSite" xml:space="preserve">
+    <value>Unable to connect to provider {0}.
+Switch main provider to {1}?
+If necessary,  you can switch it again in settings.</value>
+  </data>
+  <data name="HomePage_QuickSearch_ToolTip" xml:space="preserve">
+    <value>Quick search</value>
+  </data>
+  <data name="ItemPageDetails_FranchiseItems" xml:space="preserve">
+    <value>Related items</value>
+  </data>
+  <data name="ItemPageDetails_ProviderTagTooltip" xml:space="preserve">
+    <value>Open item on provider site</value>
+  </data>
+  <data name="ItemPageDetails_SearchByTag" xml:space="preserve">
+    <value>Search by tag</value>
+  </data>
+  <data name="ItemPageDetails_SimilarItems" xml:space="preserve">
+    <value>Similar items</value>
+  </data>
+  <data name="ItemPage_AddToFavorite_ToolTip" xml:space="preserve">
+    <value>Add to favorites</value>
+  </data>
+  <data name="ItemPage_CalendarAppButton_ToolTip" xml:space="preserve">
+    <value>Release time list</value>
+  </data>
+  <data name="ItemPage_OpenItemInBrowserCommand" xml:space="preserve">
+    <value>Open in browser</value>
+  </data>
+  <data name="ItemPage_OpenItemInBrowserCommand_ToolTip" xml:space="preserve">
+    <value>Open item in browser</value>
+  </data>
+  <data name="ItemPage_PinToStartCommand" xml:space="preserve">
+    <value>Pin</value>
+  </data>
+  <data name="ItemPage_PinToStartCommand_ToolTip" xml:space="preserve">
+    <value>Pin to start</value>
+  </data>
+  <data name="ItemPage_ShareItemCommand" xml:space="preserve">
+    <value>Share</value>
+  </data>
+  <data name="ItemPage_ShareItemCommand_ToolTip" xml:space="preserve">
+    <value>Share item</value>
+  </data>
+  <data name="ItemReview_ShowHideReview_Collaps" xml:space="preserve">
+    <value>Roll up</value>
+  </data>
+  <data name="ItemReview_ShowHideReview_Open" xml:space="preserve">
+    <value>More...</value>
+  </data>
+  <data name="ItemReview_ShowHideReview_ToolTip" xml:space="preserve">
+    <value>Expand review</value>
+  </data>
+  <data name="ItemsListItem_RemoveFromHistory" xml:space="preserve">
+    <value>Delete from history</value>
+  </data>
+  <data name="ItemsPage_AddReviewAppBarCommand_ToolTip" xml:space="preserve">
+    <value>Add Review</value>
+  </data>
+  <data name="ItemsPage_ReviewsBlock" xml:space="preserve">
+    <value>Reviews</value>
+  </data>
+  <data name="ItemTrailerAppBarButton_Label" xml:space="preserve">
+    <value>Trailer</value>
+  </data>
+  <data name="ItemViewModel_SiteIsNotAvailableNow" xml:space="preserve">
+    <value>{0} isn't available for now</value>
+  </data>
+  <data name="ItemViewModel_UnableToGetFullItemInfo" xml:space="preserve">
+    <value>Unable to retrieve item information</value>
+  </data>
+  <data name="ItemViewModel_UnableToPinTile" xml:space="preserve">
+    <value>Unable to pin tile</value>
+  </data>
+  <data name="Language_English" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="Language_Japanese" xml:space="preserve">
+    <value>Japanese</value>
+  </data>
+  <data name="Language_Original" xml:space="preserve">
+    <value>Original language</value>
+  </data>
+  <data name="Language_Russian" xml:space="preserve">
+    <value>Russian</value>
+  </data>
+  <data name="Language_Ukrainian" xml:space="preserve">
+    <value>Ukrainian</value>
+  </data>
+  <data name="Language_Unknown" xml:space="preserve">
+    <value>Unknown language</value>
+  </data>
+  <data name="LaunchResult_ErrorHandlerIsNotAvailable" xml:space="preserve">
+    <value>File or link handler isn't available in system</value>
+  </data>
+  <data name="LaunchResult_ErrorInvalidStorageItem" xml:space="preserve">
+    <value>Invalid folder or file</value>
+  </data>
+  <data name="LaunchResult_Success" xml:space="preserve">
+    <value>Operation successfully completed</value>
+  </data>
+  <data name="LaunchResult_UnknownError" xml:space="preserve">
+    <value>Unknown error</value>
+  </data>
+  <data name="ListView_Filter" xml:space="preserve">
+    <value>Filter</value>
+  </data>
+  <data name="ListView_GroupMode" xml:space="preserve">
+    <value>Select-mode</value>
+  </data>
+  <data name="ListView_NothingFound" xml:space="preserve">
+    <value>Nothing found</value>
+  </data>
+  <data name="ListView_Refresh" xml:space="preserve">
+    <value>Refresh</value>
+  </data>
+  <data name="ListView_SelectAll" xml:space="preserve">
+    <value>Select all</value>
+  </data>
+  <data name="ListView_Sort" xml:space="preserve">
+    <value>Sort</value>
+  </data>
+  <data name="ListView_UnselectAll" xml:space="preserve">
+    <value>Unselect</value>
+  </data>
+  <data name="LoginDialog_DialogTItle" xml:space="preserve">
+    <value>Authorization</value>
+  </data>
+  <data name="LoginDialog_LogInButton" xml:space="preserve">
+    <value>LogIn</value>
+  </data>
+  <data name="LoginDialog_Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="LoginDialog_Username" xml:space="preserve">
+    <value>Username or Email</value>
+  </data>
+  <data name="ManagedWindow_DumpVisualTreeConfirmation" xml:space="preserve">
+    <value>Save UI elements tree state?
+App may not respond for a time.</value>
+  </data>
+  <data name="MarginCalibrationDialog_Description" xml:space="preserve">
+    <value>If TV or monitor crop app borders, you can calibrate this in settings.
+For convenience, has been added white border for highlight active area of application.
+In addition  ↓ ↑ keys are supported for keyboard and gamepad.
+Calibration also available from "Settings -&gt; Application"</value>
+  </data>
+  <data name="MarginCalibrationDialog_Title" xml:space="preserve">
+    <value>Calibration padding from application borders</value>
+  </data>
+  <data name="MediaHeader_GoNextCommand_ToolTip" xml:space="preserve">
+    <value>Next episode</value>
+  </data>
+  <data name="MediaHeader_GoPreviousCommand_ToolTip" xml:space="preserve">
+    <value>Previous episode</value>
+  </data>
+  <data name="MediaHeader_OpenPlaylistCommand_ToolTip" xml:space="preserve">
+    <value>Playlist</value>
+  </data>
+  <data name="MediaMainControls_FullScreenCommand_ToolTip" xml:space="preserve">
+    <value>Fullscreen</value>
+  </data>
+  <data name="MediaMainControls_OverlayCommand_ToolTip" xml:space="preserve">
+    <value>Always on top</value>
+  </data>
+  <data name="MediaMainControls_VideoParams_ToolTip" xml:space="preserve">
+    <value>Video settings</value>
+  </data>
+  <data name="MediaSettings_AudioTracks" xml:space="preserve">
+    <value>Audio</value>
+  </data>
+  <data name="MediaSettings_PlaybackRate" xml:space="preserve">
+    <value>Speed</value>
+  </data>
+  <data name="MediaSettings_Stretch" xml:space="preserve">
+    <value>Position</value>
+  </data>
+  <data name="MediaSettings_SubtitleTracks" xml:space="preserve">
+    <value>Subtitles</value>
+  </data>
+  <data name="MediaSettings_VideoQuality" xml:space="preserve">
+    <value>Quality</value>
+  </data>
+  <data name="NavigationPageType_Downloads" xml:space="preserve">
+    <value>Downloads</value>
+  </data>
+  <data name="NavigationPageType_Favorites" xml:space="preserve">
+    <value>Favorites</value>
+  </data>
+  <data name="NavigationPageType_Files" xml:space="preserve">
+    <value>Files</value>
+  </data>
+  <data name="NavigationPageType_History" xml:space="preserve">
+    <value>History</value>
+  </data>
+  <data name="NavigationPageType_Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="NavigationPageType_ItemInfo" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="NavigationPageType_ItemsByTag" xml:space="preserve">
+    <value>Search by tag</value>
+  </data>
+  <data name="NavigationPageType_LastWatched" xml:space="preserve">
+    <value>Last watched</value>
+  </data>
+  <data name="NavigationPageType_Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="NavigationPageType_Settings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="NavigationPageType_Video" xml:space="preserve">
+    <value>Video</value>
+  </data>
+  <data name="NodeOpenWay_CopyLink" xml:space="preserve">
+    <value>copy link</value>
+  </data>
+  <data name="NodeOpenWay_In3rdPartyApp" xml:space="preserve">
+    <value>in third party player</value>
+  </data>
+  <data name="NodeOpenWay_In3rdPartyApp_Description" xml:space="preserve">
+    <value>Experimental functional.
+Working only with VLC from Microsoft Store.
+Not working in classic VLC!</value>
+  </data>
+  <data name="NodeOpenWay_InApp" xml:space="preserve">
+    <value>in app</value>
+  </data>
+  <data name="NodeOpenWay_InBrowser" xml:space="preserve">
+    <value>in browser</value>
+  </data>
+  <data name="NodeOpenWay_InSeparatedWindow" xml:space="preserve">
+    <value>in separated window</value>
+  </data>
+  <data name="NodeOpenWay_Remote" xml:space="preserve">
+    <value>on other device</value>
+  </data>
+  <data name="NodeProgressControl_NotWatched" xml:space="preserve">
+    <value>Not watched</value>
+  </data>
+  <data name="NodeProgressControl_Progress" xml:space="preserve">
+    <value>Progress</value>
+  </data>
+  <data name="NodeProgressControl_Watched" xml:space="preserve">
+    <value>Watched</value>
+  </data>
+  <data name="PageAppBar_More_Tooltip" xml:space="preserve">
+    <value>More</value>
+  </data>
+  <data name="PageAppBar_Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="PageAppBar_SearchOrLink" xml:space="preserve">
+    <value>Search or open by link</value>
+  </data>
+  <data name="PageFilter_FilterByFavorites" xml:space="preserve">
+    <value>Exclude items from "Favorites"</value>
+  </data>
+  <data name="PageFilter_FilterByInHistory" xml:space="preserve">
+    <value>Exclude items from "History"</value>
+  </data>
+  <data name="PlayerControl_InitFailed" xml:space="preserve">
+    <value>Error in player initialization</value>
+  </data>
+  <data name="PlayerControl_NoValidFileForPlayback" xml:space="preserve">
+    <value>No valid file for playback</value>
+  </data>
+  <data name="PlayerControl_SoundMutedInPlayer" xml:space="preserve">
+    <value>Player is muted</value>
+  </data>
+  <data name="PlayerControl_ThatVideoIsNotSupported" xml:space="preserve">
+    <value>This video isn't supported</value>
+  </data>
+  <data name="Player_FileFromSpecificSite" xml:space="preserve">
+    <value>Video at {0}</value>
+  </data>
+  <data name="ProviderRequirements_AccountForAny" xml:space="preserve">
+    <value>Account is required for all content on provider</value>
+  </data>
+  <data name="ProviderRequirements_AccountForSpecial" xml:space="preserve">
+    <value>Account is required for some content on provider</value>
+  </data>
+  <data name="ProviderRequirements_ProForAny" xml:space="preserve">
+    <value>PRO-account is required for all content on provider</value>
+  </data>
+  <data name="ProviderRequirements_ProForSpecial" xml:space="preserve">
+    <value>PRO-account is required for some content on provider</value>
+  </data>
+  <data name="ProviderResult_Blocked" xml:space="preserve">
+    <value>Item is blocked on provider by copyright holders request</value>
+  </data>
+  <data name="ProviderResult_Canceled" xml:space="preserve">
+    <value>Operation was canceled</value>
+  </data>
+  <data name="ProviderResult_Failed" xml:space="preserve">
+    <value>Error was occured</value>
+  </data>
+  <data name="ProviderResult_NeedLogin" xml:space="preserve">
+    <value>Authorization is required on {0}</value>
+  </data>
+  <data name="ProviderResult_NeedProAccount" xml:space="preserve">
+    <value>PRO-account is required on {0}</value>
+  </data>
+  <data name="ProviderResult_NotAvailable" xml:space="preserve">
+    <value>Not available</value>
+  </data>
+  <data name="ProviderResult_NotFound" xml:space="preserve">
+    <value>Item not found in selected provider</value>
+  </data>
+  <data name="ProviderResult_NotSupported" xml:space="preserve">
+    <value>Not supported by provider</value>
+  </data>
+  <data name="ProviderResult_NoValidProvider" xml:space="preserve">
+    <value>The matched provider not found. Check list of enabled providers in settings.</value>
+  </data>
+  <data name="ProviderResult_Success" xml:space="preserve">
+    <value>Operation successfully completed</value>
+  </data>
+  <data name="ProviderResult_Unknown" xml:space="preserve">
+    <value>Unknown result</value>
+  </data>
+  <data name="ProvidersList_AccountParams_ToolTip" xml:space="preserve">
+    <value>Account on the provider</value>
+  </data>
+  <data name="ProvidersList_EnableProvider_ToolTip" xml:space="preserve">
+    <value>On/Off provider</value>
+  </data>
+  <data name="ProvidersList_MirrorParams_ToolTip" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="ProvidersList_ReoderControl_ToolTip" xml:space="preserve">
+    <value>Press ↑/↓ for moving</value>
+  </data>
+  <data name="RemoteLaunchDialog_AccessDenied" xml:space="preserve">
+    <value>Access denied</value>
+  </data>
+  <data name="RemoteLaunchDialog_AppUnavailable" xml:space="preserve">
+    <value>App isn't available on this device</value>
+  </data>
+  <data name="RemoteLaunchDialog_DeniedByLocalSystem" xml:space="preserve">
+    <value>Denied by local device</value>
+  </data>
+  <data name="RemoteLaunchDialog_DeniedByRemoteSystem" xml:space="preserve">
+    <value>Denied by remote device</value>
+  </data>
+  <data name="RemoteLaunchDialog_NoDeviceWasFound" xml:space="preserve">
+    <value>Couldn't find a device that can run this app.</value>
+  </data>
+  <data name="RemoteLaunchDialog_OpenOnDevice" xml:space="preserve">
+    <value>Open on device</value>
+  </data>
+  <data name="RemoteLaunchDialog_ProbablyNeedToUpdateRemote" xml:space="preserve">
+    <value>Probably need to update app on remote device</value>
+  </data>
+  <data name="RemoteLaunchDialog_ProtocolUnavailable" xml:space="preserve">
+    <value>Protocol isn't supported by remote device</value>
+  </data>
+  <data name="RemoteLaunchDialog_RemoteSystemUnavailable" xml:space="preserve">
+    <value>Device isn't available</value>
+  </data>
+  <data name="RemoteLaunchDialog_UnknownError" xml:space="preserve">
+    <value>Unknown error</value>
+  </data>
+  <data name="RemoteLaunchDialog_ValueSetTooLarge" xml:space="preserve">
+    <value>Too many arguments</value>
+  </data>
+  <data name="ReviewsViewModel_EmptyReviewIsNotValid" xml:space="preserve">
+    <value>You can't send empty message</value>
+  </data>
+  <data name="Section_All" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="Section_Anime" xml:space="preserve">
+    <value>Anime</value>
+  </data>
+  <data name="Section_AnimeSerial" xml:space="preserve">
+    <value>Anime serials</value>
+  </data>
+  <data name="Section_Cartoon" xml:space="preserve">
+    <value>Cartoon</value>
+  </data>
+  <data name="Section_CartoonFilm" xml:space="preserve">
+    <value>Cartoon</value>
+  </data>
+  <data name="Section_CartoonSerial" xml:space="preserve">
+    <value>Cartoon Serials</value>
+  </data>
+  <data name="Section_Films" xml:space="preserve">
+    <value>Movies</value>
+  </data>
+  <data name="Section_Serials" xml:space="preserve">
+    <value>Serials</value>
+  </data>
+  <data name="Section_TVShow" xml:space="preserve">
+    <value>TV-Show</value>
+  </data>
+  <data name="SettingsPage_About_4pdaTopicCommand" xml:space="preserve">
+    <value>App thread on 4pda</value>
+  </data>
+  <data name="SettingsPage_About_AskUserToShareApplication" xml:space="preserve">
+    <value>If you like this app, recommend it to friends :3</value>
+  </data>
+  <data name="SettingsPage_About_CheckForUpdatesCommand" xml:space="preserve">
+    <value>Check updates</value>
+  </data>
+  <data name="SettingsPage_About_FAQLinkCommand" xml:space="preserve">
+    <value>Frequently Asked Questions - FAQ</value>
+  </data>
+  <data name="SettingsPage_About_MailToLinkCommand" xml:space="preserve">
+    <value>Send email to developer</value>
+  </data>
+  <data name="SettingsPage_About_PrivatePolicyLinkCommand" xml:space="preserve">
+    <value>Private Policy</value>
+  </data>
+  <data name="SettingsPage_About_RedirectUserInCaseOfIssues" xml:space="preserve">
+    <value>If you have any whishes, notes or questions, best place for it is our 4pda thread.</value>
+  </data>
+  <data name="SettingsPage_About_ShowChangesDialogCommand" xml:space="preserve">
+    <value>Changelog</value>
+  </data>
+  <data name="SettingsPage_About_TrelloProgress" xml:space="preserve">
+    <value>Progress on Trello</value>
+  </data>
+  <data name="SettingsPage_App_AccentColor" xml:space="preserve">
+    <value>App color</value>
+  </data>
+  <data name="SettingsPage_App_CanShowUpdateChangeLog" xml:space="preserve">
+    <value>Show changelog after update</value>
+  </data>
+  <data name="SettingsPage_App_ColorsGroup" xml:space="preserve">
+    <value>Colors</value>
+  </data>
+  <data name="SettingsPage_App_CurrentLanguage" xml:space="preserve">
+    <value>UI language, and preferred providers language</value>
+  </data>
+  <data name="SettingsPage_App_CurrentLanguage_Description" xml:space="preserve">
+    <value>Most providers support only Russian language.</value>
+  </data>
+  <data name="SettingsPage_App_IgnoreLauncherDefaults" xml:space="preserve">
+    <value>Always ask in which app open file or link</value>
+  </data>
+  <data name="SettingsPage_App_InAppLoggerNotifications" xml:space="preserve">
+    <value>Print full info about errors</value>
+  </data>
+  <data name="SettingsPage_App_IsSystemColor" xml:space="preserve">
+    <value>Use system color</value>
+  </data>
+  <data name="SettingsPage_App_ListenForDumpRequest" xml:space="preserve">
+    <value>Enable ability to dump UI visual elements tree</value>
+  </data>
+  <data name="SettingsPage_App_ListenForDumpRequest_Description" xml:space="preserve">
+    <value>Space+D on keyboard</value>
+  </data>
+  <data name="SettingsPage_App_MarginCalibrationLinkCommand" xml:space="preserve">
+    <value>Calibration padding from app borders</value>
+  </data>
+  <data name="SettingsPage_App_OpenFavItemsOnFilesPage" xml:space="preserve">
+    <value>Open favorite items on files page</value>
+  </data>
+  <data name="SettingsPage_App_OpenHistoryItemsOnFilesPage" xml:space="preserve">
+    <value>Open items from history on files page</value>
+  </data>
+  <data name="SettingsPage_App_OpenProxySettingsCommand" xml:space="preserve">
+    <value>Open proxy settings</value>
+  </data>
+  <data name="SettingsPage_App_OpenVPNSettingsCommand" xml:space="preserve">
+    <value>Open VPN settings</value>
+  </data>
+  <data name="SettingsPage_App_ShowImageBackground" xml:space="preserve">
+    <value>Show item image on background</value>
+  </data>
+  <data name="SettingsPage_App_StartPage" xml:space="preserve">
+    <value>Start page</value>
+  </data>
+  <data name="SettingsPage_App_VerifyAccess" xml:space="preserve">
+    <value>Check PIN-code when app start</value>
+  </data>
+  <data name="SettingsPage_App_VerifyAccess_Description" xml:space="preserve">
+    <value>Working with default "Windows Hello"</value>
+  </data>
+  <data name="SettingsPage_App_WindowsColorSettingsCommand" xml:space="preserve">
+    <value>Open color and opacity settings</value>
+  </data>
+  <data name="SettingsPage_App_XYMouseMode" xml:space="preserve">
+    <value>XY-control mode</value>
+  </data>
+  <data name="SettingsPage_Data_AutomatedBackupTaskEnabled" xml:space="preserve">
+    <value>Auto backup once at day</value>
+  </data>
+  <data name="SettingsPage_Data_AutomatedBackupTaskEnabled_Description" xml:space="preserve">
+    <value>Stored last 10 files
+Background working permission required in system settings</value>
+  </data>
+  <data name="SettingsPage_Data_ChangeBackupTaskCustomFolderCommand" xml:space="preserve">
+    <value>Change backups folder</value>
+  </data>
+  <data name="SettingsPage_Data_ChangeLogsCustomFolderCommand" xml:space="preserve">
+    <value>Change logs folder</value>
+  </data>
+  <data name="SettingsPage_Data_ClearCacheCommand" xml:space="preserve">
+    <value>Clear video and image cache</value>
+  </data>
+  <data name="SettingsPage_Data_ClearCacheMode" xml:space="preserve">
+    <value>Auto cache clearing</value>
+  </data>
+  <data name="SettingsPage_Data_CookiesStoragePlacementNotification" xml:space="preserve">
+    <value>Cookie from accounts, which used in app, you may find in "Control Panel -&gt; User Accounts -&gt; Credential Manager"</value>
+  </data>
+  <data name="SettingsPage_Data_FileLogger" xml:space="preserve">
+    <value>Log errors and app events</value>
+  </data>
+  <data name="SettingsPage_Data_FileLogger_Description" xml:space="preserve">
+    <value>Stored last 10 files</value>
+  </data>
+  <data name="SettingsPage_Data_OpenBackupTaskFolderCommand" xml:space="preserve">
+    <value>Open backups folder</value>
+  </data>
+  <data name="SettingsPage_Data_OpenLogsFolderCommand" xml:space="preserve">
+    <value>Open logs folder</value>
+  </data>
+  <data name="SettingsPage_Data_ResetDataCommand" xml:space="preserve">
+    <value>Reset data</value>
+  </data>
+  <data name="SettingsPage_Data_ShowBackupDialogCommand" xml:space="preserve">
+    <value>Export data</value>
+  </data>
+  <data name="SettingsPage_Data_ShowBackupLoadDialogCommand" xml:space="preserve">
+    <value>Import data</value>
+  </data>
+  <data name="SettingsPage_Data_TraceHttp" xml:space="preserve">
+    <value>Log HTTP requests</value>
+  </data>
+  <data name="SettingsPage_Data_TraceHttpWithCookies" xml:space="preserve">
+    <value>Log Cookie headers</value>
+  </data>
+  <data name="SettingsPage_Data_TraceHttpWithCookies_Description" xml:space="preserve">
+    <value>Cookie headers may be used for access to your profile in app</value>
+  </data>
+  <data name="SettingsPage_Data_TraceHttp_Description" xml:space="preserve">
+    <value>May significantly degrade performance
+For avoid logging passwords do not recommended use this option</value>
+  </data>
+  <data name="SettingsPage_Data_UseTelemetry" xml:space="preserve">
+    <value>Send logs about errors</value>
+  </data>
+  <data name="SettingsPage_Download_AllowDownloadM3U8Files" xml:space="preserve">
+    <value>Allow downloading m3u8 video-files</value>
+  </data>
+  <data name="SettingsPage_Download_AvailableSpace" xml:space="preserve">
+    <value>Available</value>
+  </data>
+  <data name="SettingsPage_Download_ChosenFolderName" xml:space="preserve">
+    <value>Folder for downloaded files</value>
+  </data>
+  <data name="SettingsPage_Download_ChosenTorrentFolderName" xml:space="preserve">
+    <value>Folder for torrent-files</value>
+  </data>
+  <data name="SettingsPage_Download_InternalDatabaseForTorrServer" xml:space="preserve">
+    <value>Delete torrents from TorrServer, if it not needed</value>
+  </data>
+  <data name="SettingsPage_Download_InternalDatabaseForTorrServer_Description" xml:space="preserve">
+    <value>Deletes usually with next app start
+Some servers disallow torrents deleting, for they recommended disable this option</value>
+  </data>
+  <data name="SettingsPage_Download_SerializedDownload" xml:space="preserve">
+    <value>Download files</value>
+  </data>
+  <data name="SettingsPage_Download_SerializedDownload_OffContent" xml:space="preserve">
+    <value>Simultaneously</value>
+  </data>
+  <data name="SettingsPage_Download_SerializedDownload_OnContent" xml:space="preserve">
+    <value>Сonsistently</value>
+  </data>
+  <data name="SettingsPage_Download_TorrServerAddress" xml:space="preserve">
+    <value>TorrServer Address</value>
+  </data>
+  <data name="SettingsPage_Download_TorrServerAddress_Placeholder" xml:space="preserve">
+    <value>HTTP Address</value>
+  </data>
+  <data name="SettingsPage_Download_TorrServerEnabled" xml:space="preserve">
+    <value>Play torrent-files with TorrServer</value>
+  </data>
+  <data name="SettingsPage_Main_MainSite_Description" xml:space="preserve">
+    <value>This provider is used for Home and Search pages</value>
+  </data>
+  <data name="SettingsPage_Main_UseOnlineFavorites" xml:space="preserve">
+    <value>Profile favorites</value>
+  </data>
+  <data name="SettingsPage_Main_UseOnlineFavorites_Descrription" xml:space="preserve">
+    <value>If On, local favorites will be replaced with profile from provider favorites</value>
+  </data>
+  <data name="SettingsPage_NoSelectionContent" xml:space="preserve">
+    <value>Choose category</value>
+  </data>
+  <data name="SettingsPage_Online_CompactOnFocusLosed" xml:space="preserve">
+    <value>Opens video on top when Alt+Tab from Full-Screen mode</value>
+  </data>
+  <data name="SettingsPage_Online_CompactPlayer" xml:space="preserve">
+    <value>Compact player</value>
+  </data>
+  <data name="SettingsPage_Online_FileOpenWay" xml:space="preserve">
+    <value>Open video</value>
+  </data>
+  <data name="SettingsPage_Online_HackPlayerControlsVisibility" xml:space="preserve">
+    <value>Don't hide player controls, but make it enough invisible</value>
+  </data>
+  <data name="SettingsPage_Online_HackPlayerControlsVisibility_Description" xml:space="preserve">
+    <value>May fix freeze in video play
+Problem not in app, but it can be avoided</value>
+  </data>
+  <data name="SettingsPage_Online_InvertElapsedPlayerTime" xml:space="preserve">
+    <value>Display video length instead of remaining time</value>
+  </data>
+  <data name="SettingsPage_Online_MinimalOverlay" xml:space="preserve">
+    <value>Don't open taskbar when hover in fullscreen mode</value>
+  </data>
+  <data name="SettingsPage_Online_MoveToVideoPage" xml:space="preserve">
+    <value>Auto switch to video page</value>
+  </data>
+  <data name="SettingsPage_Online_OpenDirectLinkInBrowser" xml:space="preserve">
+    <value>Open in browser direct link to file</value>
+  </data>
+  <data name="SettingsPage_Online_OpenInFullScreen" xml:space="preserve">
+    <value>Open video in fullscreen</value>
+  </data>
+  <data name="SettingsPage_Online_OpenNextVideo" xml:space="preserve">
+    <value>Auto switch video in playlist</value>
+  </data>
+  <data name="SettingsPage_Online_PauseOnBackgroundMedia" xml:space="preserve">
+    <value>Pause when switch to background mode</value>
+  </data>
+  <data name="SettingsPage_Online_PlayerPauseOnPrimaryTapped" xml:space="preserve">
+    <value>Play/Pause with click on video</value>
+  </data>
+  <data name="SettingsPage_Online_PlayerSettings" xml:space="preserve">
+    <value>Player</value>
+  </data>
+  <data name="SettingsPage_Online_PlayerStopButtonEnabled" xml:space="preserve">
+    <value>Display button "Stop"</value>
+  </data>
+  <data name="SettingsPage_Online_PlayerSwipeEnabled" xml:space="preserve">
+    <value>Rewind and change volume with gestures</value>
+  </data>
+  <data name="SettingsPage_Online_PositionByEpisode" xml:space="preserve">
+    <value>Link file position to episode, not to ID</value>
+  </data>
+  <data name="SettingsPage_Online_PositionByEpisode_Description" xml:space="preserve">
+    <value>Make it independent from provider</value>
+  </data>
+  <data name="SettingsPage_Online_PreferLegacyRemoteLaunchDialog" xml:space="preserve">
+    <value>Old dialog for "Launch on devices"</value>
+  </data>
+  <data name="SettingsPage_Online_PreferLegacyRemoteLaunchDialog_Description" xml:space="preserve">
+    <value>The new can launch on device in network with installed FS Client, but may have issues with launch on TV</value>
+  </data>
+  <data name="SettingsPage_Online_PreferredQuality" xml:space="preserve">
+    <value>Preferred quality</value>
+  </data>
+  <data name="SettingsPage_Online_PreferredQuality_Description" xml:space="preserve">
+    <value>App will select the nearest available</value>
+  </data>
+  <data name="SettingsPage_Online_SeekBackwardStep" xml:space="preserve">
+    <value>Key rewind step</value>
+  </data>
+  <data name="SettingsPage_Online_SeekSwipeSensitive" xml:space="preserve">
+    <value>Gestures rewind sensivity</value>
+  </data>
+  <data name="SettingsPage_Online_SeekWithGamepadDPad" xml:space="preserve">
+    <value>Rewind video and change volume with DPad keys on gamepad in fullscreen mode</value>
+  </data>
+  <data name="SettingsPage_Online_VolumeSwipeSensitive" xml:space="preserve">
+    <value>Gestures volume changing sensivity</value>
+  </data>
+  <data name="SettingsPage_Providers_CanPreloadEpisodes" xml:space="preserve">
+    <value>Preload video-files for serials</value>
+  </data>
+  <data name="SettingsPage_Providers_CanPreloadEpisodes_Description" xml:space="preserve">
+    <value>Send's many requests (You can get a temporary ban on some providers)</value>
+  </data>
+  <data name="SettingsPage_Providers_CanPreloadFiles" xml:space="preserve">
+    <value>Preload video-files in current folder</value>
+  </data>
+  <data name="SettingsPage_Providers_CanPreloadFiles_Description" xml:space="preserve">
+    <value>Required for display video-quality in the list for some providers</value>
+  </data>
+  <data name="SettingsPage_Providers_CanPreloadItemListItems" xml:space="preserve">
+    <value>Request additional info for item in Home</value>
+  </data>
+  <data name="SettingsPage_Providers_LoadAllSources" xml:space="preserve">
+    <value>Search everywhere at the same time</value>
+  </data>
+  <data name="SettingsPage_Providers_PreferItemSite" xml:space="preserve">
+    <value>Higher priority for provider from which item was retrieved</value>
+  </data>
+  <data name="SettingsPage_Providers_ProvidersPriority" xml:space="preserve">
+    <value>Providers priority</value>
+  </data>
+  <data name="SettingsPage_Providers_ProvidersPriority_Description" xml:space="preserve">
+    <value>Used for search trailers, torrents and video-files</value>
+  </data>
+  <data name="SettingsPage_RestartRequired" xml:space="preserve">
+    <value>App restart required</value>
+  </data>
+  <data name="SettingsType_About" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="SettingsType_App" xml:space="preserve">
+    <value>Application</value>
+  </data>
+  <data name="SettingsType_Data" xml:space="preserve">
+    <value>Data</value>
+  </data>
+  <data name="SettingsType_Download" xml:space="preserve">
+    <value>Video downloading</value>
+  </data>
+  <data name="SettingsType_Main" xml:space="preserve">
+    <value>Main provider</value>
+  </data>
+  <data name="SettingsType_Online" xml:space="preserve">
+    <value>Online video</value>
+  </data>
+  <data name="SettingsType_Provider" xml:space="preserve">
+    <value>Providers</value>
+  </data>
+  <data name="SettingsViewModel_AccessVerificationFailed" xml:space="preserve">
+    <value>Error was occurred: </value>
+  </data>
+  <data name="SettingsViewModel_AccessVerificationIsNotAvailable" xml:space="preserve">
+    <value>Access verification isn't available on this device</value>
+  </data>
+  <data name="SettingsViewModel_BackupExportResultsMessage" xml:space="preserve">
+    <value>Exported
+Favorites: {0}
+History: {1}
+Settings: {2}</value>
+  </data>
+  <data name="SettingsViewModel_BackupImportInProcess" xml:space="preserve">
+    <value>Please wait...</value>
+  </data>
+  <data name="SettingsViewModel_BackupImportResultsMessage" xml:space="preserve">
+    <value>Imported
+Favorites: {0}
+History: {1}
+Settings: {2}</value>
+  </data>
+  <data name="SettingsViewModel_BackupSuccessfully" xml:space="preserve">
+    <value>Operation successfully completed</value>
+  </data>
+  <data name="SettingsViewModel_BackupTypeSelectionExportHeader" xml:space="preserve">
+    <value>Select export</value>
+  </data>
+  <data name="SettingsViewModel_BackupTypeSelectionImportHeader" xml:space="preserve">
+    <value>Select import</value>
+  </data>
+  <data name="SettingsViewModel_Backup_NotifyUserAboutOnlineFavorites" xml:space="preserve">
+    <value>Exporting\importing only local favorites. You already use profie-favorites {0}.
+Continue?</value>
+  </data>
+  <data name="SettingsViewModel_CheckForUpdatesFailed" xml:space="preserve">
+    <value>Error was occurred</value>
+  </data>
+  <data name="SettingsViewModel_CheckForUpdatesInProgress" xml:space="preserve">
+    <value>Checking...</value>
+  </data>
+  <data name="SettingsViewModel_ChooseFolder" xml:space="preserve">
+    <value>Select</value>
+  </data>
+  <data name="SettingsViewModel_ClearCacheFailed" xml:space="preserve">
+    <value>Clear cache-time error</value>
+  </data>
+  <data name="SettingsViewModel_ClearCacheSuccessfully" xml:space="preserve">
+    <value>Cache is cleared</value>
+  </data>
+  <data name="SettingsViewModel_FolderWasNotFound" xml:space="preserve">
+    <value>Folder not found</value>
+  </data>
+  <data name="SettingsViewModel_PurchaseGratitude" xml:space="preserve">
+    <value>Thanks for support!</value>
+  </data>
+  <data name="SettingsViewModel_PurchaseWasFailedOrCanceled" xml:space="preserve">
+    <value>Purchase canceled or ended with error</value>
+  </data>
+  <data name="SettingsViewModel_RebootApplication" xml:space="preserve">
+    <value>Please, restart the application</value>
+  </data>
+  <data name="SettingsViewModel_ResetUserDataCompleted" xml:space="preserve">
+    <value>Done.
+Restart the application to complete.</value>
+  </data>
+  <data name="SettingsViewModel_ResetUserDataConfirmation" xml:space="preserve">
+    <value>Are you sure you want to reset all data?</value>
+  </data>
+  <data name="SettingsViewModel_TrialExpriring" xml:space="preserve">
+    <value>Trial expiring</value>
+  </data>
+  <data name="SettingsViewModel_UnableToCreateFile" xml:space="preserve">
+    <value>Unable to create file</value>
+  </data>
+  <data name="SettingsViewModel_UnableToReadFile" xml:space="preserve">
+    <value>Unable to read file</value>
+  </data>
+  <data name="SettingsViewModel_UnableToWriteFile" xml:space="preserve">
+    <value>Unable to write file</value>
+  </data>
+  <data name="Settings_Support" xml:space="preserve">
+    <value>Donate</value>
+  </data>
+  <data name="ShareService_DataItemDescription" xml:space="preserve">
+    <value>Share link to "{0}"</value>
+  </data>
+  <data name="ShareService_UnknownError" xml:space="preserve">
+    <value>Something went wrong</value>
+  </data>
+  <data name="SiteMirrorSelector_CurrentMirror" xml:space="preserve">
+    <value>Current mirror</value>
+  </data>
+  <data name="SiteMirrorSelector_CurrentMirror_FallbackIfNoMirror" xml:space="preserve">
+    <value>Mirror</value>
+  </data>
+  <data name="SiteMirrorSelector_DefaultMirrors" xml:space="preserve">
+    <value>Default mirrors</value>
+  </data>
+  <data name="Site_All" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="Site_Any" xml:space="preserve">
+    <value>Any</value>
+  </data>
+  <data name="Site_Local" xml:space="preserve">
+    <value>Local</value>
+  </data>
+  <data name="SortType_Alphabet" xml:space="preserve">
+    <value>Alphabetical</value>
+  </data>
+  <data name="SortType_Commented" xml:space="preserve">
+    <value>By comments</value>
+  </data>
+  <data name="SortType_CreateDate" xml:space="preserve">
+    <value>By creation date</value>
+  </data>
+  <data name="SortType_Episodes" xml:space="preserve">
+    <value>By episodes count</value>
+  </data>
+  <data name="SortType_FileSize" xml:space="preserve">
+    <value>By file size</value>
+  </data>
+  <data name="SortType_IMDb" xml:space="preserve">
+    <value>By IMDb</value>
+  </data>
+  <data name="SortType_KinoPoisk" xml:space="preserve">
+    <value>by KinoPoisk</value>
+  </data>
+  <data name="SortType_LastViewed" xml:space="preserve">
+    <value>By last viewed</value>
+  </data>
+  <data name="SortType_Popularity" xml:space="preserve">
+    <value>By popularity</value>
+  </data>
+  <data name="SortType_Random" xml:space="preserve">
+    <value>Random</value>
+  </data>
+  <data name="SortType_Rating" xml:space="preserve">
+    <value>By rating</value>
+  </data>
+  <data name="SortType_Revenue" xml:space="preserve">
+    <value>By revenue</value>
+  </data>
+  <data name="SortType_Trend" xml:space="preserve">
+    <value>Tranding</value>
+  </data>
+  <data name="SortType_UpdateDate" xml:space="preserve">
+    <value>By update date</value>
+  </data>
+  <data name="SortType_Visit" xml:space="preserve">
+    <value>By visit count</value>
+  </data>
+  <data name="SortType_Year" xml:space="preserve">
+    <value>By the year</value>
+  </data>
+  <data name="StatusType_Anons" xml:space="preserve">
+    <value>Announced</value>
+  </data>
+  <data name="StatusType_Canceled" xml:space="preserve">
+    <value>Closed</value>
+  </data>
+  <data name="StatusType_InProduction" xml:space="preserve">
+    <value>In production</value>
+  </data>
+  <data name="StatusType_Ongoing" xml:space="preserve">
+    <value>Ongoing</value>
+  </data>
+  <data name="StatusType_Paused" xml:space="preserve">
+    <value>Paused</value>
+  </data>
+  <data name="StatusType_Pilot" xml:space="preserve">
+    <value>Pilot</value>
+  </data>
+  <data name="StatusType_PostProduction" xml:space="preserve">
+    <value>Post-production</value>
+  </data>
+  <data name="StatusType_Released" xml:space="preserve">
+    <value>Released</value>
+  </data>
+  <data name="StatusType_Rumored" xml:space="preserve">
+    <value>Rumored</value>
+  </data>
+  <data name="Stretch_Fill" xml:space="preserve">
+    <value>Fill</value>
+  </data>
+  <data name="Stretch_None" xml:space="preserve">
+    <value>Original</value>
+  </data>
+  <data name="Stretch_Uniform" xml:space="preserve">
+    <value>By width</value>
+  </data>
+  <data name="Stretch_UniformToFill" xml:space="preserve">
+    <value>By height</value>
+  </data>
+  <data name="Subtitles_None" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="TagType_Actor_One" xml:space="preserve">
+    <value>Actor</value>
+  </data>
+  <data name="TagType_Actor_Other" xml:space="preserve">
+    <value>Actors</value>
+  </data>
+  <data name="TagType_Composer_One" xml:space="preserve">
+    <value>Composer</value>
+  </data>
+  <data name="TagType_Composer_Other" xml:space="preserve">
+    <value>Composers</value>
+  </data>
+  <data name="TagType_County_One" xml:space="preserve">
+    <value>Country</value>
+  </data>
+  <data name="TagType_County_Other" xml:space="preserve">
+    <value>Countries</value>
+  </data>
+  <data name="TagType_Director_One" xml:space="preserve">
+    <value>Director</value>
+  </data>
+  <data name="TagType_Director_Other" xml:space="preserve">
+    <value>Directors</value>
+  </data>
+  <data name="TagType_Duration" xml:space="preserve">
+    <value>Duration</value>
+  </data>
+  <data name="TagType_Genre_One" xml:space="preserve">
+    <value>Genre</value>
+  </data>
+  <data name="TagType_Genre_Other" xml:space="preserve">
+    <value>Genres</value>
+  </data>
+  <data name="TagType_Provider" xml:space="preserve">
+    <value>Source</value>
+  </data>
+  <data name="TagType_Quality" xml:space="preserve">
+    <value>Quality</value>
+  </data>
+  <data name="TagType_Section" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="TagType_Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="TagType_Studio_One" xml:space="preserve">
+    <value>Studio</value>
+  </data>
+  <data name="TagType_Studio_Other" xml:space="preserve">
+    <value>Studios</value>
+  </data>
+  <data name="TagType_Writter_One" xml:space="preserve">
+    <value>Writter</value>
+  </data>
+  <data name="TagType_Writter_Other" xml:space="preserve">
+    <value>Scripters</value>
+  </data>
+  <data name="TagType_Year" xml:space="preserve">
+    <value>Year</value>
+  </data>
+  <data name="TitledTag_Any" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="VideoPage_DownloadVideoCommand" xml:space="preserve">
+    <value>Download video</value>
+  </data>
+  <data name="VideoPage_OpenInBrowserCommand" xml:space="preserve">
+    <value>Open in browser</value>
+  </data>
+  <data name="VideoPage_OpenInBrowserCommand_ToolTip" xml:space="preserve">
+    <value>Open video in browser</value>
+  </data>
+  <data name="VideoPage_OpenInNewWindowButtonCommand" xml:space="preserve">
+    <value>Open in new window</value>
+  </data>
+  <data name="VideoPage_OpenInNewWindowButtonCommand_ToolTip" xml:space="preserve">
+    <value>Open video in new window</value>
+  </data>
+  <data name="VideoPage_ShareGrabbedFrameCommand" xml:space="preserve">
+    <value>Share frame</value>
+  </data>
+  <data name="VideoPage_ShowVideoAttention" xml:space="preserve">
+    <value>App doesn't add any AD. Switch providers for find video without AD.</value>
+  </data>
+  <data name="WindowsHelloVerificationService_RequestVerificationHeader" xml:space="preserve">
+    <value>Check access</value>
+  </data>
+  <data name="Window_PlayerWindowTitle" xml:space="preserve">
+    <value>Player</value>
+  </data>
+  <data name="YearSelector_AllYears" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="YearSelector_From" xml:space="preserve">
+    <value>From</value>
+  </data>
+  <data name="YearSelector_SpecificYear" xml:space="preserve">
+    <value>Year</value>
+  </data>
+  <data name="YearSelector_To" xml:space="preserve">
+    <value>To</value>
+  </data>
+  <data name="YearSelector_YearFormat" xml:space="preserve">
+    <value>{0}</value>
+  </data>
+</root>

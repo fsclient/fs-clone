@@ -1,0 +1,154 @@
+<Page Name="Page"
+      x:Class="FSClient.UWP.Shared.Views.Pages.SearchPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:FSClient.UWP.Shared.Views.Pages"
+      xmlns:wintriggers="using:WindowsStateTriggers"
+      xmlns:extensions="using:FSClient.UWP.Shared.Extensions"
+      xmlns:controls="using:FSClient.UWP.Shared.Views.Controls"
+      xmlns:pages="using:FSClient.ViewModels.Pages"
+      xmlns:items="using:FSClient.ViewModels.Items"
+      KeyDown="Page_KeyDown"
+      NavigationCacheMode="Required">
+
+  <extensions:PageAppBarExtension.Top>
+    <Grid>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="Auto" />
+        <ColumnDefinition Width="Auto" />
+      </Grid.ColumnDefinitions>
+      <Grid>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*"
+                            MaxWidth="400" />
+          <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <AutoSuggestBox x:Name="SearchBox"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Center"
+                        extensions:CommandExtension.TextChangedCommand="{x:Bind ViewModel.SearchCommand}"
+                        Loaded="SearchBox_Loaded"
+                        PlaceholderText="{x:Bind ConverterParameter='PageAppBar_SearchOrLink', Converter={StaticResource LocalizationConverter}}"
+                        Text="{x:Bind ViewModel.SearchRequest, Mode=TwoWay}"
+                        TextBoxStyle="{StaticResource TranparentSearchTextBoxStyle}" />
+      </Grid>
+      <AppBarButton x:Name="FilterButton"
+                    Grid.Column="2"
+                    extensions:CompatExtension.AccessKey="F"
+                    extensions:CompatExtension.AllowFocusOnInteraction="True"
+                    Icon="Filter"
+                    extensions:ToolTipServiceEx.ToolTip="{x:Bind ConverterParameter='ListView_Filter', Converter={StaticResource LocalizationConverter}}"
+                    Style="{StaticResource ClientAppBarButtonStyle}">
+        <AppBarButton.Flyout>
+          <Flyout>
+            <StackPanel Width="180">
+              <ComboBox Header="{x:Bind ConverterParameter='TagType_Provider', Converter={StaticResource LocalizationConverter}}"
+                        Margin="0,0,0,8"
+                        HorizontalAlignment="Stretch"
+                        ItemsSource="{x:Bind ViewModel.SearchProviders, Mode=OneWay}"
+                        SelectedItem="{x:Bind ViewModel.CurrentProvider, Mode=TwoWay, Converter={StaticResource BindToObjectConverter}}"
+                        extensions:CommandExtension.ClickCommand="{x:Bind ViewModel.SearchCommand}">
+                <extensions:CommandExtension.CommandParameter>
+                  <x:Boolean>True</x:Boolean>
+                </extensions:CommandExtension.CommandParameter>
+                <ComboBox.ItemTemplate>
+                  <DataTemplate x:DataType="items:ProviderViewModel">
+                    <TextBlock Text="{x:Bind Name}" />
+                  </DataTemplate>
+                </ComboBox.ItemTemplate>
+              </ComboBox>
+
+              <controls:PageFilter Filter="{x:Bind ViewModel.CurrentPage, Mode=OneWay, Converter={StaticResource BindToObjectConverter}}"
+                                   SubmitCommand="{x:Bind ViewModel.SearchCommand}" />
+            </StackPanel>
+          </Flyout>
+        </AppBarButton.Flyout>
+      </AppBarButton>
+    </Grid>
+  </extensions:PageAppBarExtension.Top>
+
+  <Grid>
+    <Pivot x:Name="SearchPivot"
+           ItemsSource="{x:Bind ViewModel.ResultPages, Mode=OneWay}"
+           SelectedItem="{x:Bind ViewModel.CurrentPage, Mode=TwoWay, Converter={StaticResource BindToObjectConverter}}">
+      <Pivot.ItemContainerStyle>
+        <Style TargetType="PivotItem">
+          <Setter Property="Margin" Value="4,0" />
+          <Setter Property="Padding" Value="0" />
+        </Style>
+      </Pivot.ItemContainerStyle>
+      <Pivot.HeaderTemplate>
+        <DataTemplate>
+          <TextBlock Text="{Binding Caption}" />
+        </DataTemplate>
+      </Pivot.HeaderTemplate>
+      <Pivot.ItemTemplate>
+        <DataTemplate x:DataType="pages:SearchPageViewModel">
+          <Grid>
+            <controls:AdaptiveGridView x:Name="ItemsGrid"
+                                       extensions:CompatExtension.XYFocusUp="{Binding ElementName=SearchBox}"
+                                       extensions:ScrollViewerExtensions.EnableMiddleClickScrolling="True"
+                                       ItemClick="NavigateToItem"
+                                       DesiredWidth="{x:Bind local:SearchPage.ConvertDisplayItemModeToWidth(PageParams.DisplayItemMode)}"
+                                       ItemsSource="{x:Bind ItemsSource, Mode=OneWay}"
+                                       Style="{StaticResource ItemsListStyle}">
+              <controls:AdaptiveGridView.ItemTemplate>
+                <DataTemplate x:DataType="items:ItemsListItemViewModel">
+                  <controls:ItemsListItem ItemInfo="{x:Bind ItemInfo, Mode=OneWay}"
+                                          IsItemPreloading="{x:Bind IsPreloading, Mode=OneWay}"
+                                          DisplayItemMode="{x:Bind DisplayItemMode}"
+                                          ItemPreloadCommand="{x:Bind PreloadItemCommand}" />
+                </DataTemplate>
+              </controls:AdaptiveGridView.ItemTemplate>
+            </controls:AdaptiveGridView>
+
+            <Grid Visibility="{Binding ItemsSource.HasAnyItem, Mode=OneWay, Converter={StaticResource BooleanConverter}, ConverterParameter=!}">
+              <ProgressRing Width="{StaticResource ProgressRingSize}"
+                            Height="{StaticResource ProgressRingSize}"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            IsActive="True"
+                            Visibility="{Binding ItemsSource.IsLoading, Mode=OneWay, Converter={StaticResource BooleanConverter}, FallbackValue=Collapsed, TargetNullValue=Collapsed}" />
+              <TextBlock HorizontalAlignment="Center"
+                         VerticalAlignment="Center"
+                         Text="{x:Bind ConverterParameter='ListView_NothingFound', Converter={StaticResource LocalizationConverter}}"
+                         Visibility="{Binding ItemsSource.HasMoreItems, Mode=OneWay, Converter={StaticResource BooleanConverter}, ConverterParameter=!}" />
+            </Grid>
+          </Grid>
+        </DataTemplate>
+      </Pivot.ItemTemplate>
+    </Pivot>
+
+    <VisualStateManager.VisualStateGroups>
+      <VisualStateGroup x:Name="PageSizeStateGroup">
+        <VisualState x:Name="MediumState">
+          <VisualState.StateTriggers>
+            <AdaptiveTrigger MinWindowWidth="{StaticResource NarrowWindowWidth}" />
+          </VisualState.StateTriggers>
+        </VisualState>
+        <VisualState x:Name="MobileState">
+          <VisualState.StateTriggers>
+            <AdaptiveTrigger MinWindowWidth="0" />
+          </VisualState.StateTriggers>
+          <VisualState.Setters>
+            <Setter Target="FilterButton.Width" Value="{StaticResource NarrowWindowAppBarButtonWidth}" />
+          </VisualState.Setters>
+        </VisualState>
+      </VisualStateGroup>
+
+      <VisualStateGroup x:Name="PivotHeaderVisibility">
+        <VisualState>
+          <VisualState.StateTriggers>
+            <wintriggers:EqualsStateTrigger Value="{x:Bind ViewModel.ResultPages.Count, Mode=OneWay}"
+                                            EqualTo="1" />
+          </VisualState.StateTriggers>
+          <VisualState.Setters>
+            <Setter Target="SearchPivot.(extensions:PivotExtension.HeaderVisibility)" Value="Collapsed" />
+          </VisualState.Setters>
+        </VisualState>
+      </VisualStateGroup>
+
+    </VisualStateManager.VisualStateGroups>
+  </Grid>
+</Page>

@@ -1,0 +1,11 @@
+﻿<ContentDialog x:Class="FSClient.UWP.Shared.Views.Dialogs.ChangesDialog"
+               xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+  <ScrollViewer>
+    <TextBlock x:Name="TextBlock"
+               IsTextSelectionEnabled="True"
+               VerticalAlignment="Stretch"
+               TextWrapping="WrapWholeWords" />
+  </ScrollViewer>
+</ContentDialog>

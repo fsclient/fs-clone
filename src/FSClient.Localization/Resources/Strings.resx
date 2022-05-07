@@ -1,0 +1,1693 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Activation_ApplicationUpdated" xml:space="preserve">
+    <value>Приложение обновлено</value>
+  </data>
+  <data name="Activation_CheckBackgroundTasks" xml:space="preserve">
+    <value>Обновление фоновых задач</value>
+  </data>
+  <data name="Activation_CheckSecondaryTiles" xml:space="preserve">
+    <value>Обновление плиток в меню Пуск</value>
+  </data>
+  <data name="Activation_CheckUpdates" xml:space="preserve">
+    <value>Проверка обновлений</value>
+  </data>
+  <data name="Activation_ClearCache" xml:space="preserve">
+    <value>Очистка кэша</value>
+  </data>
+  <data name="Activation_ComponentError" xml:space="preserve">
+    <value>Ошибка во время загрузки компонентов приложения</value>
+  </data>
+  <data name="Activation_DeleteTorrServerTorrents" xml:space="preserve">
+    <value>Удаление активных торрентов TorrServer</value>
+  </data>
+  <data name="Activation_EnsureDisplayMargin" xml:space="preserve">
+    <value>Проверка рамок дисплея</value>
+  </data>
+  <data name="Activation_FavoritesLoading" xml:space="preserve">
+    <value>Чтение избранного</value>
+  </data>
+  <data name="Activation_MirrorsWasUpdated" xml:space="preserve">
+    <value>Список зеркал был обновлен
+Перезапустите приложение</value>
+  </data>
+  <data name="Activation_NoAccessError" xml:space="preserve">
+    <value>Ошибка: нет доступа</value>
+  </data>
+  <data name="Activation_UpdateMirrors" xml:space="preserve">
+    <value>Обновление зеркал</value>
+  </data>
+  <data name="AddReviewDialog_SendReview" xml:space="preserve">
+    <value>Отправить</value>
+  </data>
+  <data name="AddReviewDialog_WriteReview_Header" xml:space="preserve">
+    <value>Написать отзыв</value>
+  </data>
+  <data name="AddReviewDialog_WriteReview_Placeholder" xml:space="preserve">
+    <value>Ваш отзыв</value>
+  </data>
+  <data name="AuthStatus_Canceled" xml:space="preserve">
+    <value>Авторизация отменена</value>
+  </data>
+  <data name="AuthStatus_Error" xml:space="preserve">
+    <value>Ошибка авторизации</value>
+  </data>
+  <data name="AuthStatus_Success" xml:space="preserve">
+    <value>Авторизация успешна</value>
+  </data>
+  <data name="AuthUserControl_AccountAt" xml:space="preserve">
+    <value>Аккаунт на</value>
+  </data>
+  <data name="AuthUserControl_Authorize" xml:space="preserve">
+    <value>Авторизация</value>
+  </data>
+  <data name="AuthUserControl_LogOut" xml:space="preserve">
+    <value>Выйти</value>
+  </data>
+  <data name="AuthUserControl_ProActiveTextBlock" xml:space="preserve">
+    <value>ПРО-аккаунт на источнике активен</value>
+  </data>
+  <data name="AuthUserControl_Register" xml:space="preserve">
+    <value>Регистрация</value>
+  </data>
+  <data name="BackupDialog_BackupFavorites" xml:space="preserve">
+    <value>Избранное</value>
+  </data>
+  <data name="BackupDialog_BackupHistory" xml:space="preserve">
+    <value>История</value>
+  </data>
+  <data name="BackupDialog_BackupInternalSettings" xml:space="preserve">
+    <value>Внутренние параметры</value>
+  </data>
+  <data name="BackupDialog_BackupStateSettings" xml:space="preserve">
+    <value>Состояние приложения</value>
+  </data>
+  <data name="BackupDialog_BackupUserSettings" xml:space="preserve">
+    <value>Пользовательские параметры</value>
+  </data>
+  <data name="CastTo_DeviceDidNotRespond" xml:space="preserve">
+    <value>Устройство не отвечает</value>
+  </data>
+  <data name="CastTo_DeviceError" xml:space="preserve">
+    <value>Неизвестная ошибка на устройстве</value>
+  </data>
+  <data name="CastTo_DeviceLocked" xml:space="preserve">
+    <value>Устройство заблокировано</value>
+  </data>
+  <data name="CastTo_InvalidCastingSource" xml:space="preserve">
+    <value>Поток не поддерживается</value>
+  </data>
+  <data name="CastTo_ProtectedPlaybackFailed" xml:space="preserve">
+    <value>Устройство не поддерживает данный файл</value>
+  </data>
+  <data name="CastTo_StartCastFailed" xml:space="preserve">
+    <value>Ошибка при попытке передать на устройство</value>
+  </data>
+  <data name="CastTo_Succeeded" xml:space="preserve">
+    <value>Операция успешна</value>
+  </data>
+  <data name="CastTo_Unknown" xml:space="preserve">
+    <value>Неизвестная ошибка при передаче на устройство</value>
+  </data>
+  <data name="ChangesDialog_SkipUpdateToNewVersion" xml:space="preserve">
+    <value>Пропустить обновление {0}?
+При следующем запуске приложение не будет напоминать о нем.
+По желанию вы сможете проверить наличие обновлений в "Параметры - О приложении".</value>
+  </data>
+  <data name="ChangesDialog_TitleLastUpdateChanges" xml:space="preserve">
+    <value>Последние изменения</value>
+  </data>
+  <data name="ChangesDialog_TitleNewUpdateIsAvailable" xml:space="preserve">
+    <value>Доступно новое обновление {0}</value>
+  </data>
+  <data name="ChangesDialog_UnknownVersion" xml:space="preserve">
+    <value>Неизвестная версия</value>
+  </data>
+  <data name="ChangesDialog_UpdateToNewVersion" xml:space="preserve">
+    <value>Обновить</value>
+  </data>
+  <data name="CheckForUpdatesResult_Available" xml:space="preserve">
+    <value>Новое обновление доступно</value>
+  </data>
+  <data name="CheckForUpdatesResult_NotSupported" xml:space="preserve">
+    <value>Обновления не поддерживаются</value>
+  </data>
+  <data name="CheckForUpdatesResult_NoUpdates" xml:space="preserve">
+    <value>Нет новых версий</value>
+  </data>
+  <data name="CheckForUpdatesResult_Skipped" xml:space="preserve">
+    <value>Обновление доступно, но было пропущено</value>
+  </data>
+  <data name="CheckForUpdatesResult_UnknownError" xml:space="preserve">
+    <value>Неизвестная ошибка</value>
+  </data>
+  <data name="ClearCacheModes_None" xml:space="preserve">
+    <value>нет</value>
+  </data>
+  <data name="ClearCacheModes_OnExit" xml:space="preserve">
+    <value>по закрытию</value>
+  </data>
+  <data name="ClearCacheModes_OnStart" xml:space="preserve">
+    <value>по запуску</value>
+  </data>
+  <data name="ClearCacheModes_OnStartAndExit" xml:space="preserve">
+    <value>по запуску и закрытию</value>
+  </data>
+  <data name="ClearCacheModes_OnTimer" xml:space="preserve">
+    <value>по таймеру</value>
+  </data>
+  <data name="CloseableAlert_CloseAndNotShowAnymore" xml:space="preserve">
+    <value>Больше не показывать</value>
+  </data>
+  <data name="Common_SizeInMegaBytes" xml:space="preserve">
+    <value>{0:### ###} МБ</value>
+  </data>
+  <data name="ConfirmDialog_DialogTitle" xml:space="preserve">
+    <value>Подтверждение</value>
+  </data>
+  <data name="ConfirmDialog_OpenMissedFeatureLink" xml:space="preserve">
+    <value>Приложение не нашло необходимое расширение "{0}". Открыть ссылку для установки?</value>
+  </data>
+  <data name="ContentDialog_Cancel" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="ContentDialog_Ok" xml:space="preserve">
+    <value>Ок</value>
+  </data>
+  <data name="CriticalDialogLogger_ShouldApplicationExit" xml:space="preserve">
+    <value>Произошла критическая ошибка!
+Данные могут быть потеряны или повреждены.
+Закрыть приложение?
+
+Текст ошибки: {0}.</value>
+  </data>
+  <data name="Deactivation_ClearCache" xml:space="preserve">
+    <value>Очистка кэша</value>
+  </data>
+  <data name="Deactivation_DatabaseCheckpoint" xml:space="preserve">
+    <value>Сохранение базы данных</value>
+  </data>
+  <data name="Deactivation_SaveState" xml:space="preserve">
+    <value>Сохранение состояния</value>
+  </data>
+  <data name="Deactivation_StopTorrServerTorrents" xml:space="preserve">
+    <value>Остановка активных торрентов TorrServer</value>
+  </data>
+  <data name="DeviceFlowDialog_Description" xml:space="preserve">
+    <value>Для работы этого источника вы должны зайти через браузер на его сайт со своей учетной записью и ввести код на странице активации устройства:</value>
+  </data>
+  <data name="DeviceFlowDialog_DeviceCode" xml:space="preserve">
+    <value>Код устройства</value>
+  </data>
+  <data name="DeviceFlowDialog_DialogTitle" xml:space="preserve">
+    <value>Активация устройства</value>
+  </data>
+  <data name="DownloadResult_Canceled" xml:space="preserve">
+    <value>Загрузка отменена</value>
+  </data>
+  <data name="DownloadResult_Completed" xml:space="preserve">
+    <value>Файл сохранен</value>
+  </data>
+  <data name="DownloadResult_FailedFileCreate" xml:space="preserve">
+    <value>Ошибка при создании файла</value>
+  </data>
+  <data name="DownloadResult_FailedFolderOpen" xml:space="preserve">
+    <value>Не удалось открыть папку для сохранения файла</value>
+  </data>
+  <data name="DownloadResult_FailedUnknown" xml:space="preserve">
+    <value>Не удалось начать загрузку</value>
+  </data>
+  <data name="DownloadResult_InProgress" xml:space="preserve">
+    <value>Загрузка</value>
+  </data>
+  <data name="DownloadResult_NotSupported" xml:space="preserve">
+    <value>Файл не поддерживается</value>
+  </data>
+  <data name="DownloadResult_NotSupported_Hls" xml:space="preserve">
+    <value>M3u8 файлы не поддерживаются для загрузки
+Разрешить загрузку можно в Параметры -&gt; Загрузка видео</value>
+  </data>
+  <data name="DownloadResult_NotSupported_Magnet" xml:space="preserve">
+    <value>Магнет ссылку нельзя скачать</value>
+  </data>
+  <data name="DownloadResult_NotSupported_MultiSource" xml:space="preserve">
+    <value>Видео, состоящие из нескольких файлов, не поддерживаются для загрузки</value>
+  </data>
+  <data name="DownloadResult_Unknown" xml:space="preserve">
+    <value>Операция завершилась с неизвестным результатом</value>
+  </data>
+  <data name="DownloadsPage_BackgroundDownloadAlert" xml:space="preserve">
+    <value>Внимание! В экономном режиме загрузка в фоне не продолжается.</value>
+  </data>
+  <data name="DownloadsPage_DeleteSelectedCommand_FromDevice" xml:space="preserve">
+    <value>Удалить выбранное с устройства</value>
+  </data>
+  <data name="DownloadsPage_DeleteSelectedCommand_FromList" xml:space="preserve">
+    <value>Удалить выбранное из списка</value>
+  </data>
+  <data name="DownloadsPage_DeleteSelectedCommand_ToolTip" xml:space="preserve">
+    <value>Удалить выбранные файлы</value>
+  </data>
+  <data name="DownloadsPage_File_OpenFile" xml:space="preserve">
+    <value>Открыть файл</value>
+  </data>
+  <data name="DownloadsPage_File_OpenFolder" xml:space="preserve">
+    <value>Открыть папку</value>
+  </data>
+  <data name="DownloadsPage_File_Pause" xml:space="preserve">
+    <value>Пауза</value>
+  </data>
+  <data name="DownloadsPage_File_RemoveFromDevice" xml:space="preserve">
+    <value>Удалить файл с устройства</value>
+  </data>
+  <data name="DownloadsPage_File_RemoveFromList" xml:space="preserve">
+    <value>Удалить файл из списка</value>
+  </data>
+  <data name="DownloadsPage_OpenFolder" xml:space="preserve">
+    <value>Открыть папку</value>
+  </data>
+  <data name="DownloadsPage_OpenFolder_ToolTip" xml:space="preserve">
+    <value>Открыть папку с файлом</value>
+  </data>
+  <data name="DownloadStatus_Canceled" xml:space="preserve">
+    <value>Загрузка отменена</value>
+  </data>
+  <data name="DownloadStatus_Completed" xml:space="preserve">
+    <value>Завершено</value>
+  </data>
+  <data name="DownloadStatus_Error" xml:space="preserve">
+    <value>Неизвестная ошибка</value>
+  </data>
+  <data name="DownloadStatus_FileMissed" xml:space="preserve">
+    <value>Файл был удален</value>
+  </data>
+  <data name="DownloadStatus_Idle" xml:space="preserve">
+    <value>Ожидание</value>
+  </data>
+  <data name="DownloadStatus_Idle_With_Total" xml:space="preserve">
+    <value>Ожидание: {0:#,0} /{1:#,0} КБ</value>
+  </data>
+  <data name="DownloadStatus_NoNetwork" xml:space="preserve">
+    <value>Нет сети</value>
+  </data>
+  <data name="DownloadStatus_Paused" xml:space="preserve">
+    <value>Загрузка приостановлена</value>
+  </data>
+  <data name="DownloadStatus_Resuming" xml:space="preserve">
+    <value>Загрузка</value>
+  </data>
+  <data name="DownloadStatus_Running" xml:space="preserve">
+    <value>Загрузка: {0:#,0} КБ</value>
+  </data>
+  <data name="DownloadStatus_Running_With_Total" xml:space="preserve">
+    <value>Загрузка: {0:#,0} / {1:#,0} КБ</value>
+  </data>
+  <data name="DownloadsViewModel_FileDownloadCompleted" xml:space="preserve">
+    <value>Загрузка "{0}" завершена</value>
+  </data>
+  <data name="DownloadsViewModel_FileDownloadFailed" xml:space="preserve">
+    <value>Ошибка во время загрузки "{0}"</value>
+  </data>
+  <data name="DownloadsViewModel_FileDownloadWasCancelled" xml:space="preserve">
+    <value>Загрузка "{0}" отменена</value>
+  </data>
+  <data name="DownloadsViewModel_FolderIsNotSelected" xml:space="preserve">
+    <value>Папка не была выбрана в параметрах</value>
+  </data>
+  <data name="EpisodesCalendar_CalendarAlert_Tooltip" xml:space="preserve">
+    <value>Дата выхода может не совпадать с датой появления перевода на источниках</value>
+  </data>
+  <data name="FavoitesPage_MoveButton" xml:space="preserve">
+    <value>Перенести</value>
+  </data>
+  <data name="FavoitesPage_MoveButton_ToolTip" xml:space="preserve">
+    <value>Перенести в другой список</value>
+  </data>
+  <data name="FavoriteListKind_Favorites" xml:space="preserve">
+    <value>Избранное</value>
+  </data>
+  <data name="FavoriteListKind_Finished" xml:space="preserve">
+    <value>Завершенное</value>
+  </data>
+  <data name="FavoriteListKind_ForLater" xml:space="preserve">
+    <value>На будущее</value>
+  </data>
+  <data name="FavoriteListKind_InProcess" xml:space="preserve">
+    <value>В процессе</value>
+  </data>
+  <data name="FavoriteListKind_None" xml:space="preserve">
+    <value>Нет</value>
+  </data>
+  <data name="FavoritesPage_GroupItemsBySection" xml:space="preserve">
+    <value>Группировать</value>
+  </data>
+  <data name="FavoritesPage_SectionFilter" xml:space="preserve">
+    <value>Категория</value>
+  </data>
+  <data name="Favorites_ErrorDuringLoading" xml:space="preserve">
+    <value>Ошибка во время загрузки избранного</value>
+  </data>
+  <data name="Favorites_FavoritesWasMoved" xml:space="preserve">
+    <value>Избранное перенесено</value>
+  </data>
+  <data name="Favorites_ItemAlreadyAddedMessage" xml:space="preserve">
+    <value>Материал уже в списке</value>
+  </data>
+  <data name="Favorites_ItemDoesNotExistInListMessage" xml:space="preserve">
+    <value>Материала нет в списке</value>
+  </data>
+  <data name="Favorites_ItemIsNotSupportedByProviderMessage" xml:space="preserve">
+    <value>Материал не поддерживается источником избранного</value>
+  </data>
+  <data name="Favorites_NoListTypeMessage" xml:space="preserve">
+    <value>Не существует требуемой категории</value>
+  </data>
+  <data name="Favorites_NoSourceMessage" xml:space="preserve">
+    <value>Не выбран источник избранного</value>
+  </data>
+  <data name="Favorites_SourceIsNotSupported" xml:space="preserve">
+    <value>Источник не поддерживается</value>
+  </data>
+  <data name="Favorites_UnknownError" xml:space="preserve">
+    <value>Неизвестная ошибка избранного</value>
+  </data>
+  <data name="FilesPage_DownloadSelected_Download" xml:space="preserve">
+    <value>Скачать файлы</value>
+  </data>
+  <data name="FilesPage_DownloadSelected_DownloadAsM3u8" xml:space="preserve">
+    <value>Скачать .m3u8 плейлист</value>
+  </data>
+  <data name="FilesPage_DownloadSelected_ToolTip" xml:space="preserve">
+    <value>Скачать выбранные файлы</value>
+  </data>
+  <data name="FilesPage_FileIsWatchedSelectedToggle_Off_ToolTip" xml:space="preserve">
+    <value>Не просмотрено</value>
+  </data>
+  <data name="FilesPage_FileIsWatchedSelectedToggle_On_ToolTip" xml:space="preserve">
+    <value>Просмотрено</value>
+  </data>
+  <data name="FilesPage_File_CopyFileLink_ToolTip" xml:space="preserve">
+    <value>Копировать ссылку на файл</value>
+  </data>
+  <data name="FilesPage_File_DownloadFile_ToolTip" xml:space="preserve">
+    <value>Скачать файл</value>
+  </data>
+  <data name="FilesPage_File_OpenVideoFile_ToolTip" xml:space="preserve">
+    <value>Открыть видео</value>
+  </data>
+  <data name="FilesPage_File_SpecificSubtile" xml:space="preserve">
+    <value>Субтитры</value>
+  </data>
+  <data name="FilesPage_GoUpCommand" xml:space="preserve">
+    <value>Вернуться к предыдущей папке</value>
+  </data>
+  <data name="FilesPage_OpenRemoteCommand_ToolTip" xml:space="preserve">
+    <value>Открыть на другом устройстве</value>
+  </data>
+  <data name="FilesPage_ProviderCategory_Torrent" xml:space="preserve">
+    <value>Торренты</value>
+  </data>
+  <data name="FilesPage_ProviderCategory_Torrent_ToolTip" xml:space="preserve">
+    <value>Источники торрент файлов</value>
+  </data>
+  <data name="FilesPage_ProviderCategory_Video" xml:space="preserve">
+    <value>Видео</value>
+  </data>
+  <data name="FilesPage_ProviderCategory_Video_ToolTip" xml:space="preserve">
+    <value>Источники видео файлов</value>
+  </data>
+  <data name="FilesPage_ProvidersAlertControl" xml:space="preserve">
+    <value>Если у вас есть проблемы с видео, попробуйте переключить источник ↑</value>
+  </data>
+  <data name="FilesPage_ProviderSearchStrategy_All" xml:space="preserve">
+    <value>Искать везде</value>
+  </data>
+  <data name="FilesPage_ProviderSearchStrategy_All_ToolTip" xml:space="preserve">
+    <value>Поиск на всех источниках сразу</value>
+  </data>
+  <data name="FilesPage_ProviderSearchStrategy_Any" xml:space="preserve">
+    <value>Автоматически</value>
+  </data>
+  <data name="FilesPage_ProviderSearchStrategy_Any_ToolTip" xml:space="preserve">
+    <value>Поиск с учётом порядка в параметрах</value>
+  </data>
+  <data name="FilesPage_RefreshFolderCommand" xml:space="preserve">
+    <value>Обновить папку</value>
+  </data>
+  <data name="FilesPage_Torrent_DownloadTorrent" xml:space="preserve">
+    <value>Скачать торрент файл</value>
+  </data>
+  <data name="FilesPage_Torrent_OpenTorrent" xml:space="preserve">
+    <value>Открыть торрент</value>
+  </data>
+  <data name="FilesPage_Torrent_OpenTorrentRemote" xml:space="preserve">
+    <value>Открыть на другом устройстве</value>
+  </data>
+  <data name="FilesViewModel_ConfirmToManyFilesDownload" xml:space="preserve">
+    <value>Загрузка больше пяти файлов за раз не рекомендуется.
+Время жизни ссылки на видео у многих источников ограничено, и может произойти ситуация, когда из-за этого загрузка упадет с ошибкой.
+Вы уверены?</value>
+  </data>
+  <data name="FilesViewModel_ErrorDuringFilesPreloading" xml:space="preserve">
+    <value>Ошибка во время получения информации файлов</value>
+  </data>
+  <data name="FilesViewModel_ErrorDuringFolderRefresh" xml:space="preserve">
+    <value>Ошибка во время обновления страницы</value>
+  </data>
+  <data name="FilesViewModel_FileOpeningWasCanceledByOtherOperation" xml:space="preserve">
+    <value>Открытие файла отменено другой операцией</value>
+  </data>
+  <data name="FilesViewModel_FilesPreloadingProcess" xml:space="preserve">
+    <value>Получение информации файлов...</value>
+  </data>
+  <data name="FilesViewModel_FoldersDownloadingIsNotAvailable" xml:space="preserve">
+    <value>Загрузка папок не поддерживаются</value>
+  </data>
+  <data name="FilesViewModel_InvalidTorrServerAddress" xml:space="preserve">
+    <value>Невалидный адрес TorrServer</value>
+  </data>
+  <data name="FilesViewModel_LinkCopiedClipboard" xml:space="preserve">
+    <value>Ссылка скопирована в буфер обмена</value>
+  </data>
+  <data name="FilesViewModel_NoTrailersFound" xml:space="preserve">
+    <value>Трейлеры не найдены</value>
+  </data>
+  <data name="FilesViewModel_TorrentFilesDownloadCompleted" xml:space="preserve">
+    <value>Завершена загрузка {0} торрент файлов</value>
+  </data>
+  <data name="FilesViewModel_UnableToOpenTorrentFile" xml:space="preserve">
+    <value>Не удалось открыть торрент-файл</value>
+  </data>
+  <data name="FilesViewModel_UnableToOpenTrailler" xml:space="preserve">
+    <value>Не удалось открыть трейлер</value>
+  </data>
+  <data name="FilesViewModel_VideoFilesDownloadCompleted" xml:space="preserve">
+    <value>Запущена загрузка {0} видео файлов</value>
+  </data>
+  <data name="File_Episode" xml:space="preserve">
+    <value>Серия</value>
+  </data>
+  <data name="File_EpisodeWithNumber" xml:space="preserve">
+    <value>Серия {0}</value>
+  </data>
+  <data name="File_Season" xml:space="preserve">
+    <value>Сезон</value>
+  </data>
+  <data name="File_SeasonAndEpisodeWithNumber" xml:space="preserve">
+    <value>Сезон {0} серия {0}</value>
+  </data>
+  <data name="File_SeasonWithNumber" xml:space="preserve">
+    <value>Сезон {0}</value>
+  </data>
+  <data name="FolderHeaderControl_ShowProvidersPaneToggleButton" xml:space="preserve">
+    <value>Источники</value>
+  </data>
+  <data name="FolderHeaderControl_ShowProvidersPaneToggleButton_ToolTip" xml:space="preserve">
+    <value>Выбрать источник файлов</value>
+  </data>
+  <data name="Folders_ItemIsBlocked" xml:space="preserve">
+    <value>Материал заблокирован по требованию правообладателей</value>
+  </data>
+  <data name="Folders_NotInGroup" xml:space="preserve">
+    <value>Вне группы</value>
+  </data>
+  <data name="HideableTextBox_FolderSearch" xml:space="preserve">
+    <value>Поиск по папке</value>
+  </data>
+  <data name="HistoryPage_DeleteSelectedCommand" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="HistoryPage_DeleteSelectedCommand_ToolTip" xml:space="preserve">
+    <value>Удалить выбранные файлы</value>
+  </data>
+  <data name="HistoryPage_DistinctItems" xml:space="preserve">
+    <value>Отображать только последнюю серию</value>
+  </data>
+  <data name="HistoryPage_GroupItemsByTime" xml:space="preserve">
+    <value>Группировать по времени</value>
+  </data>
+  <data name="HistoryPage_UnionEpisodes" xml:space="preserve">
+    <value>Группировать по сериям</value>
+  </data>
+  <data name="HomePageModel_Caption" xml:space="preserve">
+    <value>Домашняя</value>
+  </data>
+  <data name="HomePageModel_InCinema" xml:space="preserve">
+    <value>В кино</value>
+  </data>
+  <data name="HomePageModel_New" xml:space="preserve">
+    <value>Новое</value>
+  </data>
+  <data name="HomePageModel_Popular" xml:space="preserve">
+    <value>Популярное</value>
+  </data>
+  <data name="HomePageViewModel_SiteIsNotAvailableNow" xml:space="preserve">
+    <value>На данный момент {0} недоступен</value>
+  </data>
+  <data name="HomePageViewModel_UnableConnectToSiteAndAskForAnotherSite" xml:space="preserve">
+    <value>Не удалось подключиться к сайту {0}.
+Переключить основной источник на {1}?
+В случае необходимости в параметрах можно переключить обратно.</value>
+  </data>
+  <data name="HomePage_QuickSearch_ToolTip" xml:space="preserve">
+    <value>Быстрый поиск</value>
+  </data>
+  <data name="ItemPageDetails_FranchiseItems" xml:space="preserve">
+    <value>Связанные материалы</value>
+  </data>
+  <data name="ItemPageDetails_ProviderTagTooltip" xml:space="preserve">
+    <value>Открыть страницу на сайте источника</value>
+  </data>
+  <data name="ItemPageDetails_SearchByTag" xml:space="preserve">
+    <value>Поиск материалов с этим тегом</value>
+  </data>
+  <data name="ItemPageDetails_SimilarItems" xml:space="preserve">
+    <value>Похожие материалы</value>
+  </data>
+  <data name="ItemPage_AddToFavorite_ToolTip" xml:space="preserve">
+    <value>Добавить в избранное</value>
+  </data>
+  <data name="ItemPage_CalendarAppButton_ToolTip" xml:space="preserve">
+    <value>График выхода серий</value>
+  </data>
+  <data name="ItemPage_OpenItemInBrowserCommand" xml:space="preserve">
+    <value>Открыть в браузере</value>
+  </data>
+  <data name="ItemPage_OpenItemInBrowserCommand_ToolTip" xml:space="preserve">
+    <value>Открыть страницу в браузере</value>
+  </data>
+  <data name="ItemPage_PinToStartCommand" xml:space="preserve">
+    <value>Закрепить</value>
+  </data>
+  <data name="ItemPage_PinToStartCommand_ToolTip" xml:space="preserve">
+    <value>Закрепить в меню "Пуск"</value>
+  </data>
+  <data name="ItemPage_ShareItemCommand" xml:space="preserve">
+    <value>Поделиться</value>
+  </data>
+  <data name="ItemPage_ShareItemCommand_ToolTip" xml:space="preserve">
+    <value>Поделиться страницей</value>
+  </data>
+  <data name="ItemReview_ShowHideReview_Collaps" xml:space="preserve">
+    <value>Свернуть</value>
+  </data>
+  <data name="ItemReview_ShowHideReview_Open" xml:space="preserve">
+    <value>Подробнее...</value>
+  </data>
+  <data name="ItemReview_ShowHideReview_ToolTip" xml:space="preserve">
+    <value>Развернуть отзыв</value>
+  </data>
+  <data name="ItemsListItem_RemoveFromHistory" xml:space="preserve">
+    <value>Удалить из истории</value>
+  </data>
+  <data name="ItemsPage_AddReviewAppBarCommand_ToolTip" xml:space="preserve">
+    <value>Добавить отзыв</value>
+  </data>
+  <data name="ItemsPage_ReviewsBlock" xml:space="preserve">
+    <value>Отзывы</value>
+  </data>
+  <data name="ItemTrailerAppBarButton_Label" xml:space="preserve">
+    <value>Трейлер</value>
+  </data>
+  <data name="ItemViewModel_SiteIsNotAvailableNow" xml:space="preserve">
+    <value>На данный момент {0} недоступен</value>
+  </data>
+  <data name="ItemViewModel_UnableToGetFullItemInfo" xml:space="preserve">
+    <value>Не удалось получить информацию о материале</value>
+  </data>
+  <data name="ItemViewModel_UnableToPinTile" xml:space="preserve">
+    <value>Не удалось прикрепить плитку</value>
+  </data>
+  <data name="Language_English" xml:space="preserve">
+    <value>Английский</value>
+  </data>
+  <data name="Language_Japanese" xml:space="preserve">
+    <value>Японский</value>
+  </data>
+  <data name="Language_Original" xml:space="preserve">
+    <value>Язык оригинала</value>
+  </data>
+  <data name="Language_Russian" xml:space="preserve">
+    <value>Русский</value>
+  </data>
+  <data name="Language_Ukrainian" xml:space="preserve">
+    <value>Украинский</value>
+  </data>
+  <data name="Language_Unknown" xml:space="preserve">
+    <value>Неизвестный язык</value>
+  </data>
+  <data name="LaunchResult_ErrorHandlerIsNotAvailable" xml:space="preserve">
+    <value>Обработчик ссылки или файла недоступен в системе</value>
+  </data>
+  <data name="LaunchResult_ErrorInvalidStorageItem" xml:space="preserve">
+    <value>Невалидная папка или файл</value>
+  </data>
+  <data name="LaunchResult_Success" xml:space="preserve">
+    <value>Операция завершена успешно</value>
+  </data>
+  <data name="LaunchResult_UnknownError" xml:space="preserve">
+    <value>Неизвестная ошибка</value>
+  </data>
+  <data name="ListView_Filter" xml:space="preserve">
+    <value>Фильтр</value>
+  </data>
+  <data name="ListView_GroupMode" xml:space="preserve">
+    <value>Режим выбора</value>
+  </data>
+  <data name="ListView_NothingFound" xml:space="preserve">
+    <value>Ничего нет</value>
+  </data>
+  <data name="ListView_Refresh" xml:space="preserve">
+    <value>Обновить страницу</value>
+  </data>
+  <data name="ListView_SelectAll" xml:space="preserve">
+    <value>Выбрать все</value>
+  </data>
+  <data name="ListView_Sort" xml:space="preserve">
+    <value>Сортировка</value>
+  </data>
+  <data name="ListView_UnselectAll" xml:space="preserve">
+    <value>Снять выделение</value>
+  </data>
+  <data name="LoginDialog_DialogTItle" xml:space="preserve">
+    <value>Авторизация</value>
+  </data>
+  <data name="LoginDialog_LogInButton" xml:space="preserve">
+    <value>Войти</value>
+  </data>
+  <data name="LoginDialog_Password" xml:space="preserve">
+    <value>Пароль</value>
+  </data>
+  <data name="LoginDialog_Username" xml:space="preserve">
+    <value>Логин</value>
+  </data>
+  <data name="ManagedWindow_DumpVisualTreeConfirmation" xml:space="preserve">
+    <value>Сохранить состояние дерева элементов интерфейса?
+Приложение может не отвечать некоторое время.</value>
+  </data>
+  <data name="MarginCalibrationDialog_Description" xml:space="preserve">
+    <value>Если монитор или телевизор обрезают границы приложения, вы можете откалибровать отступы от границ приложения.
+Для удобства была добавлена белая рамка, выделяющая активную область приложения.
+Так же поддерживаются клавиши ↓ ↑ на клавиатуре и геймпаде.
+Калибровка также доступна из "Параметры -&gt; Приложение"</value>
+  </data>
+  <data name="MarginCalibrationDialog_Title" xml:space="preserve">
+    <value>Калибровка отступов от границ приложения</value>
+  </data>
+  <data name="MediaHeader_GoNextCommand_ToolTip" xml:space="preserve">
+    <value>Следующая серия</value>
+  </data>
+  <data name="MediaHeader_GoPreviousCommand_ToolTip" xml:space="preserve">
+    <value>Предыдущая серия</value>
+  </data>
+  <data name="MediaHeader_OpenPlaylistCommand_ToolTip" xml:space="preserve">
+    <value>Плейлист</value>
+  </data>
+  <data name="MediaMainControls_FullScreenCommand_ToolTip" xml:space="preserve">
+    <value>Полноэкранный режим</value>
+  </data>
+  <data name="MediaMainControls_OverlayCommand_ToolTip" xml:space="preserve">
+    <value>Поверх всех окон</value>
+  </data>
+  <data name="MediaMainControls_VideoParams_ToolTip" xml:space="preserve">
+    <value>Настройки</value>
+  </data>
+  <data name="MediaSettings_AudioTracks" xml:space="preserve">
+    <value>Аудио</value>
+  </data>
+  <data name="MediaSettings_PlaybackRate" xml:space="preserve">
+    <value>Скорость</value>
+  </data>
+  <data name="MediaSettings_Stretch" xml:space="preserve">
+    <value>Положение</value>
+  </data>
+  <data name="MediaSettings_SubtitleTracks" xml:space="preserve">
+    <value>Субтитры</value>
+  </data>
+  <data name="MediaSettings_VideoQuality" xml:space="preserve">
+    <value>Качество</value>
+  </data>
+  <data name="NavigationPageType_Downloads" xml:space="preserve">
+    <value>Загрузки</value>
+  </data>
+  <data name="NavigationPageType_Favorites" xml:space="preserve">
+    <value>Избранное</value>
+  </data>
+  <data name="NavigationPageType_Files" xml:space="preserve">
+    <value>Файлы</value>
+  </data>
+  <data name="NavigationPageType_History" xml:space="preserve">
+    <value>История</value>
+  </data>
+  <data name="NavigationPageType_Home" xml:space="preserve">
+    <value>Главная</value>
+  </data>
+  <data name="NavigationPageType_ItemInfo" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="NavigationPageType_ItemsByTag" xml:space="preserve">
+    <value>Поиск по тегу</value>
+  </data>
+  <data name="NavigationPageType_LastWatched" xml:space="preserve">
+    <value>Последнее</value>
+  </data>
+  <data name="NavigationPageType_Search" xml:space="preserve">
+    <value>Поиск</value>
+  </data>
+  <data name="NavigationPageType_Settings" xml:space="preserve">
+    <value>Параметры</value>
+  </data>
+  <data name="NavigationPageType_Video" xml:space="preserve">
+    <value>Видео</value>
+  </data>
+  <data name="NodeOpenWay_CopyLink" xml:space="preserve">
+    <value>копировать ссылку</value>
+  </data>
+  <data name="NodeOpenWay_In3rdPartyApp" xml:space="preserve">
+    <value>в стороннем плеере</value>
+  </data>
+  <data name="NodeOpenWay_In3rdPartyApp_Description" xml:space="preserve">
+    <value>Экспериментальный функционал.
+Работает только с плеером VLC из магазина.
+Не работает с классическим VLC!</value>
+  </data>
+  <data name="NodeOpenWay_InApp" xml:space="preserve">
+    <value>в приложении</value>
+  </data>
+  <data name="NodeOpenWay_InBrowser" xml:space="preserve">
+    <value>в браузере</value>
+  </data>
+  <data name="NodeOpenWay_InSeparatedWindow" xml:space="preserve">
+    <value>в отдельном окне</value>
+  </data>
+  <data name="NodeOpenWay_Remote" xml:space="preserve">
+    <value>на другом устройстве</value>
+  </data>
+  <data name="NodeProgressControl_NotWatched" xml:space="preserve">
+    <value>Не просмотрено</value>
+  </data>
+  <data name="NodeProgressControl_Progress" xml:space="preserve">
+    <value>Прогресс</value>
+  </data>
+  <data name="NodeProgressControl_Watched" xml:space="preserve">
+    <value>Просмотрено</value>
+  </data>
+  <data name="PageAppBar_More_Tooltip" xml:space="preserve">
+    <value>Подробнее</value>
+  </data>
+  <data name="PageAppBar_Search" xml:space="preserve">
+    <value>Поиск</value>
+  </data>
+  <data name="PageAppBar_SearchOrLink" xml:space="preserve">
+    <value>Поиск или открыть по ссылке</value>
+  </data>
+  <data name="PageFilter_FilterByFavorites" xml:space="preserve">
+    <value>Исключать материалы из "Избранное"</value>
+  </data>
+  <data name="PageFilter_FilterByInHistory" xml:space="preserve">
+    <value>Исключать материалы из "История"</value>
+  </data>
+  <data name="PlayerControl_InitFailed" xml:space="preserve">
+    <value>Ошибка во время создания плеера</value>
+  </data>
+  <data name="PlayerControl_NoValidFileForPlayback" xml:space="preserve">
+    <value>Нет доступного видео файла для воспроизведения</value>
+  </data>
+  <data name="PlayerControl_SoundMutedInPlayer" xml:space="preserve">
+    <value>В плеере выключен звук</value>
+  </data>
+  <data name="PlayerControl_ThatVideoIsNotSupported" xml:space="preserve">
+    <value>Данное видео не поддерживается</value>
+  </data>
+  <data name="Player_FileFromSpecificSite" xml:space="preserve">
+    <value>Видео с {0}</value>
+  </data>
+  <data name="ProviderRequirements_AccountForAny" xml:space="preserve">
+    <value>Для всего контента требуется аккаунт на источнике</value>
+  </data>
+  <data name="ProviderRequirements_AccountForSpecial" xml:space="preserve">
+    <value>Для части контента требуется аккаунт на источнике</value>
+  </data>
+  <data name="ProviderRequirements_ProForAny" xml:space="preserve">
+    <value>Для всего контента требуется PRO-аккаунт на источнике</value>
+  </data>
+  <data name="ProviderRequirements_ProForSpecial" xml:space="preserve">
+    <value>Для части контента требуется PRO-аккаунт на источнике</value>
+  </data>
+  <data name="ProviderResult_Blocked" xml:space="preserve">
+    <value>Материал заблокирован на источнике по просьбе правообладателя</value>
+  </data>
+  <data name="ProviderResult_Canceled" xml:space="preserve">
+    <value>Операция была отменена</value>
+  </data>
+  <data name="ProviderResult_Failed" xml:space="preserve">
+    <value>Произошла ошибка</value>
+  </data>
+  <data name="ProviderResult_NeedLogin" xml:space="preserve">
+    <value>Необходима авторизация на {0}</value>
+  </data>
+  <data name="ProviderResult_NeedProAccount" xml:space="preserve">
+    <value>Необходим PRO аккаунт на {0}</value>
+  </data>
+  <data name="ProviderResult_NotAvailable" xml:space="preserve">
+    <value>Недоступно</value>
+  </data>
+  <data name="ProviderResult_NotFound" xml:space="preserve">
+    <value>Материал не найден в выбранном источнике</value>
+  </data>
+  <data name="ProviderResult_NotSupported" xml:space="preserve">
+    <value>Не поддерживается источником</value>
+  </data>
+  <data name="ProviderResult_NoValidProvider" xml:space="preserve">
+    <value>Не найден подходящий источник. Проверьте список включенных источников в параметрах приложения.</value>
+  </data>
+  <data name="ProviderResult_Success" xml:space="preserve">
+    <value>Операция завершена успешно</value>
+  </data>
+  <data name="ProviderResult_Unknown" xml:space="preserve">
+    <value>Неизвестный результат</value>
+  </data>
+  <data name="ProvidersList_AccountParams_ToolTip" xml:space="preserve">
+    <value>Аккаунт на источнике</value>
+  </data>
+  <data name="ProvidersList_EnableProvider_ToolTip" xml:space="preserve">
+    <value>Вкл/выкл источник</value>
+  </data>
+  <data name="ProvidersList_MirrorParams_ToolTip" xml:space="preserve">
+    <value>Параметры</value>
+  </data>
+  <data name="ProvidersList_ReoderControl_ToolTip" xml:space="preserve">
+    <value>Нажимайте ↑/↓ для перемещения</value>
+  </data>
+  <data name="RemoteLaunchDialog_AccessDenied" xml:space="preserve">
+    <value>Доступ запрещен</value>
+  </data>
+  <data name="RemoteLaunchDialog_AppUnavailable" xml:space="preserve">
+    <value>Приложение недоступно на выбранном устройстве</value>
+  </data>
+  <data name="RemoteLaunchDialog_DeniedByLocalSystem" xml:space="preserve">
+    <value>Запрещено текущим устройством</value>
+  </data>
+  <data name="RemoteLaunchDialog_DeniedByRemoteSystem" xml:space="preserve">
+    <value>Запрещено выбранным устройством</value>
+  </data>
+  <data name="RemoteLaunchDialog_NoDeviceWasFound" xml:space="preserve">
+    <value>Не удалось найти устройства, где можно запустить это приложение.</value>
+  </data>
+  <data name="RemoteLaunchDialog_OpenOnDevice" xml:space="preserve">
+    <value>Открыть на устройстве</value>
+  </data>
+  <data name="RemoteLaunchDialog_ProbablyNeedToUpdateRemote" xml:space="preserve">
+    <value>Возможно на нем необходимо обновить приложение</value>
+  </data>
+  <data name="RemoteLaunchDialog_ProtocolUnavailable" xml:space="preserve">
+    <value>Протокол не поддерживается устройством</value>
+  </data>
+  <data name="RemoteLaunchDialog_RemoteSystemUnavailable" xml:space="preserve">
+    <value>Устройство недоступно</value>
+  </data>
+  <data name="RemoteLaunchDialog_UnknownError" xml:space="preserve">
+    <value>Неизвестная ошибка</value>
+  </data>
+  <data name="RemoteLaunchDialog_ValueSetTooLarge" xml:space="preserve">
+    <value>Слишком большое число аргументов</value>
+  </data>
+  <data name="ReviewsViewModel_EmptyReviewIsNotValid" xml:space="preserve">
+    <value>Вы не можете отправить пустое сообщение</value>
+  </data>
+  <data name="Section_All" xml:space="preserve">
+    <value>Все</value>
+  </data>
+  <data name="Section_Anime" xml:space="preserve">
+    <value>Аниме</value>
+  </data>
+  <data name="Section_AnimeSerial" xml:space="preserve">
+    <value>Аниме сериалы</value>
+  </data>
+  <data name="Section_Cartoon" xml:space="preserve">
+    <value>Мультфильмы</value>
+  </data>
+  <data name="Section_CartoonFilm" xml:space="preserve">
+    <value>Мультфильмы</value>
+  </data>
+  <data name="Section_CartoonSerial" xml:space="preserve">
+    <value>Мультсериалы</value>
+  </data>
+  <data name="Section_Films" xml:space="preserve">
+    <value>Фильмы</value>
+  </data>
+  <data name="Section_Serials" xml:space="preserve">
+    <value>Сериалы</value>
+  </data>
+  <data name="Section_TVShow" xml:space="preserve">
+    <value>ТВ-Шоу</value>
+  </data>
+  <data name="SettingsPage_About_4pdaTopicCommand" xml:space="preserve">
+    <value>Тема приложения на 4pda</value>
+  </data>
+  <data name="SettingsPage_About_AskUserToShareApplication" xml:space="preserve">
+    <value>Если вам понравилось приложение, порекомендуйте его знакомым :)</value>
+  </data>
+  <data name="SettingsPage_About_CheckForUpdatesCommand" xml:space="preserve">
+    <value>Проверить обновления</value>
+  </data>
+  <data name="SettingsPage_About_FAQLinkCommand" xml:space="preserve">
+    <value>Часто задаваемые вопросы</value>
+  </data>
+  <data name="SettingsPage_About_MailToLinkCommand" xml:space="preserve">
+    <value>Написать письмо разработчику</value>
+  </data>
+  <data name="SettingsPage_About_PrivatePolicyLinkCommand" xml:space="preserve">
+    <value>Политика конфиденциальности</value>
+  </data>
+  <data name="SettingsPage_About_RedirectUserInCaseOfIssues" xml:space="preserve">
+    <value>Если у вас есть пожелания, замечания или вопросы, то лучше всего написать в тему на 4pda.</value>
+  </data>
+  <data name="SettingsPage_About_ShowChangesDialogCommand" xml:space="preserve">
+    <value>История изменений</value>
+  </data>
+  <data name="SettingsPage_About_TrelloProgress" xml:space="preserve">
+    <value>Прогресс на Trello</value>
+  </data>
+  <data name="SettingsPage_App_AccentColor" xml:space="preserve">
+    <value>Цвет приложения</value>
+  </data>
+  <data name="SettingsPage_App_CanShowUpdateChangeLog" xml:space="preserve">
+    <value>Отображать список изменений после обновления приложения</value>
+  </data>
+  <data name="SettingsPage_App_ColorsGroup" xml:space="preserve">
+    <value>Цвета</value>
+  </data>
+  <data name="SettingsPage_App_CurrentLanguage" xml:space="preserve">
+    <value>Язык интерфейса и предпочитаемый язык источников</value>
+  </data>
+  <data name="SettingsPage_App_CurrentLanguage_Description" xml:space="preserve">
+    <value>Большинство источников поддерживает только русский язык.</value>
+  </data>
+  <data name="SettingsPage_App_IgnoreLauncherDefaults" xml:space="preserve">
+    <value>Всегда спрашивать, в каком приложении открыть файл или ссылку</value>
+  </data>
+  <data name="SettingsPage_App_InAppLoggerNotifications" xml:space="preserve">
+    <value>Выводить полную информацию об ошибках</value>
+  </data>
+  <data name="SettingsPage_App_IsSystemColor" xml:space="preserve">
+    <value>Использовать системный цвет</value>
+  </data>
+  <data name="SettingsPage_App_ListenForDumpRequest" xml:space="preserve">
+    <value>Возможность сохранить дерево состояния элементов интерфейса</value>
+  </data>
+  <data name="SettingsPage_App_ListenForDumpRequest_Description" xml:space="preserve">
+    <value>Space+D на клавиатуре</value>
+  </data>
+  <data name="SettingsPage_App_MarginCalibrationLinkCommand" xml:space="preserve">
+    <value>Калибровка отступов от границ приложения</value>
+  </data>
+  <data name="SettingsPage_App_OpenFavItemsOnFilesPage" xml:space="preserve">
+    <value>Открывать избранные материалы на странице файлов</value>
+  </data>
+  <data name="SettingsPage_App_OpenHistoryItemsOnFilesPage" xml:space="preserve">
+    <value>Открывать материалы с истории на странице файлов</value>
+  </data>
+  <data name="SettingsPage_App_OpenProxySettingsCommand" xml:space="preserve">
+    <value>Открыть настройки прокси</value>
+  </data>
+  <data name="SettingsPage_App_OpenVPNSettingsCommand" xml:space="preserve">
+    <value>Открыть настройки VPN</value>
+  </data>
+  <data name="SettingsPage_App_ShowImageBackground" xml:space="preserve">
+    <value>Изображение на фоне страницы материала</value>
+  </data>
+  <data name="SettingsPage_App_StartPage" xml:space="preserve">
+    <value>Начальная страница</value>
+  </data>
+  <data name="SettingsPage_App_VerifyAccess" xml:space="preserve">
+    <value>Проверять ПИН-код при старте приложения</value>
+  </data>
+  <data name="SettingsPage_App_VerifyAccess_Description" xml:space="preserve">
+    <value>Работает через системный Windows Hello</value>
+  </data>
+  <data name="SettingsPage_App_WindowsColorSettingsCommand" xml:space="preserve">
+    <value>Открыть настройки цвета и прозрачности</value>
+  </data>
+  <data name="SettingsPage_App_XYMouseMode" xml:space="preserve">
+    <value>XY-режим управления</value>
+  </data>
+  <data name="SettingsPage_Data_AutomatedBackupTaskEnabled" xml:space="preserve">
+    <value>Автоматически экспортировать данные приложения раз в сутки (бэкап)</value>
+  </data>
+  <data name="SettingsPage_Data_AutomatedBackupTaskEnabled_Description" xml:space="preserve">
+    <value>Хранится последние 10 файлов
+Требуется разрешение на фоновую работу в системных параметрах</value>
+  </data>
+  <data name="SettingsPage_Data_ChangeBackupTaskCustomFolderCommand" xml:space="preserve">
+    <value>Изменить папку с бэкапами</value>
+  </data>
+  <data name="SettingsPage_Data_ChangeLogsCustomFolderCommand" xml:space="preserve">
+    <value>Изменить папку с логами</value>
+  </data>
+  <data name="SettingsPage_Data_ClearCacheCommand" xml:space="preserve">
+    <value>Очистить кэш видео и изображений</value>
+  </data>
+  <data name="SettingsPage_Data_ClearCacheMode" xml:space="preserve">
+    <value>Автоматическая очистка кэша</value>
+  </data>
+  <data name="SettingsPage_Data_CookiesStoragePlacementNotification" xml:space="preserve">
+    <value>Cookie учетных записей, которые используются в приложении, можно найти в "Панель управления -&gt; Учетные записи пользователей -&gt; Диспетчер учетных данных"</value>
+  </data>
+  <data name="SettingsPage_Data_FileLogger" xml:space="preserve">
+    <value>Логировать ошибки и события приложения</value>
+  </data>
+  <data name="SettingsPage_Data_FileLogger_Description" xml:space="preserve">
+    <value>Хранится последние 10 файлов</value>
+  </data>
+  <data name="SettingsPage_Data_OpenBackupTaskFolderCommand" xml:space="preserve">
+    <value>Открыть папку с бэкапами</value>
+  </data>
+  <data name="SettingsPage_Data_OpenLogsFolderCommand" xml:space="preserve">
+    <value>Открыть папку с логами</value>
+  </data>
+  <data name="SettingsPage_Data_ResetDataCommand" xml:space="preserve">
+    <value>Сбросить данные</value>
+  </data>
+  <data name="SettingsPage_Data_ShowBackupDialogCommand" xml:space="preserve">
+    <value>Экспортировать данные</value>
+  </data>
+  <data name="SettingsPage_Data_ShowBackupLoadDialogCommand" xml:space="preserve">
+    <value>Импортировать данные</value>
+  </data>
+  <data name="SettingsPage_Data_TraceHttp" xml:space="preserve">
+    <value>Логировать HTTP запросы</value>
+  </data>
+  <data name="SettingsPage_Data_TraceHttpWithCookies" xml:space="preserve">
+    <value>Логировать Cookie заголовки</value>
+  </data>
+  <data name="SettingsPage_Data_TraceHttpWithCookies_Description" xml:space="preserve">
+    <value>Cookie заголовки могут быть использованы для доступа к вашему профилю в приложении</value>
+  </data>
+  <data name="SettingsPage_Data_TraceHttp_Description" xml:space="preserve">
+    <value>Может заметно понизить производительность
+Для избегания логирования паролей не рекомендуется вводить их в приложении с этой опцией</value>
+  </data>
+  <data name="SettingsPage_Data_UseTelemetry" xml:space="preserve">
+    <value>Отправлять отчеты об ошибках</value>
+  </data>
+  <data name="SettingsPage_Download_AllowDownloadM3U8Files" xml:space="preserve">
+    <value>Разрешить загрузку m3u8 видеофайлов</value>
+  </data>
+  <data name="SettingsPage_Download_AvailableSpace" xml:space="preserve">
+    <value>Свободно</value>
+  </data>
+  <data name="SettingsPage_Download_ChosenFolderName" xml:space="preserve">
+    <value>Папка для загруженных файлов</value>
+  </data>
+  <data name="SettingsPage_Download_ChosenTorrentFolderName" xml:space="preserve">
+    <value>Папка для торрент-файлов</value>
+  </data>
+  <data name="SettingsPage_Download_InternalDatabaseForTorrServer" xml:space="preserve">
+    <value>Удалять торренты из TorrServer, когда они больше не нужны</value>
+  </data>
+  <data name="SettingsPage_Download_InternalDatabaseForTorrServer_Description" xml:space="preserve">
+    <value>Удаляются обычно при следующем запуске приложения
+Некоторые публичные сервера запрещают удаление торрентов, для них эту опцию стоит отключить</value>
+  </data>
+  <data name="SettingsPage_Download_SerializedDownload" xml:space="preserve">
+    <value>Загружать файлы</value>
+  </data>
+  <data name="SettingsPage_Download_SerializedDownload_OffContent" xml:space="preserve">
+    <value>Одновременно</value>
+  </data>
+  <data name="SettingsPage_Download_SerializedDownload_OnContent" xml:space="preserve">
+    <value>Последовательно</value>
+  </data>
+  <data name="SettingsPage_Download_TorrServerAddress" xml:space="preserve">
+    <value>Адрес TorrServer</value>
+  </data>
+  <data name="SettingsPage_Download_TorrServerAddress_Placeholder" xml:space="preserve">
+    <value>HTTP адрес</value>
+  </data>
+  <data name="SettingsPage_Download_TorrServerEnabled" xml:space="preserve">
+    <value>Воспроизводить торрент файлы через TorrServer</value>
+  </data>
+  <data name="SettingsPage_Main_MainSite_Description" xml:space="preserve">
+    <value>С этого источника происходит поиск материалов на главной и странице поиска</value>
+  </data>
+  <data name="SettingsPage_Main_UseOnlineFavorites" xml:space="preserve">
+    <value>Избранное профиля</value>
+  </data>
+  <data name="SettingsPage_Main_UseOnlineFavorites_Descrription" xml:space="preserve">
+    <value>Если включено, локальное избранное будет заменено на избранное профиля из основного источника</value>
+  </data>
+  <data name="SettingsPage_NoSelectionContent" xml:space="preserve">
+    <value>Выберите категорию</value>
+  </data>
+  <data name="SettingsPage_Online_CompactOnFocusLosed" xml:space="preserve">
+    <value>Открывать видео поверх всех окон при сворачивании приложения из полноэкранного режима</value>
+  </data>
+  <data name="SettingsPage_Online_CompactPlayer" xml:space="preserve">
+    <value>Компактный плеер</value>
+  </data>
+  <data name="SettingsPage_Online_FileOpenWay" xml:space="preserve">
+    <value>Открывать видео</value>
+  </data>
+  <data name="SettingsPage_Online_HackPlayerControlsVisibility" xml:space="preserve">
+    <value>Не прятать панель плеера, но делать ее достаточно невидимой</value>
+  </data>
+  <data name="SettingsPage_Online_HackPlayerControlsVisibility_Description" xml:space="preserve">
+    <value>Может исправить подвисающее воспроизведение видео
+Проблема не в приложении, но ее можно попробовать обойти</value>
+  </data>
+  <data name="SettingsPage_Online_InvertElapsedPlayerTime" xml:space="preserve">
+    <value>Отображать длительность видео вместо оставшегося времени</value>
+  </data>
+  <data name="SettingsPage_Online_MinimalOverlay" xml:space="preserve">
+    <value>Не открывать панель задач при наведении в полноэкранном режиме</value>
+  </data>
+  <data name="SettingsPage_Online_MoveToVideoPage" xml:space="preserve">
+    <value>Автоматически переключать на страницу с видео</value>
+  </data>
+  <data name="SettingsPage_Online_OpenDirectLinkInBrowser" xml:space="preserve">
+    <value>Открывать в браузере прямую ссылку на файл</value>
+  </data>
+  <data name="SettingsPage_Online_OpenInFullScreen" xml:space="preserve">
+    <value>Открывать видео в полном экране</value>
+  </data>
+  <data name="SettingsPage_Online_OpenNextVideo" xml:space="preserve">
+    <value>Автоматически запускать следующее видео в плейлисте</value>
+  </data>
+  <data name="SettingsPage_Online_PauseOnBackgroundMedia" xml:space="preserve">
+    <value>Ставить на паузу при переходе в фоновый режим</value>
+  </data>
+  <data name="SettingsPage_Online_PlayerPauseOnPrimaryTapped" xml:space="preserve">
+    <value>Воспроизвести/пауза по нажатию на видео</value>
+  </data>
+  <data name="SettingsPage_Online_PlayerSettings" xml:space="preserve">
+    <value>Плеер</value>
+  </data>
+  <data name="SettingsPage_Online_PlayerStopButtonEnabled" xml:space="preserve">
+    <value>Отображать кнопку "Стоп"</value>
+  </data>
+  <data name="SettingsPage_Online_PlayerSwipeEnabled" xml:space="preserve">
+    <value>Перемотка и изменение громкости жестами</value>
+  </data>
+  <data name="SettingsPage_Online_PositionByEpisode" xml:space="preserve">
+    <value>Привязка позиции файла к серии, а не идентификатору</value>
+  </data>
+  <data name="SettingsPage_Online_PositionByEpisode_Description" xml:space="preserve">
+    <value>Делает его независимым от источника</value>
+  </data>
+  <data name="SettingsPage_Online_PreferLegacyRemoteLaunchDialog" xml:space="preserve">
+    <value>Старое диалоговое окно для "Передать на устройство"</value>
+  </data>
+  <data name="SettingsPage_Online_PreferLegacyRemoteLaunchDialog_Description" xml:space="preserve">
+    <value>Новое может передавать на другое устройство в сети с установленным FS Клиент, но может не работать с передачей на ТВ</value>
+  </data>
+  <data name="SettingsPage_Online_PreferredQuality" xml:space="preserve">
+    <value>Предпочитаемое качество</value>
+  </data>
+  <data name="SettingsPage_Online_PreferredQuality_Description" xml:space="preserve">
+    <value>Приложение будет подбирать ближайшее доступное</value>
+  </data>
+  <data name="SettingsPage_Online_SeekBackwardStep" xml:space="preserve">
+    <value>Шаг перемотки видео клавишами</value>
+  </data>
+  <data name="SettingsPage_Online_SeekSwipeSensitive" xml:space="preserve">
+    <value>Чувствительность перемотки жестом</value>
+  </data>
+  <data name="SettingsPage_Online_SeekWithGamepadDPad" xml:space="preserve">
+    <value>Перематывать видео и менять громкость DPad кнопками на геймпаде в полноэкранном режиме</value>
+  </data>
+  <data name="SettingsPage_Online_VolumeSwipeSensitive" xml:space="preserve">
+    <value>Чувствительность изменения громкости жестом</value>
+  </data>
+  <data name="SettingsPage_Providers_CanPreloadEpisodes" xml:space="preserve">
+    <value>Предзагружать видео файлы для сериалов</value>
+  </data>
+  <data name="SettingsPage_Providers_CanPreloadEpisodes_Description" xml:space="preserve">
+    <value>Отправляет множество запросов, из-за чего можно получить временный бан на некоторых источниках</value>
+  </data>
+  <data name="SettingsPage_Providers_CanPreloadFiles" xml:space="preserve">
+    <value>Предзагружать видео файлы в текущей папке</value>
+  </data>
+  <data name="SettingsPage_Providers_CanPreloadFiles_Description" xml:space="preserve">
+    <value>Необходимо для отображения качества видео в списке некоторых источников</value>
+  </data>
+  <data name="SettingsPage_Providers_CanPreloadItemListItems" xml:space="preserve">
+    <value>Запрашивать дополнительную информацию для материалов на главной</value>
+  </data>
+  <data name="SettingsPage_Providers_LoadAllSources" xml:space="preserve">
+    <value>Искать на всех одновременно</value>
+  </data>
+  <data name="SettingsPage_Providers_PreferItemSite" xml:space="preserve">
+    <value>Более высокий приоритет для источника, из которого был получен материал</value>
+  </data>
+  <data name="SettingsPage_Providers_ProvidersPriority" xml:space="preserve">
+    <value>Приоритетность источников</value>
+  </data>
+  <data name="SettingsPage_Providers_ProvidersPriority_Description" xml:space="preserve">
+    <value>Используется при поиске трейлеров, торрентов и видеофайлов</value>
+  </data>
+  <data name="SettingsPage_RestartRequired" xml:space="preserve">
+    <value>Необходим перезапуск приложения</value>
+  </data>
+  <data name="SettingsType_About" xml:space="preserve">
+    <value>О программе</value>
+  </data>
+  <data name="SettingsType_App" xml:space="preserve">
+    <value>Приложение</value>
+  </data>
+  <data name="SettingsType_Data" xml:space="preserve">
+    <value>Данные</value>
+  </data>
+  <data name="SettingsType_Download" xml:space="preserve">
+    <value>Загрузка видео</value>
+  </data>
+  <data name="SettingsType_Main" xml:space="preserve">
+    <value>Основной источник</value>
+  </data>
+  <data name="SettingsType_Online" xml:space="preserve">
+    <value>Онлайн видео</value>
+  </data>
+  <data name="SettingsType_Provider" xml:space="preserve">
+    <value>Источники</value>
+  </data>
+  <data name="SettingsViewModel_AccessVerificationFailed" xml:space="preserve">
+    <value>Произошла ошибка: </value>
+  </data>
+  <data name="SettingsViewModel_AccessVerificationIsNotAvailable" xml:space="preserve">
+    <value>Проверка доступа недоступна на данном устройстве</value>
+  </data>
+  <data name="SettingsViewModel_BackupExportResultsMessage" xml:space="preserve">
+    <value>Экспортировано
+Избранное: {0}
+История: {1}
+Параметры: {2}</value>
+  </data>
+  <data name="SettingsViewModel_BackupImportInProcess" xml:space="preserve">
+    <value>Подождите...</value>
+  </data>
+  <data name="SettingsViewModel_BackupImportResultsMessage" xml:space="preserve">
+    <value>Импортировано
+Избранное: {0}
+История: {1}
+Параметры: {2}</value>
+  </data>
+  <data name="SettingsViewModel_BackupSuccessfully" xml:space="preserve">
+    <value>Операция завершена успешно</value>
+  </data>
+  <data name="SettingsViewModel_BackupTypeSelectionExportHeader" xml:space="preserve">
+    <value>Выбор экспорта</value>
+  </data>
+  <data name="SettingsViewModel_BackupTypeSelectionImportHeader" xml:space="preserve">
+    <value>Выбор импорта</value>
+  </data>
+  <data name="SettingsViewModel_Backup_NotifyUserAboutOnlineFavorites" xml:space="preserve">
+    <value>Экспортируется\импортируется только локальное избранное. У вас же используется избранное профиля {0}.
+Продолжить?</value>
+  </data>
+  <data name="SettingsViewModel_CheckForUpdatesFailed" xml:space="preserve">
+    <value>Произошла ошибка</value>
+  </data>
+  <data name="SettingsViewModel_CheckForUpdatesInProgress" xml:space="preserve">
+    <value>Идет проверка...</value>
+  </data>
+  <data name="SettingsViewModel_ChooseFolder" xml:space="preserve">
+    <value>Выбрать</value>
+  </data>
+  <data name="SettingsViewModel_ClearCacheFailed" xml:space="preserve">
+    <value>Ошибка во время очистки кэша</value>
+  </data>
+  <data name="SettingsViewModel_ClearCacheSuccessfully" xml:space="preserve">
+    <value>Кэш очищен</value>
+  </data>
+  <data name="SettingsViewModel_FolderWasNotFound" xml:space="preserve">
+    <value>Папка не найдена</value>
+  </data>
+  <data name="SettingsViewModel_PurchaseGratitude" xml:space="preserve">
+    <value>Благодарю за поддержку!</value>
+  </data>
+  <data name="SettingsViewModel_PurchaseWasFailedOrCanceled" xml:space="preserve">
+    <value>Покупка отменена или завершена с ошибкой</value>
+  </data>
+  <data name="SettingsViewModel_RebootApplication" xml:space="preserve">
+    <value>Перезапустите приложение</value>
+  </data>
+  <data name="SettingsViewModel_ResetUserDataCompleted" xml:space="preserve">
+    <value>Готово.
+Для завершения перезапустите приложение.</value>
+  </data>
+  <data name="SettingsViewModel_ResetUserDataConfirmation" xml:space="preserve">
+    <value>Вы уверены, что хотите сбросить все данные?</value>
+  </data>
+  <data name="SettingsViewModel_TrialExpriring" xml:space="preserve">
+    <value>Заканчивается пробный период</value>
+  </data>
+  <data name="SettingsViewModel_UnableToCreateFile" xml:space="preserve">
+    <value>Не удалось создать файл</value>
+  </data>
+  <data name="SettingsViewModel_UnableToReadFile" xml:space="preserve">
+    <value>Не удалось прочитать файл</value>
+  </data>
+  <data name="SettingsViewModel_UnableToWriteFile" xml:space="preserve">
+    <value>Не удалось записать в файл</value>
+  </data>
+  <data name="Settings_Support" xml:space="preserve">
+    <value>Поддержать</value>
+  </data>
+  <data name="ShareService_DataItemDescription" xml:space="preserve">
+    <value>Поделиться ссылкой на "{0}"</value>
+  </data>
+  <data name="ShareService_UnknownError" xml:space="preserve">
+    <value>Что-то пошло не так</value>
+  </data>
+  <data name="SiteMirrorSelector_CurrentMirror" xml:space="preserve">
+    <value>Текущее зеркало</value>
+  </data>
+  <data name="SiteMirrorSelector_CurrentMirror_FallbackIfNoMirror" xml:space="preserve">
+    <value>Зеркало</value>
+  </data>
+  <data name="SiteMirrorSelector_DefaultMirrors" xml:space="preserve">
+    <value>Стандартные зеркала</value>
+  </data>
+  <data name="Site_All" xml:space="preserve">
+    <value>Все</value>
+  </data>
+  <data name="Site_Any" xml:space="preserve">
+    <value>Любой</value>
+  </data>
+  <data name="Site_Local" xml:space="preserve">
+    <value>Локальное</value>
+  </data>
+  <data name="SortType_Alphabet" xml:space="preserve">
+    <value>По алфавиту</value>
+  </data>
+  <data name="SortType_Commented" xml:space="preserve">
+    <value>По комментариям</value>
+  </data>
+  <data name="SortType_CreateDate" xml:space="preserve">
+    <value>По дате добавления</value>
+  </data>
+  <data name="SortType_Episodes" xml:space="preserve">
+    <value>По числу серий</value>
+  </data>
+  <data name="SortType_FileSize" xml:space="preserve">
+    <value>По размеру файла</value>
+  </data>
+  <data name="SortType_IMDb" xml:space="preserve">
+    <value>По IMDb</value>
+  </data>
+  <data name="SortType_KinoPoisk" xml:space="preserve">
+    <value>По KinoPoisk</value>
+  </data>
+  <data name="SortType_LastViewed" xml:space="preserve">
+    <value>По просмотру</value>
+  </data>
+  <data name="SortType_Popularity" xml:space="preserve">
+    <value>По популярности</value>
+  </data>
+  <data name="SortType_Random" xml:space="preserve">
+    <value>Случайно</value>
+  </data>
+  <data name="SortType_Rating" xml:space="preserve">
+    <value>По рейтингу</value>
+  </data>
+  <data name="SortType_Revenue" xml:space="preserve">
+    <value>По сборам</value>
+  </data>
+  <data name="SortType_Trend" xml:space="preserve">
+    <value>В тренде</value>
+  </data>
+  <data name="SortType_UpdateDate" xml:space="preserve">
+    <value>По дате обновления</value>
+  </data>
+  <data name="SortType_Visit" xml:space="preserve">
+    <value>По посещаемости</value>
+  </data>
+  <data name="SortType_Year" xml:space="preserve">
+    <value>По году выпуска</value>
+  </data>
+  <data name="StatusType_Anons" xml:space="preserve">
+    <value>Анонсирован</value>
+  </data>
+  <data name="StatusType_Canceled" xml:space="preserve">
+    <value>Закрыт</value>
+  </data>
+  <data name="StatusType_InProduction" xml:space="preserve">
+    <value>В производстве</value>
+  </data>
+  <data name="StatusType_Ongoing" xml:space="preserve">
+    <value>Продолжается</value>
+  </data>
+  <data name="StatusType_Paused" xml:space="preserve">
+    <value>На паузе</value>
+  </data>
+  <data name="StatusType_Pilot" xml:space="preserve">
+    <value>Пилот</value>
+  </data>
+  <data name="StatusType_PostProduction" xml:space="preserve">
+    <value>Пост-продакшн</value>
+  </data>
+  <data name="StatusType_Released" xml:space="preserve">
+    <value>Вышел</value>
+  </data>
+  <data name="StatusType_Rumored" xml:space="preserve">
+    <value>Слухи</value>
+  </data>
+  <data name="Stretch_Fill" xml:space="preserve">
+    <value>Растянуть</value>
+  </data>
+  <data name="Stretch_None" xml:space="preserve">
+    <value>Оригинал</value>
+  </data>
+  <data name="Stretch_Uniform" xml:space="preserve">
+    <value>По ширине</value>
+  </data>
+  <data name="Stretch_UniformToFill" xml:space="preserve">
+    <value>По высоте</value>
+  </data>
+  <data name="Subtitles_None" xml:space="preserve">
+    <value>Нет</value>
+  </data>
+  <data name="TagType_Actor_One" xml:space="preserve">
+    <value>Актер</value>
+  </data>
+  <data name="TagType_Actor_Other" xml:space="preserve">
+    <value>Актеры</value>
+  </data>
+  <data name="TagType_Composer_One" xml:space="preserve">
+    <value>Композитор</value>
+  </data>
+  <data name="TagType_Composer_Other" xml:space="preserve">
+    <value>Композиторы</value>
+  </data>
+  <data name="TagType_County_One" xml:space="preserve">
+    <value>Страна</value>
+  </data>
+  <data name="TagType_County_Other" xml:space="preserve">
+    <value>Страны</value>
+  </data>
+  <data name="TagType_Director_One" xml:space="preserve">
+    <value>Режиссер</value>
+  </data>
+  <data name="TagType_Director_Other" xml:space="preserve">
+    <value>Режиссеры</value>
+  </data>
+  <data name="TagType_Duration" xml:space="preserve">
+    <value>Время</value>
+  </data>
+  <data name="TagType_Genre_One" xml:space="preserve">
+    <value>Жанр</value>
+  </data>
+  <data name="TagType_Genre_Other" xml:space="preserve">
+    <value>Жанры</value>
+  </data>
+  <data name="TagType_Provider" xml:space="preserve">
+    <value>Источник</value>
+  </data>
+  <data name="TagType_Quality" xml:space="preserve">
+    <value>Качество</value>
+  </data>
+  <data name="TagType_Section" xml:space="preserve">
+    <value>Категория</value>
+  </data>
+  <data name="TagType_Status" xml:space="preserve">
+    <value>Статус</value>
+  </data>
+  <data name="TagType_Studio_One" xml:space="preserve">
+    <value>Студия</value>
+  </data>
+  <data name="TagType_Studio_Other" xml:space="preserve">
+    <value>Студии</value>
+  </data>
+  <data name="TagType_Writter_One" xml:space="preserve">
+    <value>Сценарист</value>
+  </data>
+  <data name="TagType_Writter_Other" xml:space="preserve">
+    <value>Сценаристы</value>
+  </data>
+  <data name="TagType_Year" xml:space="preserve">
+    <value>Год</value>
+  </data>
+  <data name="TitledTag_Any" xml:space="preserve">
+    <value>Все</value>
+  </data>
+  <data name="VideoPage_DownloadVideoCommand" xml:space="preserve">
+    <value>Скачать видео</value>
+  </data>
+  <data name="VideoPage_OpenInBrowserCommand" xml:space="preserve">
+    <value>Открыть в браузере</value>
+  </data>
+  <data name="VideoPage_OpenInBrowserCommand_ToolTip" xml:space="preserve">
+    <value>Открыть видео в браузере</value>
+  </data>
+  <data name="VideoPage_OpenInNewWindowButtonCommand" xml:space="preserve">
+    <value>Открыть в новом окне</value>
+  </data>
+  <data name="VideoPage_OpenInNewWindowButtonCommand_ToolTip" xml:space="preserve">
+    <value>Открыть видео в новом окне</value>
+  </data>
+  <data name="VideoPage_ShareGrabbedFrameCommand" xml:space="preserve">
+    <value>Поделиться кадром</value>
+  </data>
+  <data name="VideoPage_ShowVideoAttention" xml:space="preserve">
+    <value>Приложение не добавляет рекламу. Переключайте источники для поиска видео без нее.</value>
+  </data>
+  <data name="WindowsHelloVerificationService_RequestVerificationHeader" xml:space="preserve">
+    <value>Проверка доступа</value>
+  </data>
+  <data name="Window_PlayerWindowTitle" xml:space="preserve">
+    <value>Плеер</value>
+  </data>
+  <data name="YearSelector_AllYears" xml:space="preserve">
+    <value>Все</value>
+  </data>
+  <data name="YearSelector_From" xml:space="preserve">
+    <value>От</value>
+  </data>
+  <data name="YearSelector_SpecificYear" xml:space="preserve">
+    <value>Год</value>
+  </data>
+  <data name="YearSelector_To" xml:space="preserve">
+    <value>До</value>
+  </data>
+  <data name="YearSelector_YearFormat" xml:space="preserve">
+    <value>{0} г.</value>
+    <comment>@MutedRule(PunctuationTail)</comment>
+  </data>
+</root>

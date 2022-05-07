@@ -1,0 +1,1692 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Activation_ApplicationUpdated" xml:space="preserve">
+    <value>Додаток оновлено</value>
+  </data>
+  <data name="Activation_CheckBackgroundTasks" xml:space="preserve">
+    <value>Оновлення фонових завдань</value>
+  </data>
+  <data name="Activation_CheckSecondaryTiles" xml:space="preserve">
+    <value>Оновлення плиток в меню Пуск</value>
+  </data>
+  <data name="Activation_CheckUpdates" xml:space="preserve">
+    <value>Перевірка оновлень</value>
+  </data>
+  <data name="Activation_ClearCache" xml:space="preserve">
+    <value>Очищення кешу</value>
+  </data>
+  <data name="Activation_ComponentError" xml:space="preserve">
+    <value>Помилка під час завантаження компонентів додатка</value>
+  </data>
+  <data name="Activation_DeleteTorrServerTorrents" xml:space="preserve">
+    <value>Видалення активних торрентів TorrServer</value>
+  </data>
+  <data name="Activation_EnsureDisplayMargin" xml:space="preserve">
+    <value>Перевірка рамок дисплея</value>
+  </data>
+  <data name="Activation_FavoritesLoading" xml:space="preserve">
+    <value>Читання обраного</value>
+  </data>
+  <data name="Activation_MirrorsWasUpdated" xml:space="preserve">
+    <value>Список дзеркал був оновлений
+Перезапустіть програму</value>
+  </data>
+  <data name="Activation_NoAccessError" xml:space="preserve">
+    <value>Помилка: немає доступу</value>
+  </data>
+  <data name="Activation_UpdateMirrors" xml:space="preserve">
+    <value>Оновлення дзеркал</value>
+  </data>
+  <data name="AddReviewDialog_SendReview" xml:space="preserve">
+    <value>Відправити</value>
+  </data>
+  <data name="AddReviewDialog_WriteReview_Header" xml:space="preserve">
+    <value>Написати відгук</value>
+  </data>
+  <data name="AddReviewDialog_WriteReview_Placeholder" xml:space="preserve">
+    <value>Ваш відгук</value>
+  </data>
+  <data name="AuthStatus_Canceled" xml:space="preserve">
+    <value>Авторизація скасована</value>
+  </data>
+  <data name="AuthStatus_Error" xml:space="preserve">
+    <value>Помилка авторизації</value>
+  </data>
+  <data name="AuthStatus_Success" xml:space="preserve">
+    <value>Успішна авторизація</value>
+  </data>
+  <data name="AuthUserControl_AccountAt" xml:space="preserve">
+    <value>Аккаунт на</value>
+  </data>
+  <data name="AuthUserControl_Authorize" xml:space="preserve">
+    <value>Авторизація</value>
+  </data>
+  <data name="AuthUserControl_LogOut" xml:space="preserve">
+    <value>Вийти</value>
+  </data>
+  <data name="AuthUserControl_ProActiveTextBlock" xml:space="preserve">
+    <value>ПРО-аккаунт на джерелі активний</value>
+  </data>
+  <data name="AuthUserControl_Register" xml:space="preserve">
+    <value>Реєстрація</value>
+  </data>
+  <data name="BackupDialog_BackupFavorites" xml:space="preserve">
+    <value>Обране</value>
+  </data>
+  <data name="BackupDialog_BackupHistory" xml:space="preserve">
+    <value>Історія</value>
+  </data>
+  <data name="BackupDialog_BackupInternalSettings" xml:space="preserve">
+    <value>Внутрішні параметри</value>
+  </data>
+  <data name="BackupDialog_BackupStateSettings" xml:space="preserve">
+    <value>Стан додатка</value>
+  </data>
+  <data name="BackupDialog_BackupUserSettings" xml:space="preserve">
+    <value>Користувацькі параметри</value>
+  </data>
+  <data name="CastTo_DeviceDidNotRespond" xml:space="preserve">
+    <value>Пристрій не відповідає</value>
+  </data>
+  <data name="CastTo_DeviceError" xml:space="preserve">
+    <value>Невідома помилка на пристрої</value>
+  </data>
+  <data name="CastTo_DeviceLocked" xml:space="preserve">
+    <value>Пристрій заблоковано</value>
+  </data>
+  <data name="CastTo_InvalidCastingSource" xml:space="preserve">
+    <value>Потік не підтримується</value>
+  </data>
+  <data name="CastTo_ProtectedPlaybackFailed" xml:space="preserve">
+    <value>Устойство не підтримує даний файл</value>
+  </data>
+  <data name="CastTo_StartCastFailed" xml:space="preserve">
+    <value>Помилка при спробі передати на пристрій</value>
+  </data>
+  <data name="CastTo_Succeeded" xml:space="preserve">
+    <value>Операція успішна</value>
+  </data>
+  <data name="CastTo_Unknown" xml:space="preserve">
+    <value>Невідома помилка при передачі на пристрій</value>
+  </data>
+  <data name="ChangesDialog_SkipUpdateToNewVersion" xml:space="preserve">
+    <value>Пропустити оновлення {0}?
+При наступному запуску додаток не нагадуватиме про нього.
+За бажанням ви зможете перевірити наявність оновлень "Параметри - Про додаток".</value>
+  </data>
+  <data name="ChangesDialog_TitleLastUpdateChanges" xml:space="preserve">
+    <value>Останні зміни</value>
+  </data>
+  <data name="ChangesDialog_TitleNewUpdateIsAvailable" xml:space="preserve">
+    <value>Доступне нове оновлення {0}</value>
+  </data>
+  <data name="ChangesDialog_UnknownVersion" xml:space="preserve">
+    <value>Невідома версія</value>
+  </data>
+  <data name="ChangesDialog_UpdateToNewVersion" xml:space="preserve">
+    <value>Оновити</value>
+  </data>
+  <data name="CheckForUpdatesResult_Available" xml:space="preserve">
+    <value>Доступне нове оновлення</value>
+  </data>
+  <data name="CheckForUpdatesResult_NotSupported" xml:space="preserve">
+    <value>Оновлення не підтримуються</value>
+  </data>
+  <data name="CheckForUpdatesResult_NoUpdates" xml:space="preserve">
+    <value>Немає нових версій</value>
+  </data>
+  <data name="CheckForUpdatesResult_Skipped" xml:space="preserve">
+    <value>Оновлення доступне, але було пропущене</value>
+  </data>
+  <data name="CheckForUpdatesResult_UnknownError" xml:space="preserve">
+    <value>Невідома помилка</value>
+  </data>
+  <data name="ClearCacheModes_None" xml:space="preserve">
+    <value>не очищати</value>
+  </data>
+  <data name="ClearCacheModes_OnExit" xml:space="preserve">
+    <value>при закритті</value>
+  </data>
+  <data name="ClearCacheModes_OnStart" xml:space="preserve">
+    <value>при запуску</value>
+  </data>
+  <data name="ClearCacheModes_OnStartAndExit" xml:space="preserve">
+    <value>при запуску та при закритті</value>
+  </data>
+  <data name="ClearCacheModes_OnTimer" xml:space="preserve">
+    <value>за таймером</value>
+  </data>
+  <data name="CloseableAlert_CloseAndNotShowAnymore" xml:space="preserve">
+    <value>Більше не показувати</value>
+  </data>
+  <data name="Common_SizeInMegaBytes" xml:space="preserve">
+    <value>{0:### ###} МБ</value>
+  </data>
+  <data name="ConfirmDialog_DialogTitle" xml:space="preserve">
+    <value>Підтвердження</value>
+  </data>
+  <data name="ConfirmDialog_OpenMissedFeatureLink" xml:space="preserve">
+    <value>Додаток не знайшов необхідне розширення "{0}". Відкрити посилання для встановлення?</value>
+  </data>
+  <data name="ContentDialog_Cancel" xml:space="preserve">
+    <value>Скасувати</value>
+  </data>
+  <data name="ContentDialog_Ok" xml:space="preserve">
+    <value>Ок</value>
+  </data>
+  <data name="CriticalDialogLogger_ShouldApplicationExit" xml:space="preserve">
+    <value>Сталася критична помилка!
+Дані можуть бути втрачені або пошкоджені.
+Закрити додаток?
+
+Текст помилки: {0}.</value>
+  </data>
+  <data name="Deactivation_ClearCache" xml:space="preserve">
+    <value>Очищення кешу</value>
+  </data>
+  <data name="Deactivation_DatabaseCheckpoint" xml:space="preserve">
+    <value>Збереження бази даних</value>
+  </data>
+  <data name="Deactivation_SaveState" xml:space="preserve">
+    <value>Збереження стану</value>
+  </data>
+  <data name="Deactivation_StopTorrServerTorrents" xml:space="preserve">
+    <value>Зупинка активних торрентів TorrServer</value>
+  </data>
+  <data name="DeviceFlowDialog_Description" xml:space="preserve">
+    <value>Для роботи цього джерела ви повинні зайти за доромогою браузер на його сайт в своїй обліковий запис і ввести код на сторінці активації пристрою :</value>
+  </data>
+  <data name="DeviceFlowDialog_DeviceCode" xml:space="preserve">
+    <value>Код пристрою</value>
+  </data>
+  <data name="DeviceFlowDialog_DialogTitle" xml:space="preserve">
+    <value>Активація пристрою</value>
+  </data>
+  <data name="DownloadResult_Canceled" xml:space="preserve">
+    <value>Завантаження скасовано</value>
+  </data>
+  <data name="DownloadResult_Completed" xml:space="preserve">
+    <value>Файл збережено</value>
+  </data>
+  <data name="DownloadResult_FailedFileCreate" xml:space="preserve">
+    <value>Помилка при створення файлу</value>
+  </data>
+  <data name="DownloadResult_FailedFolderOpen" xml:space="preserve">
+    <value>Не вдалося відкрити папку для збереження файлу</value>
+  </data>
+  <data name="DownloadResult_FailedUnknown" xml:space="preserve">
+    <value>Не вдалося почати завантаження</value>
+  </data>
+  <data name="DownloadResult_InProgress" xml:space="preserve">
+    <value>Завантаження</value>
+  </data>
+  <data name="DownloadResult_NotSupported" xml:space="preserve">
+    <value>Файл не підтримує</value>
+  </data>
+  <data name="DownloadResult_NotSupported_Hls" xml:space="preserve">
+    <value>M3u8 файли не можливі для завантаження
+Надайте дозвіл: Параметри -&gt; Завантажити відео</value>
+  </data>
+  <data name="DownloadResult_NotSupported_Magnet" xml:space="preserve">
+    <value>Магнет посилання не можна завантажити</value>
+  </data>
+  <data name="DownloadResult_NotSupported_MultiSource" xml:space="preserve">
+    <value>Відео що складаються з кількох файлів, не можливе для завантаження</value>
+  </data>
+  <data name="DownloadResult_Unknown" xml:space="preserve">
+    <value>Операція завершилася з невідомим результатом</value>
+  </data>
+  <data name="DownloadsPage_BackgroundDownloadAlert" xml:space="preserve">
+    <value>Увага! У економному режимі завантаження у фоні не продовжується.</value>
+  </data>
+  <data name="DownloadsPage_DeleteSelectedCommand_FromDevice" xml:space="preserve">
+    <value>Видалити обране з пристрою</value>
+  </data>
+  <data name="DownloadsPage_DeleteSelectedCommand_FromList" xml:space="preserve">
+    <value>Видалити обране зі списку</value>
+  </data>
+  <data name="DownloadsPage_DeleteSelectedCommand_ToolTip" xml:space="preserve">
+    <value>Видалити обрані файли</value>
+  </data>
+  <data name="DownloadsPage_File_OpenFile" xml:space="preserve">
+    <value>Відкрити файл</value>
+  </data>
+  <data name="DownloadsPage_File_OpenFolder" xml:space="preserve">
+    <value>Відкрити папку</value>
+  </data>
+  <data name="DownloadsPage_File_Pause" xml:space="preserve">
+    <value>Пауза</value>
+  </data>
+  <data name="DownloadsPage_File_RemoveFromDevice" xml:space="preserve">
+    <value>Видалити файл з пристрою</value>
+  </data>
+  <data name="DownloadsPage_File_RemoveFromList" xml:space="preserve">
+    <value>Видалити файл зі списку</value>
+  </data>
+  <data name="DownloadsPage_OpenFolder" xml:space="preserve">
+    <value>Відкрити папку</value>
+  </data>
+  <data name="DownloadsPage_OpenFolder_ToolTip" xml:space="preserve">
+    <value>Відкрити папку з файлом</value>
+  </data>
+  <data name="DownloadStatus_Canceled" xml:space="preserve">
+    <value>Завантаження скасовано</value>
+  </data>
+  <data name="DownloadStatus_Completed" xml:space="preserve">
+    <value>Завершено</value>
+  </data>
+  <data name="DownloadStatus_Error" xml:space="preserve">
+    <value>Невідома помилка</value>
+  </data>
+  <data name="DownloadStatus_FileMissed" xml:space="preserve">
+    <value>Файл був видалений</value>
+  </data>
+  <data name="DownloadStatus_Idle" xml:space="preserve">
+    <value>Очікування</value>
+  </data>
+  <data name="DownloadStatus_Idle_With_Total" xml:space="preserve">
+    <value>Очікування: {0:#,0} /{1:#,0} КБ</value>
+  </data>
+  <data name="DownloadStatus_NoNetwork" xml:space="preserve">
+    <value>Немає мережі</value>
+  </data>
+  <data name="DownloadStatus_Paused" xml:space="preserve">
+    <value>Завантаження призупинено</value>
+  </data>
+  <data name="DownloadStatus_Resuming" xml:space="preserve">
+    <value>Завантаження</value>
+  </data>
+  <data name="DownloadStatus_Running" xml:space="preserve">
+    <value>Завантаження: {0:#,0} КБ</value>
+  </data>
+  <data name="DownloadStatus_Running_With_Total" xml:space="preserve">
+    <value>Завантаження: {0:#,0} / {1:#,0} КБ</value>
+  </data>
+  <data name="DownloadsViewModel_FileDownloadCompleted" xml:space="preserve">
+    <value>Завантаження "{0}" завершена</value>
+  </data>
+  <data name="DownloadsViewModel_FileDownloadFailed" xml:space="preserve">
+    <value>Помилка під час завантаження "{0}"</value>
+  </data>
+  <data name="DownloadsViewModel_FileDownloadWasCancelled" xml:space="preserve">
+    <value>Завантаження "{0}" скасовано</value>
+  </data>
+  <data name="DownloadsViewModel_FolderIsNotSelected" xml:space="preserve">
+    <value>Папку не було обрана в параметрах</value>
+  </data>
+  <data name="EpisodesCalendar_CalendarAlert_Tooltip" xml:space="preserve">
+    <value>Дата виходу може не співпадати з датою появи перекладу на джерелах</value>
+  </data>
+  <data name="FavoitesPage_MoveButton" xml:space="preserve">
+    <value>Перенести</value>
+  </data>
+  <data name="FavoitesPage_MoveButton_ToolTip" xml:space="preserve">
+    <value>Перенести в інший список</value>
+  </data>
+  <data name="FavoriteListKind_Favorites" xml:space="preserve">
+    <value>Обране</value>
+  </data>
+  <data name="FavoriteListKind_Finished" xml:space="preserve">
+    <value>Завершене</value>
+  </data>
+  <data name="FavoriteListKind_ForLater" xml:space="preserve">
+    <value>На майбутнє</value>
+  </data>
+  <data name="FavoriteListKind_InProcess" xml:space="preserve">
+    <value>В процесі</value>
+  </data>
+  <data name="FavoriteListKind_None" xml:space="preserve">
+    <value>Немає</value>
+  </data>
+  <data name="FavoritesPage_GroupItemsBySection" xml:space="preserve">
+    <value>Групувати</value>
+  </data>
+  <data name="FavoritesPage_SectionFilter" xml:space="preserve">
+    <value>Категорія</value>
+  </data>
+  <data name="Favorites_ErrorDuringLoading" xml:space="preserve">
+    <value>Помилка під час завантаження обраного</value>
+  </data>
+  <data name="Favorites_FavoritesWasMoved" xml:space="preserve">
+    <value>Вибране перенесено</value>
+  </data>
+  <data name="Favorites_ItemAlreadyAddedMessage" xml:space="preserve">
+    <value>Матеріал вже в списку</value>
+  </data>
+  <data name="Favorites_ItemDoesNotExistInListMessage" xml:space="preserve">
+    <value>Матеріалу немає в списку</value>
+  </data>
+  <data name="Favorites_ItemIsNotSupportedByProviderMessage" xml:space="preserve">
+    <value>Матеріал не підтримується джерелом обраного</value>
+  </data>
+  <data name="Favorites_NoListTypeMessage" xml:space="preserve">
+    <value>Не існує необхідної категорії</value>
+  </data>
+  <data name="Favorites_NoSourceMessage" xml:space="preserve">
+    <value>Не встановлено джерело обраного</value>
+  </data>
+  <data name="Favorites_SourceIsNotSupported" xml:space="preserve">
+    <value>Джерело не підтримується</value>
+  </data>
+  <data name="Favorites_UnknownError" xml:space="preserve">
+    <value>Невідома помилка обраного</value>
+  </data>
+  <data name="FilesPage_DownloadSelected_Download" xml:space="preserve">
+    <value>Завантажити файли</value>
+  </data>
+  <data name="FilesPage_DownloadSelected_DownloadAsM3u8" xml:space="preserve">
+    <value>Завантажити .m3u8 плейлист</value>
+  </data>
+  <data name="FilesPage_DownloadSelected_ToolTip" xml:space="preserve">
+    <value>Завантажити обрані файли</value>
+  </data>
+  <data name="FilesPage_FileIsWatchedSelectedToggle_Off_ToolTip" xml:space="preserve">
+    <value>Не проглянуто</value>
+  </data>
+  <data name="FilesPage_FileIsWatchedSelectedToggle_On_ToolTip" xml:space="preserve">
+    <value>Проглянуто</value>
+  </data>
+  <data name="FilesPage_File_CopyFileLink_ToolTip" xml:space="preserve">
+    <value>Копіювати посилання на файл</value>
+  </data>
+  <data name="FilesPage_File_DownloadFile_ToolTip" xml:space="preserve">
+    <value>Завантажити файл</value>
+  </data>
+  <data name="FilesPage_File_OpenVideoFile_ToolTip" xml:space="preserve">
+    <value>Відкрити відео</value>
+  </data>
+  <data name="FilesPage_File_SpecificSubtile" xml:space="preserve">
+    <value>Субтитри</value>
+  </data>
+  <data name="FilesPage_GoUpCommand" xml:space="preserve">
+    <value>Повернутися до попередньої папки</value>
+  </data>
+  <data name="FilesPage_OpenRemoteCommand_ToolTip" xml:space="preserve">
+    <value>Відкрити на іншому пристрої</value>
+  </data>
+  <data name="FilesPage_ProviderCategory_Torrent" xml:space="preserve">
+    <value>Торенти</value>
+  </data>
+  <data name="FilesPage_ProviderCategory_Torrent_ToolTip" xml:space="preserve">
+    <value>Джерела торент файлів</value>
+  </data>
+  <data name="FilesPage_ProviderCategory_Video" xml:space="preserve">
+    <value>Відео</value>
+  </data>
+  <data name="FilesPage_ProviderCategory_Video_ToolTip" xml:space="preserve">
+    <value>Джерела відео файлів</value>
+  </data>
+  <data name="FilesPage_ProvidersAlertControl" xml:space="preserve">
+    <value>Якщо у вас є проблеми з відео, спробуйте перемкнути джерело ↑</value>
+  </data>
+  <data name="FilesPage_ProviderSearchStrategy_All" xml:space="preserve">
+    <value>Шукати скрізь</value>
+  </data>
+  <data name="FilesPage_ProviderSearchStrategy_All_ToolTip" xml:space="preserve">
+    <value>Пошук на усіх джерелах відразу</value>
+  </data>
+  <data name="FilesPage_ProviderSearchStrategy_Any" xml:space="preserve">
+    <value>Автоматично</value>
+  </data>
+  <data name="FilesPage_ProviderSearchStrategy_Any_ToolTip" xml:space="preserve">
+    <value>Пошук з урахуванням порядку в параметрах</value>
+  </data>
+  <data name="FilesPage_RefreshFolderCommand" xml:space="preserve">
+    <value>Оновити папку</value>
+  </data>
+  <data name="FilesPage_Torrent_DownloadTorrent" xml:space="preserve">
+    <value>Завантажити торрент файл</value>
+  </data>
+  <data name="FilesPage_Torrent_OpenTorrent" xml:space="preserve">
+    <value>Відкрити торент</value>
+  </data>
+  <data name="FilesPage_Torrent_OpenTorrentRemote" xml:space="preserve">
+    <value>Відкрити на іншому пристрої</value>
+  </data>
+  <data name="FilesViewModel_ConfirmToManyFilesDownload" xml:space="preserve">
+    <value>Завантаження більше п'яти файлів за раз не рекомендується.
+Час життя посилання на відео у багатьох джерел обмежено, і через це може статися ситуація, коли завантаження впаде з помилкою.
+Ви впевнені?</value>
+  </data>
+  <data name="FilesViewModel_ErrorDuringFilesPreloading" xml:space="preserve">
+    <value>Помилка під час отримання іфнормаціі файлів</value>
+  </data>
+  <data name="FilesViewModel_ErrorDuringFolderRefresh" xml:space="preserve">
+    <value>Помилка під час оновлення сторінки</value>
+  </data>
+  <data name="FilesViewModel_FileOpeningWasCanceledByOtherOperation" xml:space="preserve">
+    <value>Відкриття файлу скасовано іншою операцією</value>
+  </data>
+  <data name="FilesViewModel_FilesPreloadingProcess" xml:space="preserve">
+    <value>Отримання інформації файлів...</value>
+  </data>
+  <data name="FilesViewModel_FoldersDownloadingIsNotAvailable" xml:space="preserve">
+    <value>Завантаження папок не підтримуються</value>
+  </data>
+  <data name="FilesViewModel_InvalidTorrServerAddress" xml:space="preserve">
+    <value>Недійсна адреса TorrServer</value>
+  </data>
+  <data name="FilesViewModel_LinkCopiedClipboard" xml:space="preserve">
+    <value>Посилання скопійована в буфер обміну</value>
+  </data>
+  <data name="FilesViewModel_NoTrailersFound" xml:space="preserve">
+    <value>Трейлери не знайдені</value>
+  </data>
+  <data name="FilesViewModel_TorrentFilesDownloadCompleted" xml:space="preserve">
+    <value>Завершено завантаження {0} торрент файлів</value>
+  </data>
+  <data name="FilesViewModel_UnableToOpenTorrentFile" xml:space="preserve">
+    <value>Не вдалося відкрити торрент-файл</value>
+  </data>
+  <data name="FilesViewModel_UnableToOpenTrailler" xml:space="preserve">
+    <value>Не вдалося відкрити трейлер</value>
+  </data>
+  <data name="FilesViewModel_VideoFilesDownloadCompleted" xml:space="preserve">
+    <value>Запущено завантаження {0} відео файлів</value>
+  </data>
+  <data name="File_Episode" xml:space="preserve">
+    <value>Серія</value>
+  </data>
+  <data name="File_EpisodeWithNumber" xml:space="preserve">
+    <value>Серія {0}</value>
+  </data>
+  <data name="File_Season" xml:space="preserve">
+    <value>Сезон</value>
+  </data>
+  <data name="File_SeasonAndEpisodeWithNumber" xml:space="preserve">
+    <value>Сезон {0} серія {0}</value>
+  </data>
+  <data name="File_SeasonWithNumber" xml:space="preserve">
+    <value>Сезон {0}</value>
+  </data>
+  <data name="FolderHeaderControl_ShowProvidersPaneToggleButton" xml:space="preserve">
+    <value>Джерела</value>
+  </data>
+  <data name="FolderHeaderControl_ShowProvidersPaneToggleButton_ToolTip" xml:space="preserve">
+    <value>Вибрати джерело файлів</value>
+  </data>
+  <data name="Folders_ItemIsBlocked" xml:space="preserve">
+    <value>Матеріал заблокований на вимогу правовласників</value>
+  </data>
+  <data name="Folders_NotInGroup" xml:space="preserve">
+    <value>Поза групою</value>
+  </data>
+  <data name="HideableTextBox_FolderSearch" xml:space="preserve">
+    <value>Пошук у папці</value>
+  </data>
+  <data name="HistoryPage_DeleteSelectedCommand" xml:space="preserve">
+    <value>Видалити</value>
+  </data>
+  <data name="HistoryPage_DeleteSelectedCommand_ToolTip" xml:space="preserve">
+    <value>Видалити обрані файли</value>
+  </data>
+  <data name="HistoryPage_DistinctItems" xml:space="preserve">
+    <value>Відображати лише останню серію</value>
+  </data>
+  <data name="HistoryPage_GroupItemsByTime" xml:space="preserve">
+    <value>Групувати за часом</value>
+  </data>
+  <data name="HistoryPage_UnionEpisodes" xml:space="preserve">
+    <value>Групувати за серіями</value>
+  </data>
+  <data name="HomePageModel_Caption" xml:space="preserve">
+    <value>Домашня</value>
+  </data>
+  <data name="HomePageModel_InCinema" xml:space="preserve">
+    <value>В кіно</value>
+  </data>
+  <data name="HomePageModel_New" xml:space="preserve">
+    <value>Нове</value>
+  </data>
+  <data name="HomePageModel_Popular" xml:space="preserve">
+    <value>Популярне</value>
+  </data>
+  <data name="HomePageViewModel_SiteIsNotAvailableNow" xml:space="preserve">
+    <value>На даний момент {0} недоступний</value>
+  </data>
+  <data name="HomePageViewModel_UnableConnectToSiteAndAskForAnotherSite" xml:space="preserve">
+    <value>Не вдалося підключитися до сайту {0}.
+Замінити основне джерело на {1}?
+У разі необхідності, в параметрах можна скасувати зміни.</value>
+  </data>
+  <data name="HomePage_QuickSearch_ToolTip" xml:space="preserve">
+    <value>Швидкий пошук</value>
+  </data>
+  <data name="ItemPageDetails_FranchiseItems" xml:space="preserve">
+    <value>Зв'язані матеріали</value>
+  </data>
+  <data name="ItemPageDetails_ProviderTagTooltip" xml:space="preserve">
+    <value>Відкрити сторінку на сайті джерела</value>
+  </data>
+  <data name="ItemPageDetails_SearchByTag" xml:space="preserve">
+    <value>Пошук матеріалів з цим теґом</value>
+  </data>
+  <data name="ItemPageDetails_SimilarItems" xml:space="preserve">
+    <value>Схожі матеріали</value>
+  </data>
+  <data name="ItemPage_AddToFavorite_ToolTip" xml:space="preserve">
+    <value>Додати в обране</value>
+  </data>
+  <data name="ItemPage_CalendarAppButton_ToolTip" xml:space="preserve">
+    <value>Графік виходу серій</value>
+  </data>
+  <data name="ItemPage_OpenItemInBrowserCommand" xml:space="preserve">
+    <value>Відкрити у браузері</value>
+  </data>
+  <data name="ItemPage_OpenItemInBrowserCommand_ToolTip" xml:space="preserve">
+    <value>Відкрити сторінку у браузері</value>
+  </data>
+  <data name="ItemPage_PinToStartCommand" xml:space="preserve">
+    <value>Закріпити</value>
+  </data>
+  <data name="ItemPage_PinToStartCommand_ToolTip" xml:space="preserve">
+    <value>Закріпити в меню "Пуск"</value>
+  </data>
+  <data name="ItemPage_ShareItemCommand" xml:space="preserve">
+    <value>Поділитися</value>
+  </data>
+  <data name="ItemPage_ShareItemCommand_ToolTip" xml:space="preserve">
+    <value>Поділитися сторінкою</value>
+  </data>
+  <data name="ItemReview_ShowHideReview_Collaps" xml:space="preserve">
+    <value>Згорнути</value>
+  </data>
+  <data name="ItemReview_ShowHideReview_Open" xml:space="preserve">
+    <value>Детальніше...</value>
+  </data>
+  <data name="ItemReview_ShowHideReview_ToolTip" xml:space="preserve">
+    <value>Розгорнути відгук</value>
+  </data>
+  <data name="ItemsListItem_RemoveFromHistory" xml:space="preserve">
+    <value>Видалити з історії</value>
+  </data>
+  <data name="ItemsPage_AddReviewAppBarCommand_ToolTip" xml:space="preserve">
+    <value>Додати відгук</value>
+  </data>
+  <data name="ItemsPage_ReviewsBlock" xml:space="preserve">
+    <value>Відгуки</value>
+  </data>
+  <data name="ItemTrailerAppBarButton_Label" xml:space="preserve">
+    <value>Трейлер</value>
+  </data>
+  <data name="ItemViewModel_SiteIsNotAvailableNow" xml:space="preserve">
+    <value>На даний момент {0} недоступний</value>
+  </data>
+  <data name="ItemViewModel_UnableToGetFullItemInfo" xml:space="preserve">
+    <value>Не вдалося отримати інформацію про матеріал</value>
+  </data>
+  <data name="ItemViewModel_UnableToPinTile" xml:space="preserve">
+    <value>Чи не вдалося прикріпити плитку</value>
+  </data>
+  <data name="Language_English" xml:space="preserve">
+    <value>Англійська</value>
+  </data>
+  <data name="Language_Japanese" xml:space="preserve">
+    <value>Японська</value>
+  </data>
+  <data name="Language_Original" xml:space="preserve">
+    <value>Мова оригіналу</value>
+  </data>
+  <data name="Language_Russian" xml:space="preserve">
+    <value>Російська</value>
+  </data>
+  <data name="Language_Ukrainian" xml:space="preserve">
+    <value>Українська</value>
+  </data>
+  <data name="Language_Unknown" xml:space="preserve">
+    <value>Невідома мова</value>
+  </data>
+  <data name="LaunchResult_ErrorHandlerIsNotAvailable" xml:space="preserve">
+    <value>Обролювач посилання або файлу, недоступний в системі</value>
+  </data>
+  <data name="LaunchResult_ErrorInvalidStorageItem" xml:space="preserve">
+    <value>Недійсна папка або файл</value>
+  </data>
+  <data name="LaunchResult_Success" xml:space="preserve">
+    <value>Операцію завершено успішно</value>
+  </data>
+  <data name="LaunchResult_UnknownError" xml:space="preserve">
+    <value>Невідома помилка</value>
+  </data>
+  <data name="ListView_Filter" xml:space="preserve">
+    <value>Фільтр</value>
+  </data>
+  <data name="ListView_GroupMode" xml:space="preserve">
+    <value>Режим вибору</value>
+  </data>
+  <data name="ListView_NothingFound" xml:space="preserve">
+    <value>Нічого немає</value>
+  </data>
+  <data name="ListView_Refresh" xml:space="preserve">
+    <value>Оновити сторінку</value>
+  </data>
+  <data name="ListView_SelectAll" xml:space="preserve">
+    <value>Вибрати все</value>
+  </data>
+  <data name="ListView_Sort" xml:space="preserve">
+    <value>Сортування</value>
+  </data>
+  <data name="ListView_UnselectAll" xml:space="preserve">
+    <value>Зняти виділення</value>
+  </data>
+  <data name="LoginDialog_DialogTItle" xml:space="preserve">
+    <value>Авторизація</value>
+  </data>
+  <data name="LoginDialog_LogInButton" xml:space="preserve">
+    <value>Увійти</value>
+  </data>
+  <data name="LoginDialog_Password" xml:space="preserve">
+    <value>Пароль</value>
+  </data>
+  <data name="LoginDialog_Username" xml:space="preserve">
+    <value>Логін</value>
+  </data>
+  <data name="ManagedWindow_DumpVisualTreeConfirmation" xml:space="preserve">
+    <value>Зберегти стан дерева елементів інтерфейсу?
+Додаток може не відповідати деякий час.</value>
+  </data>
+  <data name="MarginCalibrationDialog_Description" xml:space="preserve">
+    <value>Якщо монітор або телевізор обрізують межі додатка, ви можете відкалібрувати відступи від меж додатка.
+Для зручності була додана біла рамка, що виділяє активну область додатка.
+Також підтримуються клавіші ↓ ↑ на клавіатурі і ґеймпаді.
+Калібрування також доступне: "Параметри -&gt; Додаток"</value>
+  </data>
+  <data name="MarginCalibrationDialog_Title" xml:space="preserve">
+    <value>Калібрування відступів від меж додатка</value>
+  </data>
+  <data name="MediaHeader_GoNextCommand_ToolTip" xml:space="preserve">
+    <value>Наступна серія</value>
+  </data>
+  <data name="MediaHeader_GoPreviousCommand_ToolTip" xml:space="preserve">
+    <value>Попередня серія</value>
+  </data>
+  <data name="MediaHeader_OpenPlaylistCommand_ToolTip" xml:space="preserve">
+    <value>Плейлист</value>
+  </data>
+  <data name="MediaMainControls_FullScreenCommand_ToolTip" xml:space="preserve">
+    <value>Повноекранний режим</value>
+  </data>
+  <data name="MediaMainControls_OverlayCommand_ToolTip" xml:space="preserve">
+    <value>Поверх усіх вікон</value>
+  </data>
+  <data name="MediaMainControls_VideoParams_ToolTip" xml:space="preserve">
+    <value>Налаштування</value>
+  </data>
+  <data name="MediaSettings_AudioTracks" xml:space="preserve">
+    <value>Аудіо</value>
+  </data>
+  <data name="MediaSettings_PlaybackRate" xml:space="preserve">
+    <value>Швидкість</value>
+  </data>
+  <data name="MediaSettings_Stretch" xml:space="preserve">
+    <value>Положення</value>
+  </data>
+  <data name="MediaSettings_SubtitleTracks" xml:space="preserve">
+    <value>Субтитри</value>
+  </data>
+  <data name="MediaSettings_VideoQuality" xml:space="preserve">
+    <value>Якість</value>
+  </data>
+  <data name="NavigationPageType_Downloads" xml:space="preserve">
+    <value>Завантаження</value>
+  </data>
+  <data name="NavigationPageType_Favorites" xml:space="preserve">
+    <value>Вибране</value>
+  </data>
+  <data name="NavigationPageType_Files" xml:space="preserve">
+    <value>Файли</value>
+  </data>
+  <data name="NavigationPageType_History" xml:space="preserve">
+    <value>Історія</value>
+  </data>
+  <data name="NavigationPageType_Home" xml:space="preserve">
+    <value>Головна</value>
+  </data>
+  <data name="NavigationPageType_ItemInfo" xml:space="preserve">
+    <value>Опис</value>
+  </data>
+  <data name="NavigationPageType_ItemsByTag" xml:space="preserve">
+    <value>Пошук за теґом</value>
+  </data>
+  <data name="NavigationPageType_LastWatched" xml:space="preserve">
+    <value>Останнє</value>
+  </data>
+  <data name="NavigationPageType_Search" xml:space="preserve">
+    <value>Пошук</value>
+  </data>
+  <data name="NavigationPageType_Settings" xml:space="preserve">
+    <value>Параметри</value>
+  </data>
+  <data name="NavigationPageType_Video" xml:space="preserve">
+    <value>Відео</value>
+  </data>
+  <data name="NodeOpenWay_CopyLink" xml:space="preserve">
+    <value>копіювати посилання</value>
+  </data>
+  <data name="NodeOpenWay_In3rdPartyApp" xml:space="preserve">
+    <value>в сторонньому плеєрі</value>
+  </data>
+  <data name="NodeOpenWay_In3rdPartyApp_Description" xml:space="preserve">
+    <value>Експериментальний функціонал.
+Працює тільки з плеєром VLC з магазину.
+Не працює з класичним VLC!</value>
+  </data>
+  <data name="NodeOpenWay_InApp" xml:space="preserve">
+    <value>в додатку</value>
+  </data>
+  <data name="NodeOpenWay_InBrowser" xml:space="preserve">
+    <value>в браузері</value>
+  </data>
+  <data name="NodeOpenWay_InSeparatedWindow" xml:space="preserve">
+    <value>в окремому вікні</value>
+  </data>
+  <data name="NodeOpenWay_Remote" xml:space="preserve">
+    <value>на іншому пристрої</value>
+  </data>
+  <data name="NodeProgressControl_NotWatched" xml:space="preserve">
+    <value>Не проглянуто</value>
+  </data>
+  <data name="NodeProgressControl_Progress" xml:space="preserve">
+    <value>Прогрес</value>
+  </data>
+  <data name="NodeProgressControl_Watched" xml:space="preserve">
+    <value>Проглянуто</value>
+  </data>
+  <data name="PageAppBar_More_Tooltip" xml:space="preserve">
+    <value>Детальніше</value>
+  </data>
+  <data name="PageAppBar_Search" xml:space="preserve">
+    <value>Пошук</value>
+  </data>
+  <data name="PageAppBar_SearchOrLink" xml:space="preserve">
+    <value>Пошук або відкрити за посиланням</value>
+  </data>
+  <data name="PageFilter_FilterByFavorites" xml:space="preserve">
+    <value>Видалети матеріали з "Вибране"</value>
+  </data>
+  <data name="PageFilter_FilterByInHistory" xml:space="preserve">
+    <value>Видалети матеріали з "Історія"</value>
+  </data>
+  <data name="PlayerControl_InitFailed" xml:space="preserve">
+    <value>Помилка під час створення плеєра</value>
+  </data>
+  <data name="PlayerControl_NoValidFileForPlayback" xml:space="preserve">
+    <value>Немає доступного відео файлу для відтворення</value>
+  </data>
+  <data name="PlayerControl_SoundMutedInPlayer" xml:space="preserve">
+    <value>У плеєрі вимкнено звук</value>
+  </data>
+  <data name="PlayerControl_ThatVideoIsNotSupported" xml:space="preserve">
+    <value>Дане відео не підтримуються</value>
+  </data>
+  <data name="Player_FileFromSpecificSite" xml:space="preserve">
+    <value>Відео з {0}</value>
+  </data>
+  <data name="ProviderRequirements_AccountForAny" xml:space="preserve">
+    <value>Для всього контенту потрібен аккаунт на даному сайті</value>
+  </data>
+  <data name="ProviderRequirements_AccountForSpecial" xml:space="preserve">
+    <value>Для частини контенту потрібен аккаунт на даному сайті</value>
+  </data>
+  <data name="ProviderRequirements_ProForAny" xml:space="preserve">
+    <value>Для всього контенту потрібен PRO-аккаунт на даному сайті</value>
+  </data>
+  <data name="ProviderRequirements_ProForSpecial" xml:space="preserve">
+    <value>Для частини контенту потрібен PRO-аккаунт на даному сайті</value>
+  </data>
+  <data name="ProviderResult_Blocked" xml:space="preserve">
+    <value>Матеріал заблокований на джерелі за проханням правовласника</value>
+  </data>
+  <data name="ProviderResult_Canceled" xml:space="preserve">
+    <value>Операцію було скасовано</value>
+  </data>
+  <data name="ProviderResult_Failed" xml:space="preserve">
+    <value>Виникла помилка</value>
+  </data>
+  <data name="ProviderResult_NeedLogin" xml:space="preserve">
+    <value>Необхідна авторизація на {0}</value>
+  </data>
+  <data name="ProviderResult_NeedProAccount" xml:space="preserve">
+    <value>Необхідний PRO аккаунт на {0}</value>
+  </data>
+  <data name="ProviderResult_NotAvailable" xml:space="preserve">
+    <value>Недоступно</value>
+  </data>
+  <data name="ProviderResult_NotFound" xml:space="preserve">
+    <value>Матеріал не знайдено в обраному джерелі</value>
+  </data>
+  <data name="ProviderResult_NotSupported" xml:space="preserve">
+    <value>Не підтримується джерелом</value>
+  </data>
+  <data name="ProviderResult_NoValidProvider" xml:space="preserve">
+    <value>Не вдалося знайти відповідний джерело. Перевірте список включених джерел в параметрах програми.</value>
+  </data>
+  <data name="ProviderResult_Success" xml:space="preserve">
+    <value>Операцію успішно завершена</value>
+  </data>
+  <data name="ProviderResult_Unknown" xml:space="preserve">
+    <value>Невідомий результат</value>
+  </data>
+  <data name="ProvidersList_AccountParams_ToolTip" xml:space="preserve">
+    <value>Аккаунт на джерелі</value>
+  </data>
+  <data name="ProvidersList_EnableProvider_ToolTip" xml:space="preserve">
+    <value>Увім/вимк джерело</value>
+  </data>
+  <data name="ProvidersList_MirrorParams_ToolTip" xml:space="preserve">
+    <value>Параметри</value>
+  </data>
+  <data name="ProvidersList_ReoderControl_ToolTip" xml:space="preserve">
+    <value>Натискайте ↑/↓ для переміщення</value>
+  </data>
+  <data name="RemoteLaunchDialog_AccessDenied" xml:space="preserve">
+    <value>Доступ заборонено</value>
+  </data>
+  <data name="RemoteLaunchDialog_AppUnavailable" xml:space="preserve">
+    <value>Додаток недоступний на вибраному пристрої</value>
+  </data>
+  <data name="RemoteLaunchDialog_DeniedByLocalSystem" xml:space="preserve">
+    <value>Заборонено поточним пристроєм</value>
+  </data>
+  <data name="RemoteLaunchDialog_DeniedByRemoteSystem" xml:space="preserve">
+    <value>Заборонено обраним пристроєм</value>
+  </data>
+  <data name="RemoteLaunchDialog_NoDeviceWasFound" xml:space="preserve">
+    <value>Не вдалося знайти пристрої, де можна запустити цей додаток.</value>
+  </data>
+  <data name="RemoteLaunchDialog_OpenOnDevice" xml:space="preserve">
+    <value>Відкрити на пристрої</value>
+  </data>
+  <data name="RemoteLaunchDialog_ProbablyNeedToUpdateRemote" xml:space="preserve">
+    <value>Можливо на ньому необхідно оновити додаток</value>
+  </data>
+  <data name="RemoteLaunchDialog_ProtocolUnavailable" xml:space="preserve">
+    <value>Протокол не підтримується пристроєм</value>
+  </data>
+  <data name="RemoteLaunchDialog_RemoteSystemUnavailable" xml:space="preserve">
+    <value>Пристрій недоступний</value>
+  </data>
+  <data name="RemoteLaunchDialog_UnknownError" xml:space="preserve">
+    <value>Невідома помилка</value>
+  </data>
+  <data name="RemoteLaunchDialog_ValueSetTooLarge" xml:space="preserve">
+    <value>Занадто велике число аргументів</value>
+  </data>
+  <data name="ReviewsViewModel_EmptyReviewIsNotValid" xml:space="preserve">
+    <value>Ви не можете відправити пусте повідомлення</value>
+  </data>
+  <data name="Section_All" xml:space="preserve">
+    <value>Все</value>
+  </data>
+  <data name="Section_Anime" xml:space="preserve">
+    <value>Аніме</value>
+  </data>
+  <data name="Section_AnimeSerial" xml:space="preserve">
+    <value>Аніме серіали</value>
+  </data>
+  <data name="Section_Cartoon" xml:space="preserve">
+    <value>Мультфільми</value>
+  </data>
+  <data name="Section_CartoonFilm" xml:space="preserve">
+    <value>Мультфільми</value>
+  </data>
+  <data name="Section_CartoonSerial" xml:space="preserve">
+    <value>Мультсеріали</value>
+  </data>
+  <data name="Section_Films" xml:space="preserve">
+    <value>Фільми</value>
+  </data>
+  <data name="Section_Serials" xml:space="preserve">
+    <value>Серіали</value>
+  </data>
+  <data name="Section_TVShow" xml:space="preserve">
+    <value>TV-Шоу</value>
+  </data>
+  <data name="SettingsPage_About_4pdaTopicCommand" xml:space="preserve">
+    <value>Тема додатка на 4pda</value>
+  </data>
+  <data name="SettingsPage_About_AskUserToShareApplication" xml:space="preserve">
+    <value>Якщо Вам сподобався додаток, порекомендуйте його знайомим :)</value>
+  </data>
+  <data name="SettingsPage_About_CheckForUpdatesCommand" xml:space="preserve">
+    <value>Перевірити оновлення</value>
+  </data>
+  <data name="SettingsPage_About_FAQLinkCommand" xml:space="preserve">
+    <value>Часто запитуване</value>
+  </data>
+  <data name="SettingsPage_About_MailToLinkCommand" xml:space="preserve">
+    <value>Написати розробникові</value>
+  </data>
+  <data name="SettingsPage_About_PrivatePolicyLinkCommand" xml:space="preserve">
+    <value>Політика конфіденційності</value>
+  </data>
+  <data name="SettingsPage_About_RedirectUserInCaseOfIssues" xml:space="preserve">
+    <value>Якщо у вас є побажання, зауваження або запитання, то краще за все написати в тему на 4pda.</value>
+  </data>
+  <data name="SettingsPage_About_ShowChangesDialogCommand" xml:space="preserve">
+    <value>Історія змін</value>
+  </data>
+  <data name="SettingsPage_About_TrelloProgress" xml:space="preserve">
+    <value>Прогрес на Trello</value>
+  </data>
+  <data name="SettingsPage_App_AccentColor" xml:space="preserve">
+    <value>Колір додатка</value>
+  </data>
+  <data name="SettingsPage_App_CanShowUpdateChangeLog" xml:space="preserve">
+    <value>Відображати список змін після оновлення додатка</value>
+  </data>
+  <data name="SettingsPage_App_ColorsGroup" xml:space="preserve">
+    <value>Кольори</value>
+  </data>
+  <data name="SettingsPage_App_CurrentLanguage" xml:space="preserve">
+    <value>Мова інтерфейсу та бажана мова джерел</value>
+  </data>
+  <data name="SettingsPage_App_CurrentLanguage_Description" xml:space="preserve">
+    <value>Більшість джерел підтримують лише російську мову.</value>
+  </data>
+  <data name="SettingsPage_App_IgnoreLauncherDefaults" xml:space="preserve">
+    <value>Запитувати, якою програмою відкрити файл або посилання</value>
+  </data>
+  <data name="SettingsPage_App_InAppLoggerNotifications" xml:space="preserve">
+    <value>Виводити повну інформацію про помилки</value>
+  </data>
+  <data name="SettingsPage_App_IsSystemColor" xml:space="preserve">
+    <value>Використати системний колір</value>
+  </data>
+  <data name="SettingsPage_App_ListenForDumpRequest" xml:space="preserve">
+    <value>Можливість зберегти дерево стану елементів інтерфейсу</value>
+  </data>
+  <data name="SettingsPage_App_ListenForDumpRequest_Description" xml:space="preserve">
+    <value>Space+D на клавіатурі</value>
+  </data>
+  <data name="SettingsPage_App_MarginCalibrationLinkCommand" xml:space="preserve">
+    <value>Калібрування відступів від меж додатка</value>
+  </data>
+  <data name="SettingsPage_App_OpenFavItemsOnFilesPage" xml:space="preserve">
+    <value>Відкривати обрані матеріали на сторінці файлів</value>
+  </data>
+  <data name="SettingsPage_App_OpenHistoryItemsOnFilesPage" xml:space="preserve">
+    <value>Відкривати матеріали з історії на сторінці файлів</value>
+  </data>
+  <data name="SettingsPage_App_OpenProxySettingsCommand" xml:space="preserve">
+    <value>Відкрити налаштування проксі</value>
+  </data>
+  <data name="SettingsPage_App_OpenVPNSettingsCommand" xml:space="preserve">
+    <value>Відкрити налаштування VPN</value>
+  </data>
+  <data name="SettingsPage_App_ShowImageBackground" xml:space="preserve">
+    <value>Зображення на тлі сторінки матеріалу</value>
+  </data>
+  <data name="SettingsPage_App_StartPage" xml:space="preserve">
+    <value>Початкова сторінка</value>
+  </data>
+  <data name="SettingsPage_App_VerifyAccess" xml:space="preserve">
+    <value>Запитувати ПІН-код при старті додатка</value>
+  </data>
+  <data name="SettingsPage_App_VerifyAccess_Description" xml:space="preserve">
+    <value>Працює через системний Windows Hello</value>
+  </data>
+  <data name="SettingsPage_App_WindowsColorSettingsCommand" xml:space="preserve">
+    <value>Відкрити налаштування кольору і прозорості</value>
+  </data>
+  <data name="SettingsPage_App_XYMouseMode" xml:space="preserve">
+    <value>XY-режим управління</value>
+  </data>
+  <data name="SettingsPage_Data_AutomatedBackupTaskEnabled" xml:space="preserve">
+    <value>Автоматично експортувати дані програми раз на добу (бекап)</value>
+  </data>
+  <data name="SettingsPage_Data_AutomatedBackupTaskEnabled_Description" xml:space="preserve">
+    <value>Зберігається останні 10 файлів
+Потрібно дозвіл на фонову роботу в системних параметрах</value>
+  </data>
+  <data name="SettingsPage_Data_ChangeBackupTaskCustomFolderCommand" xml:space="preserve">
+    <value>Змінити папку з бекапами</value>
+  </data>
+  <data name="SettingsPage_Data_ChangeLogsCustomFolderCommand" xml:space="preserve">
+    <value>Змінити папку з логами</value>
+  </data>
+  <data name="SettingsPage_Data_ClearCacheCommand" xml:space="preserve">
+    <value>Очистити кеш відео і зображень</value>
+  </data>
+  <data name="SettingsPage_Data_ClearCacheMode" xml:space="preserve">
+    <value>Автоматичне очищення кешу</value>
+  </data>
+  <data name="SettingsPage_Data_CookiesStoragePlacementNotification" xml:space="preserve">
+    <value>Cookie облікових записів, які використовуються в додатку, можна знайти в "Панель керування -&gt; Облікові записи користувачів -&gt; Диспетчер облікових даних"</value>
+  </data>
+  <data name="SettingsPage_Data_FileLogger" xml:space="preserve">
+    <value>Залогувати помилки і події додатка</value>
+  </data>
+  <data name="SettingsPage_Data_FileLogger_Description" xml:space="preserve">
+    <value>Зберігається останні 10 файлів</value>
+  </data>
+  <data name="SettingsPage_Data_OpenBackupTaskFolderCommand" xml:space="preserve">
+    <value>Відкрити папку з бекапами</value>
+  </data>
+  <data name="SettingsPage_Data_OpenLogsFolderCommand" xml:space="preserve">
+    <value>Відкрити папку з логами</value>
+  </data>
+  <data name="SettingsPage_Data_ResetDataCommand" xml:space="preserve">
+    <value>Скинути дані</value>
+  </data>
+  <data name="SettingsPage_Data_ShowBackupDialogCommand" xml:space="preserve">
+    <value>Експортувати дані</value>
+  </data>
+  <data name="SettingsPage_Data_ShowBackupLoadDialogCommand" xml:space="preserve">
+    <value>Імпортувати дані</value>
+  </data>
+  <data name="SettingsPage_Data_TraceHttp" xml:space="preserve">
+    <value>Залогувати HTTP запити</value>
+  </data>
+  <data name="SettingsPage_Data_TraceHttpWithCookies" xml:space="preserve">
+    <value>Залогувати Cookie заголовки</value>
+  </data>
+  <data name="SettingsPage_Data_TraceHttpWithCookies_Description" xml:space="preserve">
+    <value>Cookie заголовки можуть бути використані для доступу до вашого профілю в додатку</value>
+  </data>
+  <data name="SettingsPage_Data_TraceHttp_Description" xml:space="preserve">
+    <value>Може помітно знизити продуктивність
+Для уникнення логування паролів не рекомендується вводити їх в додатку з цією опцією</value>
+  </data>
+  <data name="SettingsPage_Data_UseTelemetry" xml:space="preserve">
+    <value>Відправляти звіти про помилки</value>
+  </data>
+  <data name="SettingsPage_Download_AllowDownloadM3U8Files" xml:space="preserve">
+    <value>Дозволити завантаження m3u8 відеофайлів</value>
+  </data>
+  <data name="SettingsPage_Download_AvailableSpace" xml:space="preserve">
+    <value>Вільно</value>
+  </data>
+  <data name="SettingsPage_Download_ChosenFolderName" xml:space="preserve">
+    <value>Папка для завантажених файлів</value>
+  </data>
+  <data name="SettingsPage_Download_ChosenTorrentFolderName" xml:space="preserve">
+    <value>Папка для торрент-файлів</value>
+  </data>
+  <data name="SettingsPage_Download_InternalDatabaseForTorrServer" xml:space="preserve">
+    <value>Видаляти торенти з TorrServer, коли вони більше не потрібні</value>
+  </data>
+  <data name="SettingsPage_Download_InternalDatabaseForTorrServer_Description" xml:space="preserve">
+    <value>Видаляться зазвичай при наступному запуску додатка
+Деякі публічні сервера забороняють видалення торентів, для них цю опцію варто відключити</value>
+  </data>
+  <data name="SettingsPage_Download_SerializedDownload" xml:space="preserve">
+    <value>Завантажувати файли</value>
+  </data>
+  <data name="SettingsPage_Download_SerializedDownload_OffContent" xml:space="preserve">
+    <value>Одночасно</value>
+  </data>
+  <data name="SettingsPage_Download_SerializedDownload_OnContent" xml:space="preserve">
+    <value>Послідовно</value>
+  </data>
+  <data name="SettingsPage_Download_TorrServerAddress" xml:space="preserve">
+    <value>Адреса TorrServer</value>
+  </data>
+  <data name="SettingsPage_Download_TorrServerAddress_Placeholder" xml:space="preserve">
+    <value>HTTP адреса</value>
+  </data>
+  <data name="SettingsPage_Download_TorrServerEnabled" xml:space="preserve">
+    <value>Відтворювати торент файли за допомогою TorrServer</value>
+  </data>
+  <data name="SettingsPage_Main_MainSite_Description" xml:space="preserve">
+    <value>З цього джерела відбувається пошук матеріалів на головній і сторінці пошуку</value>
+  </data>
+  <data name="SettingsPage_Main_UseOnlineFavorites" xml:space="preserve">
+    <value>Обране профілю</value>
+  </data>
+  <data name="SettingsPage_Main_UseOnlineFavorites_Descrription" xml:space="preserve">
+    <value>Якщо увімкнено, локальне обране буде замінене на обране профілю з основного джерела</value>
+  </data>
+  <data name="SettingsPage_NoSelectionContent" xml:space="preserve">
+    <value>Виберіть категорію</value>
+  </data>
+  <data name="SettingsPage_Online_CompactOnFocusLosed" xml:space="preserve">
+    <value>Відкривати відео поверх усіх вікон при згортанні додатка з повноекранного режиму</value>
+  </data>
+  <data name="SettingsPage_Online_CompactPlayer" xml:space="preserve">
+    <value>Компактний плеєр</value>
+  </data>
+  <data name="SettingsPage_Online_FileOpenWay" xml:space="preserve">
+    <value>Відкривати відео</value>
+  </data>
+  <data name="SettingsPage_Online_HackPlayerControlsVisibility" xml:space="preserve">
+    <value>Не приховувати панель плеєра, але робити його досить невидимим</value>
+  </data>
+  <data name="SettingsPage_Online_HackPlayerControlsVisibility_Description" xml:space="preserve">
+    <value>Може виправити підвисаюче відтворення відео
+Проблема не в додатку, але її можна спробувати обійти</value>
+  </data>
+  <data name="SettingsPage_Online_InvertElapsedPlayerTime" xml:space="preserve">
+    <value>Відображати тривалість відео замість часу, що залишився</value>
+  </data>
+  <data name="SettingsPage_Online_MinimalOverlay" xml:space="preserve">
+    <value>Не відкривати панель завдань при наведенні в повноекранному режимі</value>
+  </data>
+  <data name="SettingsPage_Online_MoveToVideoPage" xml:space="preserve">
+    <value>Автоматично перемикати на сторінку з відео</value>
+  </data>
+  <data name="SettingsPage_Online_OpenDirectLinkInBrowser" xml:space="preserve">
+    <value>Відкривати у браузері пряме посилання на файл</value>
+  </data>
+  <data name="SettingsPage_Online_OpenInFullScreen" xml:space="preserve">
+    <value>Відкривати відео в повному екрані</value>
+  </data>
+  <data name="SettingsPage_Online_OpenNextVideo" xml:space="preserve">
+    <value>Автоматично запускати наступне відео в плейлисті</value>
+  </data>
+  <data name="SettingsPage_Online_PauseOnBackgroundMedia" xml:space="preserve">
+    <value>Ставити на паузу при переході у фоновий режим</value>
+  </data>
+  <data name="SettingsPage_Online_PlayerPauseOnPrimaryTapped" xml:space="preserve">
+    <value>Відтворити/пауза по натисненню на відео</value>
+  </data>
+  <data name="SettingsPage_Online_PlayerSettings" xml:space="preserve">
+    <value>Плеєр</value>
+  </data>
+  <data name="SettingsPage_Online_PlayerStopButtonEnabled" xml:space="preserve">
+    <value>Відображати кнопку "Стоп"</value>
+  </data>
+  <data name="SettingsPage_Online_PlayerSwipeEnabled" xml:space="preserve">
+    <value>Перемотування і зміна гучності жестами</value>
+  </data>
+  <data name="SettingsPage_Online_PositionByEpisode" xml:space="preserve">
+    <value>Прив'язка позиції файлу до серії, а не ідентифікатора</value>
+  </data>
+  <data name="SettingsPage_Online_PositionByEpisode_Description" xml:space="preserve">
+    <value>Робить його незалежним від джерела</value>
+  </data>
+  <data name="SettingsPage_Online_PreferLegacyRemoteLaunchDialog" xml:space="preserve">
+    <value>Старе діалогове вікно для "Передати на пристрій"</value>
+  </data>
+  <data name="SettingsPage_Online_PreferLegacyRemoteLaunchDialog_Description" xml:space="preserve">
+    <value>Нове може передавати на інший пристрій в мережі зі встановленим FS Клієнт, але може не працювати з передаванням на ТВ</value>
+  </data>
+  <data name="SettingsPage_Online_PreferredQuality" xml:space="preserve">
+    <value>Бажана якість</value>
+  </data>
+  <data name="SettingsPage_Online_PreferredQuality_Description" xml:space="preserve">
+    <value>Додаток підбиратиме найближче доступне</value>
+  </data>
+  <data name="SettingsPage_Online_SeekBackwardStep" xml:space="preserve">
+    <value>Крок перемотування відео клавішами</value>
+  </data>
+  <data name="SettingsPage_Online_SeekSwipeSensitive" xml:space="preserve">
+    <value>Чутливість перемотування жестом</value>
+  </data>
+  <data name="SettingsPage_Online_SeekWithGamepadDPad" xml:space="preserve">
+    <value>Перемотувати відео і змінювати гучність DPad кнопками на геймпаді в повноекранному режимі</value>
+  </data>
+  <data name="SettingsPage_Online_VolumeSwipeSensitive" xml:space="preserve">
+    <value>Чутливість зміни гучності жестом</value>
+  </data>
+  <data name="SettingsPage_Providers_CanPreloadEpisodes" xml:space="preserve">
+    <value>Наперед завантажувати відео файли для серіалів</value>
+  </data>
+  <data name="SettingsPage_Providers_CanPreloadEpisodes_Description" xml:space="preserve">
+    <value>Відправляє безліч запитів, через що можна отримати тимчасовий бан на деяких джерелах</value>
+  </data>
+  <data name="SettingsPage_Providers_CanPreloadFiles" xml:space="preserve">
+    <value>Наперед завантажувати відео файли в поточній папці</value>
+  </data>
+  <data name="SettingsPage_Providers_CanPreloadFiles_Description" xml:space="preserve">
+    <value>Необхідно для відображення якості відео в списку деяких джерел</value>
+  </data>
+  <data name="SettingsPage_Providers_CanPreloadItemListItems" xml:space="preserve">
+    <value>Запитувати додаткову інформацію для матеріалів на головній</value>
+  </data>
+  <data name="SettingsPage_Providers_LoadAllSources" xml:space="preserve">
+    <value>Шукати на усіх одночасно</value>
+  </data>
+  <data name="SettingsPage_Providers_PreferItemSite" xml:space="preserve">
+    <value>Більш високий пріоритет для джерела, з якого був отриманий матеріал</value>
+  </data>
+  <data name="SettingsPage_Providers_ProvidersPriority" xml:space="preserve">
+    <value>Пріоритетність джерел</value>
+  </data>
+  <data name="SettingsPage_Providers_ProvidersPriority_Description" xml:space="preserve">
+    <value>Використовується при пошуку трейлерів, торентів і відеофайлів</value>
+  </data>
+  <data name="SettingsPage_RestartRequired" xml:space="preserve">
+    <value>Потрібно перезапустити додаток</value>
+  </data>
+  <data name="SettingsType_About" xml:space="preserve">
+    <value>Про програму</value>
+  </data>
+  <data name="SettingsType_App" xml:space="preserve">
+    <value>Додаток</value>
+  </data>
+  <data name="SettingsType_Data" xml:space="preserve">
+    <value>Дані</value>
+  </data>
+  <data name="SettingsType_Download" xml:space="preserve">
+    <value>Завантаження відео</value>
+  </data>
+  <data name="SettingsType_Main" xml:space="preserve">
+    <value>Основне джерело</value>
+  </data>
+  <data name="SettingsType_Online" xml:space="preserve">
+    <value>Онлайн відео</value>
+  </data>
+  <data name="SettingsType_Provider" xml:space="preserve">
+    <value>Джерела</value>
+  </data>
+  <data name="SettingsViewModel_AccessVerificationFailed" xml:space="preserve">
+    <value>Виникла помилка: </value>
+  </data>
+  <data name="SettingsViewModel_AccessVerificationIsNotAvailable" xml:space="preserve">
+    <value>Перевірка доступу недоступна на цьому пристрої</value>
+  </data>
+  <data name="SettingsViewModel_BackupExportResultsMessage" xml:space="preserve">
+    <value>Експортовано
+Вибране: {0}
+Історія: {1}
+Параметри: {2}</value>
+  </data>
+  <data name="SettingsViewModel_BackupImportInProcess" xml:space="preserve">
+    <value>Зачекайте ...</value>
+  </data>
+  <data name="SettingsViewModel_BackupImportResultsMessage" xml:space="preserve">
+    <value>Імпортовано
+Вибране: {0}
+Історія: {1}
+Параметри: {2}</value>
+  </data>
+  <data name="SettingsViewModel_BackupSuccessfully" xml:space="preserve">
+    <value>Операцію успішно завершено</value>
+  </data>
+  <data name="SettingsViewModel_BackupTypeSelectionExportHeader" xml:space="preserve">
+    <value>Вибір експорту</value>
+  </data>
+  <data name="SettingsViewModel_BackupTypeSelectionImportHeader" xml:space="preserve">
+    <value>Вибір імпорту</value>
+  </data>
+  <data name="SettingsViewModel_Backup_NotifyUserAboutOnlineFavorites" xml:space="preserve">
+    <value>Експортується\Імпортується лише локально обране. А у Вас використовується обране профілю {0}.
+Продовжити?</value>
+  </data>
+  <data name="SettingsViewModel_CheckForUpdatesFailed" xml:space="preserve">
+    <value>Виникла помилка</value>
+  </data>
+  <data name="SettingsViewModel_CheckForUpdatesInProgress" xml:space="preserve">
+    <value>Йде перевірка...</value>
+  </data>
+  <data name="SettingsViewModel_ChooseFolder" xml:space="preserve">
+    <value>Вибрати</value>
+  </data>
+  <data name="SettingsViewModel_ClearCacheFailed" xml:space="preserve">
+    <value>Помилка під час очищення кешу</value>
+  </data>
+  <data name="SettingsViewModel_ClearCacheSuccessfully" xml:space="preserve">
+    <value>Кеш очищено</value>
+  </data>
+  <data name="SettingsViewModel_FolderWasNotFound" xml:space="preserve">
+    <value>Папку не знайдено</value>
+  </data>
+  <data name="SettingsViewModel_PurchaseGratitude" xml:space="preserve">
+    <value>Дякую за підтримку!</value>
+  </data>
+  <data name="SettingsViewModel_PurchaseWasFailedOrCanceled" xml:space="preserve">
+    <value>Купівлю скасовано або завершено з помилкою</value>
+  </data>
+  <data name="SettingsViewModel_RebootApplication" xml:space="preserve">
+    <value>Перезапустіть програму</value>
+  </data>
+  <data name="SettingsViewModel_ResetUserDataCompleted" xml:space="preserve">
+    <value>Готово.
+Для завершення перезапустіть додаток.</value>
+  </data>
+  <data name="SettingsViewModel_ResetUserDataConfirmation" xml:space="preserve">
+    <value>Ви впевнені, що хочете скинути всі дані?</value>
+  </data>
+  <data name="SettingsViewModel_TrialExpriring" xml:space="preserve">
+    <value>Закінчується пробний період</value>
+  </data>
+  <data name="SettingsViewModel_UnableToCreateFile" xml:space="preserve">
+    <value>Не вдалося створити файл</value>
+  </data>
+  <data name="SettingsViewModel_UnableToReadFile" xml:space="preserve">
+    <value>Не вдалося розпізнати файл</value>
+  </data>
+  <data name="SettingsViewModel_UnableToWriteFile" xml:space="preserve">
+    <value>Не вдалося записати в файл</value>
+  </data>
+  <data name="Settings_Support" xml:space="preserve">
+    <value>Підтримати</value>
+  </data>
+  <data name="ShareService_DataItemDescription" xml:space="preserve">
+    <value>Поділитися посиланням на "{0}"</value>
+  </data>
+  <data name="ShareService_UnknownError" xml:space="preserve">
+    <value>Щось пішло не так</value>
+  </data>
+  <data name="SiteMirrorSelector_CurrentMirror" xml:space="preserve">
+    <value>Поточне дзеркало</value>
+  </data>
+  <data name="SiteMirrorSelector_CurrentMirror_FallbackIfNoMirror" xml:space="preserve">
+    <value>Дзеркало</value>
+  </data>
+  <data name="SiteMirrorSelector_DefaultMirrors" xml:space="preserve">
+    <value>Стандартні дзеркала</value>
+  </data>
+  <data name="Site_All" xml:space="preserve">
+    <value>Все</value>
+  </data>
+  <data name="Site_Any" xml:space="preserve">
+    <value>Будь-який</value>
+  </data>
+  <data name="Site_Local" xml:space="preserve">
+    <value>Локальне</value>
+  </data>
+  <data name="SortType_Alphabet" xml:space="preserve">
+    <value>За алфавітом</value>
+  </data>
+  <data name="SortType_Commented" xml:space="preserve">
+    <value>За коментарями</value>
+  </data>
+  <data name="SortType_CreateDate" xml:space="preserve">
+    <value>За датою додавання</value>
+  </data>
+  <data name="SortType_Episodes" xml:space="preserve">
+    <value>За кількістю серій</value>
+  </data>
+  <data name="SortType_FileSize" xml:space="preserve">
+    <value>За розміром файлу</value>
+  </data>
+  <data name="SortType_IMDb" xml:space="preserve">
+    <value>За рейтингом IMDb</value>
+  </data>
+  <data name="SortType_KinoPoisk" xml:space="preserve">
+    <value>За рейтингом Kinopoisk</value>
+  </data>
+  <data name="SortType_LastViewed" xml:space="preserve">
+    <value>За переглядами</value>
+  </data>
+  <data name="SortType_Popularity" xml:space="preserve">
+    <value>За популярністю</value>
+  </data>
+  <data name="SortType_Random" xml:space="preserve">
+    <value>Випадково</value>
+  </data>
+  <data name="SortType_Rating" xml:space="preserve">
+    <value>За рейтингом</value>
+  </data>
+  <data name="SortType_Revenue" xml:space="preserve">
+    <value>За касовими зборами</value>
+  </data>
+  <data name="SortType_Trend" xml:space="preserve">
+    <value>У тренді</value>
+  </data>
+  <data name="SortType_UpdateDate" xml:space="preserve">
+    <value>За датою оновлення</value>
+  </data>
+  <data name="SortType_Visit" xml:space="preserve">
+    <value>За відвідуваністю</value>
+  </data>
+  <data name="SortType_Year" xml:space="preserve">
+    <value>За роком випуску</value>
+  </data>
+  <data name="StatusType_Anons" xml:space="preserve">
+    <value>Анонсовано</value>
+  </data>
+  <data name="StatusType_Canceled" xml:space="preserve">
+    <value>Закрито</value>
+  </data>
+  <data name="StatusType_InProduction" xml:space="preserve">
+    <value>У виробництві</value>
+  </data>
+  <data name="StatusType_Ongoing" xml:space="preserve">
+    <value>Триває</value>
+  </data>
+  <data name="StatusType_Paused" xml:space="preserve">
+    <value>На паузі</value>
+  </data>
+  <data name="StatusType_Pilot" xml:space="preserve">
+    <value>Пілот</value>
+  </data>
+  <data name="StatusType_PostProduction" xml:space="preserve">
+    <value>Пост-продакшн</value>
+  </data>
+  <data name="StatusType_Released" xml:space="preserve">
+    <value>Вийшов</value>
+  </data>
+  <data name="StatusType_Rumored" xml:space="preserve">
+    <value>Чутки</value>
+  </data>
+  <data name="Stretch_Fill" xml:space="preserve">
+    <value>Розтягнути</value>
+  </data>
+  <data name="Stretch_None" xml:space="preserve">
+    <value>Оригінал</value>
+  </data>
+  <data name="Stretch_Uniform" xml:space="preserve">
+    <value>За шириною</value>
+  </data>
+  <data name="Stretch_UniformToFill" xml:space="preserve">
+    <value>За висотою</value>
+  </data>
+  <data name="Subtitles_None" xml:space="preserve">
+    <value>Немає</value>
+  </data>
+  <data name="TagType_Actor_One" xml:space="preserve">
+    <value>Актор</value>
+  </data>
+  <data name="TagType_Actor_Other" xml:space="preserve">
+    <value>Актори</value>
+  </data>
+  <data name="TagType_Composer_One" xml:space="preserve">
+    <value>Композитор</value>
+  </data>
+  <data name="TagType_Composer_Other" xml:space="preserve">
+    <value>Композитори</value>
+  </data>
+  <data name="TagType_County_One" xml:space="preserve">
+    <value>Країна</value>
+  </data>
+  <data name="TagType_County_Other" xml:space="preserve">
+    <value>Країни</value>
+  </data>
+  <data name="TagType_Director_One" xml:space="preserve">
+    <value>Режисер</value>
+  </data>
+  <data name="TagType_Director_Other" xml:space="preserve">
+    <value>Режисери</value>
+  </data>
+  <data name="TagType_Duration" xml:space="preserve">
+    <value>Час</value>
+  </data>
+  <data name="TagType_Genre_One" xml:space="preserve">
+    <value>Жанр</value>
+  </data>
+  <data name="TagType_Genre_Other" xml:space="preserve">
+    <value>Жанри</value>
+  </data>
+  <data name="TagType_Provider" xml:space="preserve">
+    <value>Джерело</value>
+  </data>
+  <data name="TagType_Quality" xml:space="preserve">
+    <value>Якість</value>
+  </data>
+  <data name="TagType_Section" xml:space="preserve">
+    <value>Категорія</value>
+  </data>
+  <data name="TagType_Status" xml:space="preserve">
+    <value>Статус</value>
+  </data>
+  <data name="TagType_Studio_One" xml:space="preserve">
+    <value>Студія</value>
+  </data>
+  <data name="TagType_Studio_Other" xml:space="preserve">
+    <value>Студії</value>
+  </data>
+  <data name="TagType_Writter_One" xml:space="preserve">
+    <value>Сценарист</value>
+  </data>
+  <data name="TagType_Writter_Other" xml:space="preserve">
+    <value>Сценаристи</value>
+  </data>
+  <data name="TagType_Year" xml:space="preserve">
+    <value>Рік</value>
+  </data>
+  <data name="TitledTag_Any" xml:space="preserve">
+    <value>Все</value>
+  </data>
+  <data name="VideoPage_DownloadVideoCommand" xml:space="preserve">
+    <value>Завантажити відео</value>
+  </data>
+  <data name="VideoPage_OpenInBrowserCommand" xml:space="preserve">
+    <value>Відкрити у браузері</value>
+  </data>
+  <data name="VideoPage_OpenInBrowserCommand_ToolTip" xml:space="preserve">
+    <value>Відкрити відео у браузері</value>
+  </data>
+  <data name="VideoPage_OpenInNewWindowButtonCommand" xml:space="preserve">
+    <value>Відкрити в новому вікні</value>
+  </data>
+  <data name="VideoPage_OpenInNewWindowButtonCommand_ToolTip" xml:space="preserve">
+    <value>Відкрити відео в новому вікні</value>
+  </data>
+  <data name="VideoPage_ShareGrabbedFrameCommand" xml:space="preserve">
+    <value>Поділитися кадром</value>
+  </data>
+  <data name="VideoPage_ShowVideoAttention" xml:space="preserve">
+    <value>Додаток не додає рекламу. Перемикайте джерела для пошуку відео без неї.</value>
+  </data>
+  <data name="WindowsHelloVerificationService_RequestVerificationHeader" xml:space="preserve">
+    <value>Перевірка доступу</value>
+  </data>
+  <data name="Window_PlayerWindowTitle" xml:space="preserve">
+    <value>Плеєр</value>
+  </data>
+  <data name="YearSelector_AllYears" xml:space="preserve">
+    <value>Все</value>
+  </data>
+  <data name="YearSelector_From" xml:space="preserve">
+    <value>Від</value>
+  </data>
+  <data name="YearSelector_SpecificYear" xml:space="preserve">
+    <value>Рік</value>
+  </data>
+  <data name="YearSelector_To" xml:space="preserve">
+    <value>До</value>
+  </data>
+  <data name="YearSelector_YearFormat" xml:space="preserve">
+    <value>{0} р.</value>
+  </data>
+</root>

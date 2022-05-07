@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
+		 xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest"
+		 xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+	     xmlns:uap3="http://schemas.microsoft.com/appx/manifest/uap/windows10/3"
+		 xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities"
+		 xmlns:desktop="http://schemas.microsoft.com/appx/manifest/desktop/windows10"
+		 IgnorableNamespaces="uap mp uap3 rescap desktop">
+  <Identity Name="fc2a7a53-fdae-4021-9a6b-efeb2b9ff456" Publisher="CN=developer" Version="1.0.0.0" />
+  <mp:PhoneIdentity PhoneProductId="fc2a7a53-fdae-4021-9a6b-efeb2b9ff456" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
+  <Properties>
+    <DisplayName>FS Клиент DEV</DisplayName>
+    <PublisherDisplayName>FSClientDev</PublisherDisplayName>
+    <Logo>Assets\StoreLogo.png</Logo>
+  </Properties>
+  <Dependencies>
+    <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.15063.0" MaxVersionTested="10.0.0.0" />
+  </Dependencies>
+  <Resources>
+    <Resource Language="ru-RU" />
+    <Resource Language="uk-UA" />
+	  <Resource Language="en-US" />
+  </Resources>
+  <Applications>
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="FSClient.UWP.App">
+      <uap:VisualElements DisplayName="FS Клиент DEV" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="Приложение для просмотра фильмов и сериалов." BackgroundColor="transparent">
+        <uap:LockScreen Notification="badgeAndTileText" BadgeLogo="Assets\BadgeLogo.png" />
+        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" ShortName="FS Клиент DEV" Square310x310Logo="Assets\LargeTile.png" Square71x71Logo="Assets\SmallTile.png">
+          <uap:ShowNameOnTiles>
+            <uap:ShowOn Tile="square150x150Logo" />
+            <uap:ShowOn Tile="wide310x150Logo" />
+          </uap:ShowNameOnTiles>
+        </uap:DefaultTile>
+        <uap:SplashScreen Image="Assets\SplashScreen.png" BackgroundColor="transparent" />
+      </uap:VisualElements>
+      <Extensions>
+        <uap:Extension Category="windows.protocol">
+          <uap:Protocol Name="fsclientdev" />
+        </uap:Extension>
+        <Extension Category="windows.backgroundTasks" EntryPoint="FSClient.UWP.Background.Tasks.AutomatedBackupTask">
+          <BackgroundTasks>
+            <Task Type="timer" />
+          </BackgroundTasks>
+        </Extension>
+        <uap:Extension Category="windows.shareTarget">
+          <uap:ShareTarget Description="Открыть ссылку с источника в приложении">
+            <uap:DataFormat>URI</uap:DataFormat>
+          </uap:ShareTarget>
+        </uap:Extension>
+        <uap:Extension Category="windows.search" />
+        <Extension Category="windows.backgroundTasks" EntryPoint="FSClient.UWP.Background.Tasks.MirrorUpdaterTask">
+          <BackgroundTasks>
+            <Task Type="timer" />
+          </BackgroundTasks>
+        </Extension>
+      </Extensions>
+    </Application>
+  </Applications>
+  <Capabilities>
+    <rescap:Capability Name="confirmAppClose" />
+    <Capability Name="internetClient" />
+    <uap3:Capability Name="backgroundMediaPlayback" />
+    <uap3:Capability Name="remoteSystem" />
+  </Capabilities>
+</Package>

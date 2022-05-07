@@ -1,0 +1,35 @@
+﻿<ContentDialog x:Class="FSClient.UWP.Shared.Views.Dialogs.AddReviewDialog"
+               xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+               PrimaryButtonText="{x:Bind ConverterParameter='AddReviewDialog_SendReview', Converter={StaticResource LocalizationConverter}}"
+               SecondaryButtonClick="ContentDialog_SecondaryButtonClick"
+               SecondaryButtonText="{x:Bind ConverterParameter='ContentDialog_Cancel', Converter={StaticResource LocalizationConverter}}">
+
+  <Grid>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="*" />
+      <ColumnDefinition Width="Auto" />
+      <ColumnDefinition Width="Auto" />
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="*" />
+    </Grid.RowDefinitions>
+    <TextBlock VerticalAlignment="Center"
+               FontSize="20"
+               Text="{x:Bind ConverterParameter='AddReviewDialog_WriteReview_Header', Converter={StaticResource LocalizationConverter}}" />
+
+    <TextBox x:Name="ReviewTextBox"
+             Grid.Row="1"
+             Grid.Column="0"
+             Grid.ColumnSpan="3"
+             AcceptsReturn="True"
+             InputScope="Text"
+             PlaceholderText="{x:Bind ConverterParameter='AddReviewDialog_WriteReview_Placeholder', Converter={StaticResource LocalizationConverter}}"
+             FontSize="18"
+             MinHeight="64"
+             TextChanged="TextBox_TextChanged"
+             KeyDown="ReviewTextBox_KeyDown"
+             TextWrapping="Wrap" />
+  </Grid>
+</ContentDialog>

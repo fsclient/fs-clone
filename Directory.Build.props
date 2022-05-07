@@ -1,0 +1,39 @@
+﻿<Project>
+
+  <PropertyGroup>
+    <LangVersion>9.0</LangVersion>
+    <Nullable>enable</Nullable>
+    <Features>strict</Features>
+    <WarningsAsErrors Condition="'$(VisualStudioVersion)' != '15.0'">nullable</WarningsAsErrors>
+    <DefaultLanguage>ru-RU</DefaultLanguage>
+    <NeutralLanguage>ru-RU</NeutralLanguage>
+    <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+	  <IsDevBuild Condition="'$(IsDevBuild)' == ''">true</IsDevBuild>
+    <DefineConstants Condition="'$(IsDevBuild)' == 'true'">$(DefineConstants);DEV_BUILD</DefineConstants>
+    <SatelliteResourceLanguages>en;ru;uk</SatelliteResourceLanguages>
+
+    <AnalysisMode>AllEnabledByDefault</AnalysisMode>
+    <AnalysisLevel>preview</AnalysisLevel>
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Title>FS Client</Title>
+    <Company>FSClientDev</Company>
+    <Description>App for watching films and serials</Description>
+    <Copyright>FSClientDev © 2015-2021.</Copyright>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Nerdbank.GitVersioning" Condition="'$(IsTestProject)' == ''">
+      <Version>3.4.244</Version>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="IsExternalInit" Version="1.0.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+</Project>

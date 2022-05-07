@@ -1,0 +1,785 @@
+﻿<Page x:Name="Page"
+      x:Class="FSClient.UWP.Shared.Views.Pages.SettingsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+      xmlns:windowsstatetriggers="using:WindowsStateTriggers"
+      xmlns:extensions="using:FSClient.UWP.Shared.Extensions"
+      xmlns:controls="using:FSClient.UWP.Shared.Views.Controls"
+      xmlns:selectors="using:FSClient.UWP.Shared.Selectors"
+      xmlns:pages="using:FSClient.ViewModels.Pages"
+      xmlns:viewModels="using:FSClient.ViewModels">
+
+  <extensions:PageAppBarExtension.Top>
+    <Grid>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="Auto" />
+        <ColumnDefinition Width="16" />
+      </Grid.ColumnDefinitions>
+      <TextBlock Margin="8,0"
+                 Text="{x:Bind ConverterParameter='NavigationPageType_Settings', Converter={StaticResource LocalizationConverter}}"
+                 VerticalAlignment="Center" />
+      <TextBlock Grid.Column="1"
+                 Text="{x:Bind ViewModel.AppVersion, Mode=OneTime}"
+                 VerticalAlignment="Center" />
+    </Grid>
+  </extensions:PageAppBarExtension.Top>
+
+  <Grid>
+    <controls:MasterDetailsView x:Name="MasterDetailsView"
+                                Background="{ThemeResource ClientBackgroundNonTransparentBrush}"
+                                BorderBrush="Transparent"
+                                MasterPaneBackground="{ThemeResource ItemBackgroundBrush}"
+                                NoSelectionContent="{x:Bind ConverterParameter='SettingsPage_NoSelectionContent', Converter={StaticResource LocalizationConverter}}"
+                                ItemsSource="{x:Bind ViewModel.Pages}">
+      <controls:MasterDetailsView.ItemContainerStyle>
+        <Style TargetType="ListViewItem">
+          <Setter Property="Height" Value="48" />
+        </Style>
+      </controls:MasterDetailsView.ItemContainerStyle>
+      <controls:MasterDetailsView.ItemTemplate>
+        <DataTemplate x:DataType="pages:SettingPageViewModel">
+          <TextBlock Text="{x:Bind Header}" />
+        </DataTemplate>
+      </controls:MasterDetailsView.ItemTemplate>
+      <controls:MasterDetailsView.DetailsContainerStyle>
+        <Style TargetType="ContentPresenter">
+          <Setter Property="MaxWidth" Value="450" />
+          <Setter Property="Padding" Value="20" />
+          <Setter Property="HorizontalAlignment" Value="Left" />
+          <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        </Style>
+      </controls:MasterDetailsView.DetailsContainerStyle>
+      <controls:MasterDetailsView.NoSelectionContentTemplate>
+        <DataTemplate>
+          <StackPanel HorizontalAlignment="Center"
+                      VerticalAlignment="Center">
+            <SymbolIcon RenderTransformOrigin=".5,.5"
+                        Symbol="Setting">
+              <SymbolIcon.RenderTransform>
+                <CompositeTransform ScaleX="2"
+                                    ScaleY="2" />
+              </SymbolIcon.RenderTransform>
+            </SymbolIcon>
+            <TextBlock Margin="0,12"
+                       FontSize="24"
+                       Text="{Binding}" />
+          </StackPanel>
+        </DataTemplate>
+      </controls:MasterDetailsView.NoSelectionContentTemplate>
+      <controls:MasterDetailsView.DetailsTemplateSelector>
+        <selectors:SettingsTemplateSelector>
+          <selectors:SettingsTemplateSelector.MainSettingsTemplate>
+            <DataTemplate x:DataType="pages:SettingPageViewModel">
+              <StackPanel>
+                <StackPanel Margin="0,0,0,40"
+                            Visibility="{x:Bind ViewModel.AvailableSites, Mode=OneWay, Converter={StaticResource BooleanConverter}, ConverterParameter=2..}">
+                  <TextBlock Margin="0,0,0,12"
+                             FontSize="20"
+                             Text="{x:Bind ConverterParameter='SettingsType_Main', Converter={StaticResource LocalizationConverter}}" />
+
+                  <ComboBox Width="200"
+                            ItemsSource="{x:Bind ViewModel.AvailableSites, Mode=OneWay}"
+                            SelectedItem="{x:Bind ViewModel.MainSite, Mode=TwoWay, Converter={StaticResource BindToObjectConverter}}" />
+
+                  <TextBlock FontSize="14"
+                             Opacity="0.6"
+                             Text="{x:Bind ConverterParameter='SettingsPage_Main_MainSite_Description', Converter={StaticResource LocalizationConverter}}"
+                             TextWrapping="Wrap" />
+                </StackPanel>
+
+                <controls:AuthUserControl x:Name="AuthUserControl"
+                                          Margin="0,0,0,20"
+                                          Site="{x:Bind ViewModel.Settings.MainSite, Mode=OneWay}"
+                                          User="{x:Bind ViewModel.AuthUserViewModel.User, Mode=OneWay}"
+                                          AuthModels="{x:Bind ViewModel.AuthUserViewModel.AuthModels, Mode=OneWay}"
+                                          LoginCommand="{x:Bind ViewModel.AuthUserViewModel.LoginCommand}"
+                                          LogoutCommand="{x:Bind ViewModel.AuthUserViewModel.LogoutCommand}"
+                                          RegisterCommand="{x:Bind ViewModel.AuthUserViewModel.RegisterCommand}" />
+
+                <StackPanel Visibility="{x:Bind ViewModel.AuthUserViewModel.User, Mode=OneWay, Converter={StaticResource BooleanConverter}}">
+                  <TextBlock Text="{x:Bind ConverterParameter='SettingsPage_Main_UseOnlineFavorites', Converter={StaticResource LocalizationConverter}}"
+                             TextWrapping="Wrap" />
+                  <ToggleSwitch IsOn="{x:Bind ViewModel.UseOnlineFavorites, Mode=TwoWay}" />
+                  <TextBlock Margin="0,0,0,20"
+                             FontSize="14"
+                             Opacity="0.6"
+                             Text="{x:Bind ConverterParameter='SettingsPage_Main_UseOnlineFavorites_Descrription', Converter={StaticResource LocalizationConverter}}"
+                             TextWrapping="Wrap" />
+                </StackPanel>
+              </StackPanel>
+            </DataTemplate>
+          </selectors:SettingsTemplateSelector.MainSettingsTemplate>
+          <selectors:SettingsTemplateSelector.OnlineSettingsTemplate>
+            <DataTemplate x:DataType="pages:SettingPageViewModel">
+              <StackPanel>
+                <TextBlock Margin="0,0,0,20"
+                           FontSize="20"
+                           Text="{x:Bind ConverterParameter='SettingsType_Online', Converter={StaticResource LocalizationConverter}}" />
+                <TextBlock Margin="0,0,0,4"
+                           Text="{x:Bind ConverterParameter='SettingsPage_Online_FileOpenWay', Converter={StaticResource LocalizationConverter}}"
+                           TextWrapping="Wrap" />
+                <ComboBox x:Name="FileOpenWaySelector"
+                          Width="200"
+                          ItemsSource="{x:Bind ViewModel.FileOpenWays}"
+                          SelectedItem="{x:Bind ViewModel.FileOpenWay, Converter={StaticResource BindToObjectConverter}, Mode=TwoWay}">
+                  <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                      <TextBlock Text="{Binding Converter={StaticResource ToFriendlyStringConverter}}" />
+                    </DataTemplate>
+                  </ComboBox.ItemTemplate>
+                </ComboBox>
+                <TextBlock Text="{Binding SelectedItem, ElementName=FileOpenWaySelector, Mode=OneWay, Converter={StaticResource ObjectToDescriptionConverter}}"
+                           Visibility="{Binding Text, Converter={StaticResource BooleanConverter}, RelativeSource={RelativeSource Mode=Self}, UpdateSourceTrigger=PropertyChanged}"
+                           FontSize="14"
+                           Opacity="0.6"
+                           TextWrapping="Wrap" />
+
+                <TextBlock Margin="0,20,0,4"
+                           Text="{x:Bind ConverterParameter='SettingsPage_Online_PreferredQuality', Converter={StaticResource LocalizationConverter}}"
+                           TextWrapping="Wrap" />
+                <ComboBox Width="100"
+                          ItemsSource="{x:Bind ViewModel.AvailableQualities}"
+                          SelectedItem="{x:Bind ViewModel.PreferredQuality, Mode=TwoWay, Converter={StaticResource BindToObjectConverter}}" />
+
+                <TextBlock Margin="0,0,0,20"
+                           FontSize="14"
+                           Opacity="0.6"
+                           Text="{x:Bind ConverterParameter='SettingsPage_Online_PreferredQuality_Description', Converter={StaticResource LocalizationConverter}}"
+                           TextWrapping="Wrap" />
+
+                <TextBlock Text="{x:Bind ConverterParameter='SettingsPage_Online_PositionByEpisode', Converter={StaticResource LocalizationConverter}}"
+                           TextWrapping="Wrap" />
+                <ToggleSwitch IsOn="{x:Bind ViewModel.Settings.PositionByEpisode, Mode=TwoWay}" />
+                <TextBlock Margin="0,0,0,20"
+                           FontSize="14"
+                           Opacity="0.6"
+                           Text="{x:Bind ConverterParameter='SettingsPage_Online_PositionByEpisode_Description', Converter={StaticResource LocalizationConverter}}"
+                           TextWrapping="Wrap" />
+
+                <Grid Visibility="{x:Bind ViewModel.Settings.FileOpenWay, Mode=OneWay, Converter={StaticResource BooleanConverter}, ConverterParameter=!InBrowser}">
+                  <Grid Visibility="{x:Bind ViewModel.Settings.FileOpenWay, Mode=OneWay, Converter={StaticResource BooleanConverter}, ConverterParameter=!In3rdPartyApp}">
+                    <Grid Visibility="{x:Bind ViewModel.Settings.FileOpenWay, Mode=OneWay, Converter={StaticResource BooleanConverter}, ConverterParameter=!Remote}">
+                      <StackPanel Visibility="{x:Bind ViewModel.Settings.FileOpenWay, Mode=OneWay, Converter={StaticResource BooleanConverter}, ConverterParameter=!CopyLink}">
+                        <TextBlock Margin="0,20,0,20"
+                                   FontSize="20"
+                                   Text="{x:Bind ConverterParameter='SettingsPage_Online_PlayerSettings', Converter={StaticResource LocalizationConverter}}" />
+
+                        <TextBlock Text="{x:Bind ConverterParameter='SettingsPage_Online_OpenNextVideo', Converter={StaticResource LocalizationConverter}}"
+                                   TextWrapping="Wrap" />
+                        <ToggleSwitch Margin="0,0,0,20"
+                                      IsOn="{x:Bind ViewModel.Settings.OpenNextVideo, Mode=TwoWay}" />
+
+                        <StackPanel Margin="0,0,0,20"
+                                    Visibility="{x:Bind ViewModel.Settings.FileOpenWay, Mode=OneWay, Converter={StaticResource BooleanConverter}, ConverterParameter=InApp}">
+                          <TextBlock Text="{x:Bind ConverterParameter='SettingsPage_Online_OpenInFullScreen', Converter={StaticResource LocalizationConverter}}"
+                                     TextWrapping="Wrap" />
+                          <ToggleSwitch Margin="0,0,0,20"
+                                        IsOn="{x:Bind ViewModel.Settings.OpenInFullScreen, Mode=TwoWay}" />
+
+                          <TextBlock Text="{x:Bind ConverterParameter='SettingsPage_Online_MoveToVideoPage', Converter={StaticResource LocalizationConverter}}"
+                                     TextWrapping="Wrap" />
+                          <ToggleSwitch Margin="0,0,0,20"
+                                        IsOn="{x:Bind ViewModel.Settings.MoveToVideoPage, Mode=TwoWay}" />
+
+                          <StackPanel Margin="0,0,0,20"
+                                      Visibility="{Binding ElementName=Page, Path=ShowXBoxSettings, Converter={StaticResource BooleanConverter}}">
+                            <TextBlock Text="{x:Bind ConverterParameter='SettingsPage_Online_SeekWithGamepadDPad', Converter={StaticResource LocalizationConverter}}"
+                                       TextWrapping="Wrap" />
+                            <ToggleSwitch IsOn="{x:Bind ViewModel.Settings.SeekWithGamepadDPad, Mode=TwoWay}" />
+                          </StackPanel>
+                        </StackPanel>
+
+                        <TextBlock Text="{x:Bind ConverterParameter='SettingsPage_Online_InvertElapsedPlayerTime', Converter={StaticResource LocalizationConverter}}"
+                                   TextWrapping="Wrap" />
+                        <ToggleSwitch Margin="0,0,0,20"
+                                      IsOn="{x:Bind ViewModel.Settings.InvertElapsedPlayerTime, Mode=TwoWay}" />
+
+                        <TextBlock Text="{x:Bind ConverterParameter='SettingsPage_Online_PlayerPauseOnPrimaryTapped', Converter={StaticResource LocalizationConverter}}"
+                                   TextWrapping="Wrap" />
+                        <ToggleSwitch Margin="0,0,0,20"
+                                      IsOn="{x:Bind ViewModel.Settings.PlayerPauseOnPrimaryTapped, Mode=TwoWay}" />
+
+                        <TextBlock Text="{x:Bind ConverterParameter='SettingsPage_Online_SeekBackwardStep', Converter={StaticResource LocalizationConverter}}"
+                                   TextWrapping="Wrap" />
+                        <StackPanel HorizontalAlignment="Left"
+                                    Orientation="Horizontal"
+                                    Margin="0,0,0,20">
+                          <muxc:NumberBox Width="64"
+                                          SmallChange="1"
+                                          Minimum="0"
+                                          Maximum="360"
+                                          HorizontalContentAlignment="Center"
+                                          SpinButtonPlacementMode="Compact"
+                                          Value="{x:Bind ViewModel.Settings.SeekBackwardStep, Mode=TwoWay, Converter={StaticResource TypeConverter}}">
+                            <muxc:NumberBox.Header>
+                              <FontIcon Grid.Row="0"
+                                        Grid.Column="0"
+                                        Glyph="&#xEB9E;" />
+                            </muxc:NumberBox.Header>
+                          </muxc:NumberBox>
+                          <muxc:NumberBox Width="64"
+                                          SmallChange="1"
+                                          Minimum="0"
+                                          Maximum="360"
+                                          HorizontalContentAlignment="Center"
+                                          SpinButtonPlacementMode="Compact"
+                                          Value="{x:Bind ViewModel.Settings.SeekForwardStep, Mode=TwoWay, Converter={StaticResource TypeConverter}}">
+                            <muxc:NumberBox.Header>
+                              <FontIcon Grid.Row="0"
+                                        Grid.Column="1"
+                                        Glyph="&#xEB9D;" />
+                            </muxc:NumberBox.Header>
+                          </muxc:NumberBox>
+                        </StackPanel>
+
+                        <TextBlock Text="{x:Bind ConverterParameter='SettingsPage_Online_PlayerSwipeEnabled', Converter={StaticResource LocalizationConverter}}"
+                                   TextWrapping="Wrap" />
+                        <ToggleSwitch Margin="0,0,0,20"
+                                      IsOn="{x:Bind ViewModel.Settings.PlayerSwipeEnabled, Mode=TwoWay}" />
+
+                        <StackPanel Margin="0,0,0,20"
+                                    Visibility="{x:Bind ViewModel.Settings.PlayerSwipeEnabled, Mode=OneWay, Converter={StaticResource BooleanConverter}}">
+                          <TextBlock Text="{x:Bind ConverterParameter='SettingsPage_Online_VolumeSwipeSensitive', Converter={StaticResource LocalizationConverter}}"
+                                     TextWrapping="Wrap" />
+                          <Slider Value="{x:Bind ViewModel.Settings.VolumeSwipeSensitive, Mode=TwoWay}"
+                                  Minimum="0"
+                                  Maximum="2"
+                                  Width="200"
+                                  HorizontalAlignment="Left"
+                                  StepFrequency="0.01"
+                                  TickFrequency="0.05"
+                                  SnapsTo="Ticks"
+                                  Margin="0,0,0,20"
+                                  ThumbToolTipValueConverter="{StaticResource BindToObjectConverter}" />
+                          <TextBlock Text="{x:Bind ConverterParameter='SettingsPage_Online_SeekSwipeSensitive', Converter={StaticResource LocalizationConverter}}"
+                                     TextWrapping="Wrap" />
+                          <Slider Value="{x:Bind ViewModel.Settings.SeekSwipeSensitive, Mode=TwoWay}"
+                                  Minimum="0"
+                                  Maximum="2"
+                                  Width="200"
+                                  HorizontalAlignment="Left"
+                                  StepFrequency="0.01"
+                                  TickFrequency="0.05"
+                                  SnapsTo="Ticks"
+                                  ThumbToolTipValueConverter="{StaticResource BindToObjectConverter}" />
+                        </StackPanel>
+
+                        <TextBlock Text="{x:Bind ConverterParameter='SettingsPage_Online_PlayerStopButtonEnabled', Converter={StaticResource LocalizationConverter}}"
+                                   TextWrapping="Wrap" />
+                        <ToggleSwitch IsOn="{x:Bind ViewModel.Settings.PlayerStopButtonEnabled, Mode=TwoWay}" />
+
+                        <StackPanel Margin="0,0,0,20"
+                                    Visibility="{Binding ElementName=Page, Path=CompactOverlayAllowed, Converter={StaticResource BooleanConverter}}">
+                          <TextBlock Text="{x:Bind ConverterParameter='SettingsPage_Online_CompactOnFocusLosed', Converter={StaticResource LocalizationConverter}}"
+                                     TextWrapping="Wrap" />
+                          <ToggleSwitch IsOn="{x:Bind ViewModel.Settings.CompactOnFocusLosed, Mode=TwoWay}" />
+                        </StackPanel>
+                        <TextBlock Text="{x:Bind ConverterParameter='SettingsPage_Online_MinimalOverlay', Converter={StaticResource LocalizationConverter}}"
+                                   TextWrapping="Wrap" />
+                        <ToggleSwitch Margin="0,0,0,20"
+                                      IsOn="{x:Bind ViewModel.Settings.MinimalOverlay, Mode=TwoWay}" />
+
+                        <TextBlock Text="{x:Bind ConverterParameter='SettingsPage_Online_HackPlayerControlsVisibility', Converter={StaticResource LocalizationConverter}}"
+                                   TextWrapping="Wrap" />
+                        <ToggleSwitch IsOn="{x:Bind ViewModel.Settings.HackPlayerControlsVisibility, Mode=TwoWay}" />
+                        <TextBlock Margin="0,0,0,20"
+                                   FontSize="14"
+                                   Opacity="0.6"
+                                   Text="{x:Bind ConverterParameter='SettingsPage_Online_HackPlayerControlsVisibility_Description', Converter={StaticResource LocalizationConverter}}"
+                                   TextWrapping="Wrap" />
+
+                        <TextBlock Text="{x:Bind ConverterParameter='SettingsPage_Online_PauseOnBackgroundMedia', Converter={StaticResource LocalizationConverter}}"
+                                   TextWrapping="Wrap" />
+                        <ToggleSwitch Margin="0,0,0,20"
+                                      IsOn="{x:Bind ViewModel.Settings.PauseOnBackgroundMedia, Mode=TwoWay}" />
+
+                        <TextBlock Text="{x:Bind ConverterParameter='SettingsPage_Online_CompactPlayer', Converter={StaticResource LocalizationConverter}}"
+                                   TextWrapping="Wrap" />
+                        <ToggleSwitch Margin="0,0,0,20"
+                                      IsOn="{x:Bind ViewModel.Settings.CompactPlayer, Mode=TwoWay}" />
+                      </StackPanel>
+                    </Grid>
+                  </Grid>
+                </Grid>
+                <StackPanel Visibility="{x:Bind ViewModel.Settings.FileOpenWay, Mode=OneWay, Converter={StaticResource BooleanConverter}, ConverterParameter=InBrowser}">
+                  <TextBlock Text="{x:Bind ConverterParameter='SettingsPage_Online_OpenDirectLinkInBrowser', Converter={StaticResource LocalizationConverter}}"
+                             TextWrapping="Wrap" />
+                  <ToggleSwitch Margin="0,0,0,20"
+                                IsOn="{x:Bind ViewModel.Settings.OpenDirectLinkInBrowser, Mode=TwoWay}" />
+                </StackPanel>
+
+                <TextBlock Text="{x:Bind ConverterParameter='SettingsPage_Online_PreferLegacyRemoteLaunchDialog', Converter={StaticResource LocalizationConverter}}"
+                           TextWrapping="Wrap" />
+                <ToggleSwitch IsOn="{x:Bind ViewModel.Settings.PreferLegacyRemoteLaunchDialog, Mode=TwoWay}" />
+                <TextBlock Margin="0,0,0,20"
+                           FontSize="14"
+                           Opacity="0.6"
+                           Text="{x:Bind ConverterParameter='SettingsPage_Online_PreferLegacyRemoteLaunchDialog_Description', Converter={StaticResource LocalizationConverter}}"
+                           TextWrapping="Wrap" />
+              </StackPanel>
+            </DataTemplate>
+          </selectors:SettingsTemplateSelector.OnlineSettingsTemplate>
+          <selectors:SettingsTemplateSelector.DownloadSettingsTemplate>
+            <DataTemplate x:DataType="pages:SettingPageViewModel">
+              <StackPanel>
+                <TextBlock Margin="0,0,0,20"
+                           FontSize="20"
+                           Text="{x:Bind ConverterParameter='SettingsType_Download', Converter={StaticResource LocalizationConverter}}" />
+
+                <TextBlock Margin="0,0,0,4"
+                           Text="{x:Bind ConverterParameter='SettingsPage_Download_ChosenFolderName', Converter={StaticResource LocalizationConverter}}"
+                           TextWrapping="Wrap" />
+                <Button VerticalAlignment="Center"
+                        Command="{x:Bind ViewModel.ChooseFolderCommand}"
+                        Content="{x:Bind ViewModel.ChosenFolderName, Mode=OneWay}"
+                        Style="{StaticResource ClientButtonStyle}" />
+                <TextBlock TextWrapping="Wrap"
+                           Visibility="{x:Bind ViewModel.AvailableSpace, Mode=OneWay, Converter={StaticResource BooleanConverter}}">
+                  <Run Text="{x:Bind ConverterParameter='SettingsPage_Download_AvailableSpace', Converter={StaticResource LocalizationConverter}}" /><Run Text=":" />
+                  <Run Text="{x:Bind ViewModel.AvailableSpace, Mode=OneWay, ConverterParameter='Common_SizeInMegaBytes', Converter={StaticResource LocalizationConverter}}" />
+                </TextBlock>
+
+                <StackPanel Margin="0,20,0,20">
+                  <TextBlock Margin="0,0,0,4"
+                             Text="{x:Bind ConverterParameter='SettingsPage_Download_ChosenTorrentFolderName', Converter={StaticResource LocalizationConverter}}"
+                             TextWrapping="Wrap" />
+                  <Button VerticalAlignment="Center"
+                          Command="{x:Bind ViewModel.ChooseTorrentFolderCommand}"
+                          Content="{x:Bind ViewModel.ChosenTorrentFolderName, Mode=OneWay}"
+                          Style="{StaticResource ClientButtonStyle}" />
+                </StackPanel>
+
+                <TextBlock Margin="0,20,0,0"
+                           Text="{x:Bind ConverterParameter='SettingsPage_Download_SerializedDownload', Converter={StaticResource LocalizationConverter}}"
+                           TextWrapping="Wrap" />
+                <ToggleSwitch Margin="0,0,0,20"
+                              IsOn="{x:Bind ViewModel.Settings.SerializedDownload, Mode=TwoWay}"
+                              OffContent="{x:Bind ConverterParameter='SettingsPage_Download_SerializedDownload_OffContent', Converter={StaticResource LocalizationConverter}}"
+                              OnContent="{x:Bind ConverterParameter='SettingsPage_Download_SerializedDownload_OnContent', Converter={StaticResource LocalizationConverter}}" />
+
+                <TextBlock Text="{x:Bind ConverterParameter='SettingsPage_Download_AllowDownloadM3U8Files', Converter={StaticResource LocalizationConverter}}"
+                           TextWrapping="Wrap" />
+                <ToggleSwitch Margin="0,0,0,20"
+                              IsOn="{x:Bind ViewModel.Settings.AllowDownloadM3U8Files, Mode=TwoWay}" />
+
+                <TextBlock Text="{x:Bind ConverterParameter='SettingsPage_Download_TorrServerEnabled', Converter={StaticResource LocalizationConverter}}" />
+                <ToggleSwitch IsOn="{x:Bind ViewModel.Settings.TorrServerEnabled, Mode=TwoWay}" />
+
+                <StackPanel Margin="0,20,0,20"
+                            Visibility="{x:Bind ViewModel.Settings.TorrServerEnabled, Mode=OneWay, Converter={StaticResource BooleanConverter}}">
+                  <TextBlock Margin="0,0,0,4"
+                             Text="{x:Bind ConverterParameter='SettingsPage_Download_TorrServerAddress', Converter={StaticResource LocalizationConverter}}" />
+                  <TextBox Width="200"
+                           PlaceholderText="{x:Bind ConverterParameter='SettingsPage_Download_TorrServerAddress_Placeholder', Converter={StaticResource LocalizationConverter}}"
+                           HorizontalAlignment="Left"
+                           Margin="0,0,0,20"
+                           Text="{x:Bind ViewModel.Settings.TorrServerAddress, Mode=TwoWay}" />
+
+                  <TextBlock Text="{x:Bind ConverterParameter='SettingsPage_Download_InternalDatabaseForTorrServer', Converter={StaticResource LocalizationConverter}}"
+                             TextWrapping="Wrap" />
+                  <ToggleSwitch IsOn="{x:Bind ViewModel.Settings.InternalDatabaseForTorrServer, Mode=TwoWay}" />
+                  <TextBlock Margin="0,0,0,20"
+                             FontSize="14"
+                             Opacity="0.6"
+                             Text="{x:Bind ConverterParameter='SettingsPage_Download_InternalDatabaseForTorrServer_Description', Converter={StaticResource LocalizationConverter}}"
+                             TextWrapping="Wrap" />
+                </StackPanel>
+              </StackPanel>
+            </DataTemplate>
+          </selectors:SettingsTemplateSelector.DownloadSettingsTemplate>
+          <selectors:SettingsTemplateSelector.ProvidersSettingsTemplate>
+            <DataTemplate x:DataType="pages:SettingPageViewModel">
+              <StackPanel>
+                <TextBlock FontSize="20"
+                           Margin="0,0,0,20"
+                           Text="{x:Bind ConverterParameter='SettingsType_Provider', Converter={StaticResource LocalizationConverter}}" />
+
+                <TextBlock Text="{x:Bind ConverterParameter='SettingsPage_Providers_LoadAllSources', Converter={StaticResource LocalizationConverter}}"
+                           TextWrapping="Wrap" />
+                <ToggleSwitch Margin="0,0,0,20"
+                              IsOn="{x:Bind ViewModel.Settings.LoadAllSources, Mode=TwoWay}" />
+
+                <TextBlock Text="{x:Bind ConverterParameter='SettingsPage_Providers_PreferItemSite', Converter={StaticResource LocalizationConverter}}"
+                           TextWrapping="Wrap" />
+                <ToggleSwitch Margin="0,0,0,20"
+                              IsOn="{x:Bind ViewModel.Settings.PreferItemSite, Mode=TwoWay}" />
+
+                <StackPanel Margin="0,0,0,20"
+                            Visibility="{x:Bind ViewModel.Providers, Converter={StaticResource BooleanConverter}}">
+                  <TextBlock Text="{x:Bind ConverterParameter='SettingsPage_Providers_ProvidersPriority', Converter={StaticResource LocalizationConverter}}" />
+                  <TextBlock FontSize="14"
+                             Opacity="0.6"
+                             Text="{x:Bind ConverterParameter='SettingsPage_Providers_ProvidersPriority_Description', Converter={StaticResource LocalizationConverter}}"
+                             TextWrapping="Wrap"
+                             Visibility="{Binding ElementName=Page, Path=ShowXBoxSettings, Converter={StaticResource BooleanConverter}, ConverterParameter=!}" />
+
+                  <controls:ProvidersList ItemsSource="{x:Bind ViewModel.Providers}" />
+                </StackPanel>
+
+                <TextBlock Margin="0,20,0,0"
+                           Text="{x:Bind ConverterParameter='SettingsPage_Providers_CanPreloadFiles', Converter={StaticResource LocalizationConverter}}"
+                           TextWrapping="Wrap" />
+                <ToggleSwitch IsOn="{x:Bind ViewModel.Settings.CanPreloadFiles, Mode=TwoWay}" />
+                <TextBlock Margin="0,0,0,20"
+                           FontSize="14"
+                           Opacity="0.6"
+                           Text="{x:Bind ConverterParameter='SettingsPage_Providers_CanPreloadFiles_Description', Converter={StaticResource LocalizationConverter}}"
+                           TextWrapping="Wrap" />
+
+                <StackPanel Visibility="{x:Bind ViewModel.Settings.CanPreloadFiles, Mode=OneWay, Converter={StaticResource BooleanConverter}}">
+                  <TextBlock Text="{x:Bind ConverterParameter='SettingsPage_Providers_CanPreloadEpisodes', Converter={StaticResource LocalizationConverter}}"
+                             TextWrapping="Wrap" />
+                  <ToggleSwitch IsOn="{x:Bind ViewModel.Settings.CanPreloadEpisodes, Mode=TwoWay}" />
+                  <TextBlock Margin="0,0,0,20"
+                             FontSize="14"
+                             Opacity="0.6"
+                             MaxWidth="350"
+                             HorizontalAlignment="Left"
+                             Text="{x:Bind ConverterParameter='SettingsPage_Providers_CanPreloadEpisodes_Description', Converter={StaticResource LocalizationConverter}}"
+                             TextWrapping="Wrap" />
+                </StackPanel>
+
+                <TextBlock Text="{x:Bind ConverterParameter='SettingsPage_Providers_CanPreloadItemListItems', Converter={StaticResource LocalizationConverter}}"
+                           TextWrapping="Wrap" />
+                <ToggleSwitch Margin="0,0,0,20"
+                              IsOn="{x:Bind ViewModel.Settings.CanPreloadItems, Mode=TwoWay}" />
+              </StackPanel>
+            </DataTemplate>
+          </selectors:SettingsTemplateSelector.ProvidersSettingsTemplate>
+          <selectors:SettingsTemplateSelector.DataSettingsTemplate>
+            <DataTemplate x:DataType="pages:SettingPageViewModel">
+              <StackPanel>
+                <TextBlock Margin="0,0,0,20"
+                           FontSize="20"
+                           Text="{x:Bind ConverterParameter='SettingsType_Data', Converter={StaticResource LocalizationConverter}}" />
+
+                <TextBlock Margin="0,0,0,4"
+                           Text="{x:Bind ConverterParameter='SettingsPage_Data_ClearCacheMode', Converter={StaticResource LocalizationConverter}}"
+                           TextWrapping="Wrap" />
+                <ComboBox Width="200"
+                          Margin="0,0,0,20"
+                          ItemsSource="{x:Bind ViewModel.ClearCacheModes}"
+                          SelectedItem="{x:Bind ViewModel.ClearCacheMode, Converter={StaticResource BindToObjectConverter}, Mode=TwoWay}">
+                  <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                      <TextBlock Text="{Binding Converter={StaticResource ToFriendlyStringConverter}}" />
+                    </DataTemplate>
+                  </ComboBox.ItemTemplate>
+                </ComboBox>
+
+                <TextBlock Text="{x:Bind ConverterParameter='SettingsPage_Data_UseTelemetry', Converter={StaticResource LocalizationConverter}}"
+                           TextWrapping="Wrap" />
+                <ToggleSwitch Margin="0,0,0,20"
+                              IsOn="{x:Bind ViewModel.Settings.UseTelemetry, Mode=TwoWay}" />
+
+                <TextBlock Text="{x:Bind ConverterParameter='SettingsPage_Data_FileLogger', Converter={StaticResource LocalizationConverter}}"
+                           TextWrapping="Wrap" />
+                <ToggleSwitch IsOn="{x:Bind ViewModel.Settings.FileLogger, Mode=TwoWay}" />
+                <TextBlock FontSize="14"
+                           Opacity="0.6"
+                           Text="{x:Bind ConverterParameter='SettingsPage_Data_FileLogger_Description', Converter={StaticResource LocalizationConverter}}"
+                           TextWrapping="Wrap" />
+                <TextBlock FontSize="14"
+                           Opacity="0.6"
+                           Text="{x:Bind ConverterParameter='SettingsPage_RestartRequired', Converter={StaticResource LocalizationConverter}}"
+                           TextWrapping="Wrap" />
+                <StackPanel Visibility="{x:Bind ViewModel.Settings.FileLogger, Mode=OneWay, Converter={StaticResource BooleanConverter}}">
+                  <HyperlinkButton Command="{x:Bind ViewModel.OpenLogsFolderCommand}"
+                                   Content="{x:Bind ConverterParameter='SettingsPage_Data_OpenLogsFolderCommand', Converter={StaticResource LocalizationConverter}}" />
+                  <HyperlinkButton Margin="0,12,0,0"
+                                   Command="{x:Bind ViewModel.ChangeLogsCustomFolderCommand}"
+                                   Content="{x:Bind ConverterParameter='SettingsPage_Data_ChangeLogsCustomFolderCommand', Converter={StaticResource LocalizationConverter}}" />
+                  <TextBlock Margin="0,20,0,0"
+                             Text="{x:Bind ConverterParameter='SettingsPage_Data_TraceHttp', Converter={StaticResource LocalizationConverter}}"
+                             TextWrapping="Wrap" />
+                  <ToggleSwitch IsOn="{x:Bind ViewModel.Settings.TraceHttp, Mode=TwoWay}" />
+                  <TextBlock FontSize="14"
+                             Opacity="0.6"
+                             Text="{x:Bind ConverterParameter='SettingsPage_Data_TraceHttp_Description', Converter={StaticResource LocalizationConverter}}"
+                             TextWrapping="Wrap" />
+                  <StackPanel Margin="0,20,0,0"
+                              Visibility="{x:Bind ViewModel.Settings.TraceHttp, Mode=OneWay, Converter={StaticResource BooleanConverter}}">
+                    <TextBlock Text="{x:Bind ConverterParameter='SettingsPage_Data_TraceHttpWithCookies', Converter={StaticResource LocalizationConverter}}"
+                               TextWrapping="Wrap" />
+                    <ToggleSwitch IsOn="{x:Bind ViewModel.Settings.TraceHttpWithCookies, Mode=TwoWay}" />
+                    <TextBlock FontSize="14"
+                               Opacity="0.6"
+                               FontWeight="Bold"
+                               Text="{x:Bind ConverterParameter='SettingsPage_Data_TraceHttpWithCookies_Description', Converter={StaticResource LocalizationConverter}}"
+                               TextWrapping="Wrap" />
+                  </StackPanel>
+                </StackPanel>
+
+                <TextBlock Margin="0,20,0,0"
+                           Text="{x:Bind ConverterParameter='SettingsPage_Data_AutomatedBackupTaskEnabled', Converter={StaticResource LocalizationConverter}}"
+                           TextWrapping="Wrap" />
+                <ToggleSwitch IsOn="{x:Bind ViewModel.Settings.AutomatedBackupTaskEnabled, Mode=TwoWay}" />
+                <TextBlock FontSize="14"
+                           Opacity="0.6"
+                           Text="{x:Bind ConverterParameter='SettingsPage_Data_AutomatedBackupTaskEnabled_Description', Converter={StaticResource LocalizationConverter}}"
+                           TextWrapping="Wrap" />
+                <TextBlock FontSize="14"
+                           Opacity="0.6"
+                           Text="{x:Bind ConverterParameter='SettingsPage_RestartRequired', Converter={StaticResource LocalizationConverter}}"
+                           TextWrapping="Wrap" />
+                <StackPanel Visibility="{x:Bind ViewModel.Settings.AutomatedBackupTaskEnabled, Mode=OneWay, Converter={StaticResource BooleanConverter}}">
+                  <HyperlinkButton Command="{x:Bind ViewModel.OpenBackupTaskFolderCommand}"
+                                   Content="{x:Bind ConverterParameter='SettingsPage_Data_OpenBackupTaskFolderCommand', Converter={StaticResource LocalizationConverter}}" />
+                  <HyperlinkButton Margin="0,12,0,0"
+                                   Command="{x:Bind ViewModel.ChangeBackupTaskCustomFolderCommand}"
+                                   Content="{x:Bind ConverterParameter='SettingsPage_Data_ChangeBackupTaskCustomFolderCommand', Converter={StaticResource LocalizationConverter}}" />
+                </StackPanel>
+
+                <TextBlock Margin="0,20,0,20"
+                           TextWrapping="Wrap"
+                           Visibility="{Binding ElementName=Page, Path=ShowPCSettings, Converter={StaticResource BooleanConverter}}"
+                           Text="{x:Bind ConverterParameter='SettingsPage_Data_CookiesStoragePlacementNotification', Converter={StaticResource LocalizationConverter}}" />
+
+                <HyperlinkButton Margin="0,0,0,12"
+                                 Command="{x:Bind ViewModel.ShowBackupDialogCommand}"
+                                 Content="{x:Bind ConverterParameter='SettingsPage_Data_ShowBackupDialogCommand', Converter={StaticResource LocalizationConverter}}" />
+
+                <HyperlinkButton Margin="0,0,0,12"
+                                 Command="{x:Bind ViewModel.ShowBackupLoadDialogCommand}"
+                                 Content="{x:Bind ConverterParameter='SettingsPage_Data_ShowBackupLoadDialogCommand', Converter={StaticResource LocalizationConverter}}" />
+
+                <HyperlinkButton Margin="0,0,0,12"
+                                 Command="{x:Bind ViewModel.ResetDataCommand}"
+                                 Content="{x:Bind ConverterParameter='SettingsPage_Data_ResetDataCommand', Converter={StaticResource LocalizationConverter}}" />
+
+                <HyperlinkButton Margin="0,0,0,20"
+                                 Click="ClearCacheButton_Click"
+                                 Content="{x:Bind ConverterParameter='SettingsPage_Data_ClearCacheCommand', Converter={StaticResource LocalizationConverter}}" />
+              </StackPanel>
+            </DataTemplate>
+          </selectors:SettingsTemplateSelector.DataSettingsTemplate>
+          <selectors:SettingsTemplateSelector.AppSettingsTemplate>
+            <DataTemplate x:DataType="pages:SettingPageViewModel">
+              <StackPanel>
+                <TextBlock Margin="0,0,0,20"
+                           FontSize="20"
+                           Text="{x:Bind ConverterParameter='SettingsType_App', Converter={StaticResource LocalizationConverter}}" />
+
+                <StackPanel Margin="0,0,0,20">
+                  <TextBlock Margin="0,0,0,4"
+                             TextWrapping="WrapWholeWords"
+                             Text="{x:Bind ConverterParameter='SettingsPage_App_CurrentLanguage', Converter={StaticResource LocalizationConverter}}" />
+                  <ComboBox Width="200"
+                            ItemsSource="{x:Bind ViewModel.Languages, Mode=OneWay}"
+                            SelectedItem="{x:Bind ViewModel.CurrentLanguage, Mode=TwoWay, Converter={StaticResource BindToObjectConverter}}">
+                    <ComboBox.ItemTemplate>
+                      <DataTemplate x:DataType="x:String">
+                        <TextBlock Text="{x:Bind viewModels:SettingViewModel.GetLanguageFriendlyName((x:String))}" />
+                      </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                  </ComboBox>
+                  <TextBlock FontSize="14"
+                             Opacity="0.6"
+                             Text="{x:Bind ConverterParameter='SettingsPage_App_CurrentLanguage_Description', Converter={StaticResource LocalizationConverter}}"
+                             TextWrapping="Wrap" />
+                </StackPanel>
+
+                <TextBlock Margin="0,0,0,4"
+                           Text="{x:Bind ConverterParameter='SettingsPage_App_StartPage', Converter={StaticResource LocalizationConverter}}" />
+                <ComboBox Width="200"
+                          Margin="0,0,0,20"
+                          ItemsSource="{x:Bind ViewModel.StartPages}"
+                          SelectedItem="{x:Bind ViewModel.StartPage, Converter={StaticResource BindToObjectConverter}, Mode=TwoWay}">
+                  <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                      <TextBlock Text="{Binding Converter={StaticResource ToFriendlyStringConverter}}" />
+                    </DataTemplate>
+                  </ComboBox.ItemTemplate>
+                </ComboBox>
+
+                <TextBlock Text="{x:Bind ConverterParameter='SettingsPage_App_InAppLoggerNotifications', Converter={StaticResource LocalizationConverter}}"
+                           TextWrapping="Wrap" />
+                <ToggleSwitch Margin="0,0,0,20"
+                              IsOn="{x:Bind ViewModel.Settings.InAppLoggerNotifications, Mode=TwoWay}" />
+
+                <TextBlock Text="{x:Bind ConverterParameter='SettingsPage_App_OpenFavItemsOnFilesPage', Converter={StaticResource LocalizationConverter}}"
+                           TextWrapping="Wrap" />
+                <ToggleSwitch Margin="0,0,0,20"
+                              IsOn="{x:Bind ViewModel.Settings.OpenFavItemsOnFilesPage, Mode=TwoWay}" />
+
+                <TextBlock Text="{x:Bind ConverterParameter='SettingsPage_App_OpenHistoryItemsOnFilesPage', Converter={StaticResource LocalizationConverter}}"
+                           TextWrapping="Wrap" />
+                <ToggleSwitch Margin="0,0,0,20"
+                              IsOn="{x:Bind ViewModel.Settings.OpenHistoryItemsOnFilesPage, Mode=TwoWay}" />
+
+                <StackPanel Margin="0,0,0,20"
+                            Visibility="{Binding ElementName=Page, Path=ShowXBoxSettings, Converter={StaticResource BooleanConverter}}">
+                  <TextBlock Text="{x:Bind ConverterParameter='SettingsPage_App_XYMouseMode', Converter={StaticResource LocalizationConverter}}" />
+                  <ToggleSwitch IsOn="{x:Bind ViewModel.Settings.XYMouseMode, Mode=TwoWay}" />
+                  <TextBlock Margin="0,0,0,20"
+                             FontSize="14"
+                             Opacity="0.6"
+                             Text="{x:Bind ConverterParameter='SettingsPage_RestartRequired', Converter={StaticResource LocalizationConverter}}"
+                             TextWrapping="Wrap" />
+                </StackPanel>
+
+                <TextBlock Text="{x:Bind ConverterParameter='SettingsPage_App_CanShowUpdateChangeLog', Converter={StaticResource LocalizationConverter}}"
+                           TextWrapping="Wrap" />
+                <ToggleSwitch Margin="0,0,0,20"
+                              IsOn="{x:Bind ViewModel.Settings.CanShowUpdateChangeLog, Mode=TwoWay}" />
+
+                <TextBlock Text="{x:Bind ConverterParameter='SettingsPage_App_ListenForDumpRequest', Converter={StaticResource LocalizationConverter}}"
+                           TextWrapping="Wrap" />
+                <ToggleSwitch IsOn="{x:Bind ViewModel.Settings.ListenForDumpRequest, Mode=TwoWay}" />
+                <TextBlock FontSize="14"
+                           Opacity="0.6"
+                           Text="{x:Bind ConverterParameter='SettingsPage_App_ListenForDumpRequest_Description', Converter={StaticResource LocalizationConverter}}"
+                           TextWrapping="Wrap" />
+
+                <StackPanel Visibility="{Binding ElementName=Page, Path=ShowPCSettings, Converter={StaticResource BooleanConverter}}"
+                            Margin="0,20,0,20">
+                  <TextBlock Text="{x:Bind ConverterParameter='SettingsPage_App_IgnoreLauncherDefaults', Converter={StaticResource LocalizationConverter}}"
+                             TextWrapping="Wrap" />
+                  <ToggleSwitch IsOn="{x:Bind ViewModel.Settings.IgnoreLauncherDefaults, Mode=TwoWay}" />
+                </StackPanel>
+
+                <TextBlock Margin="0,20,0,20"
+                           FontSize="20"
+                           Text="{x:Bind ConverterParameter='SettingsPage_App_ColorsGroup', Converter={StaticResource LocalizationConverter}}" />
+                <TextBlock Text="{x:Bind ConverterParameter='SettingsPage_App_IsSystemColor', Converter={StaticResource LocalizationConverter}}"
+                           TextWrapping="Wrap" />
+                <ToggleSwitch Margin="0,0,0,20"
+                              IsOn="{Binding Source={StaticResource AccentColor}, Path=IsSystemColor, Mode=TwoWay}" />
+
+                <StackPanel Margin="0,0,0,20"
+                            Visibility="{Binding Source={StaticResource AccentColor}, Path=IsSystemColor, Converter={StaticResource BooleanConverter}, ConverterParameter=!}">
+                  <TextBlock Text="{x:Bind ConverterParameter='SettingsPage_App_AccentColor', Converter={StaticResource LocalizationConverter}}" />
+                  <GridView ItemsSource="{Binding Source={StaticResource AccentColor}, Path=AvailableColors}"
+                            SelectedItem="{Binding Source={StaticResource AccentColor}, Path=UserColor, Mode=TwoWay}">
+                    <GridView.ItemTemplate>
+                      <DataTemplate>
+                        <Rectangle Width="{StaticResource AppButtonWidth}"
+                                   Height="{StaticResource AppButtonHeight}"
+                                   Margin="2"
+                                   Stretch="Fill">
+                          <Rectangle.Fill>
+                            <SolidColorBrush Color="{Binding}" />
+                          </Rectangle.Fill>
+                        </Rectangle>
+                      </DataTemplate>
+                    </GridView.ItemTemplate>
+                    <GridView.ItemContainerStyle>
+                      <Style TargetType="GridViewItem">
+                        <Setter Property="Margin" Value="0" />
+                        <Setter Property="Padding" Value="0" />
+                      </Style>
+                    </GridView.ItemContainerStyle>
+                    <GridView.ItemsPanel>
+                      <ItemsPanelTemplate>
+                        <ItemsWrapGrid MaximumRowsOrColumns="5"
+                                       Orientation="Horizontal" />
+                      </ItemsPanelTemplate>
+                    </GridView.ItemsPanel>
+                  </GridView>
+                </StackPanel>
+
+                <TextBlock Text="{x:Bind ConverterParameter='SettingsPage_App_ShowImageBackground', Converter={StaticResource LocalizationConverter}}"
+                           TextWrapping="Wrap" />
+                <ToggleSwitch Margin="0,0,0,20"
+                              IsOn="{x:Bind ViewModel.Settings.ShowImageBackground, Mode=TwoWay}" />
+
+                <TextBlock Text="{x:Bind ConverterParameter='SettingsPage_App_VerifyAccess', Converter={StaticResource LocalizationConverter}}"
+                           TextWrapping="Wrap" />
+                <ToggleSwitch extensions:CommandExtension.ToggledCommand="{x:Bind ViewModel.SetVerifyEnabledCommand}"
+                              IsOn="{x:Bind ViewModel.Settings.VerifyAccess, Mode=OneWay}" />
+                <TextBlock FontSize="14"
+                           Opacity="0.6"
+                           Margin="0,0,0,20"
+                           Text="{x:Bind ConverterParameter='SettingsPage_App_VerifyAccess_Description', Converter={StaticResource LocalizationConverter}}"
+                           TextWrapping="Wrap" />
+
+                <StackPanel Visibility="{x:Bind ViewModel.ShowDevSettings, Mode=OneTime}">
+                  <TextBlock Text="VNextFeatures" />
+                  <ToggleSwitch IsOn="{x:Bind ViewModel.Settings.VNextFeatures, Mode=TwoWay}" />
+                </StackPanel>
+
+                <HyperlinkButton Margin="0,20,0,12"
+                                 Content="{x:Bind ConverterParameter='SettingsPage_App_WindowsColorSettingsCommand', Converter={StaticResource LocalizationConverter}}"
+                                 NavigateUri="ms-settings:personalization-colors" />
+                <HyperlinkButton Margin="0,0,0,12"
+                                 Content="{x:Bind ConverterParameter='SettingsPage_App_MarginCalibrationLinkCommand', Converter={StaticResource LocalizationConverter}}"
+                                 Click="MarginCalibrationLink_Click" />
+                <HyperlinkButton Margin="0,0,0,12"
+                                 Content="{x:Bind ConverterParameter='SettingsPage_App_OpenVPNSettingsCommand', Converter={StaticResource LocalizationConverter}}"
+                                 NavigateUri="ms-settings:network-vpn"
+                                 Visibility="{Binding ElementName=Page, Path=CanOpenVPNSettings, Converter={StaticResource BooleanConverter}}" />
+                <HyperlinkButton Margin="0,0,0,20"
+                                 Content="{x:Bind ConverterParameter='SettingsPage_App_OpenProxySettingsCommand', Converter={StaticResource LocalizationConverter}}"
+                                 NavigateUri="ms-settings:network-proxy"
+                                 Visibility="{Binding ElementName=Page, Path=CanOpenProxySettings, Converter={StaticResource BooleanConverter}}" />
+              </StackPanel>
+            </DataTemplate>
+          </selectors:SettingsTemplateSelector.AppSettingsTemplate>
+          <selectors:SettingsTemplateSelector.AboutSettingsTemplate>
+            <DataTemplate x:DataType="pages:SettingPageViewModel">
+              <StackPanel>
+                <TextBlock Margin="0,0,0,20"
+                           FontSize="20"
+                           Text="{x:Bind ConverterParameter='SettingsType_About', Converter={StaticResource LocalizationConverter}}" />
+                <TextBlock Margin="0,0,0,20"
+                           Text="{x:Bind ConverterParameter='SettingsPage_About_AskUserToShareApplication', Converter={StaticResource LocalizationConverter}}"
+                           TextWrapping="Wrap" />
+
+                <TextBlock Margin="0,0,0,20"
+                           TextWrapping="Wrap"
+                           Text="{x:Bind ConverterParameter='SettingsPage_About_RedirectUserInCaseOfIssues', Converter={StaticResource LocalizationConverter}}" />
+
+                <HyperlinkButton Margin="0,0,0,12"
+                                 Content="{x:Bind ConverterParameter='SettingsPage_About_FAQLinkCommand', Converter={StaticResource LocalizationConverter}}"
+                                 NavigateUri="{x:Bind ViewModel.FAQLink}" />
+
+                <HyperlinkButton Margin="0,0,0,12"
+                                 Content="{x:Bind ConverterParameter='SettingsPage_About_4pdaTopicCommand', Converter={StaticResource LocalizationConverter}}"
+                                 NavigateUri="http://4pda.ru/forum/index.php?showtopic=718471&amp;st=999999999999999" />
+
+                <HyperlinkButton Margin="0,0,0,12"
+                                 Content="{x:Bind ConverterParameter='SettingsPage_About_MailToLinkCommand', Converter={StaticResource LocalizationConverter}}"
+                                 NavigateUri="{x:Bind ViewModel.MailToLink}" />
+
+                <HyperlinkButton Margin="0,0,0,12"
+                                 Content="{x:Bind ConverterParameter='SettingsPage_About_TrelloProgress', Converter={StaticResource LocalizationConverter}}"
+                                 NavigateUri="https://trello.com/b/u2LHlvB4/fs" />
+
+                <HyperlinkButton Margin="0,0,0,12"
+                                 Content="{x:Bind ConverterParameter='SettingsPage_About_PrivatePolicyLinkCommand', Converter={StaticResource LocalizationConverter}}"
+                                 NavigateUri="{x:Bind ViewModel.PrivatePolicyLink, Mode=OneWay}" />
+
+                <HyperlinkButton Margin="0,0,0,12"
+                                 Content="{x:Bind ConverterParameter='SettingsPage_About_CheckForUpdatesCommand', Converter={StaticResource LocalizationConverter}}"
+                                 Command="{x:Bind ViewModel.CheckForUpdatesCommand, Mode=OneTime}"
+                                 CommandParameter="True"
+                                 Visibility="{x:Bind ViewModel.CheckForUpdatesCommand.IsCanExecuteWithoutParameter, Mode=OneTime, Converter={StaticResource BooleanConverter}}" />
+
+                <HyperlinkButton Margin="0,0,0,12"
+                                 Content="{x:Bind ConverterParameter='SettingsPage_About_ShowChangesDialogCommand', Converter={StaticResource LocalizationConverter}}"
+                                 Command="{x:Bind ViewModel.ShowChangesDialogCommand, Mode=OneTime}"
+                                 Visibility="{x:Bind ViewModel.ShowChangesDialogCommand.IsCanExecuteWithoutParameter, Mode=OneTime, Converter={StaticResource BooleanConverter}}" />
+              </StackPanel>
+            </DataTemplate>
+          </selectors:SettingsTemplateSelector.AboutSettingsTemplate>
+        </selectors:SettingsTemplateSelector>
+      </controls:MasterDetailsView.DetailsTemplateSelector>
+    </controls:MasterDetailsView>
+
+    <VisualStateManager.VisualStateGroups>
+      <VisualStateGroup>
+        <VisualState>
+          <VisualState.StateTriggers>
+            <windowsstatetriggers:EqualsStateTrigger EqualTo="Both"
+                                                     Value="{x:Bind MasterDetailsView.ViewState, Mode=OneWay}" />
+          </VisualState.StateTriggers>
+          <VisualState.Setters>
+            <Setter Target="MasterDetailsView.Background" Value="{ThemeResource ClientBackgroundBrush}" />
+          </VisualState.Setters>
+        </VisualState>
+      </VisualStateGroup>
+    </VisualStateManager.VisualStateGroups>
+  </Grid>
+</Page>

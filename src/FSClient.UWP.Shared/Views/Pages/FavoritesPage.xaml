@@ -1,0 +1,343 @@
+<Page x:Class="FSClient.UWP.Shared.Views.Pages.FavoritesPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:wintriggers="using:WindowsStateTriggers"
+      xmlns:extensions="using:FSClient.UWP.Shared.Extensions"
+      xmlns:controls="using:FSClient.UWP.Shared.Views.Controls"
+      xmlns:helpers="using:FSClient.Shared.Helpers"
+      xmlns:models="using:FSClient.Shared.Models"
+      xmlns:pages="using:FSClient.ViewModels.Pages"
+      xmlns:items="using:FSClient.ViewModels.Items"
+      xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+      x:Name="Page"
+      NavigationCacheMode="Required"
+      KeyDown="Page_KeyDown">
+
+  <extensions:PageAppBarExtension.Top>
+    <Grid>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="8" />
+        <ColumnDefinition Width="Auto" />
+      </Grid.ColumnDefinitions>
+      <TextBlock x:Name="HeaderBlock"
+                 Margin="8,0"
+                 VerticalAlignment="Center"
+                 Text="{x:Bind ConverterParameter='NavigationPageType_Favorites', Converter={StaticResource LocalizationConverter}}" />
+      <AutoSuggestBox x:Name="AutoSuggestBox"
+                      MinWidth="{StaticResource SearchBoxWidth}"
+                      HorizontalAlignment="Right"
+                      Background="Transparent"
+                      PlaceholderText="{x:Bind ConverterParameter='PageAppBar_Search', Converter={StaticResource LocalizationConverter}}"
+                      VerticalAlignment="Center"
+                      extensions:CommandExtension.TextChangedCommand="{x:Bind ViewModel.UpdateCommand}"
+                      Text="{x:Bind ViewModel.SearchRequest, Mode=TwoWay, Converter={StaticResource BindToObjectConverter}}"
+                      TextBoxStyle="{StaticResource TranparentSearchTextBoxStyle}" />
+      <StackPanel x:Name="TopBar"
+                  x:DeferLoadStrategy="Lazy"
+                  Grid.Column="2"
+                  Orientation="Horizontal"
+                  Visibility="Collapsed">
+
+        <AppBarButton x:Name="MoveButton"
+                      Icon="Switch"
+                      extensions:ToolTipServiceEx.ToolTip="{x:Bind ConverterParameter='FavoitesPage_MoveButton_ToolTip', Converter={StaticResource LocalizationConverter}}"
+                      extensions:CompatExtension.AccessKey="M"
+                      Style="{StaticResource ClientAppBarButtonStyle}"
+                      Click="MoveButton_Click"
+                      Visibility="{x:Bind IsAllSelectedButton.Visibility, Mode=OneWay}" />
+        <AppBarButton x:Name="IsAllSelectedButton"
+                      Icon="SelectAll"
+                      extensions:ToolTipServiceEx.ToolTip="{x:Bind ConverterParameter='ListView_SelectAll', Converter={StaticResource LocalizationConverter}}"
+                      extensions:CompatExtension.AccessKey="T"
+                      Command="{x:Bind ViewModel.AllSelectedToggleCommand}"
+                      Visibility="{x:Bind ViewModel.IsInSelectionMode, Mode=OneWay, Converter={StaticResource BooleanConverter}}"
+                      Style="{StaticResource ClientAppBarButtonStyle}" />
+        <AppBarSeparator Visibility="{x:Bind IsAllSelectedButton.Visibility, Mode=OneWay}" />
+
+        <AppBarToggleButton x:Name="SelectionModeToggle"
+                            Icon="Bullets"
+                            extensions:ToolTipServiceEx.ToolTip="{x:Bind ConverterParameter='ListView_GroupMode', Converter={StaticResource LocalizationConverter}}"
+                            extensions:CompatExtension.AccessKey="C"
+                            Click="SelectionModeToggle_Click"
+                            IsChecked="{x:Bind ViewModel.IsInSelectionMode, Mode=TwoWay, Converter={StaticResource BindToObjectConverter}}"
+                            Style="{StaticResource ClientAppBarToggleButtonStyle}" />
+        <AppBarButton x:Name="MoreButton"
+                      Icon="More"
+                      Width="{StaticResource NarrowWindowAppBarButtonWidth}"
+                      extensions:CompatExtension.AccessKey="M"
+                      extensions:ToolTipServiceEx.ToolTip="{x:Bind ConverterParameter='PageAppBar_More_Tooltip', Converter={StaticResource LocalizationConverter}}"
+                      Style="{StaticResource ClientAppBarButtonStyle}">
+          <AppBarButton.Flyout>
+            <MenuFlyout x:Name="TopMenuFlyout">
+              <ToggleMenuFlyoutItem Command="{x:Bind ViewModel.UpdateCommand}"
+                                    IsChecked="{x:Bind ViewModel.GroupItems, Mode=TwoWay}"
+                                    Text="{x:Bind ConverterParameter='FavoritesPage_GroupItemsBySection', Converter={StaticResource LocalizationConverter}}" />
+              <MenuFlyoutSeparator />
+              <controls:RadioMenuFlyoutItemsContainerItem Header="{x:Bind ConverterParameter='ListView_Sort', Converter={StaticResource LocalizationConverter}}"
+                                                          Target="{x:Bind TopMenuFlyout}"
+                                                          ItemsSource="{x:Bind ViewModel.SortTypes, Mode=OneWay}"
+                                                          SelectedItem="{x:Bind ViewModel.CurrentSortType, Mode=TwoWay, Converter={StaticResource BindToObjectConverter}}"
+                                                          SelectedCommand="{x:Bind ViewModel.UpdateCommand}">
+                <controls:RadioMenuFlyoutItemsContainerItem.ItemTemplate>
+                  <DataTemplate x:DataType="x:Object">
+                    <muxc:RadioMenuFlyoutItem Text="{x:Bind helpers:EnumHelper.GetDisplayName((models:SortType))}" />
+                  </DataTemplate>
+                </controls:RadioMenuFlyoutItemsContainerItem.ItemTemplate>
+              </controls:RadioMenuFlyoutItemsContainerItem>
+              <MenuFlyoutSeparator />
+              <controls:RadioMenuFlyoutItemsContainerItem Header="{x:Bind ConverterParameter='FavoritesPage_SectionFilter', Converter={StaticResource LocalizationConverter}}"
+                                                          Target="{x:Bind TopMenuFlyout}"
+                                                          ItemsSource="{x:Bind ViewModel.Sections, Mode=OneWay}"
+                                                          SelectedItem="{x:Bind ViewModel.CurrentSection, Mode=TwoWay, Converter={StaticResource BindToObjectConverter}}"
+                                                          SelectedCommand="{x:Bind ViewModel.UpdateCommand}">
+                <controls:RadioMenuFlyoutItemsContainerItem.ItemTemplate>
+                  <DataTemplate x:DataType="x:Object">
+                    <muxc:RadioMenuFlyoutItem Text="{x:Bind (models:Section).ToString()}" />
+                  </DataTemplate>
+                </controls:RadioMenuFlyoutItemsContainerItem.ItemTemplate>
+              </controls:RadioMenuFlyoutItemsContainerItem>
+            </MenuFlyout>
+          </AppBarButton.Flyout>
+        </AppBarButton>
+      </StackPanel>
+    </Grid>
+  </extensions:PageAppBarExtension.Top>
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="*" />
+      <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+    <Pivot x:Name="FavoritesPivot"
+           ItemsSource="{x:Bind ViewModel.PageModels, Mode=OneWay}"
+           SelectedIndex="{x:Bind ViewModel.CurrentPageIndex, Mode=TwoWay}"
+           Loaded="FavoritesPivot_Loaded">
+      <Pivot.ItemContainerStyle>
+        <Style TargetType="PivotItem">
+          <Setter Property="Margin" Value="0" />
+          <Setter Property="Padding" Value="0" />
+        </Style>
+      </Pivot.ItemContainerStyle>
+      <Pivot.ItemTemplate>
+        <DataTemplate x:DataType="pages:FavoritesTypePageViewModel">
+          <controls:AdaptiveGridView x:Name="ItemsGridView"
+                                     Margin="4,0"
+                                     ItemClick="NavigateToItem"
+                                     extensions:ListViewBaseExtension.SelectedItems="{Binding ElementName=Page, Path=ViewModel.SelectedItems, Mode=OneTime}"
+                                     extensions:ScrollViewerExtensions.EnableMiddleClickScrolling="True"
+                                     ItemsSource="{Binding ElementName=FavoriteSource, Path=View}"
+                                     Style="{StaticResource ItemsListStyle}"
+                                     DesiredWidth="{StaticResource ItemNormalDesiredWidth}"
+                                     SelectionChanged="ItemsGridView_SelectionChanged"
+                                     ChoosingItemContainer="ItemsGridView_ChoosingItemContainer">
+            <controls:AdaptiveGridView.Resources>
+              <ResourceDictionary>
+                <CollectionViewSource x:Name="FavoriteSource"
+                                      x:Key="FavoriteSource"
+                                      Source="{x:Bind Content, Mode=OneWay}"
+                                      IsSourceGrouped="{Binding ElementName=Page, Path=ViewModel.GroupItems, Converter={StaticResource BooleanConverter}}" />
+              </ResourceDictionary>
+            </controls:AdaptiveGridView.Resources>
+            <controls:AdaptiveGridView.GroupStyle>
+              <GroupStyle>
+                <GroupStyle.HeaderTemplate>
+                  <DataTemplate>
+                    <TextBlock Text="{Binding Key}" />
+                  </DataTemplate>
+                </GroupStyle.HeaderTemplate>
+              </GroupStyle>
+            </controls:AdaptiveGridView.GroupStyle>
+            <controls:AdaptiveGridView.ItemTemplate>
+              <DataTemplate x:DataType="items:ItemsListItemViewModel">
+                <controls:ItemsListItem ItemInfo="{x:Bind ItemInfo, Mode=OneWay}"
+                                        IsItemPreloading="{x:Bind IsPreloading, Mode=OneWay}"
+                                        DisplayItemMode="{x:Bind DisplayItemMode}"
+                                        ItemPreloadCommand="{x:Bind PreloadItemCommand}" />
+              </DataTemplate>
+            </controls:AdaptiveGridView.ItemTemplate>
+          </controls:AdaptiveGridView>
+        </DataTemplate>
+      </Pivot.ItemTemplate>
+    </Pivot>
+    <ProgressRing x:Name="FavoritesLoadingProgress"
+                  Width="{StaticResource ProgressRingSize}"
+                  Height="{StaticResource ProgressRingSize}"
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Center"
+                  IsActive="True"
+                  Visibility="Collapsed" />
+
+    <TextBlock x:Name="CurrentPageNoItemsBlock"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"
+               Text="{x:Bind ConverterParameter='ListView_NothingFound', Converter={StaticResource LocalizationConverter}}"
+               Visibility="Collapsed" />
+
+    <CommandBar x:Name="BottomCommandBar"
+                Grid.Row="1"
+                Visibility="Collapsed"
+                Background="{ThemeResource BottomBarBackgroundBrush}">
+      <CommandBar.PrimaryCommands>
+        <AppBarButton x:Name="BottomMoveButton"
+                      Icon="Switch"
+                      Label="{x:Bind ConverterParameter='FavoitesPage_MoveButton', Converter={StaticResource LocalizationConverter}}"
+                      extensions:ToolTipServiceEx.ToolTip="{x:Bind ConverterParameter='FavoitesPage_MoveButton_ToolTip', Converter={StaticResource LocalizationConverter}}"
+                      extensions:CompatExtension.AccessKey="M"
+                      Style="{StaticResource ClientAppBarButtonStyle}"
+                      Click="MoveButton_Click"
+                      Visibility="{x:Bind IsAllSelectedBottomButton.Visibility, Mode=OneWay}" />
+        <AppBarButton x:Name="IsAllSelectedBottomButton"
+                      Icon="SelectAll"
+                      Label="{x:Bind ConverterParameter='ListView_SelectAll', Converter={StaticResource LocalizationConverter}}"
+                      extensions:ToolTipServiceEx.ToolTip="{x:Bind ConverterParameter='ListView_SelectAll', Converter={StaticResource LocalizationConverter}}"
+                      extensions:CompatExtension.AccessKey="T"
+                      Command="{x:Bind ViewModel.AllSelectedToggleCommand}"
+                      Visibility="{x:Bind ViewModel.IsInSelectionMode, Mode=OneWay, Converter={StaticResource BooleanConverter}}"
+                      Style="{StaticResource ClientAppBarButtonStyle}" />
+        <AppBarSeparator Visibility="{x:Bind BottomMoveButton.Visibility, Mode=OneWay}" />
+
+        <AppBarToggleButton x:Name="BottomSelectionModeToggle"
+                            Icon="Bullets"
+                            Label="{x:Bind ConverterParameter='ListView_GroupMode', Converter={StaticResource LocalizationConverter}}"
+                            extensions:ToolTipServiceEx.ToolTip="{x:Bind ConverterParameter='ListView_GroupMode', Converter={StaticResource LocalizationConverter}}"
+                            extensions:CompatExtension.AccessKey="C"
+                            Click="SelectionModeToggle_Click"
+                            IsChecked="{x:Bind ViewModel.IsInSelectionMode, Mode=TwoWay, Converter={StaticResource BindToObjectConverter}}"
+                            Style="{StaticResource ClientAppBarToggleButtonStyle}" />
+      </CommandBar.PrimaryCommands>
+      <CommandBar.SecondaryCommands>
+        <AppBarToggleButton Command="{x:Bind ViewModel.UpdateCommand}"
+                            IsChecked="{x:Bind ViewModel.GroupItems, Mode=TwoWay}"
+                            Label="{x:Bind ConverterParameter='FavoritesPage_GroupItemsBySection', Converter={StaticResource LocalizationConverter}}"
+                            Icon="Bookmarks" />
+        <AppBarButton Label="{x:Bind ConverterParameter='ListView_Sort', Converter={StaticResource LocalizationConverter}}"
+                      Icon="Sort">
+          <AppBarButton.Flyout>
+            <MenuFlyout x:Name="BottomSortMenuFlyout">
+              <controls:RadioMenuFlyoutItemsContainerItem Target="{x:Bind BottomSortMenuFlyout}"
+                                                          ItemsSource="{x:Bind ViewModel.SortTypes, Mode=OneWay}"
+                                                          SelectedItem="{x:Bind ViewModel.CurrentSortType, Mode=TwoWay, Converter={StaticResource BindToObjectConverter}}"
+                                                          SelectedCommand="{x:Bind ViewModel.UpdateCommand}">
+                <controls:RadioMenuFlyoutItemsContainerItem.ItemTemplate>
+                  <DataTemplate x:DataType="x:Object">
+                    <muxc:RadioMenuFlyoutItem Text="{x:Bind helpers:EnumHelper.GetDisplayName((models:SortType))}" />
+                  </DataTemplate>
+                </controls:RadioMenuFlyoutItemsContainerItem.ItemTemplate>
+              </controls:RadioMenuFlyoutItemsContainerItem>
+            </MenuFlyout>
+          </AppBarButton.Flyout>
+        </AppBarButton>
+        <AppBarButton Label="{x:Bind ConverterParameter='FavoritesPage_SectionFilter', Converter={StaticResource LocalizationConverter}}"
+                      Icon="Filter">
+          <AppBarButton.Flyout>
+            <MenuFlyout x:Name="BottomSectionMenuFlyout">
+              <controls:RadioMenuFlyoutItemsContainerItem Target="{x:Bind BottomSectionMenuFlyout}"
+                                                          ItemsSource="{x:Bind ViewModel.Sections, Mode=OneWay}"
+                                                          SelectedItem="{x:Bind ViewModel.CurrentSection, Mode=TwoWay, Converter={StaticResource BindToObjectConverter}}"
+                                                          SelectedCommand="{x:Bind ViewModel.UpdateCommand}">
+                <controls:RadioMenuFlyoutItemsContainerItem.ItemTemplate>
+                  <DataTemplate x:DataType="x:Object">
+                    <muxc:RadioMenuFlyoutItem Text="{x:Bind (models:Section).ToString()}" />
+                  </DataTemplate>
+                </controls:RadioMenuFlyoutItemsContainerItem.ItemTemplate>
+              </controls:RadioMenuFlyoutItemsContainerItem>
+            </MenuFlyout>
+          </AppBarButton.Flyout>
+        </AppBarButton>
+      </CommandBar.SecondaryCommands>
+    </CommandBar>
+
+    <VisualStateManager.VisualStateGroups>
+
+      <VisualStateGroup>
+        <VisualState x:Name="ShowTopBar">
+          <VisualState.StateTriggers>
+            <AdaptiveTrigger MinWindowWidth="{StaticResource MobileWindowWidth}" />
+          </VisualState.StateTriggers>
+          <VisualState.Setters>
+            <Setter Target="TopBar.Visibility" Value="Visible" />
+          </VisualState.Setters>
+        </VisualState>
+        <VisualState>
+          <VisualState.StateTriggers>
+            <AdaptiveTrigger MinWindowWidth="0" />
+          </VisualState.StateTriggers>
+          <VisualState.Setters>
+            <Setter Target="BottomCommandBar.Visibility" Value="Visible" />
+          </VisualState.Setters>
+        </VisualState>
+      </VisualStateGroup>
+
+      <VisualStateGroup x:Name="FavoritesLoadingGroup">
+        <VisualState>
+          <VisualState.StateTriggers>
+            <StateTrigger IsActive="{x:Bind ViewModel.ShowProgress, Mode=OneWay}" />
+          </VisualState.StateTriggers>
+          <VisualState.Setters>
+            <Setter Target="FavoritesLoadingProgress.Visibility" Value="Visible" />
+            <Setter Target="FavoritesPivot.Visibility" Value="Collapsed" />
+            <Setter Target="MoreButton.IsEnabled" Value="False" />
+            <Setter Target="MoveButton.IsEnabled" Value="False" />
+            <Setter Target="BottomCommandBar.IsEnabled" Value="False" />
+            <Setter Target="AutoSuggestBox.IsEnabled" Value="False" />
+            <Setter Target="AutoSuggestBox.PlaceholderText" Value="" />
+          </VisualState.Setters>
+        </VisualState>
+
+        <VisualState>
+          <VisualState.StateTriggers>
+            <wintriggers:CompositeStateTrigger Operator="And">
+              <wintriggers:NotEqualStateTrigger Value="{x:Bind ViewModel.CurrentPage, Mode=OneWay}"
+                                                NotEqualTo="{x:Null}" />
+              <wintriggers:IsFalseStateTrigger Value="{x:Bind ViewModel.CurrentPage.HasAnyItem, Mode=OneWay, FallbackValue=False}" />
+            </wintriggers:CompositeStateTrigger>
+          </VisualState.StateTriggers>
+          <VisualState.Setters>
+            <Setter Target="CurrentPageNoItemsBlock.Visibility" Value="Visible" />
+            <Setter Target="SelectionModeToggle.IsEnabled" Value="False" />
+            <Setter Target="BottomSelectionModeToggle.IsEnabled" Value="False" />
+          </VisualState.Setters>
+        </VisualState>
+
+        <VisualState>
+          <VisualState.Setters>
+            <Setter Target="FavoritesLoadingProgress.Visibility" Value="Collapsed" />
+            <Setter Target="CurrentPageNoItemsBlock.Visibility" Value="Collapsed" />
+          </VisualState.Setters>
+        </VisualState>
+      </VisualStateGroup>
+      <VisualStateGroup x:Name="IsAllSelectedGroup">
+        <VisualState>
+          <VisualState.StateTriggers>
+            <StateTrigger IsActive="{x:Bind ViewModel.IsAllSelected, Mode=OneWay}" />
+          </VisualState.StateTriggers>
+          <VisualState.Setters>
+            <Setter Target="IsAllSelectedButton.Icon" Value="ClearSelection" />
+            <Setter Target="IsAllSelectedBottomButton.Icon" Value="ClearSelection" />
+            <Setter Target="IsAllSelectedButton.(extensions:ToolTipServiceEx.ToolTip)" Value="{x:Bind ConverterParameter='ListView_UnselectAll', Converter={StaticResource LocalizationConverter}}" />
+            <Setter Target="IsAllSelectedBottomButton.(extensions:ToolTipServiceEx.ToolTip)" Value="{x:Bind ConverterParameter='ListView_UnselectAll', Converter={StaticResource LocalizationConverter}}" />
+          </VisualState.Setters>
+        </VisualState>
+      </VisualStateGroup>
+
+      <VisualStateGroup x:Name="PageSizeStateGroup">
+        <VisualState x:Name="MediumState">
+          <VisualState.StateTriggers>
+            <AdaptiveTrigger MinWindowWidth="{StaticResource NarrowWindowWidth}" />
+          </VisualState.StateTriggers>
+        </VisualState>
+        <VisualState x:Name="MobileState">
+          <VisualState.StateTriggers>
+            <AdaptiveTrigger MinWindowWidth="0" />
+          </VisualState.StateTriggers>
+          <VisualState.Setters>
+            <Setter Target="AutoSuggestBox.HorizontalAlignment" Value="Stretch" />
+            <Setter Target="AutoSuggestBox.PlaceholderText" Value="{x:Bind ConverterParameter='NavigationPageType_Favorites', Converter={StaticResource LocalizationConverter}}" />
+            <Setter Target="HeaderBlock.Visibility" Value="Collapsed" />
+            <Setter Target="SelectionModeToggle.Width" Value="{StaticResource NarrowWindowAppBarButtonWidth}" />
+          </VisualState.Setters>
+        </VisualState>
+      </VisualStateGroup>
+    </VisualStateManager.VisualStateGroups>
+  </Grid>
+</Page>

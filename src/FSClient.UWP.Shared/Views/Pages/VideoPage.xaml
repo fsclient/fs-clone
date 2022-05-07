@@ -1,0 +1,129 @@
+<Page x:Class="FSClient.UWP.Shared.Views.Pages.VideoPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:extensions="using:FSClient.UWP.Shared.Extensions"
+      xmlns:controls="using:FSClient.UWP.Shared.Views.Controls"
+      NavigationCacheMode="Disabled"
+      Loaded="Page_Loaded"
+      Unloaded="Page_Unloaded">
+
+  <extensions:PageAppBarExtension.Top>
+    <Grid>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="Auto" />
+      </Grid.ColumnDefinitions>
+
+      <TextBlock Grid.Column="0"
+                 Margin="8,0,0,0"
+                 VerticalAlignment="Center"
+                 Text="{x:Bind MediaViewModel.CurrentFile.Title, TargetNullValue={Binding ConverterParameter='NavigationPageType_Video', Converter={StaticResource LocalizationConverter}}}" />
+      <StackPanel Grid.Column="1"
+                  Orientation="Horizontal">
+        <AppBarButton x:Name="DownloadButton"
+                      extensions:CompatExtension.AccessKey="D"
+                      Command="{x:Bind FileViewModel.DownloadCommand}"
+                      CommandParameter="{x:Bind MediaViewModel.CurrentVideo, Mode=OneWay}"
+                      Icon="Download"
+                      Style="{StaticResource ClientAppBarButtonStyle}"
+                      extensions:ToolTipServiceEx.ToolTip="{x:Bind ConverterParameter='VideoPage_DownloadVideoCommand', Converter={StaticResource LocalizationConverter}}" />
+        <AppBarButton x:Name="ShowVideoCommandsButton"
+                      Width="48"
+                      extensions:CompatExtension.AccessKey="M"
+                      Icon="More"
+                      Style="{StaticResource ClientAppBarButtonStyle}"
+                      extensions:ToolTipServiceEx.ToolTip="{x:Bind ConverterParameter='PageAppBar_More_Tooltip', Converter={StaticResource LocalizationConverter}}">
+          <AppBarButton.Flyout>
+            <MenuFlyout>
+              <MenuFlyoutItem extensions:CompatExtension.AccessKey="B"
+                              Command="{x:Bind FileViewModel.OpenInBrowserCommand}"
+                              CommandParameter="{x:Bind MediaViewModel.CurrentFile, Mode=OneWay}"
+                              Text="{x:Bind ConverterParameter='VideoPage_OpenInBrowserCommand', Converter={StaticResource LocalizationConverter}}"
+                              extensions:ToolTipServiceEx.ToolTip="{x:Bind ConverterParameter='VideoPage_OpenInBrowserCommand_ToolTip', Converter={StaticResource LocalizationConverter}}">
+                <extensions:CompatExtension.Icon>
+                  <SymbolIcon Symbol="Globe" />
+                </extensions:CompatExtension.Icon>
+              </MenuFlyoutItem>
+              <MenuFlyoutItem x:Name="OpenInNewWindowButton"
+                              extensions:CompatExtension.AccessKey="W"
+                              Click="InNewWindowButton_Click"
+                              Text="{x:Bind ConverterParameter='VideoPage_OpenInNewWindowButtonCommand', Converter={StaticResource LocalizationConverter}}"
+                              extensions:ToolTipServiceEx.ToolTip="{x:Bind ConverterParameter='VideoPage_OpenInNewWindowButtonCommand_ToolTip', Converter={StaticResource LocalizationConverter}}">
+                <extensions:CompatExtension.Icon>
+                  <FontIcon Glyph="&#xE8A7;"
+                            FontFamily="Segoe MDL2 Assets" />
+                </extensions:CompatExtension.Icon>
+              </MenuFlyoutItem>
+              <MenuFlyoutItem extensions:CompatExtension.AccessKey="F"
+                              Visibility="{x:Bind PlayerControl.IsFrameGrabberSupported}"
+                              Click="ShareGrabbedFrameButton_Click"
+                              Text="{x:Bind ConverterParameter='VideoPage_ShareGrabbedFrameCommand', Converter={StaticResource LocalizationConverter}}"
+                              extensions:ToolTipServiceEx.ToolTip="{x:Bind ConverterParameter='VideoPage_ShareGrabbedFrameCommand', Converter={StaticResource LocalizationConverter}}">
+                <extensions:CompatExtension.Icon>
+                  <FontIcon Glyph="&#xE72D;"
+                            FontFamily="Segoe MDL2 Assets" />
+                </extensions:CompatExtension.Icon>
+              </MenuFlyoutItem>
+            </MenuFlyout>
+          </AppBarButton.Flyout>
+        </AppBarButton>
+      </StackPanel>
+    </Grid>
+  </extensions:PageAppBarExtension.Top>
+
+  <Grid x:Name="RootGrid">
+    <controls:PlayerControl x:Name="PlayerControl"
+                            CurrentVideo="{x:Bind MediaViewModel.CurrentVideo, Mode=TwoWay}"
+                            GoNextCommand="{x:Bind MediaViewModel.GoNextCommand}"
+                            GoPreviousCommand="{x:Bind MediaViewModel.GoPreviousCommand}"
+                            HandleVideoStopedCommand="{x:Bind MediaViewModel.HandleVideoStopedCommand}"
+                            SetAndPreloadFileCommand="{x:Bind MediaViewModel.SetAndPreloadFileCommand}"
+                            SetPositionForCurrentCommand="{x:Bind MediaViewModel.SetPositionForCurrentCommand}"
+                            PlaylistEnded="PlayerControl_PlaylistEnded">
+      <controls:PlayerControl.MoreFlyout>
+        <MenuFlyout>
+          <MenuFlyoutItem Command="{x:Bind FileViewModel.DownloadCommand}"
+                          CommandParameter="{x:Bind MediaViewModel.CurrentVideo, Mode=OneWay}"
+                          Text="{x:Bind ConverterParameter='VideoPage_DownloadVideoCommand', Converter={StaticResource LocalizationConverter}}">
+            <extensions:CompatExtension.Icon>
+              <SymbolIcon Symbol="Download" />
+            </extensions:CompatExtension.Icon>
+          </MenuFlyoutItem>
+          <MenuFlyoutItem Command="{x:Bind FileViewModel.OpenInBrowserCommand}"
+                          CommandParameter="{x:Bind MediaViewModel.CurrentFile, Mode=OneWay}"
+                          Text="{x:Bind ConverterParameter='VideoPage_OpenInBrowserCommand', Converter={StaticResource LocalizationConverter}}">
+            <extensions:CompatExtension.Icon>
+              <SymbolIcon Symbol="Globe" />
+            </extensions:CompatExtension.Icon>
+          </MenuFlyoutItem>
+          <MenuFlyoutItem Click="ShareGrabbedFrameButton_Click"
+                          Visibility="{x:Bind PlayerControl.IsFrameGrabberSupported}"
+                          Text="{x:Bind ConverterParameter='VideoPage_ShareGrabbedFrameCommand', Converter={StaticResource LocalizationConverter}}">
+            <extensions:CompatExtension.Icon>
+              <FontIcon Glyph="&#xE72D;"
+                        FontFamily="Segoe MDL2 Assets" />
+            </extensions:CompatExtension.Icon>
+          </MenuFlyoutItem>
+        </MenuFlyout>
+
+      </controls:PlayerControl.MoreFlyout>
+    </controls:PlayerControl>
+    <VisualStateManager.VisualStateGroups>
+      <VisualStateGroup x:Name="ButtonPageSizeStateGroup">
+        <VisualState>
+          <VisualState.StateTriggers>
+            <AdaptiveTrigger MinWindowWidth="{StaticResource NarrowWindowWidth}" />
+          </VisualState.StateTriggers>
+        </VisualState>
+        <VisualState>
+          <VisualState.StateTriggers>
+            <AdaptiveTrigger MinWindowWidth="0" />
+          </VisualState.StateTriggers>
+          <VisualState.Setters>
+            <Setter Target="DownloadButton.Width" Value="{StaticResource NarrowWindowAppBarButtonWidth}" />
+          </VisualState.Setters>
+        </VisualState>
+      </VisualStateGroup>
+    </VisualStateManager.VisualStateGroups>
+  </Grid>
+</Page>

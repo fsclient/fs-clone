@@ -1,0 +1,96 @@
+<UserControl x:Class="FSClient.UWP.Shared.Views.Controls.EpisodesCalendar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controls="using:FSClient.UWP.Shared.Views.Controls"
+             xmlns:extensions="using:FSClient.UWP.Shared.Extensions"
+             xmlns:providers="using:FSClient.Shared.Providers">
+
+  <Grid DataContext="{x:Bind Source, Mode=OneWay}">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="*" />
+    </Grid.RowDefinitions>
+    <controls:CloseableAlert IsOpen="{x:Bind ShowCalendarHelpInfo, Mode=TwoWay}"
+                             Background="Transparent"
+                             Text="{x:Bind ConverterParameter='EpisodesCalendar_CalendarAlert_Tooltip', Converter={StaticResource LocalizationConverter}}"
+                             Visibility="{Binding HasAnyItem, Converter={StaticResource BooleanConverter}}" />
+    <ListView x:Name="CalendarListView"
+              Grid.Row="1"
+              SelectionMode="None"
+              extensions:ListViewBaseExtension.IncrementalSource="{x:Bind Source, Mode=OneWay}"
+              ScrollViewer.VerticalScrollMode="Disabled">
+      <ListView.ItemContainerStyle>
+        <Style TargetType="ListViewItem">
+          <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+          <Setter Property="Height" Value="{StaticResource AppButtonHeight}" />
+        </Style>
+      </ListView.ItemContainerStyle>
+      <ListView.ItemTemplate>
+        <DataTemplate x:DataType="providers:EpisodeInfo">
+          <Grid>
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="*" />
+              <ColumnDefinition Width="8" />
+              <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <TextBlock TextWrapping="WrapWholeWords"
+                       Visibility="{x:Bind IsSpecial, Converter={StaticResource BooleanConverter}}">
+              <Run Text="Special"
+                   FontWeight="Bold" />
+              <Run Text="{x:Bind Title}" />
+            </TextBlock>
+            <TextBlock TextWrapping="WrapWholeWords"
+                       Visibility="{x:Bind IsSpecial, Converter={StaticResource BooleanConverter}, ConverterParameter=!}">
+              <Run Text="{x:Bind ConverterParameter='File_Episode', Converter={StaticResource LocalizationConverter}}"
+                   FontWeight="Bold" />
+              <Run Text="{x:Bind Episode}"
+                   FontWeight="Bold" />
+              <Run Text="{x:Bind Title}" />
+            </TextBlock>
+            <TextBlock Grid.Column="2"
+                       Text="{x:Bind DateTime, Converter={StaticResource ToFriendlyStringConverter}, ConverterParameter='dd.MM.yyyy'}"
+                       Visibility="{x:Bind IsNotAired, Converter={StaticResource BooleanConverter}, ConverterParameter=!}" />
+            <TextBlock Grid.Column="2"
+                       FontWeight="Bold"
+                       ToolTipService.ToolTip="{x:Bind DateTime, Converter={StaticResource ToFriendlyStringConverter}, ConverterParameter='dd.MM.yyyy HH:mm'}"
+                       Text="{x:Bind DateTime, Converter={StaticResource ToFriendlyStringConverter}, ConverterParameter='dd.MM.yyyy'}"
+                       Visibility="{x:Bind IsNotAired, Converter={StaticResource BooleanConverter}}" />
+          </Grid>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+      <ListView.GroupStyle>
+        <GroupStyle>
+          <GroupStyle.HeaderTemplate>
+            <DataTemplate x:DataType="providers:SeasonInfo">
+              <Grid>
+                <TextBlock Visibility="{x:Bind Key, Converter={StaticResource BooleanConverter}, ConverterParameter=!-1}">
+                  <Run Text="{x:Bind ConverterParameter='File_Season', Converter={StaticResource LocalizationConverter}}" />
+                  <Run Text="{x:Bind Key}" />
+                </TextBlock>
+                <TextBlock Text="{x:Bind ConverterParameter='File_Episode', Converter={StaticResource LocalizationConverter}}"
+                           Visibility="{x:Bind Key, Converter={StaticResource BooleanConverter}, ConverterParameter=-1}" />
+              </Grid>
+            </DataTemplate>
+          </GroupStyle.HeaderTemplate>
+        </GroupStyle>
+      </ListView.GroupStyle>
+    </ListView>
+    <Grid Visibility="{Binding IsLoading, Converter={StaticResource BooleanConverter}, ConverterParameter=!}">
+      <TextBlock x:Name="NoCalendarBlock"
+                 Grid.Row="1"
+                 Text="{x:Bind ConverterParameter='ListView_NothingFound', Converter={StaticResource LocalizationConverter}}"
+                 VerticalAlignment="Center"
+                 HorizontalAlignment="Center"
+                 Visibility="{Binding HasAnyItem, Converter={StaticResource BooleanConverter}, ConverterParameter=!}" />
+    </Grid>
+    <ProgressRing x:Name="CalendarProgressBar"
+                  Grid.Row="1"
+                  Width="{StaticResource ProgressRingSize}"
+                  Height="{StaticResource ProgressRingSize}"
+                  Margin="0,12"
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Center"
+                  IsActive="True"
+                  Visibility="{Binding IsLoading, Converter={StaticResource BooleanConverter}}" />
+  </Grid>
+</UserControl>

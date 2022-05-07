@@ -1,0 +1,88 @@
+version: 2
+updates:
+- package-ecosystem: nuget
+  directory: "/"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: Jint
+    versions:
+    - "> 3.0.0-beta-0"
+  - dependency-name: Microsoft.AppCenter.Analytics
+    versions:
+    - ">= 3.a, < 4"
+  - dependency-name: Microsoft.AppCenter.Crashes
+    versions:
+    - ">= 3.a, < 4"
+  - dependency-name: Microsoft.CodeAnalysis.CSharp
+    versions:
+    - "> 1.3.2"
+  - dependency-name: Microsoft.Extensions.DependencyInjection
+    versions:
+    - ">= 2.a, < 3"
+  - dependency-name: Microsoft.Extensions.DependencyInjection
+    versions:
+    - ">= 3.a, < 4"
+  - dependency-name: Microsoft.Extensions.Logging
+    versions:
+    - ">= 2.a, < 3"
+  - dependency-name: Microsoft.Extensions.Logging
+    versions:
+    - ">= 3.a, < 4"
+  - dependency-name: Microsoft.Extensions.Logging.Debug
+    versions:
+    - ">= 2.a, < 3"
+  - dependency-name: Microsoft.Extensions.Logging.Debug
+    versions:
+    - ">= 3.a, < 4"
+  - dependency-name: Microsoft.Net.Compilers.Toolset
+    versions:
+    - "> 3.3.1, < 4"
+  - dependency-name: Microsoft.NETCore.UniversalWindowsPlatform
+    versions:
+    - "> 0.0.0"
+  - dependency-name: Microsoft.NETCore.UniversalWindowsPlatform
+    versions:
+    - ">= 6.1.a, < 6.2"
+  - dependency-name: Microsoft.NETCore.UniversalWindowsPlatform
+    versions:
+    - ">= 6.2.a, < 6.3"
+  - dependency-name: Microsoft.NETCore.UniversalWindowsPlatform
+    versions:
+    - ">= 6.a, < 7"
+  - dependency-name: Microsoft.UI.Xaml
+    versions:
+    - "> 2.1.190606001"
+  - dependency-name: System.Interactive.Async
+    versions:
+    - "> 4.1.1.pre.preview.4, < 4.2"
+  - dependency-name: System.Numerics.Vectors
+    versions:
+    - "> 4.4.0, < 5"
+  - dependency-name: Uno.WinUI
+    versions:
+    - "> 3.1.10"
+  - dependency-name: Uno.WinUI.WebAssembly
+    versions:
+    - "> 3.4.0"
+  - dependency-name: Nerdbank.GitVersioning
+    versions:
+    - 3.4.190
+  - dependency-name: XamlTreeDump
+    versions:
+    - 1.0.6
+    - 1.0.8
+  - dependency-name: Moq
+    versions:
+    - 4.16.0
+    - 4.16.1
+  - dependency-name: Microsoft.NET.Test.Sdk
+    versions:
+    - 16.9.1
+  - dependency-name: NUnit
+    versions:
+    - 3.13.1
+  - dependency-name: NUnit.Analyzers
+    versions:
+    - 3.0.0

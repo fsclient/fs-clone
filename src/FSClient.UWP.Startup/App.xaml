@@ -1,0 +1,20 @@
+﻿<Application x:Class="FSClient.UWP.Startup.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             RequestedTheme="Dark">
+
+  <Application.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" ControlsResourcesVersion="Version1" />
+        <ResourceDictionary Source="ms-appx:///FSClient.UWP.Shared/Views/Themes/Consts.xaml" />
+        <Brushes xmlns="using:FSClient.UWP.Shared.Views.Themes" />
+        <Styles xmlns="using:FSClient.UWP.Shared.Views.Themes" />
+        <ResourceDictionary Source="ms-appx:///FSClient.UWP.Shared/Views/Themes/Converters.xaml" />
+        <ResourceDictionary Source="ms-appx:///FSClient.UWP.Shared/Views/Controls/Controls.xaml" />
+      </ResourceDictionary.MergedDictionaries>
+
+      <AccentColor x:Key="AccentColor" xmlns="using:FSClient.UWP.Shared.Helpers" />
+    </ResourceDictionary>
+  </Application.Resources>
+</Application>

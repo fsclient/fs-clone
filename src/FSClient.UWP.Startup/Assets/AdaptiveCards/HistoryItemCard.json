@@ -1,0 +1,77 @@
+﻿{
+  "kind": "AdaptiveCard",
+  "fallbackText": "{{title}}",
+  "lang": "ru",
+  "body": [
+    {
+      "kind": "Container",
+      "items": [
+        {
+          "kind": "ColumnSet",
+          "columns": [
+            {
+              "kind": "Column",
+              "items": [
+                {
+                  "kind": "TextBlock",
+                  "size": "Medium",
+                  "weight": "Bolder",
+                  "text": "{{title}}"
+                }
+              ],
+              "width": "stretch"
+            },
+            {
+              "kind": "Column",
+              "items": [
+                {
+                  "kind": "TextBlock",
+                  "size": "Small",
+                  "text": "{{year}}"
+                }
+              ],
+              "width": "auto"
+            }
+          ]
+        },
+        {
+          "kind": "ColumnSet",
+          "spacing": "Small",
+          "columns": [
+            {
+              "kind": "Column",
+              "items": [
+                {
+                  "kind": "Image",
+                  "url": "{{poster}}",
+                  "size": "Stretch"
+                }
+              ],
+              "width": "1*"
+            },
+            {
+              "kind": "Column",
+              "items": [
+                {
+                  "kind": "TextBlock",
+                  "weight": "Bolder",
+                  "text": "{{genres}}"
+                },
+                {
+                  "kind": "TextBlock",
+                  "spacing": "Small",
+                  "size": "Small",
+                  "text": "{{description}}",
+                  "wrap": true
+                }
+              ],
+              "width": "3*"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "version": "1.0"
+}

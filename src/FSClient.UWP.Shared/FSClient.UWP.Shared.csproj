@@ -1,0 +1,70 @@
+﻿<Project Sdk="MSBuild.Sdk.Extras">
+
+  <Import Project="..\UWP.Build.Props" />
+
+  <PropertyGroup>
+    <IsUno>false</IsUno>
+    <TargetFrameworks>$(UwpTargetFramework)</TargetFrameworks>
+    <TargetFrameworks Condition="'$(IsWinUI)' == 'true' OR '$(IsUno)' == 'true'">$(TargetFrameworks);net5.0</TargetFrameworks>
+    <GenerateLibraryLayout>true</GenerateLibraryLayout>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFramework)' == '$(UwpTargetFramework)'">
+    <DefineConstants>$(DefineConstants);UAP</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net5.0' AND '$(IsWinUI)' == 'true'">
+    <Platforms>x86;x64</Platforms>
+    <RuntimeIdentifiers>win-x86;win-x64</RuntimeIdentifiers>
+    <EnableDefaultPageItems>false</EnableDefaultPageItems>
+    <DefineConstants>$(DefineConstants);WINUI3</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net5.0' AND '$(IsUno)' == 'true'">
+    <DefineConstants>$(DefineConstants);WINUI3;UNO</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.2" />
+    <PackageReference Include="Microsoft.AppCenter.Analytics" Version="4.4.0" />
+    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="4.4.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="5.0.0" />
+    <PackageReference Include="Nito.AsyncEx.Coordination" Version="5.1.2" />
+    <PackageReference Include="Nito.AsyncEx.Oop" Version="5.1.2" />
+    <PackageReference Include="System.Runtime" Version="4.3.1" />
+    <PackageReference Include="WindowsStateTriggersEx" Version="1.4.0" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == '$(UwpTargetFramework)'">
+    <PackageReference Include="Microsoft.UI.Xaml" Version="$(MicrosoftUiPackageVersion)" />
+    <PackageReference Include="Win2D.uwp" Version="1.26.0" />
+    <PackageReference Include="XamlTreeDump" Version="1.0.9" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'net5.0' AND '$(IsWinUI)' == 'true'">
+    <PackageReference Include="Microsoft.VCRTForwarders.140" Version="1.0.7" />
+    <PackageReference Include="Microsoft.WinUI" Version="$(MicrosoftUiPackageVersion)" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'net5.0' AND '$(IsUno)' == 'true'">
+    <PackageReference Include="Uno.WinUI" Version="3.1.10" />
+    <PackageReference Include="Uno.WinUI.WebAssembly" Version="3.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FSClient.Shared\FSClient.Shared.csproj" />
+    <ProjectReference Include="..\FSClient.ViewModels\FSClient.ViewModels.csproj" />
+    <ProjectReference Include="..\FSClient.Providers\FSClient.Providers.csproj" />
+    <ProjectReference Include="..\FSClient.Data\FSClient.Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="**\*.rd.xml" />
+    <Page Include="**\*.xaml" Exclude="**\bin\**\*.xaml;**\obj\**\*.xaml" SubType="Designer" Generator="MSBuild:Compile" />
+    <Compile Update="**\*.xaml.cs" DependentUpon="%(Filename)" />
+  </ItemGroup>
+
+  <!-- Workaround for https://developercommunity.visualstudio.com/content/problem/809328/error.html -->
+  <Target Name="PrepareLibraryLayoutWorkaround" Condition="'$(GenerateLibraryLayout)' == 'true'" DependsOnTargets="GetPackagingOutputs" BeforeTargets="_CopySourceItemsToOutputDirectory">
+    <ItemGroup>
+      <_LayoutFile Include="@(PackagingOutputs)" Condition="'%(OutputGroup)' == 'ContentFilesProjectOutputGroup'" />
+      <_LayoutFile Include="@(PackagingOutputs)" Condition="'%(OutputGroup)' == 'CustomOutputGroupForPackaging'" />
+    </ItemGroup>
+    <Copy SourceFiles="@(_LayoutFile)" DestinationFiles="@(_LayoutFile->'$(OutDir)\%(TargetPath)')" SkipUnchangedFiles="$(SkipCopyUnchangedFiles)" OverwriteReadOnlyFiles="$(OverwriteReadOnlyFiles)" Retries="$(CopyRetryCount)" RetryDelayMilliseconds="$(CopyRetryDelayMilliseconds)" UseHardlinksIfPossible="$(CreateHardLinksForCopyFilesToOutputDirectoryIfPossible)" />
+  </Target>
+
+</Project>

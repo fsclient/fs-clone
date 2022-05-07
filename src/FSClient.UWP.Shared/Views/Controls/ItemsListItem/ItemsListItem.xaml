@@ -1,0 +1,249 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:FSClient.UWP.Shared.Views.Controls"
+                    xmlns:extensions="using:FSClient.UWP.Shared.Extensions"
+                    xmlns:muxc="using:Microsoft.UI.Xaml.Controls">
+
+  <SolidColorBrush x:Key="PreloadPanelBackground"
+                   Color="#99000000" />
+
+  <StaticResource x:Key="ItemsListItemBackgroundBrush"
+                  ResourceKey="ItemBackgroundBrush" />
+
+  <StaticResource x:Key="ItemsListItemInfoCloudBrush"
+                  ResourceKey="SystemControlHighlightAccentBrush" />
+
+  <DataTemplate x:Key="NumberBasedRatingTemplate">
+    <Viewbox HorizontalAlignment="Stretch"
+             Margin="8,-4">
+      <muxc:RatingControl Value="{Binding Value5Based, Mode=OneTime}"
+                          IsReadOnly="True"
+                          MaxRating="5" />
+    </Viewbox>
+  </DataTemplate>
+
+  <Style x:Key="CloudBorderStyle"
+         TargetType="Border">
+    <Setter Property="Background" Value="{ThemeResource ItemsListItemInfoCloudBrush}" />
+    <Setter Property="CornerRadius" Value="10, 0,10,0" />
+    <Setter Property="Margin" Value="0,0,0,4" />
+  </Style>
+
+  <Style TargetType="controls:ItemsListItem">
+    <Setter Property="Background" Value="{ThemeResource ItemsListItemBackgroundBrush}" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="controls:ItemsListItem">
+          <Grid x:Name="RootGrid">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition x:Name="PosterColumn"
+                                Width="*" />
+              <ColumnDefinition x:Name="DetailedColumn"
+                                Width="0" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+              <RowDefinition x:Name="PosterRow"
+                             Height="*" />
+              <RowDefinition x:Name="BottomTitleRow"
+                             Height="40" />
+            </Grid.RowDefinitions>
+            <extensions:ContextMenuExtension.ContextFlyout>
+              <controls:FavMenuFlyout x:Name="ContextMenu"
+                                      ItemInfo="{Binding ItemInfo, RelativeSource={RelativeSource TemplatedParent}}" />
+            </extensions:ContextMenuExtension.ContextFlyout>
+
+            <controls:PosterImage x:Name="PosterImage"
+                                  HorizontalAlignment="Center"
+                                  VerticalAlignment="Stretch"
+                                  Source="{Binding ItemInfo.Poster, RelativeSource={RelativeSource TemplatedParent}}"
+                                  Stretch="UniformToFill"
+                                  ForcePosterAspectRatio="True" />
+
+            <TextBlock Grid.Row="1"
+                       VerticalAlignment="Center"
+                       Text="{Binding ItemInfo.Title, RelativeSource={RelativeSource TemplatedParent}}"
+                       TextAlignment="Center"
+                       TextTrimming="WordEllipsis"
+                       TextWrapping="Wrap"
+                       ToolTipService.ToolTip="{Binding ItemInfo.Details.Titles, Converter={StaticResource ToFriendlyStringConverter}, RelativeSource={RelativeSource TemplatedParent}}" />
+
+            <Border x:Name="PreloadingBorder"
+                    Background="{StaticResource PreloadPanelBackground}"
+                    Grid.Row="0"
+                    Opacity="0"
+                    Visibility="Collapsed" />
+
+            <StackPanel Grid.Row="0"
+                        Padding="4">
+              <Border HorizontalAlignment="Left"
+                      Style="{StaticResource CloudBorderStyle}">
+                <TextBlock Margin="4"
+                           Text="{Binding HistoryItem.AddTime, Converter={StaticResource ToFriendlyStringConverter}, ConverterParameter=g, RelativeSource={RelativeSource TemplatedParent}}"
+                           Visibility="{Binding HistoryItem, Converter={StaticResource BooleanConverter}, RelativeSource={RelativeSource TemplatedParent}}" />
+              </Border>
+              <Border x:Name="SeasonEpisodeBorder"
+                      HorizontalAlignment="Left"
+                      Style="{StaticResource CloudBorderStyle}"
+                      Visibility="Collapsed">
+                <StackPanel Orientation="Horizontal"
+                            Visibility="{Binding HistoryItem, Converter={StaticResource BooleanConverter}, RelativeSource={RelativeSource TemplatedParent}}">
+                  <TextBlock x:Name="SeasonBlock"
+                             Margin="4"
+                             Visibility="Collapsed">
+                    <Run Text="{Binding ConverterParameter='File_Season', Converter={StaticResource LocalizationConverter}}" />
+                    <Run Text="{Binding HistoryItem.Season, RelativeSource={RelativeSource TemplatedParent}}" />
+                  </TextBlock>
+                  <TextBlock x:Name="EpisodeBlock"
+                             Margin="4"
+                             Visibility="Collapsed">
+                    <Run Text="{Binding ConverterParameter='File_Episode', Converter={StaticResource LocalizationConverter}}" />
+                    <Run Text="{Binding HistoryItem.Episode, Converter={StaticResource ToFriendlyStringConverter}, RelativeSource={RelativeSource TemplatedParent}}" />
+                  </TextBlock>
+                </StackPanel>
+              </Border>
+              <Border x:Name="QualityCloud"
+                      HorizontalAlignment="Left"
+                      Style="{StaticResource CloudBorderStyle}"
+                      Visibility="Collapsed">
+                <TextBlock Margin="4"
+                           Text="{Binding ItemInfo.Details.Quality, RelativeSource={RelativeSource TemplatedParent}}"
+                           Visibility="{Binding ItemInfo.Details.Quality, Converter={StaticResource BooleanConverter}, RelativeSource={RelativeSource TemplatedParent}}" />
+              </Border>
+              <Border x:Name="StatusCloud"
+                      HorizontalAlignment="Left"
+                      Style="{StaticResource CloudBorderStyle}"
+                      Visibility="Collapsed">
+                <TextBlock x:Name="StatusText"
+                           Margin="4"
+                           Text="{Binding ItemInfo.Details.Status, Converter={StaticResource ToFriendlyStringConverter}, RelativeSource={RelativeSource TemplatedParent}}"
+                           Visibility="{Binding ElementName=StatusText, Path=Text, Converter={StaticResource BooleanConverter}}" />
+              </Border>
+            </StackPanel>
+
+            <ProgressRing Grid.Column="0"
+                          Width="{StaticResource ProgressRingSize}"
+                          Height="{StaticResource ProgressRingSize}"
+                          Padding="16"
+                          HorizontalAlignment="Center"
+                          VerticalAlignment="Center"
+                          IsActive="True"
+                          Visibility="{Binding IsItemPreloading, Converter={StaticResource BooleanConverter}, RelativeSource={RelativeSource TemplatedParent}}" />
+
+            <controls:ItemRating x:Name="RatingPresenter"
+                                 VerticalAlignment="Bottom"
+                                 Visibility="Collapsed"
+                                 IsReadOnly="True"
+                                 Background="{ThemeResource ItemBackgroundBrush}"
+                                 Rating="{Binding ItemInfo.Details.Rating, RelativeSource={RelativeSource TemplatedParent}}" />
+
+            <Grid x:Name="DetailsGrid"
+                  x:DeferLoadStrategy="Lazy"
+                  Grid.Column="2"
+                  Margin="8,4"
+                  Visibility="Collapsed">
+              <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+              </Grid.RowDefinitions>
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+              </Grid.ColumnDefinitions>
+              <TextBlock Text="{Binding ItemInfo.Title, RelativeSource={RelativeSource TemplatedParent}}"
+                         FontSize="20"
+                         TextTrimming="CharacterEllipsis" />
+              <TextBlock Grid.Column="1"
+                         Text="{Binding ItemInfo.Details.Year, RelativeSource={RelativeSource TemplatedParent}}" />
+              <TextBlock Grid.Row="1"
+                         Grid.ColumnSpan="2"
+                         Text="{Binding ItemInfo.Details.TitleOrigin, RelativeSource={RelativeSource TemplatedParent}}"
+                         Foreground="Gray"
+                         Visibility="{Binding ItemInfo.Details.TitleOrigin, Converter={StaticResource BooleanConverter}, RelativeSource={RelativeSource TemplatedParent}}" />
+
+              <TextBlock x:Name="TagsBlock"
+                         Grid.Row="2"
+                         Grid.ColumnSpan="2"
+                         Tag="{Binding ItemInfo.Details.Tags, RelativeSource={RelativeSource TemplatedParent}}"
+                         TextWrapping="WrapWholeWords" />
+
+              <TextBlock Grid.Row="3"
+                         Grid.ColumnSpan="2"
+                         FontSize="13"
+                         Text="{Binding ItemInfo.Details.Description, RelativeSource={RelativeSource TemplatedParent}}"
+                         TextTrimming="CharacterEllipsis"
+                         TextWrapping="Wrap" />
+            </Grid>
+
+            <VisualStateManager.VisualStateGroups>
+
+              <VisualStateGroup x:Name="DisplayItemModesGroup">
+                <VisualState x:Name="DisplayItemModeNormal" />
+                <VisualState x:Name="DisplayItemModeMinimal">
+                  <VisualState.Setters>
+                    <Setter Target="PosterRow.Height" Value="0" />
+                  </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="DisplayItemModeDetailed">
+                  <VisualState.Setters>
+                    <Setter Target="RootGrid.Height" Value="180" />
+                    <Setter Target="PosterColumn.Width" Value="120" />
+                    <Setter Target="DetailedColumn.Width" Value="*" />
+                    <Setter Target="BottomTitleRow.Height" Value="0" />
+                    <Setter Target="DetailsGrid.Visibility" Value="Visible" />
+                  </VisualState.Setters>
+                </VisualState>
+              </VisualStateGroup>
+
+              <VisualStateGroup x:Name="SeasonEpisodeGroup">
+                <VisualState x:Name="NoSeasonAndEpisodeState" />
+                <VisualState x:Name="SeasonAndEpisodeState">
+                  <VisualState.Setters>
+                    <Setter Target="SeasonEpisodeBorder.Visibility" Value="Visible" />
+                    <Setter Target="SeasonBlock.Visibility" Value="Visible" />
+                    <Setter Target="EpisodeBlock.Visibility" Value="Visible" />
+                  </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="SeasonState">
+                  <VisualState.Setters>
+                    <Setter Target="SeasonEpisodeBorder.Visibility" Value="Visible" />
+                    <Setter Target="SeasonBlock.Visibility" Value="Visible" />
+                  </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="EpisodeState">
+                  <VisualState.Setters>
+                    <Setter Target="SeasonEpisodeBorder.Visibility" Value="Visible" />
+                    <Setter Target="EpisodeBlock.Visibility" Value="Visible" />
+                  </VisualState.Setters>
+                </VisualState>
+              </VisualStateGroup>
+
+              <VisualStateGroup x:Name="PreloadingGroup">
+                <VisualState x:Name="NoPreloadingState" />
+                <VisualState x:Name="PreloadingState">
+                  <VisualState.Setters>
+                    <Setter Target="PreloadingBorder.Visibility" Value="Visible" />
+                    <Setter Target="RatingPresenter.Visibility" Value="Visible" />
+                    <Setter Target="QualityCloud.Visibility" Value="Visible" />
+                    <Setter Target="StatusCloud.Visibility" Value="Visible" />
+                  </VisualState.Setters>
+                  <VisualState.Storyboard>
+                    <Storyboard>
+                      <DoubleAnimation Storyboard.TargetName="PreloadingBorder"
+                                       Storyboard.TargetProperty="Opacity"
+                                       To="1"
+                                       Duration="0:0:0.25" />
+                    </Storyboard>
+                  </VisualState.Storyboard>
+                </VisualState>
+              </VisualStateGroup>
+
+            </VisualStateManager.VisualStateGroups>
+          </Grid>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+
+</ResourceDictionary>

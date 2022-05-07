@@ -1,0 +1,158 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:FSClient.UWP.Shared.Views.Controls"
+                    xmlns:extensions="using:FSClient.UWP.Shared.Extensions">
+
+  <StaticResource x:Key="TrailerButtonSize" ResourceKey="AppButtonWideWidth"/>
+  <StaticResource x:Key="TrailerButtonInnerSize" ResourceKey="AppButtonHeight"/>
+
+  <Style TargetType="controls:ItemTrailerAppBarButton">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="Foreground" Value="{ThemeResource SystemControlForegroundBaseHighBrush}" />
+    <Setter Property="HorizontalAlignment" Value="Stretch" />
+    <Setter Property="HorizontalContentAlignment" Value="Left" />
+    <Setter Property="VerticalAlignment" Value="Top" />
+    <Setter Property="VerticalContentAlignment" Value="Center" />
+    <Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}" />
+    <Setter Property="FontWeight" Value="Normal" />
+    <Setter Property="FontSize" Value="16" />
+    <Setter Property="MinWidth" Value="{StaticResource TrailerButtonSize}" />
+    <Setter Property="Height" Value="{StaticResource TrailerButtonSize}" />
+    <Setter Property="Width" Value="Auto" />
+    <Setter Property="Icon" Value="Video" />
+    <Setter Property="Label" Value="{Binding ConverterParameter='ItemTrailerAppBarButton_Label', Converter={StaticResource LocalizationConverter}}" />
+    <Setter Property="UseSystemFocusVisuals" Value="True" />
+    <Setter Property="extensions:CompatExtension.AllowFocusOnInteraction" Value="False" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="controls:ItemTrailerAppBarButton">
+          <Grid x:Name="Root"
+                HorizontalAlignment="Left"
+                BorderThickness="{TemplateBinding BorderThickness}"
+                Background="{TemplateBinding Background}"
+                CornerRadius="30"
+                MaxWidth="{TemplateBinding MaxWidth}"
+                MinWidth="{TemplateBinding MinWidth}">
+            <Grid x:Name="ContentRoot"
+                  MinHeight="{StaticResource TrailerButtonInnerSize}">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+              </Grid.ColumnDefinitions>
+              <Border x:Name="HoverBorder"
+                      Background="{ThemeResource ClientBackgroundBrush}"
+                      CornerRadius="30"
+                      MinWidth="{TemplateBinding MinWidth}"
+                      Height="{TemplateBinding Height}"
+                      Opacity="0" />
+              <ContentPresenter x:Name="Content"
+                                AutomationProperties.AccessibilityView="Raw"
+                                Content="{TemplateBinding Icon}"
+                                Foreground="{TemplateBinding Foreground}"
+                                HorizontalAlignment="Stretch"
+                                CornerRadius="30"
+                                Width="{TemplateBinding MinWidth}"
+                                Height="{TemplateBinding Height}"
+                                VerticalAlignment="Center" />
+              <TextBlock x:Name="TextLabel"
+                         Foreground="{TemplateBinding Foreground}"
+                         FontSize="{TemplateBinding FontSize}"
+                         FontFamily="{TemplateBinding FontFamily}"
+                         Margin="4,0,12,0"
+                         Grid.Row="0"
+                         Grid.Column="1"
+                         Opacity="0"
+                         Visibility="Collapsed"
+                         HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                         TextWrapping="Wrap"
+                         Text="{TemplateBinding Label}"
+                         VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+            </Grid>
+            <ProgressRing x:Name="TrailerLoadingProgress"
+                          Visibility="Collapsed"
+                          IsActive="True"
+                          Width="{StaticResource ProgressRingSize}"
+                          Height="{StaticResource ProgressRingSize}"
+                          Margin="6"
+                          VerticalAlignment="Top"
+                          HorizontalAlignment="Left" />
+            <VisualStateManager.VisualStateGroups>
+              <VisualStateGroup x:Name="ApplicationViewStates">
+                <VisualState x:Name="FullSize" />
+                <VisualState x:Name="LabelOnRight" />
+                <VisualState x:Name="LabelCollapsed">
+                  <VisualState.Setters>
+                    <Setter Target="TextLabel.Visibility" Value="Collapsed" />
+                    <Setter Target="ContentRoot.MinHeight" Value="{ThemeResource AppBarThemeCompactHeight}" />
+                  </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Overflow">
+                  <VisualState.Setters>
+                    <Setter Target="ContentRoot.Visibility" Value="Collapsed" />
+                  </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="OverflowWithToggleButtons">
+                  <VisualState.Setters>
+                    <Setter Target="ContentRoot.Visibility" Value="Collapsed" />
+                  </VisualState.Setters>
+                </VisualState>
+              </VisualStateGroup>
+              <VisualStateGroup x:Name="CommonStates">
+                <VisualState x:Name="Normal">
+                  <Storyboard>
+                    <DoubleAnimation Duration="0:0:0.15"
+                                     Storyboard.TargetName="HoverBorder"
+                                     Storyboard.TargetProperty="Opacity"
+                                     To="0" />
+                  </Storyboard>
+                </VisualState>
+                <VisualState x:Name="PointerOver">
+                  <Storyboard>
+                    <DoubleAnimation Duration="0:0:0.15"
+                                     Storyboard.TargetName="TextLabel"
+                                     Storyboard.TargetProperty="Opacity"
+                                     To="1" />
+                    <DoubleAnimation Duration="0:0:0.15"
+                                     Storyboard.TargetName="HoverBorder"
+                                     Storyboard.TargetProperty="Opacity"
+                                     To="0.5" />
+                  </Storyboard>
+                  <VisualState.Setters>
+                    <Setter Target="Root.Background" Value="{ThemeResource ItemBackgroundBrush}" />
+                    <Setter Target="Root.CornerRadius" Value="25" />
+                    <Setter Target="Content.Foreground" Value="{ThemeResource SystemControlHighlightAltBaseHighBrush}" />
+                    <Setter Target="TextLabel.Foreground" Value="{ThemeResource SystemControlHighlightAltBaseHighBrush}" />
+                    <Setter Target="TextLabel.Opacity" Value="1" />
+                    <Setter Target="TextLabel.Visibility" Value="Visible" />
+                  </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Pressed">
+                  <VisualState.Setters>
+                    <Setter Target="Root.Background" Value="{ThemeResource ClientBackgroundBrush}" />
+                    <Setter Target="Content.Foreground" Value="{ThemeResource SystemControlHighlightAltBaseHighBrush}" />
+                    <Setter Target="TextLabel.Foreground" Value="{ThemeResource SystemControlHighlightAltBaseHighBrush}" />
+                    <Setter Target="TextLabel.Visibility" Value="Visible" />
+                    <Setter Target="TextLabel.Opacity" Value="1" />
+                    <Setter Target="Root.Opacity" Value="0.6" />
+                  </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Disabled">
+                  <VisualState.Setters>
+                    <Setter Target="Root.Background" Value="{ThemeResource TransparentBrush}" />
+                    <Setter Target="Content.Foreground" Value="{ThemeResource SystemControlDisabledBaseMediumLowBrush}" />
+                    <Setter Target="TextLabel.Foreground" Value="{ThemeResource SystemControlDisabledBaseMediumLowBrush}" />
+                  </VisualState.Setters>
+                </VisualState>
+              </VisualStateGroup>
+              <VisualStateGroup x:Name="InputModeStates">
+                <VisualState x:Name="InputModeDefault" />
+                <VisualState x:Name="TouchInputMode" />
+                <VisualState x:Name="GameControllerInputMode" />
+              </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+          </Grid>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+</ResourceDictionary>

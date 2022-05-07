@@ -1,0 +1,764 @@
+<UserControl x:Name="ViewControl"
+             x:Class="FSClient.UWP.Shared.Views.Pages.FilesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:winTriggers="using:WindowsStateTriggers"
+             xmlns:extensions="using:FSClient.UWP.Shared.Extensions"
+             xmlns:controls="using:FSClient.UWP.Shared.Views.Controls"
+             xmlns:selectors="using:FSClient.UWP.Shared.Selectors"
+             xmlns:models="using:FSClient.Shared.Models"
+             extensions:CompatExtension.XYFocusKeyboardNavigation="True"
+             Loaded="UserControl_Loaded"
+             Unloaded="UserControl_Unloaded">
+
+  <UserControl.Resources>
+    <ResourceDictionary>
+      <x:Double x:Key="NodeTitleFontSize">14</x:Double>
+    </ResourceDictionary>
+  </UserControl.Resources>
+
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="*" />
+      <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+
+    <controls:FolderHeaderControl x:Name="FolderHeaderControl"
+                                  SearchInFolderCommand="{x:Bind FileViewModel.SearchInFolderCommand}"
+                                  Folder="{x:Bind FileViewModel.CurrentFolder, Mode=OneWay}"
+                                  ShowProvidersPane="{x:Bind FilesSplitView.IsPaneOpen, Mode=TwoWay}" />
+    <controls:CloseableAlert x:Name="ProvidersAlertControl"
+                             Grid.Row="1"
+                             IsOpen="{x:Bind FileViewModel.ShowProvidersHelpInfo, Mode=TwoWay}"
+                             Background="{ThemeResource ItemBackgroundBrush}"
+                             HorizontalContentAlignment="Right"
+                             Text="{x:Bind ConverterParameter='FilesPage_ProvidersAlertControl', Converter={StaticResource LocalizationConverter}}" />
+    <SplitView x:Name="FilesSplitView"
+               Grid.Row="2"
+               extensions:CompatExtension.AllowFocusOnInteraction="{x:Bind FilesSplitView.IsPaneOpen, Mode=OneWay}"
+               GotFocus="FilesSplitView_GotFocus"
+               OpenPaneLength="200"
+               PaneBackground="{ThemeResource ClientBackgroundBrush}"
+               PanePlacement="Right">
+      <SplitView.Pane>
+        <Grid x:Name="FilesSplitViewGrid">
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+          </Grid.RowDefinitions>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+          </Grid.ColumnDefinitions>
+          <ToggleButton Grid.Row="0"
+                        Height="40"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        Background="Transparent"
+                        Command="{x:Bind FileViewModel.LoadRootCommand}"
+                        Content="{x:Bind ConverterParameter='FilesPage_ProviderCategory_Video', Converter={StaticResource LocalizationConverter}}"
+                        IsChecked="{x:Bind FileViewModel.TorrentsMode, Mode=TwoWay, Converter={StaticResource BooleanConverter}, ConverterParameter=!}"
+                        ToolTipService.ToolTip="{x:Bind ConverterParameter='FilesPage_ProviderCategory_Video_ToolTip', Converter={StaticResource LocalizationConverter}}"
+                        Style="{StaticResource ClientToggleButtonStyle}" />
+          <ToggleButton Grid.Row="0"
+                        Grid.Column="1"
+                        Height="40"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        Background="Transparent"
+                        Command="{x:Bind FileViewModel.LoadRootCommand}"
+                        Content="{x:Bind ConverterParameter='FilesPage_ProviderCategory_Torrent', Converter={StaticResource LocalizationConverter}}"
+                        IsChecked="{x:Bind FileViewModel.TorrentsMode, Mode=TwoWay, Converter={StaticResource BooleanConverter}}"
+                        ToolTipService.ToolTip="{x:Bind ConverterParameter='FilesPage_ProviderCategory_Torrent_ToolTip', Converter={StaticResource LocalizationConverter}}"
+                        Style="{StaticResource ClientToggleButtonStyle}" />
+
+          <StackPanel Grid.Row="1"
+                      Grid.ColumnSpan="2">
+            <ToggleButton Height="44"
+                          Padding="12,0"
+                          HorizontalAlignment="Stretch"
+                          HorizontalContentAlignment="Left"
+                          Background="{ThemeResource ClientBackgroundBrush}"
+                          BorderThickness="0"
+                          Command="{x:Bind FileViewModel.LoadRootCommand}"
+                          Content="{x:Bind ConverterParameter='FilesPage_ProviderSearchStrategy_Any', Converter={StaticResource LocalizationConverter}}"
+                          IsChecked="{x:Bind FileViewModel.UseAnyProvider, Mode=TwoWay, Converter={StaticResource BindToObjectConverter}}"
+                          ToolTipService.ToolTip="{x:Bind ConverterParameter='FilesPage_ProviderSearchStrategy_Any_ToolTip', Converter={StaticResource LocalizationConverter}}"
+                          Style="{StaticResource ClientToggleButtonStyle}" />
+            <ToggleButton Height="44"
+                          Padding="12,0"
+                          HorizontalAlignment="Stretch"
+                          HorizontalContentAlignment="Left"
+                          Background="{ThemeResource ClientBackgroundBrush}"
+                          BorderThickness="0"
+                          Command="{x:Bind FileViewModel.LoadRootCommand}"
+                          Content="{x:Bind ConverterParameter='FilesPage_ProviderSearchStrategy_All', Converter={StaticResource LocalizationConverter}}"
+                          IsChecked="{x:Bind FileViewModel.UseAllProviders, Mode=TwoWay, Converter={StaticResource BindToObjectConverter}}"
+                          ToolTipService.ToolTip="{x:Bind ConverterParameter='FilesPage_ProviderSearchStrategy_All_ToolTip', Converter={StaticResource LocalizationConverter}}"
+                          Style="{StaticResource ClientToggleButtonStyle}" />
+          </StackPanel>
+          <Border Grid.Row="2"
+                  Grid.ColumnSpan="2"
+                  Margin="0,8"
+                  BorderBrush="{ThemeResource ItemBackgroundBrush}"
+                  BorderThickness="0,1,0,0" />
+          <ListView Grid.Row="3"
+                    Grid.ColumnSpan="2"
+                    IsItemClickEnabled="True"
+                    extensions:CommandExtension.ClickCommand="{x:Bind FileViewModel.LoadRootCommand}"
+                    ItemsSource="{x:Bind FileViewModel.FileProviders, Mode=OneWay}"
+                    DataContext="{x:Bind FileViewModel}"
+                    SelectedItem="{Binding CurrentProvider, Mode=TwoWay}">
+            <ListView.ItemTemplate>
+              <DataTemplate>
+                <TextBlock Text="{Binding Converter={StaticResource ToFriendlyStringConverter}}" />
+              </DataTemplate>
+            </ListView.ItemTemplate>
+          </ListView>
+          <Border Grid.RowSpan="4"
+                  Width="2"
+                  HorizontalAlignment="Left"
+                  Background="{ThemeResource ItemBackgroundBrush}" />
+        </Grid>
+      </SplitView.Pane>
+      <SplitView.Content>
+        <Grid x:Name="FilesSplitViewContentGrid">
+          <Grid.Resources>
+            <ResourceDictionary>
+              <CollectionViewSource x:Name="ViewSource"
+                                    x:Key="ViewSource"
+                                    IsSourceGrouped="{x:Bind FileViewModel.IsSourceGrouped, Mode=OneWay}"
+                                    Source="{x:Bind FileViewModel.FilesSource, Mode=OneWay}" />
+            </ResourceDictionary>
+          </Grid.Resources>
+          <controls:AdaptiveGridView x:Name="FilesGridView"
+                                     Grid.Row="1"
+                                     Margin="0,4,0,0"
+                                     DesiredWidth="500"
+                                     IsItemClickEnabled="True"
+                                     SelectionMode="Single"
+                                     ItemClick="FileClick"
+                                     extensions:ListViewBaseExtension.SelectedItems="{x:Bind FileViewModel.SelectedItems}"
+                                     extensions:ScrollViewerExtensions.EnableMiddleClickScrolling="True"
+                                     ItemsSource="{x:Bind ViewSource.View, Mode=OneWay}">
+            <controls:AdaptiveGridView.GroupStyle>
+              <GroupStyle>
+                <GroupStyle.HeaderTemplate>
+                  <DataTemplate>
+                    <TextBlock FontSize="15"
+                               Text="{Binding Key}" />
+                  </DataTemplate>
+                </GroupStyle.HeaderTemplate>
+              </GroupStyle>
+            </controls:AdaptiveGridView.GroupStyle>
+            <controls:AdaptiveGridView.ItemContainerStyle>
+              <Style TargetType="GridViewItem">
+                <Setter Property="Background" Value="{ThemeResource ItemBackgroundBrush}" />
+                <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                <Setter Property="Margin" Value="4,2" />
+                <Setter Property="Padding" Value="0" />
+                <Setter Property="VerticalContentAlignment" Value="Stretch" />
+                <Setter Property="MinHeight" Value="48" />
+              </Style>
+            </controls:AdaptiveGridView.ItemContainerStyle>
+            <controls:AdaptiveGridView.ItemTemplateSelector>
+              <selectors:NodeTemplateSelector>
+                <selectors:NodeTemplateSelector.FolderTemplate>
+                  <DataTemplate x:DataType="models:Folder">
+                    <Grid x:Name="NodeGrid"
+                          HorizontalAlignment="Stretch"
+                          VerticalAlignment="Stretch"
+                          extensions:ContextMenuExtension.ContextFlyout="{Binding ElementName=ShowMoreInfoButton, Path=Flyout}">
+                      <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="0" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="4" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="4" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="8" />
+                        <ColumnDefinition Width="Auto" />
+                      </Grid.ColumnDefinitions>
+
+                      <SymbolIcon Grid.Column="1"
+                                  Width="{StaticResource AppButtonWidth}"
+                                  Height="{StaticResource AppButtonHeight}"
+                                  VerticalAlignment="Center"
+                                  Foreground="{ThemeResource SystemControlHighlightAccentBrush}"
+                                  Symbol="Folder" />
+
+                      <ProgressBar Grid.ColumnSpan="10"
+                                   HorizontalAlignment="Stretch"
+                                   VerticalAlignment="Stretch"
+                                   Background="Transparent"
+                                   Maximum="100"
+                                   Opacity="0.3"
+                                   Value="{Binding Position, Mode=OneWay, Converter={StaticResource PercentageConverter}}" />
+
+                      <TextBlock Grid.Column="5"
+                                 VerticalAlignment="Center"
+                                 MaxLines="2"
+                                 FontSize="{StaticResource NodeTitleFontSize}"
+                                 Text="{x:Bind Title, Converter={StaticResource ToFriendlyStringConverter}}"
+                                 TextTrimming="CharacterEllipsis"
+                                 TextWrapping="WrapWholeWords" />
+
+                      <TextBlock Grid.Column="5"
+                                 VerticalAlignment="Center"
+                                 MaxLines="2"
+                                 FontSize="{StaticResource NodeTitleFontSize}"
+                                 Text="{x:Bind Site.Title}"
+                                 TextTrimming="CharacterEllipsis"
+                                 TextWrapping="WrapWholeWords"
+                                 Visibility="{x:Bind Title, Converter={StaticResource BooleanConverter}, ConverterParameter=!}" />
+
+                      <TextBlock Grid.Column="7"
+                                 VerticalAlignment="Center"
+                                 FontWeight="Light"
+                                 FontSize="{StaticResource NodeTitleFontSize}"
+                                 Text="{x:Bind Details}"
+                                 TextTrimming="CharacterEllipsis" />
+
+                      <AppBarButton x:Name="ShowMoreInfoButton"
+                                    Grid.Column="9"
+                                    Width="{StaticResource AppButtonWidth}"
+                                    Height="{StaticResource AppButtonHeight}"
+                                    VerticalAlignment="Stretch"
+                                    HorizontalContentAlignment="Center"
+                                    VerticalContentAlignment="Center"
+                                    extensions:CompatExtension.AccessKey="M"
+                                    extensions:CompatExtension.AccessKeyScopeOwner="{Binding ElementName=NodeGrid}"
+                                    Icon="More"
+                                    Style="{StaticResource ClientAppBarButtonStyle}"
+                                    ToolTipService.ToolTip="{x:Bind ConverterParameter='PageAppBar_More_Tooltip', Converter={StaticResource LocalizationConverter}}"
+                                    Visibility="{x:Bind CanSetPosition, Converter={StaticResource BooleanConverter}}"
+                                    Tag="{Binding}">
+                        <Button.Flyout>
+                          <MenuFlyout>
+                            <controls:MenuFlyoutContentItem MinWidth="240"
+                                                            HorizontalContentAlignment="Stretch"
+                                                            VerticalContentAlignment="Stretch">
+                              <controls:NodeProgressControl Node="{Binding ElementName=ShowMoreInfoButton, Path=Tag}"
+                                                            SaveNodePositionCommand="{Binding ElementName=ViewControl, Path=FileViewModel.SaveNodePositionCommand}" />
+                            </controls:MenuFlyoutContentItem>
+                          </MenuFlyout>
+                        </Button.Flyout>
+                      </AppBarButton>
+                    </Grid>
+                  </DataTemplate>
+                </selectors:NodeTemplateSelector.FolderTemplate>
+                <selectors:NodeTemplateSelector.FileTemplate>
+                  <DataTemplate x:DataType="models:File">
+                    <Grid x:Name="NodeGrid"
+                          HorizontalAlignment="Stretch"
+                          VerticalAlignment="Stretch"
+                          extensions:ContextMenuExtension.ContextFlyout="{Binding ElementName=ShowMoreInfoButton, Path=Flyout}">
+                      <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="8" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="4" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="4" />
+                        <ColumnDefinition Width="Auto" />
+                      </Grid.ColumnDefinitions>
+
+                      <ProgressBar Grid.ColumnSpan="7"
+                                   HorizontalAlignment="Stretch"
+                                   VerticalAlignment="Stretch"
+                                   Background="Transparent"
+                                   Maximum="100"
+                                   Opacity="0.3"
+                                   Value="{Binding Position, Mode=OneWay, Converter={StaticResource PercentageConverter}}" />
+
+                      <TextBlock Grid.Column="1"
+                                 VerticalAlignment="Center"
+                                 Margin="0,0,4,0"
+                                 FontSize="{StaticResource NodeTitleFontSize}"
+                                 Visibility="{x:Bind Episode, Converter={StaticResource BooleanConverter}}"
+                                 Text="{x:Bind Episode, ConverterParameter='File_EpisodeWithNumber', Converter={StaticResource LocalizationConverter}}"
+                                 FontWeight="Bold" />
+                      <TextBlock Grid.Column="2"
+                                 VerticalAlignment="Center"
+                                 MaxLines="2"
+                                 FontSize="{StaticResource NodeTitleFontSize}"
+                                 Text="{x:Bind Title, Converter={StaticResource ToFriendlyStringConverter}}"
+                                 TextTrimming="CharacterEllipsis"
+                                 TextWrapping="WrapWholeWords" />
+
+                      <TextBlock Grid.Column="4"
+                                 VerticalAlignment="Center"
+                                 Text="{Binding Quality, Mode=OneWay}" />
+
+                      <ProgressRing Grid.Column="6"
+                                    Width="{StaticResource ProgressRingMinSize}"
+                                    Height="{StaticResource ProgressRingMinSize}"
+                                    Margin="4"
+                                    Padding="0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    IsActive="True"
+                                    Visibility="{Binding IsLoading, Mode=OneWay, Converter={StaticResource BooleanConverter}, FallbackValue=Collapsed}" />
+                      <AppBarButton x:Name="ShowMoreInfoButton"
+                                    Grid.Column="6"
+                                    Width="{StaticResource AppButtonWidth}"
+                                    Height="{StaticResource AppButtonHeight}"
+                                    Margin="2"
+                                    VerticalAlignment="Stretch"
+                                    HorizontalContentAlignment="Center"
+                                    VerticalContentAlignment="Center"
+                                    extensions:CompatExtension.AccessKey="M"
+                                    extensions:CompatExtension.AccessKeyScopeOwner="{Binding ElementName=NodeGrid}"
+                                    Icon="More"
+                                    Style="{StaticResource ClientAppBarButtonStyle}"
+                                    ToolTipService.ToolTip="{x:Bind ConverterParameter='PageAppBar_More_Tooltip', Converter={StaticResource LocalizationConverter}}"
+                                    Visibility="{Binding IsLoading, Mode=OneWay, Converter={StaticResource BooleanConverter}, ConverterParameter=!, FallbackValue=Collapsed}"
+                                    Tag="{Binding}">
+                        <Button.Flyout>
+                          <controls:ListFlyout ClickCommand="{Binding ElementName=ViewControl, Path=FileViewModel.OpenVideoCommand}"
+                                               ItemsSource="{Binding Videos, Mode=OneWay}"
+                                               Tag="{Binding ElementName=ShowMoreInfoButton, Path=Tag}"
+                                               Opening="VideoListFlyoutOpening"
+                                               SelectionEnabled="False">
+                            <controls:ListFlyout.Header>
+                              <StackPanel DataContext="{Binding ElementName=ShowMoreInfoButton, Path=Tag}"
+                                          MinWidth="240">
+                                <controls:NodeProgressControl Node="{Binding ElementName=ShowMoreInfoButton, Path=Tag}"
+                                                              SaveNodePositionCommand="{Binding ElementName=ViewControl, Path=FileViewModel.SaveNodePositionCommand}" />
+                                <Border Margin="8,0"
+                                        BorderBrush="#60ffffff"
+                                        BorderThickness="0,1,0,0" />
+
+                                <ItemsControl ItemsSource="{Binding SubtitleTracks, Mode=OneWay}"
+                                              IsTabStop="False">
+                                  <ItemsControl.ItemTemplate>
+                                    <DataTemplate x:DataType="models:SubtitleTrack">
+                                      <Grid>
+                                        <Grid.ColumnDefinitions>
+                                          <ColumnDefinition Width="16" />
+                                          <ColumnDefinition Width="*" />
+                                          <ColumnDefinition Width="8" />
+                                          <ColumnDefinition Width="Auto" />
+                                          <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="1"
+                                                   FontSize="{StaticResource NodeTitleFontSize}"
+                                                   VerticalAlignment="Center">
+                                          <Run FontWeight="Medium"
+                                               Text="{x:Bind Language}" />
+                                          <Run Text="{x:Bind ConverterParameter='FilesPage_File_SpecificSubtile', Converter={StaticResource LocalizationConverter}}" />
+                                        </TextBlock>
+                                        <Border Grid.Column="3"
+                                                BorderBrush="#60ffffff"
+                                                BorderThickness="1,0,0,0">
+                                          <AppBarButton Width="{StaticResource AppButtonWidth}"
+                                                        Height="{StaticResource AppButtonHeight}"
+                                                        Command="{Binding ElementName=ViewControl, Path=FileViewModel.DownloadCommand}"
+                                                        CommandParameter="{x:Bind Link}"
+                                                        Icon="Download"
+                                                        Style="{StaticResource ClientAppBarButtonStyle}"
+                                                        ToolTipService.ToolTip="{x:Bind ConverterParameter='FilesPage_File_DownloadFile_ToolTip', Converter={StaticResource LocalizationConverter}}" />
+                                        </Border>
+                                        <Border Grid.Column="4"
+                                                BorderBrush="#60ffffff"
+                                                BorderThickness="1,0,0,0">
+                                          <AppBarButton Width="{StaticResource AppButtonWidth}"
+                                                        Height="{StaticResource AppButtonHeight}"
+                                                        Command="{Binding ElementName=ViewControl, Path=FileViewModel.CopyLinkCommand}"
+                                                        CommandParameter="{x:Bind Link}"
+                                                        Icon="Copy"
+                                                        Style="{StaticResource ClientAppBarButtonStyle}"
+                                                        ToolTipService.ToolTip="{x:Bind ConverterParameter='FilesPage_File_CopyFileLink_ToolTip', Converter={StaticResource LocalizationConverter}}" />
+                                        </Border>
+                                      </Grid>
+                                    </DataTemplate>
+                                  </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                                <Border Margin="8,0"
+                                        BorderBrush="#60ffffff"
+                                        BorderThickness="0,1,0,0"
+                                        Visibility="{Binding SubtitleTracks, Mode=OneWay, Converter={StaticResource BooleanConverter}}" />
+
+                                <ProgressBar Margin="4"
+                                             HorizontalAlignment="Stretch"
+                                             IsIndeterminate="True"
+                                             Visibility="{Binding IsLoading, Mode=OneWay, Converter={StaticResource BooleanConverter}, FallbackValue=Collapsed}" />
+                              </StackPanel>
+                            </controls:ListFlyout.Header>
+                            <controls:ListFlyout.ItemContainerStyle>
+                              <Style TargetType="ListViewItem">
+                                <Setter Property="IsTabStop" Value="False" />
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                <Setter Property="VerticalContentAlignment" Value="Stretch" />
+                                <Setter Property="Margin" Value="0" />
+                                <Setter Property="Padding" Value="0" />
+                              </Style>
+                            </controls:ListFlyout.ItemContainerStyle>
+                            <controls:ListFlyout.ItemTemplate>
+                              <DataTemplate x:DataType="models:Video">
+                                <Grid>
+                                  <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="12" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="8" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="0" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                  </Grid.ColumnDefinitions>
+                                  <Border Grid.Column="1"
+                                          MinWidth="{StaticResource AppButtonWidth}">
+                                    <TextBlock HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"
+                                               FontSize="{StaticResource NodeTitleFontSize}"
+                                               Text="{x:Bind Quality}" />
+                                  </Border>
+                                  <Border Grid.Column="3"
+                                          MinWidth="80"
+                                          BorderBrush="#60ffffff"
+                                          BorderThickness="1,0,0,0"
+                                          Visibility="{x:Bind SizeInMb, Converter={StaticResource BooleanConverter}}">
+                                    <TextBlock Margin="4,0"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"
+                                               FontSize="{StaticResource NodeTitleFontSize}"
+                                               Text="{x:Bind SizeInMb, ConverterParameter='Common_SizeInMegaBytes', Converter={StaticResource LocalizationConverter}}" />
+                                  </Border>
+                                  <Border Grid.Column="5"
+                                          BorderBrush="#60ffffff"
+                                          BorderThickness="1,0,0,0">
+                                    <AppBarButton Width="{StaticResource AppButtonWidth}"
+                                                  Height="{StaticResource AppButtonHeight}"
+                                                  Command="{Binding Source={StaticResource FileViewModel}, Path=OpenVideoCommand}"
+                                                  CommandParameter="{x:Bind}"
+                                                  Icon="Play"
+                                                  Style="{StaticResource ClientAppBarButtonStyle}"
+                                                  ToolTipService.ToolTip="{x:Bind ConverterParameter='FilesPage_File_OpenVideoFile_ToolTip', Converter={StaticResource LocalizationConverter}}" />
+                                  </Border>
+                                  <Border Grid.Column="6"
+                                          BorderBrush="#60ffffff"
+                                          BorderThickness="1,0,0,0">
+                                    <AppBarButton Width="{StaticResource AppButtonWidth}"
+                                                  Height="{StaticResource AppButtonHeight}"
+                                                  Command="{Binding Source={StaticResource FileViewModel}, Path=OpenRemoteCommand}"
+                                                  CommandParameter="{x:Bind}"
+                                                  Style="{StaticResource ClientAppBarButtonStyle}"
+                                                  ToolTipService.ToolTip="{x:Bind ConverterParameter='FilesPage_OpenRemoteCommand_ToolTip', Converter={StaticResource LocalizationConverter}}">
+                                      <AppBarButton.Icon>
+                                        <FontIcon Glyph="&#xEC15;"
+                                                  FontFamily="Segoe MDL2 Assets" />
+                                      </AppBarButton.Icon>
+                                    </AppBarButton>
+                                  </Border>
+                                  <Border Grid.Column="7"
+                                          BorderBrush="#60ffffff"
+                                          BorderThickness="1,0,0,0"
+                                          Visibility="{Binding ElementName=DownloadVideoButton, Path=IsEnabled, Mode=OneWay}">
+                                    <AppBarButton x:Name="DownloadVideoButton"
+                                                  Width="{StaticResource AppButtonWidth}"
+                                                  Height="{StaticResource AppButtonHeight}"
+                                                  Command="{Binding Source={StaticResource FileViewModel}, Path=DownloadCommand}"
+                                                  CommandParameter="{x:Bind}"
+                                                  Icon="Download"
+                                                  Style="{StaticResource ClientAppBarButtonStyle}"
+                                                  ToolTipService.ToolTip="{x:Bind ConverterParameter='FilesPage_File_DownloadFile_ToolTip', Converter={StaticResource LocalizationConverter}}" />
+                                  </Border>
+                                  <Border Grid.Column="8"
+                                          BorderBrush="#60ffffff"
+                                          BorderThickness="1,0,0,0">
+                                    <AppBarButton Grid.Column="7"
+                                                  Width="{StaticResource AppButtonWidth}"
+                                                  Height="{StaticResource AppButtonHeight}"
+                                                  Command="{Binding Source={StaticResource FileViewModel}, Path=CopyLinkCommand}"
+                                                  CommandParameter="{x:Bind}"
+                                                  Icon="Copy"
+                                                  Style="{StaticResource ClientAppBarButtonStyle}"
+                                                  ToolTipService.ToolTip="{x:Bind ConverterParameter='FilesPage_File_CopyFileLink_ToolTip', Converter={StaticResource LocalizationConverter}}" />
+                                  </Border>
+                                </Grid>
+                              </DataTemplate>
+                            </controls:ListFlyout.ItemTemplate>
+                          </controls:ListFlyout>
+                        </Button.Flyout>
+                      </AppBarButton>
+                    </Grid>
+                  </DataTemplate>
+                </selectors:NodeTemplateSelector.FileTemplate>
+                <selectors:NodeTemplateSelector.TorrentFolderTemplate>
+                  <DataTemplate x:DataType="models:TorrentFolder">
+                    <Grid x:Name="NodeGrid"
+                          ToolTipService.ToolTip="{x:Bind Details}"
+                          HorizontalAlignment="Stretch"
+                          VerticalAlignment="Stretch"
+                          extensions:ContextMenuExtension.ContextFlyout="{Binding ElementName=ShowMoreInfoButton, Path=Flyout}">
+                      <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="0" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="8" />
+                        <ColumnDefinition Width="Auto" />
+                      </Grid.ColumnDefinitions>
+
+                      <FontIcon Grid.Column="1"
+                                Width="{StaticResource AppButtonWidth}"
+                                Height="{StaticResource AppButtonHeight}"
+                                FontSize="28"
+                                VerticalAlignment="Center"
+                                Foreground="{ThemeResource SystemControlHighlightAccentBrush}"
+                                FontFamily="Adobe Caslon Pro Semibold, Calibri, Segoe UI"
+                                Glyph="µ" />
+
+                      <ProgressBar Grid.ColumnSpan="6"
+                                   HorizontalAlignment="Stretch"
+                                   VerticalAlignment="Stretch"
+                                   Background="Transparent"
+                                   Maximum="100"
+                                   Opacity="0.3"
+                                   Value="{Binding Position, Mode=OneWay, Converter={StaticResource PercentageConverter}}" />
+
+                      <TextBlock Grid.Column="3"
+                                 VerticalAlignment="Center"
+                                 MaxLines="5"
+                                 MinHeight="72"
+                                 FontSize="1"
+                                 Padding="0,12"
+                                 TextWrapping="WrapWholeWords">
+                        <Run FontWeight="Bold"
+                             FontSize="{StaticResource NodeTitleFontSize}"
+                             Text="{x:Bind Seeds, Converter={StaticResource ToFriendlyStringConverter}, ConverterParameter='S:{0} '}" />
+                        <Run FontWeight="Bold"
+                             FontSize="{StaticResource NodeTitleFontSize}"
+                             Text="{x:Bind Peers, Converter={StaticResource ToFriendlyStringConverter}, ConverterParameter='P:{0} '}" />
+                        <Run FontWeight="Bold"
+                             FontSize="{StaticResource NodeTitleFontSize}"
+                             Text="{x:Bind Leeches, Converter={StaticResource ToFriendlyStringConverter}, ConverterParameter='L:{0} '}" />
+                        <!--<Run FontWeight="Bold"
+                             FontSize="{StaticResource NodeTitleFontSize}"
+                             Text="{x:Bind Episode, ConverterParameter='File_EpisodeWithNumber', Converter={StaticResource LocalizationConverter}}" />-->
+                        <Run FontSize="{StaticResource NodeTitleFontSize}"
+                             Text="{x:Bind Title, Converter={StaticResource ToFriendlyStringConverter}}" />
+                      </TextBlock>
+
+                      <AppBarButton x:Name="ShowMoreInfoButton"
+                                    Grid.Column="5"
+                                    Width="{StaticResource AppButtonWidth}"
+                                    Height="{StaticResource AppButtonHeight}"
+                                    VerticalAlignment="Stretch"
+                                    HorizontalContentAlignment="Center"
+                                    VerticalContentAlignment="Center"
+                                    extensions:CompatExtension.AccessKey="M"
+                                    extensions:CompatExtension.AccessKeyScopeOwner="{Binding ElementName=NodeGrid}"
+                                    Icon="More"
+                                    Style="{StaticResource ClientAppBarButtonStyle}"
+                                    Tag="{Binding}"
+                                    ToolTipService.ToolTip="{x:Bind ConverterParameter='PageAppBar_More_Tooltip', Converter={StaticResource LocalizationConverter}}">
+                        <AppBarButton.Flyout>
+                          <MenuFlyout>
+                            <controls:MenuFlyoutContentItem MinWidth="240"
+                                                            HorizontalContentAlignment="Stretch"
+                                                            VerticalContentAlignment="Stretch">
+                              <controls:NodeProgressControl Node="{Binding ElementName=ShowMoreInfoButton, Path=Tag}"
+                                                            SaveNodePositionCommand="{Binding ElementName=ViewControl, Path=FileViewModel.SaveNodePositionCommand}" />
+                            </controls:MenuFlyoutContentItem>
+                            <MenuFlyoutSeparator />
+                            <MenuFlyoutItem Text="{x:Bind ConverterParameter='FilesPage_Torrent_OpenTorrent', Converter={StaticResource LocalizationConverter}}"
+                                            Padding="12,8"
+                                            CommandParameter="{x:Bind}"
+                                            Command="{Binding Source={StaticResource FileViewModel}, Path=OpenCommand}" />
+                            <MenuFlyoutItem Text="{x:Bind ConverterParameter='FilesPage_Torrent_OpenTorrentRemote', Converter={StaticResource LocalizationConverter}}"
+                                            Padding="12,8"
+                                            CommandParameter="{x:Bind}"
+                                            Command="{Binding Source={StaticResource FileViewModel}, Path=OpenRemoteCommand}" />
+                            <MenuFlyoutItem Text="{x:Bind ConverterParameter='FilesPage_Torrent_DownloadTorrent', Converter={StaticResource LocalizationConverter}}"
+                                            Padding="12,8"
+                                            CommandParameter="{x:Bind}"
+                                            Command="{Binding Source={StaticResource FileViewModel}, Path=DownloadCommand}" />
+                            <MenuFlyoutItem Text="{x:Bind ConverterParameter='FilesPage_File_CopyFileLink_ToolTip', Converter={StaticResource LocalizationConverter}}"
+                                            Padding="12,8"
+                                            CommandParameter="{x:Bind}"
+                                            Command="{Binding Source={StaticResource FileViewModel}, Path=CopyLinkCommand}" />
+                          </MenuFlyout>
+                        </AppBarButton.Flyout>
+                      </AppBarButton>
+                    </Grid>
+                  </DataTemplate>
+                </selectors:NodeTemplateSelector.TorrentFolderTemplate>
+              </selectors:NodeTemplateSelector>
+            </controls:AdaptiveGridView.ItemTemplateSelector>
+          </controls:AdaptiveGridView>
+          <TextBlock x:Name="FilesPlaceholderBlock"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Center"
+                     TextWrapping="WrapWholeWords"
+                     Text="{x:Bind FileViewModel.CurrentFolder.PlaceholderText, TargetNullValue={Binding ConverterParameter='ListView_NothingFound', Converter={StaticResource LocalizationConverter}}}"
+                     Visibility="Collapsed" />
+          <ProgressRing x:Name="FilesProgressRing"
+                        Width="{StaticResource ProgressRingSize}"
+                        Height="{StaticResource ProgressRingSize}"
+                        Margin="4,0,0,0"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        IsActive="True"
+                        Visibility="Collapsed" />
+        </Grid>
+      </SplitView.Content>
+    </SplitView>
+
+    <CommandBar x:Name="BottomCommandBar"
+                Grid.Row="3"
+                Grid.ColumnSpan="3"
+                Visibility="{x:Bind CommandBarVisibility, Mode=OneWay}"
+                Background="{ThemeResource BottomBarBackgroundBrush}">
+      <CommandBar.PrimaryCommands>
+        <AppBarButton x:Name="DownloadSelectedButton"
+                      Icon="Download"
+                      extensions:CompatExtension.AccessKey="D"
+                      extensions:ToolTipServiceEx.ToolTip="{x:Bind ConverterParameter='FilesPage_DownloadSelected_ToolTip', Converter={StaticResource LocalizationConverter}}"
+                      IsEnabled="{x:Bind FileViewModel.IsAnySelected, Mode=OneWay}"
+                      Visibility="Collapsed"
+                      Style="{StaticResource ClientAppBarButtonStyle}">
+          <AppBarButton.Flyout>
+            <MenuFlyout>
+              <MenuFlyoutItem Text="{x:Bind ConverterParameter='FilesPage_DownloadSelected_Download', Converter={StaticResource LocalizationConverter}}"
+                              extensions:CompatExtension.Icon="Download"
+                              Command="{x:Bind FileViewModel.DownloadSelectedCommand}" />
+              <MenuFlyoutItem Text="{x:Bind ConverterParameter='FilesPage_DownloadSelected_DownloadAsM3u8', Converter={StaticResource LocalizationConverter}}"
+                              extensions:CompatExtension.Icon="List"
+                              Command="{x:Bind FileViewModel.SaveSelectedAsPlaylistCommand}" />
+            </MenuFlyout>
+          </AppBarButton.Flyout>
+        </AppBarButton>
+        <AppBarButton x:Name="IsWatchedSelectedButton"
+                      extensions:ToolTipServiceEx.ToolTip="{x:Bind ConverterParameter='FilesPage_FileIsWatchedSelectedToggle_On_ToolTip', Converter={StaticResource LocalizationConverter}}"
+                      Label="{x:Bind ConverterParameter='FilesPage_FileIsWatchedSelectedToggle_On_ToolTip', Converter={StaticResource LocalizationConverter}}"
+                      extensions:CompatExtension.AccessKey="W"
+                      Visibility="Collapsed"
+                      Style="{StaticResource ClientAppBarButtonStyle}"
+                      Command="{x:Bind FileViewModel.WatchedSelectedToggleCommand}">
+          <AppBarButton.Icon>
+            <FontIcon x:Name="IsWatchedSelectedButtonIcon"
+                      Glyph="&#xE930;"
+                      FontFamily="Segoe MDL2 Assets" />
+          </AppBarButton.Icon>
+        </AppBarButton>
+        <AppBarButton x:Name="IsAllSelectedButton"
+                      Icon="SelectAll"
+                      extensions:ToolTipServiceEx.ToolTip="{x:Bind ConverterParameter='ListView_SelectAll', Converter={StaticResource LocalizationConverter}}"
+                      Label="{x:Bind ConverterParameter='ListView_SelectAll', Converter={StaticResource LocalizationConverter}}"
+                      extensions:CompatExtension.AccessKey="T"
+                      Visibility="Collapsed"
+                      Style="{StaticResource ClientAppBarButtonStyle}"
+                      Command="{x:Bind FileViewModel.AllSelectedToggleCommand}" />
+
+        <AppBarSeparator x:Name="SelectionSeparator"
+                         Visibility="Collapsed" />
+        <AppBarButton x:Name="SelectionModeToggle"
+                      Icon="Bullets"
+                      extensions:ToolTipServiceEx.ToolTip="{x:Bind ConverterParameter='ListView_GroupMode', Converter={StaticResource LocalizationConverter}}"
+                      Label="{x:Bind ConverterParameter='ListView_GroupMode', Converter={StaticResource LocalizationConverter}}"
+                      extensions:CompatExtension.AccessKey="C"
+                      Style="{StaticResource ClientAppBarButtonStyle}"
+                      Command="{x:Bind FileViewModel.SelectionModeToggleCommand}" />
+      </CommandBar.PrimaryCommands>
+    </CommandBar>
+
+    <VisualStateManager.VisualStateGroups>
+
+      <VisualStateGroup x:Name="FilesIsSelectionModeModeGroup">
+        <VisualState>
+          <VisualState.StateTriggers>
+            <StateTrigger IsActive="{x:Bind FileViewModel.IsInSelectionMode, Mode=OneWay}" />
+          </VisualState.StateTriggers>
+          <VisualState.Setters>
+            <Setter Target="IsAllSelectedButton.Visibility" Value="Visible" />
+            <Setter Target="SelectionSeparator.Visibility" Value="Visible" />
+            <Setter Target="IsWatchedSelectedButton.Visibility" Value="Visible" />
+            <Setter Target="DownloadSelectedButton.Visibility" Value="Visible" />
+          </VisualState.Setters>
+        </VisualState>
+      </VisualStateGroup>
+
+      <VisualStateGroup x:Name="FilesIsWatchedSelectedModeGroup">
+        <VisualState>
+          <VisualState.StateTriggers>
+            <StateTrigger IsActive="{x:Bind FileViewModel.IsWatchedSelected, Mode=OneWay}" />
+          </VisualState.StateTriggers>
+          <VisualState.Setters>
+            <Setter Target="IsWatchedSelectedButtonIcon.Glyph" Value="&#xEC61;" />
+            <Setter Target="IsWatchedSelectedButton.Label" Value="{x:Bind ConverterParameter='FilesPage_FileIsWatchedSelectedToggle_Off_ToolTip', Converter={StaticResource LocalizationConverter}}" />
+            <Setter Target="IsWatchedSelectedButton.(extensions:ToolTipServiceEx.ToolTip)" Value="{x:Bind ConverterParameter='FilesPage_FileIsWatchedSelectedToggle_Off_ToolTip', Converter={StaticResource LocalizationConverter}}" />
+          </VisualState.Setters>
+        </VisualState>
+      </VisualStateGroup>
+
+      <VisualStateGroup x:Name="FilesIsAllSelectedGroup">
+        <VisualState>
+          <VisualState.StateTriggers>
+            <StateTrigger IsActive="{x:Bind FileViewModel.IsAllSelected, Mode=OneWay}" />
+          </VisualState.StateTriggers>
+          <VisualState.Setters>
+            <Setter Target="IsAllSelectedButton.Icon" Value="ClearSelection" />
+            <Setter Target="IsAllSelectedButton.(extensions:ToolTipServiceEx.ToolTip)" Value="{x:Bind ConverterParameter='ListView_UnselectAll', Converter={StaticResource LocalizationConverter}}" />
+          </VisualState.Setters>
+        </VisualState>
+      </VisualStateGroup>
+
+      <VisualStateGroup x:Name="SelectionModeGroup">
+        <VisualState x:Name="InSelectionModeState">
+          <VisualState.StateTriggers>
+            <StateTrigger IsActive="{x:Bind FileViewModel.IsInSelectionMode, Mode=OneWay}" />
+          </VisualState.StateTriggers>
+          <VisualState.Setters>
+            <Setter Target="FilesGridView.IsItemClickEnabled" Value="False" />
+            <Setter Target="FilesGridView.SelectionMode" Value="Multiple" />
+          </VisualState.Setters>
+        </VisualState>
+      </VisualStateGroup>
+
+      <VisualStateGroup x:Name="FilesLoadingProgressGroup">
+        <VisualState>
+          <VisualState.StateTriggers>
+            <winTriggers:CompositeStateTrigger Operator="Or">
+              <StateTrigger IsActive="{x:Bind FileViewModel.ShowProgress, Mode=OneWay}" />
+              <winTriggers:CompositeStateTrigger Operator="And">
+                <winTriggers:CompareStateTrigger Value="{x:Bind FileViewModel.CurrentFolder.Count, Mode=OneWay}"
+                                                 Comparison="LessThan"
+                                                 CompareTo="1" />
+                <StateTrigger IsActive="{x:Bind FileViewModel.CurrentFolder.IsLoading, Mode=OneWay}" />
+              </winTriggers:CompositeStateTrigger>
+            </winTriggers:CompositeStateTrigger>
+          </VisualState.StateTriggers>
+          <VisualState.Setters>
+            <Setter Target="FilesGridView.Visibility" Value="Collapsed" />
+            <Setter Target="ProvidersAlertControl.Visibility" Value="Collapsed" />
+            <Setter Target="FilesProgressRing.Visibility" Value="Visible" />
+          </VisualState.Setters>
+        </VisualState>
+        <VisualState>
+          <VisualState.StateTriggers>
+            <winTriggers:CompositeStateTrigger Operator="And">
+              <winTriggers:IsFalseStateTrigger Value="{x:Bind FileViewModel.ShowProgress, Mode=OneWay}" />
+              <winTriggers:CompareStateTrigger CompareTo="0"
+                                               Comparison="Equal"
+                                               Value="{x:Bind FileViewModel.CurrentFolder.Count, Mode=OneWay, FallbackValue=0}" />
+            </winTriggers:CompositeStateTrigger>
+          </VisualState.StateTriggers>
+          <VisualState.Setters>
+            <Setter Target="FilesGridView.Visibility" Value="Collapsed" />
+            <Setter Target="FilesPlaceholderBlock.Visibility" Value="Visible" />
+          </VisualState.Setters>
+        </VisualState>
+      </VisualStateGroup>
+
+    </VisualStateManager.VisualStateGroups>
+  </Grid>
+</UserControl>

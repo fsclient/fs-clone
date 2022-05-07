@@ -1,0 +1,105 @@
+<UserControl x:Class="FSClient.UWP.Shared.Views.Controls.PageFilter"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controls="using:FSClient.UWP.Shared.Views.Controls"
+             xmlns:extensions="using:FSClient.UWP.Shared.Extensions"
+             xmlns:models="using:FSClient.Shared.Models">
+
+  <StackPanel>
+    <controls:YearSelector x:Name="YearSelector"
+                           x:DeferLoadStrategy="Lazy"
+                           Visibility="Collapsed"
+                           Margin="0,0,0,8"
+                           HorizontalAlignment="Stretch"
+                           YearLimit="{x:Bind Filter.PageParams.YearLimit.Value, Mode=OneWay}"
+                           SelectedYear="{x:Bind Filter.Year, Mode=TwoWay}"
+                           YearSelectedCommand="{x:Bind SubmitCommand}"
+                           AllowYearsRange="{x:Bind Filter.PageParams.AllowYearsRange, Mode=OneWay}">
+      <controls:YearSelector.YearSelectedCommandParameter>
+        <x:Boolean>True</x:Boolean>
+      </controls:YearSelector.YearSelectedCommandParameter>
+    </controls:YearSelector>
+
+    <ComboBox x:Name="SortComboBox"
+              x:DeferLoadStrategy="Lazy"
+              Visibility="Collapsed"
+              HorizontalAlignment="Stretch"
+              Header="{x:Bind ConverterParameter='ListView_Sort', Converter={StaticResource LocalizationConverter}}"
+              Margin="0,0,0,8"
+              Loaded="SortComboBox_Loaded"
+              SelectionChanged="SortComboBox_SelectionChanged"
+              ItemsSource="{x:Bind Filter.PageParams.SortTypes, Mode=OneWay}"
+              SelectedItem="{x:Bind Filter.CurrentSortType, Mode=TwoWay, Converter={StaticResource BindToObjectConverter}}"
+              Tag="{x:Bind Filter, Mode=OneWay}">
+      <ComboBox.ItemTemplate>
+        <DataTemplate>
+          <TextBlock Text="{Binding Converter={StaticResource ToFriendlyStringConverter}}" />
+        </DataTemplate>
+      </ComboBox.ItemTemplate>
+    </ComboBox>
+
+    <ItemsControl x:Name="TagsView"
+                  x:DeferLoadStrategy="Lazy"
+                  Visibility="Collapsed"
+                  Margin="0,0,0,8"
+                  IsTabStop="False"
+                  ItemsSource="{x:Bind Filter.PageParams.TagsContainers, Mode=OneWay}"
+                  Tag="{x:Bind Filter, Mode=OneWay}">
+      <ItemsControl.ItemTemplate>
+        <DataTemplate x:DataType="models:TagsContainer">
+          <ComboBox Margin="0,0,0,8"
+                    Header="{x:Bind Title}"
+                    HorizontalAlignment="Stretch"
+                    ItemsSource="{x:Bind Items}"
+                    Loaded="ComboBox_Loaded"
+                    SelectionChanged="ComboBox_SelectionChanged" />
+        </DataTemplate>
+      </ItemsControl.ItemTemplate>
+    </ItemsControl>
+
+    <CheckBox Content="{x:Bind ConverterParameter='PageFilter_FilterByFavorites', Converter={StaticResource LocalizationConverter}}"
+              IsChecked="{x:Bind Filter.FilterByFavorites, Mode=TwoWay, Converter={StaticResource BindToObjectConverter}}"
+              extensions:CommandExtension.ToggledCommand="{x:Bind SubmitCommand}" />
+
+    <CheckBox Content="{x:Bind ConverterParameter='PageFilter_FilterByInHistory', Converter={StaticResource LocalizationConverter}}"
+              IsChecked="{x:Bind Filter.FilterByInHistory, Mode=TwoWay, Converter={StaticResource BindToObjectConverter}}"
+              extensions:CommandExtension.ToggledCommand="{x:Bind SubmitCommand}" />
+
+    <VisualStateManager.VisualStateGroups>
+
+      <VisualStateGroup x:Name="CanFilterByYearGroup">
+        <VisualState x:Name="CanFilterByYearState">
+          <VisualState.StateTriggers>
+            <StateTrigger IsActive="{x:Bind Filter.CanFilterByYear, Mode=OneWay}" />
+          </VisualState.StateTriggers>
+          <VisualState.Setters>
+            <Setter Target="YearSelector.Visibility" Value="Visible" />
+          </VisualState.Setters>
+        </VisualState>
+      </VisualStateGroup>
+
+      <VisualStateGroup x:Name="CanSortGroup">
+        <VisualState x:Name="CanSortState">
+          <VisualState.StateTriggers>
+            <StateTrigger IsActive="{x:Bind Filter.CanSort, Mode=OneWay}" />
+          </VisualState.StateTriggers>
+          <VisualState.Setters>
+            <Setter Target="SortComboBox.Visibility" Value="Visible" />
+          </VisualState.Setters>
+        </VisualState>
+      </VisualStateGroup>
+
+      <VisualStateGroup x:Name="CanFilterByTagsGroup">
+        <VisualState x:Name="CanFilterByTagsState">
+          <VisualState.StateTriggers>
+            <StateTrigger IsActive="{x:Bind Filter.CanFilterByTags, Mode=OneWay}" />
+          </VisualState.StateTriggers>
+          <VisualState.Setters>
+            <Setter Target="TagsView.Visibility" Value="Visible" />
+          </VisualState.Setters>
+        </VisualState>
+      </VisualStateGroup>
+
+    </VisualStateManager.VisualStateGroups>
+  </StackPanel>
+</UserControl>

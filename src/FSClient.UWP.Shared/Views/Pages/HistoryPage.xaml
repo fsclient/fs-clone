@@ -1,0 +1,334 @@
+<Page x:Class="FSClient.UWP.Shared.Views.Pages.HistoryPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:triggers="using:WindowsStateTriggers"
+      xmlns:extensions="using:FSClient.UWP.Shared.Extensions"
+      xmlns:controls="using:FSClient.UWP.Shared.Views.Controls"
+      xmlns:items="using:FSClient.ViewModels.Items"
+      x:Name="Page"
+      NavigationCacheMode="Required"
+      KeyDown="Page_KeyDown"
+      Unloaded="Page_Unloaded">
+
+  <Page.Resources>
+    <ResourceDictionary>
+      <CollectionViewSource x:Key="ViewSource"
+                            Source="{x:Bind ViewModel.HistorySource, Mode=OneWay}"
+                            IsSourceGrouped="{x:Bind ViewModel.IsSourceGrouped, Mode=OneWay}" />
+    </ResourceDictionary>
+  </Page.Resources>
+
+  <extensions:PageAppBarExtension.Top>
+    <Grid>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="8" />
+        <ColumnDefinition Width="Auto" />
+      </Grid.ColumnDefinitions>
+      <TextBlock x:Name="HeaderBlock"
+                 Grid.Column="0"
+                 Margin="8,0"
+                 Text="{x:Bind ConverterParameter='NavigationPageType_History', Converter={StaticResource LocalizationConverter}}"
+                 VerticalAlignment="Center" />
+      <AutoSuggestBox x:Name="AutoSuggestBox"
+                      Grid.Column="0"
+                      MinWidth="{StaticResource SearchBoxWidth}"
+                      HorizontalAlignment="Right"
+                      Background="Transparent"
+                      PlaceholderText="{x:Bind ConverterParameter='PageAppBar_Search', Converter={StaticResource LocalizationConverter}}"
+                      VerticalAlignment="Center"
+                      extensions:CommandExtension.TextChangedCommand="{x:Bind ViewModel.UpdateSourceCommand}"
+                      Text="{x:Bind ViewModel.SearchRequest, Mode=TwoWay, Converter={StaticResource BindToObjectConverter}}"
+                      TextBoxStyle="{StaticResource TranparentSearchTextBoxStyle}" />
+      <StackPanel x:Name="TopBar"
+                  x:DeferLoadStrategy="Lazy"
+                  Grid.Column="2"
+                  Orientation="Horizontal"
+                  Visibility="Collapsed">
+        <AppBarButton x:Name="DeleteButton"
+                      Icon="Delete"
+                      extensions:CompatExtension.AccessKey="D"
+                      extensions:ToolTipServiceEx.ToolTip="{x:Bind ConverterParameter='HistoryPage_DeleteSelectedCommand', Converter={StaticResource LocalizationConverter}}"
+                      Visibility="Collapsed"
+                      Command="{x:Bind ViewModel.DeleteSelectedCommand}"
+                      Style="{StaticResource ClientAppBarButtonStyle}" />
+        <AppBarButton x:Name="IsAllSelectedButton"
+                      Icon="SelectAll"
+                      extensions:ToolTipServiceEx.ToolTip="{x:Bind ConverterParameter='ListView_SelectAll', Converter={StaticResource LocalizationConverter}}"
+                      extensions:CompatExtension.AccessKey="T"
+                      Visibility="Collapsed"
+                      Command="{x:Bind ViewModel.AllSelectedToggleCommand}"
+                      Style="{StaticResource ClientAppBarButtonStyle}" />
+        <AppBarSeparator x:Name="SelectionSeparator"
+                         Visibility="Collapsed" />
+        <AppBarToggleButton x:Name="SelectionModeToggle"
+                            Icon="Bullets"
+                            extensions:ToolTipServiceEx.ToolTip="{x:Bind ConverterParameter='ListView_GroupMode', Converter={StaticResource LocalizationConverter}}"
+                            extensions:CompatExtension.AccessKey="C"
+                            Click="SelectionModeToggle_Click"
+                            IsChecked="{x:Bind ViewModel.IsInSelectionMode, Mode=TwoWay, Converter={StaticResource BindToObjectConverter}}"
+                            Style="{StaticResource ClientAppBarToggleButtonStyle}" />
+        <AppBarButton x:Name="ViewSettingsFlyoutButton"
+                      Icon="More"
+                      Width="{StaticResource NarrowWindowAppBarButtonWidth}"
+                      extensions:CompatExtension.AccessKey="M"
+                      extensions:ToolTipServiceEx.ToolTip="{x:Bind ConverterParameter='PageAppBar_More_Tooltip', Converter={StaticResource LocalizationConverter}}"
+                      Style="{StaticResource ClientAppBarButtonStyle}">
+          <AppBarButton.Flyout>
+            <MenuFlyout>
+              <ToggleMenuFlyoutItem Text="{x:Bind ConverterParameter='HistoryPage_GroupItemsByTime', Converter={StaticResource LocalizationConverter}}"
+                                    IsChecked="{x:Bind ViewModel.GroupItems, Mode=TwoWay}"
+                                    Command="{x:Bind ViewModel.UpdateSourceCommand}" />
+              <ToggleMenuFlyoutItem Text="{x:Bind ConverterParameter='HistoryPage_UnionEpisodes', Converter={StaticResource LocalizationConverter}}"
+                                    IsEnabled="{x:Bind SelectionModeToggle.IsChecked, Mode=OneWay, Converter={StaticResource BooleanConverter}, ConverterParameter=!}"
+                                    IsChecked="{x:Bind ViewModel.UnionEpisodes, Mode=TwoWay}"
+                                    Command="{x:Bind ViewModel.UpdateSourceCommand}" />
+              <ToggleMenuFlyoutItem Text="{x:Bind ConverterParameter='HistoryPage_DistinctItems', Converter={StaticResource LocalizationConverter}}"
+                                    IsEnabled="{x:Bind ViewModel.UnionEpisodes, Mode=OneWay}"
+                                    IsChecked="{x:Bind ViewModel.DistinctItems, Mode=TwoWay}"
+                                    Command="{x:Bind ViewModel.UpdateSourceCommand}" />
+            </MenuFlyout>
+          </AppBarButton.Flyout>
+        </AppBarButton>
+      </StackPanel>
+    </Grid>
+  </extensions:PageAppBarExtension.Top>
+
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="*" />
+      <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+    <controls:AdaptiveGridView x:Name="HistoryList"
+                               Grid.Row="0"
+                               ItemClick="NavigateToItem"
+                               extensions:ListViewBaseExtension.SelectedItems="{x:Bind ViewModel.SelectedItems}"
+                               extensions:ScrollViewerExtensions.EnableMiddleClickScrolling="True"
+                               ItemsSource="{Binding Source={StaticResource ViewSource}}"
+                               Style="{StaticResource ItemsListStyle}"
+                               DesiredWidth="{StaticResource ItemNormalDesiredWidth}"
+                               Loaded="HistoryList_Loaded">
+      <controls:AdaptiveGridView.GroupStyle>
+        <GroupStyle>
+          <GroupStyle.HeaderTemplate>
+            <DataTemplate>
+              <TextBlock Text="{Binding Key}" />
+            </DataTemplate>
+          </GroupStyle.HeaderTemplate>
+        </GroupStyle>
+      </controls:AdaptiveGridView.GroupStyle>
+      <controls:AdaptiveGridView.ItemTemplate>
+        <DataTemplate x:DataType="items:HistoryListItemViewModel">
+          <controls:ItemsListItem ItemInfo="{x:Bind ItemInfo, Mode=OneWay}"
+                                  HistoryItem="{x:Bind HistoryItem}"
+                                  IsItemPreloading="{x:Bind IsPreloading, Mode=OneWay}"
+                                  DisplayItemMode="{x:Bind DisplayItemMode}"
+                                  ItemPreloadCommand="{x:Bind PreloadItemCommand}"
+                                  DeleteFromHistoryCommand="{Binding ElementName=Page, Path=ViewModel.DeleteItemCommand}" />
+        </DataTemplate>
+      </controls:AdaptiveGridView.ItemTemplate>
+    </controls:AdaptiveGridView>
+
+    <TextBlock x:Name="EmptyHistoryTextBlock"
+               Grid.Row="0"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"
+               Text="{x:Bind ConverterParameter='ListView_NothingFound', Converter={StaticResource LocalizationConverter}}"
+               Visibility="Collapsed" />
+
+    <ProgressRing x:Name="HistoryLoadingProgress"
+                  Width="{StaticResource ProgressRingSize}"
+                  Height="{StaticResource ProgressRingSize}"
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Center"
+                  IsActive="True"
+                  Visibility="Collapsed" />
+
+    <CommandBar x:Name="BottomCommandBar"
+                Grid.Row="1"
+                Visibility="Collapsed"
+                x:DeferLoadStrategy="Lazy"
+                Background="{ThemeResource BottomBarBackgroundBrush}">
+      <CommandBar.PrimaryCommands>
+        <AppBarButton x:Name="DeleteBottomButton"
+                      Icon="Delete"
+                      Label="{x:Bind ConverterParameter='HistoryPage_DeleteSelectedCommand', Converter={StaticResource LocalizationConverter}}"
+                      extensions:ToolTipServiceEx.ToolTip="{x:Bind ConverterParameter='HistoryPage_DeleteSelectedCommand_ToolTip', Converter={StaticResource LocalizationConverter}}"
+                      extensions:CompatExtension.AccessKey="D"
+                      Visibility="Collapsed"
+                      Command="{x:Bind ViewModel.DeleteSelectedCommand}"
+                      Style="{StaticResource ClientAppBarButtonStyle}" />
+        <AppBarButton x:Name="IsAllSelectedBottomButton"
+                      Icon="SelectAll"
+                      Label="{x:Bind ConverterParameter='ListView_SelectAll', Converter={StaticResource LocalizationConverter}}"
+                      extensions:ToolTipServiceEx.ToolTip="{x:Bind ConverterParameter='ListView_SelectAll', Converter={StaticResource LocalizationConverter}}"
+                      extensions:CompatExtension.AccessKey="T"
+                      Visibility="Collapsed"
+                      Command="{x:Bind ViewModel.AllSelectedToggleCommand}"
+                      Style="{StaticResource ClientAppBarButtonStyle}" />
+        <AppBarSeparator x:Name="BottomSelectionSeparator"
+                         Visibility="Collapsed" />
+        <AppBarToggleButton x:Name="SelectionModeBottomToggle"
+                            Icon="Bullets"
+                            extensions:ToolTipServiceEx.ToolTip="{x:Bind ConverterParameter='ListView_GroupMode', Converter={StaticResource LocalizationConverter}}"
+                            extensions:CompatExtension.AccessKey="C"
+                            Click="SelectionModeToggle_Click"
+                            IsChecked="{x:Bind ViewModel.IsInSelectionMode, Mode=TwoWay, Converter={StaticResource BindToObjectConverter}}"
+                            Style="{StaticResource ClientAppBarToggleButtonStyle}" />
+      </CommandBar.PrimaryCommands>
+      <CommandBar.SecondaryCommands>
+        <AppBarToggleButton Label="{x:Bind ConverterParameter='HistoryPage_GroupItemsByTime', Converter={StaticResource LocalizationConverter}}"
+                            IsChecked="{x:Bind ViewModel.GroupItems, Mode=TwoWay, Converter={StaticResource BindToObjectConverter}}"
+                            Command="{x:Bind ViewModel.UpdateSourceCommand}" />
+        <AppBarToggleButton Label="{x:Bind ConverterParameter='HistoryPage_UnionEpisodes', Converter={StaticResource LocalizationConverter}}"
+                            IsEnabled="{x:Bind SelectionModeToggle.IsChecked, Mode=OneWay, Converter={StaticResource BooleanConverter}, ConverterParameter=!}"
+                            IsChecked="{x:Bind ViewModel.UnionEpisodes, Mode=TwoWay, Converter={StaticResource BindToObjectConverter}}"
+                            Command="{x:Bind ViewModel.UpdateSourceCommand}" />
+        <AppBarToggleButton Label="{x:Bind ConverterParameter='HistoryPage_DistinctItems', Converter={StaticResource LocalizationConverter}}"
+                            IsEnabled="{x:Bind ViewModel.UnionEpisodes, Mode=OneWay}"
+                            IsChecked="{x:Bind ViewModel.DistinctItems, Mode=TwoWay, Converter={StaticResource BindToObjectConverter}}"
+                            Command="{x:Bind ViewModel.UpdateSourceCommand}" />
+      </CommandBar.SecondaryCommands>
+    </CommandBar>
+
+    <VisualStateManager.VisualStateGroups>
+
+      <VisualStateGroup x:Name="HistoryLoadingGroup">
+        <VisualState x:Name="ShowProgressState">
+          <VisualState.StateTriggers>
+            <StateTrigger IsActive="{x:Bind ViewModel.ShowProgress, Mode=OneWay}" />
+          </VisualState.StateTriggers>
+          <VisualState.Setters>
+            <Setter Target="HistoryLoadingProgress.Visibility" Value="Visible" />
+            <Setter Target="DeleteButton.IsEnabled" Value="False" />
+            <Setter Target="IsAllSelectedButton.IsEnabled" Value="False" />
+            <Setter Target="SelectionModeToggle.IsEnabled" Value="False" />
+            <Setter Target="ViewSettingsFlyoutButton.IsEnabled" Value="False" />
+            <Setter Target="BottomCommandBar.IsEnabled" Value="False" />
+          </VisualState.Setters>
+        </VisualState>
+        <VisualState x:Name="EmptyHistoryState">
+          <VisualState.StateTriggers>
+            <StateTrigger IsActive="{x:Bind ViewModel.HistorySource, Mode=OneWay, Converter={StaticResource BooleanConverter}, ConverterParameter=!}" />
+          </VisualState.StateTriggers>
+          <VisualState.Setters>
+            <Setter Target="EmptyHistoryTextBlock.Visibility" Value="Visible" />
+          </VisualState.Setters>
+        </VisualState>
+      </VisualStateGroup>
+
+      <VisualStateGroup x:Name="CommandBarVisibilityGroup">
+        <VisualState x:Name="ShowTopBarWithHeaderState">
+          <VisualState.StateTriggers>
+            <triggers:CompositeStateTrigger Operator="Or">
+              <triggers:CompositeStateTrigger Operator="And">
+                <triggers:AdaptiveTrigger MinWindowWidth="{StaticResource NarrowWindowWidth}" />
+                <StateTrigger IsActive="{x:Bind ViewModel.IsInSelectionMode, Mode=OneWay}" />
+              </triggers:CompositeStateTrigger>
+              <triggers:CompositeStateTrigger Operator="And">
+                <triggers:AdaptiveTrigger MinWindowWidth="{StaticResource MobileWindowWidth}" />
+                <triggers:IsFalseStateTrigger Value="{x:Bind ViewModel.IsInSelectionMode, Mode=OneWay}" />
+              </triggers:CompositeStateTrigger>
+            </triggers:CompositeStateTrigger>
+          </VisualState.StateTriggers>
+          <VisualState.Setters>
+            <Setter Target="TopBar.Visibility" Value="Visible" />
+          </VisualState.Setters>
+        </VisualState>
+        <VisualState x:Name="ShowTopBarState">
+          <VisualState.StateTriggers>
+            <AdaptiveTrigger MinWindowWidth="{StaticResource MobileWindowWidth}" />
+          </VisualState.StateTriggers>
+          <VisualState.Setters>
+            <Setter Target="HeaderBlock.Visibility" Value="Collapsed" />
+            <Setter Target="AutoSuggestBox.HorizontalAlignment" Value="Stretch" />
+            <Setter Target="AutoSuggestBox.PlaceholderText" Value="{x:Bind ConverterParameter='NavigationPageType_History', Converter={StaticResource LocalizationConverter}}" />
+            <Setter Target="TopBar.Visibility" Value="Visible" />
+          </VisualState.Setters>
+        </VisualState>
+        <VisualState x:Name="ShowBottomBarState">
+          <VisualState.StateTriggers>
+            <AdaptiveTrigger MinWindowWidth="0" />
+          </VisualState.StateTriggers>
+          <VisualState.Setters>
+            <Setter Target="HeaderBlock.Visibility" Value="Collapsed" />
+            <Setter Target="AutoSuggestBox.HorizontalAlignment" Value="Stretch" />
+            <Setter Target="AutoSuggestBox.PlaceholderText" Value="{x:Bind ConverterParameter='NavigationPageType_History', Converter={StaticResource LocalizationConverter}}" />
+            <Setter Target="BottomCommandBar.Visibility" Value="Visible" />
+          </VisualState.Setters>
+        </VisualState>
+      </VisualStateGroup>
+
+      <VisualStateGroup x:Name="SelectionModeTogglingGroup">
+        <VisualState>
+          <VisualState.StateTriggers>
+            <StateTrigger IsActive="{x:Bind ViewModel.IsInSelectionMode, Mode=OneWay}" />
+          </VisualState.StateTriggers>
+          <VisualState.Setters>
+            <Setter Target="HistoryList.SelectionMode" Value="Multiple" />
+            <Setter Target="HistoryList.IsItemClickEnabled" Value="False" />
+          </VisualState.Setters>
+        </VisualState>
+      </VisualStateGroup>
+
+      <VisualStateGroup x:Name="IsAllSelectedGroup">
+        <VisualState>
+          <VisualState.StateTriggers>
+            <StateTrigger IsActive="{x:Bind ViewModel.IsAllSelected, Mode=OneWay}" />
+          </VisualState.StateTriggers>
+          <VisualState.Setters>
+            <Setter Target="IsAllSelectedButton.Icon" Value="ClearSelection" />
+            <Setter Target="IsAllSelectedBottomButton.Icon" Value="ClearSelection" />
+            <Setter Target="IsAllSelectedButton.(extensions:ToolTipServiceEx.ToolTip)" Value="{x:Bind ConverterParameter='ListView_UnselectAll', Converter={StaticResource LocalizationConverter}}" />
+            <Setter Target="IsAllSelectedBottomButton.(extensions:ToolTipServiceEx.ToolTip)" Value="{x:Bind ConverterParameter='ListView_UnselectAll', Converter={StaticResource LocalizationConverter}}" />
+          </VisualState.Setters>
+        </VisualState>
+      </VisualStateGroup>
+
+      <VisualStateGroup x:Name="ButtonsSizeGroup">
+        <VisualState x:Name="NarrowState">
+          <VisualState.StateTriggers>
+            <AdaptiveTrigger MinWindowWidth="{StaticResource NarrowWindowWidth}" />
+          </VisualState.StateTriggers>
+        </VisualState>
+        <VisualState x:Name="MobileState">
+          <VisualState.StateTriggers>
+            <AdaptiveTrigger MinWindowWidth="0" />
+          </VisualState.StateTriggers>
+          <VisualState.Setters>
+            <Setter Target="SelectionModeToggle.Width" Value="{StaticResource NarrowWindowAppBarButtonWidth}" />
+            <Setter Target="DeleteButton.Width" Value="{StaticResource NarrowWindowAppBarButtonWidth}" />
+            <Setter Target="IsAllSelectedButton.Width" Value="{StaticResource NarrowWindowAppBarButtonWidth}" />
+          </VisualState.Setters>
+        </VisualState>
+      </VisualStateGroup>
+
+      <VisualStateGroup x:Name="SelectionVisibilityGroup">
+        <VisualState x:Name="SelectionWideState">
+          <VisualState.StateTriggers>
+            <triggers:CompositeStateTrigger Operator="And">
+              <StateTrigger IsActive="{x:Bind ViewModel.IsInSelectionMode, Mode=OneWay}" />
+              <triggers:AdaptiveTrigger MinWindowWidth="{StaticResource MobileWindowWidth}" />
+            </triggers:CompositeStateTrigger>
+          </VisualState.StateTriggers>
+          <VisualState.Setters>
+            <Setter Target="DeleteButton.Visibility" Value="Visible" />
+            <Setter Target="IsAllSelectedButton.Visibility" Value="Visible" />
+            <Setter Target="SelectionSeparator.Visibility" Value="Visible" />
+          </VisualState.Setters>
+        </VisualState>
+        <VisualState x:Name="SelectionMobileState">
+          <VisualState.StateTriggers>
+            <StateTrigger IsActive="{x:Bind ViewModel.IsInSelectionMode, Mode=OneWay}" />
+          </VisualState.StateTriggers>
+          <VisualState.Setters>
+            <Setter Target="DeleteBottomButton.Visibility" Value="Visible" />
+            <Setter Target="IsAllSelectedBottomButton.Visibility" Value="Visible" />
+            <Setter Target="BottomSelectionSeparator.Visibility" Value="Visible" />
+          </VisualState.Setters>
+        </VisualState>
+      </VisualStateGroup>
+
+    </VisualStateManager.VisualStateGroups>
+  </Grid>
+</Page>

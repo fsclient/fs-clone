@@ -1,0 +1,279 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:winTriggers="using:WindowsStateTriggers"
+                    xmlns:controls="using:FSClient.UWP.Shared.Views.Controls"
+                    xmlns:extensions="using:FSClient.UWP.Shared.Extensions">
+
+  <ResourceDictionary.MergedDictionaries>
+    <ResourceDictionary Source="../ItemTrailerAppBarButton/ItemTrailerAppBarButton.xaml" />
+  </ResourceDictionary.MergedDictionaries>
+  
+  <Style TargetType="controls:ItemPageDetails">
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="controls:ItemPageDetails">
+          <Grid>
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition x:Name="LeftColumn"
+                                Width="7*" />
+              <ColumnDefinition x:Name="RightColumn"
+                                Width="6*"
+                                MaxWidth="700" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid x:Name="InfoGrid"
+                  Margin="4"
+                  Padding="4"
+                  Background="{TemplateBinding Background}">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition x:Name="ImageColumn"
+                                  Width="4*"
+                                  MaxWidth="400" />
+                <ColumnDefinition Width="4" />
+                <ColumnDefinition Width="5*" />
+              </Grid.ColumnDefinitions>
+              <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+              </Grid.RowDefinitions>
+
+              <StackPanel x:Name="PosterPanel"
+                          Grid.RowSpan="1"
+                          VerticalAlignment="Top">
+                <Grid>
+                  <controls:PosterImage x:Name="PosterImage"
+                                        Source="{Binding CurrentItem.Poster, RelativeSource={RelativeSource TemplatedParent}}"
+                                        PreferredSize="Original"
+                                        Expandable="True"
+                                        MaxWidth="400"
+                                        ForcePosterAspectRatio="True" />
+                  <controls:ItemTrailerAppBarButton x:Name="PlayTrailerAppBarButton"
+                                                    extensions:CompatExtension.AccessKey="T"
+                                                    Background="{TemplateBinding Background}"
+                                                    Command="{Binding OpenTrailerCommand, RelativeSource={RelativeSource TemplatedParent}}"
+                                                    IsLoading="{Binding OpenTrailerCommand.IsExecuting, RelativeSource={RelativeSource TemplatedParent}}"
+                                                    Margin="4" />
+                </Grid>
+                <controls:ItemRating x:Name="RatingContent"
+                                     Rating="{Binding Rating, RelativeSource={RelativeSource TemplatedParent}}"
+                                     Visibility="{Binding Rating, Converter={StaticResource BooleanConverter}, RelativeSource={RelativeSource TemplatedParent}}"
+                                     VoteCommand="{Binding VoteCommand, RelativeSource={RelativeSource TemplatedParent}}" />
+              </StackPanel>
+              <Grid x:Name="InfoPanel"
+                    Grid.Row="0"
+                    Grid.Column="2"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top">
+                <Grid.RowDefinitions>
+                  <RowDefinition Height="Auto" />
+                  <RowDefinition Height="Auto" />
+                  <RowDefinition Height="4" />
+                  <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <TextBlock x:Name="TitleBlock"
+                           MaxHeight="96"
+                           FontSize="24"
+                           FontWeight="Medium"
+                           IsTextSelectionEnabled="True"
+                           Text="{Binding CurrentItem.Details.Titles, Converter={StaticResource ToFriendlyStringConverter}, RelativeSource={RelativeSource TemplatedParent}}"
+                           TextTrimming="CharacterEllipsis"
+                           TextWrapping="Wrap" />
+                <TextBlock Grid.Row="1"
+                           Foreground="Gray"
+                           IsTextSelectionEnabled="True"
+                           Text="{Binding CurrentItem.Details.TitleOrigin, RelativeSource={RelativeSource TemplatedParent}}"
+                           TextTrimming="CharacterEllipsis"
+                           Visibility="{Binding CurrentItem.Details.TitleOrigin, Converter={StaticResource BooleanConverter}, RelativeSource={RelativeSource TemplatedParent}}" />
+                <RichTextBlock x:Name="InfoRichTextBlock"
+                               Grid.Row="3"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Top"
+                               FontSize="16"
+                               IsTextSelectionEnabled="True"
+                               OverflowContentTarget="{Binding ElementName=OverflowContainer}"
+                               TextWrapping="WrapWholeWords" />
+              </Grid>
+              <StackPanel x:Name="DeskPanel"
+                          Grid.Row="1"
+                          Grid.Column="0"
+                          Grid.ColumnSpan="3">
+                <RichTextBlockOverflow x:Name="OverflowContainer" />
+                <RichTextBlock x:Name="DeskTextBlock"
+                               Height="Auto"
+                               MaxWidth="800"
+                               Margin="0,8,0,8"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Top"
+                               FontSize="16"
+                               TextWrapping="Wrap">
+                  <Paragraph>
+                    <Run Text="{Binding CurrentItem.Details.Description, RelativeSource={RelativeSource TemplatedParent}}" />
+                  </Paragraph>
+                </RichTextBlock>
+              </StackPanel>
+            </Grid>
+            <StackPanel x:Name="RightPanel"
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Margin="4"
+                        Padding="4"
+                        Background="{TemplateBinding Background}">
+              <FlipView x:Name="ImagesFlipView"
+                        Height="200"
+                        extensions:CompatExtension.IsFocusEngagementEnabled="True"
+                        Background="Transparent"
+                        ItemsSource="{Binding CurrentItem.Details.Images, RelativeSource={RelativeSource TemplatedParent}}"
+                        Visibility="{Binding CurrentItem.Details.Images, Converter={StaticResource BooleanConverter}, RelativeSource={RelativeSource TemplatedParent}}">
+                <FlipView.ItemTemplate>
+                  <DataTemplate>
+                    <controls:PosterImage Source="{Binding}"
+                                          Expandable="True"
+                                          PreferredSize="Original"
+                                          Stretch="UniformToFill" />
+                  </DataTemplate>
+                </FlipView.ItemTemplate>
+              </FlipView>
+              <StackPanel Visibility="{Binding CurrentItem.Details.Similar, Converter={StaticResource BooleanConverter}, RelativeSource={RelativeSource TemplatedParent}}">
+                <TextBlock Margin="4,8,0,0"
+                           FontSize="24"
+                           Text="{Binding ConverterParameter='ItemPageDetails_SimilarItems', Converter={StaticResource LocalizationConverter}}" />
+                <GridView x:Name="SimilarGrid"
+                          HorizontalAlignment="Center"
+                          extensions:CompatExtension.IsFocusEngagementEnabled="True"
+                          ItemsSource="{Binding SimilarItems, RelativeSource={RelativeSource TemplatedParent}}"
+                          ScrollViewer.HorizontalScrollBarVisibility="Hidden"
+                          ScrollViewer.HorizontalScrollMode="Auto"
+                          ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                          ScrollViewer.VerticalScrollMode="Disabled"
+                          Style="{StaticResource ItemsListStyle}"
+                          Tag="{Binding PreloadItemCommand, RelativeSource={RelativeSource TemplatedParent}}">
+                  <GridView.ItemTemplate>
+                    <DataTemplate>
+                      <controls:ItemsListItem ItemInfo="{Binding ItemInfo}"
+                                              IsItemPreloading="{Binding IsPreloading}"
+                                              DisplayItemMode="{Binding DisplayItemMode}"
+                                              ItemPreloadCommand="{Binding PreloadItemCommand}" />
+                    </DataTemplate>
+                  </GridView.ItemTemplate>
+                  <GridView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                      <ItemsWrapGrid MaximumRowsOrColumns="1"
+                                     ItemWidth="118" />
+                    </ItemsPanelTemplate>
+                  </GridView.ItemsPanel>
+                </GridView>
+              </StackPanel>
+              <StackPanel Visibility="{Binding CurrentItem.Details.Franchise, Converter={StaticResource BooleanConverter}, RelativeSource={RelativeSource TemplatedParent}}">
+                <TextBlock Margin="4,8,0,0"
+                           FontSize="24"
+                           Text="{Binding ConverterParameter='ItemPageDetails_FranchiseItems', Converter={StaticResource LocalizationConverter}}" />
+                <GridView x:Name="FranchiseGrid"
+                          HorizontalAlignment="Center"
+                          extensions:CompatExtension.IsFocusEngagementEnabled="True"
+                          ItemsSource="{Binding FranchiseItems, RelativeSource={RelativeSource TemplatedParent}}"
+                          ScrollViewer.HorizontalScrollBarVisibility="Hidden"
+                          ScrollViewer.HorizontalScrollMode="Auto"
+                          ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                          ScrollViewer.VerticalScrollMode="Disabled"
+                          Style="{StaticResource ItemsListStyle}"
+                          Tag="{Binding PreloadItemCommand, RelativeSource={RelativeSource TemplatedParent}}">
+                  <GridView.ItemTemplate>
+                    <DataTemplate>
+                      <controls:ItemsListItem ItemInfo="{Binding ItemInfo}"
+                                              IsItemPreloading="{Binding IsPreloading}"
+                                              DisplayItemMode="{Binding DisplayItemMode}"
+                                              ItemPreloadCommand="{Binding PreloadItemCommand}" />
+                    </DataTemplate>
+                  </GridView.ItemTemplate>
+                  <GridView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                      <ItemsWrapGrid MaximumRowsOrColumns="1"
+                                     ItemWidth="118" />
+                    </ItemsPanelTemplate>
+                  </GridView.ItemsPanel>
+                </GridView>
+              </StackPanel>
+            </StackPanel>
+
+            <VisualStateManager.VisualStateGroups>
+
+              <VisualStateGroup x:Name="PageSizeStateGroup">
+                <VisualState x:Name="WideState">
+                  <VisualState.StateTriggers>
+                    <AdaptiveTrigger MinWindowWidth="{StaticResource MediumWindowWidth}" />
+                  </VisualState.StateTriggers>
+                  <VisualState.Setters>
+                    <Setter Target="InfoGrid.(Grid.ColumnSpan)" Value="1" />
+                    <Setter Target="RightPanel.(Grid.ColumnSpan)" Value="1" />
+                    <Setter Target="RightPanel.(Grid.Column)" Value="1" />
+                    <Setter Target="RightPanel.(Grid.Row)" Value="0" />
+                    <Setter Target="DeskTextBlock.Margin" Value="4,0" />
+                    <Setter Target="InfoPanel.Margin" Value="4,0" />
+                  </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="MobileState">
+                  <VisualState.StateTriggers>
+                    <AdaptiveTrigger MinWindowWidth="0" />
+                  </VisualState.StateTriggers>
+                  <VisualState.Setters>
+                    <Setter Target="InfoGrid.(Grid.ColumnSpan)" Value="2" />
+                    <Setter Target="RightPanel.(Grid.ColumnSpan)" Value="2" />
+                    <Setter Target="RightPanel.(Grid.Column)" Value="0" />
+                    <Setter Target="RightPanel.(Grid.Row)" Value="1" />
+                    <Setter Target="PlayTrailerAppBarButton.Margin" Value="2" />
+                    <Setter Target="PlayTrailerAppBarButton.FontSize" Value="18" />
+                  </VisualState.Setters>
+                </VisualState>
+              </VisualStateGroup>
+
+              <VisualStateGroup x:Name="GridWidthStateGroup">
+                <VisualState>
+                  <VisualState.StateTriggers>
+                    <winTriggers:ElementSizeStateTrigger MinWidth="640"
+                                                         Element="{Binding ElementName=InfoGrid, Mode=OneTime}" />
+                  </VisualState.StateTriggers>
+                  <VisualState.Setters>
+                    <Setter Target="InfoPanel.Height" Value="Auto" />
+                    <Setter Target="PosterPanel.(Grid.RowSpan)" Value="2" />
+                    <Setter Target="DeskPanel.(Grid.Column)" Value="2" />
+                    <Setter Target="DeskPanel.(Grid.ColumnSpan)" Value="1" />
+                    <Setter Target="RatingContent.FontSize" Value="24" />
+                    <Setter Target="TitleBlock.FontSize" Value="32" />
+                  </VisualState.Setters>
+                </VisualState>
+                <VisualState>
+                  <VisualState.StateTriggers>
+                    <winTriggers:ElementSizeStateTrigger MinWidth="420"
+                                                         Element="{Binding ElementName=InfoGrid, Mode=OneTime}" />
+                  </VisualState.StateTriggers>
+                  <VisualState.Setters>
+                    <Setter Target="RatingContent.FontSize" Value="20" />
+                    <Setter Target="TitleBlock.FontSize" Value="20" />
+                  </VisualState.Setters>
+                </VisualState>
+                <VisualState>
+                  <VisualState.StateTriggers>
+                    <winTriggers:ElementSizeStateTrigger MinWidth="0"
+                                                         Element="{Binding ElementName=InfoGrid, Mode=OneTime}" />
+                  </VisualState.StateTriggers>
+                  <VisualState.Setters>
+                    <Setter Target="RatingContent.FontSize" Value="16" />
+                    <Setter Target="TitleBlock.FontSize" Value="16" />
+                  </VisualState.Setters>
+                </VisualState>
+              </VisualStateGroup>
+
+
+            </VisualStateManager.VisualStateGroups>
+          </Grid>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+
+</ResourceDictionary>

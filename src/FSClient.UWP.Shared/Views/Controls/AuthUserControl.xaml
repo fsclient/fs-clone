@@ -1,0 +1,151 @@
+﻿<UserControl x:Name="Control"
+             x:Class="FSClient.UWP.Shared.Views.Controls.AuthUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+             xmlns:extensions="using:FSClient.UWP.Shared.Extensions"
+             xmlns:providers="using:FSClient.Shared.Providers">
+
+  <StackPanel x:Name="RootPanel"
+              Visibility="Collapsed">
+    <TextBlock TextWrapping="WrapWholeWords"
+               FontSize="20">
+      <Run Text="{x:Bind ConverterParameter='AuthUserControl_AccountAt', Converter={StaticResource LocalizationConverter}}" />
+      <Run Text="{x:Bind Site.Title, Mode=OneWay}" />
+    </TextBlock>
+    <TextBlock x:Name="ProviderRequirementsField"
+               FontSize="16"
+               Opacity="0.6"
+               TextWrapping="WrapWholeWords"
+               Text="{x:Bind ProviderRequirements, Mode=OneTime}" />
+    <StackPanel x:DeferLoadStrategy="Lazy"
+                x:Name="LoginPanel"
+                Margin="0,20,0,0"
+                Visibility="Collapsed">
+      <GridView x:Name="AuthModelsGrid"
+                IsItemClickEnabled="True"
+                SelectionMode="None"
+                Visibility="Collapsed"
+                ItemsSource="{x:Bind AuthModels, Mode=OneWay}"
+                extensions:CommandExtension.ClickCommand="{x:Bind LoginCommand}">
+        <GridView.ItemTemplate>
+          <DataTemplate x:DataType="providers:AuthModel">
+            <Grid>
+              <TextBlock Width="{StaticResource AppButtonWidth}"
+                         Height="{StaticResource AppButtonHeight}"
+                         HorizontalAlignment="Center"
+                         VerticalAlignment="Center"
+                         Text="{x:Bind Title}"
+                         TextAlignment="DetectFromContent" />
+              <Image Width="{StaticResource AppButtonWidth}"
+                     Height="{StaticResource AppButtonHeight}"
+                     Margin="2"
+                     Source="{Binding Icon}"
+                     Stretch="Fill" />
+            </Grid>
+          </DataTemplate>
+        </GridView.ItemTemplate>
+        <GridView.ItemContainerStyle>
+          <Style TargetType="GridViewItem">
+            <Setter Property="Margin" Value="0" />
+            <Setter Property="Padding" Value="0" />
+          </Style>
+        </GridView.ItemContainerStyle>
+      </GridView>
+
+      <HyperlinkButton x:Name="OneAuthModelLogin"
+                       Content="{x:Bind ConverterParameter='AuthUserControl_Authorize', Converter={StaticResource LocalizationConverter}}"
+                       Visibility="Collapsed"
+                       Command="{x:Bind LoginCommand}" />
+
+      <HyperlinkButton Content="{x:Bind ConverterParameter='AuthUserControl_Register', Converter={StaticResource LocalizationConverter}}"
+                       Command="{x:Bind RegisterCommand}" />
+    </StackPanel>
+    <StackPanel x:DeferLoadStrategy="Lazy"
+                x:Name="UserPanel"
+                Margin="0,20,0,0"
+                Visibility="Collapsed">
+      <Grid DataContext="{x:Bind User, Mode=OneWay}">
+        <Grid.RowDefinitions>
+          <RowDefinition />
+          <RowDefinition />
+          <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="Auto" />
+          <ColumnDefinition Width="8" />
+          <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <muxc:PersonPicture x:Name="PersonPictureAvatar"
+                            Grid.RowSpan="3"
+                            Width="64"
+                            Height="64"
+                            VerticalAlignment="Center"
+                            ProfilePicture="{Binding ElementName=Control, Path=User.Avatar}"
+                            DisplayName="{x:Bind User.Nickname}" />
+        <TextBlock x:Name="NicknameTextBlock"
+                   Grid.Row="0"
+                   Grid.Column="2"
+                   VerticalAlignment="Center"
+                   FontSize="18"
+                   Text="{x:Bind User.Nickname, Mode=OneWay}" />
+        <TextBlock x:Name="ProTextBlock"
+                   Grid.Row="1"
+                   Grid.Column="2"
+                   Visibility="Collapsed"
+                   FontSize="14"
+                   Opacity="0.6"
+                   Text="{x:Bind ConverterParameter='AuthUserControl_ProActiveTextBlock', Converter={StaticResource LocalizationConverter}}"/>
+        <Button Grid.Row="2"
+                Grid.Column="2"
+                VerticalAlignment="Bottom"
+                Content="{x:Bind ConverterParameter='AuthUserControl_LogOut', Converter={StaticResource LocalizationConverter}}"
+                Command="{x:Bind LogoutCommand}"
+                Style="{StaticResource ClientButtonStyle}" />
+      </Grid>
+    </StackPanel>
+
+    <VisualStateManager.VisualStateGroups>
+
+      <VisualStateGroup x:Name="ProviderRequirementsFieldVisibilityGroup">
+        <VisualState x:Name="ProviderRequirementsFieldVisible" />
+        <VisualState x:Name="ProviderRequirementsFieldHidden">
+          <VisualState.Setters>
+            <Setter Target="ProviderRequirementsField.Visibility" Value="Collapsed" />
+          </VisualState.Setters>
+        </VisualState>
+      </VisualStateGroup>
+
+      <VisualStateGroup x:Name="PanelsVisibilityGroup">
+        <VisualState x:Name="NoPanelVisibleState" />
+        <VisualState x:Name="UserWithProPanelVisibleState">
+          <VisualState.Setters>
+            <Setter Target="RootPanel.Visibility" Value="Visible" />
+            <Setter Target="UserPanel.Visibility" Value="Visible" />
+            <Setter Target="ProTextBlock.Visibility" Value="Visible" />
+          </VisualState.Setters>
+        </VisualState>
+        <VisualState x:Name="UserPanelVisibleState">
+          <VisualState.Setters>
+            <Setter Target="RootPanel.Visibility" Value="Visible" />
+            <Setter Target="UserPanel.Visibility" Value="Visible" />
+          </VisualState.Setters>
+        </VisualState>
+        <VisualState x:Name="OneAuthModelVisibleState">
+          <VisualState.Setters>
+            <Setter Target="RootPanel.Visibility" Value="Visible" />
+            <Setter Target="LoginPanel.Visibility" Value="Visible" />
+            <Setter Target="OneAuthModelLogin.Visibility" Value="Visible" />
+          </VisualState.Setters>
+        </VisualState>
+        <VisualState x:Name="MoreAuthModelVisibleState">
+          <VisualState.Setters>
+            <Setter Target="RootPanel.Visibility" Value="Visible" />
+            <Setter Target="LoginPanel.Visibility" Value="Visible" />
+            <Setter Target="AuthModelsGrid.Visibility" Value="Visible" />
+          </VisualState.Setters>
+        </VisualState>
+      </VisualStateGroup>
+    </VisualStateManager.VisualStateGroups>
+  </StackPanel>
+</UserControl>

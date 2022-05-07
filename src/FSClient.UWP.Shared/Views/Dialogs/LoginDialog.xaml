@@ -1,0 +1,25 @@
+﻿<ContentDialog x:Class="FSClient.UWP.Shared.Views.Dialogs.LoginDialog"
+               xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+               Title="{x:Bind ConverterParameter='LoginDialog_DialogTItle', Converter={StaticResource LocalizationConverter}}"
+               PrimaryButtonText="{x:Bind ConverterParameter='LoginDialog_LogInButton', Converter={StaticResource LocalizationConverter}}"
+               SecondaryButtonText="{x:Bind ConverterParameter='ContentDialog_Cancel', Converter={StaticResource LocalizationConverter}}"
+               IsPrimaryButtonEnabled="False">
+
+  <Grid MinWidth="200"
+        MaxWidth="400">
+    <StackPanel Margin="0,20,0,0"
+                HorizontalAlignment="Stretch">
+      <TextBox x:Name="LoginBox"
+               Margin="0,0,0,4"
+               HorizontalAlignment="Stretch"
+               PlaceholderText="{x:Bind ConverterParameter='LoginDialog_Username', Converter={StaticResource LocalizationConverter}}"
+               KeyDown="LoginBox_KeyDown" />
+      <PasswordBox x:Name="PasswordBox"
+                   Margin="0,0,0,4"
+                   HorizontalAlignment="Stretch"
+                   PlaceholderText="{x:Bind ConverterParameter='LoginDialog_Password', Converter={StaticResource LocalizationConverter}}"
+                   KeyDown="PasswordBox_KeyDown" />
+    </StackPanel>
+  </Grid>
+</ContentDialog>

@@ -1,0 +1,74 @@
+﻿<UserControl x:Name="NotificationsControl"
+             x:Class="FSClient.UWP.Shared.Views.Controls.InAppNotificationControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:extensions="using:FSClient.UWP.Shared.Extensions"
+             xmlns:controls="using:FSClient.UWP.Shared.Views.Controls"
+             xmlns:muxc="using:Microsoft.UI.Xaml.Controls">
+
+  <muxc:ItemsRepeater x:Name="ItemsRepeater"
+                      ItemsSource="{Binding ElementName=NotificationsControl, Path=Items}">
+    <muxc:ItemsRepeater.ItemTemplate>
+      <DataTemplate x:DataType="controls:NotificationItem">
+        <Grid VerticalAlignment="Top"
+              HorizontalAlignment="Right"
+              Margin="0, 16, 16, 0"
+              Width="320"
+              Loaded="NotificationGrid_Loaded"
+              PointerMoved="NotificationGrid_PointerMoved">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+          </Grid.ColumnDefinitions>
+          <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+          </Grid.RowDefinitions>
+          <Border Grid.ColumnSpan="3"
+                  Grid.RowSpan="2"
+                  Background="{ThemeResource SystemControlBackgroundAccentBrush}"
+                  Opacity="0.9"
+                  Visibility="{x:Bind IsFatal, Converter={StaticResource BooleanConverter}, ConverterParameter=!}" />
+          <Border Grid.ColumnSpan="3"
+                  Grid.RowSpan="2"
+                  Background="Red"
+                  Opacity="0.9"
+                  Visibility="{x:Bind IsFatal, Converter={StaticResource BooleanConverter}}" />
+          <ContentPresenter Grid.Column="0"
+                            Margin="20,20,0,20"
+                            Content="{x:Bind Icon}"
+                            VerticalAlignment="Top"
+                            Visibility="{x:Bind Icon, Converter={StaticResource BooleanConverter}}" />
+          <RichTextBlock Grid.Column="1"
+                         Margin="20,10,0,10"
+                         MaxHeight="64"
+                         VerticalAlignment="Center"
+                         OverflowContentTarget="{Binding ElementName=OverflowContainer}"
+                         TextWrapping="Wrap">
+            <Paragraph>
+              <Run Text="{x:Bind Text}" />
+            </Paragraph>
+          </RichTextBlock>
+          <Button x:Name="CloseButton"
+                  Grid.Column="2"
+                  BorderThickness="0"
+                  Background="Transparent"
+                  Padding="20"
+                  VerticalAlignment="Top"
+                  extensions:CompatExtension.AccessKey="X"
+                  DataContext="{x:Bind}"
+                  Click="HideNotificationButton_Click"
+                  Style="{StaticResource ClientButtonStyle}">
+            <SymbolIcon Symbol="Cancel" />
+          </Button>
+          <RichTextBlockOverflow x:Name="OverflowContainer"
+                                 Grid.Row="1"
+                                 Grid.ColumnSpan="3"
+                                 Margin="12,-12,12,12" />
+        </Grid>
+      </DataTemplate>
+    </muxc:ItemsRepeater.ItemTemplate>
+  </muxc:ItemsRepeater>
+
+</UserControl>

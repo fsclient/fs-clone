@@ -1,0 +1,10 @@
+﻿<ContentDialog x:Class="FSClient.UWP.Shared.Views.Dialogs.ConfirmDialog"
+               xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+               PrimaryButtonText="{x:Bind ConverterParameter='ContentDialog_Ok', Converter={StaticResource LocalizationConverter}}"
+               SecondaryButtonText="{x:Bind ConverterParameter='ContentDialog_Cancel', Converter={StaticResource LocalizationConverter}}"
+               Title="{x:Bind ConverterParameter='ConfirmDialog_DialogTitle', Converter={StaticResource LocalizationConverter}}">
+
+  <TextBlock x:Name="ConfirmationText"
+             TextWrapping="WrapWholeWords" />
+</ContentDialog>
