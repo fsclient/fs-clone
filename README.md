@@ -8,7 +8,7 @@ Cleared fork of FS client:
 Requirements for build:
 - Visual Studio 2019+
 - .NET SDK 5.0+
-- UWP SDK 17134+
+- UWP SDK 10.0.19041.0+
 - Set values to Secrets.cs properties (optional)
 
 That should be enough 
