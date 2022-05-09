@@ -19,7 +19,7 @@
     <PackageReference Include="System.Net.Http.Json" Version="5.0.0" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
     <PackageReference Include="System.Interactive.Async" Version="5.0.0" />
-    <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="6.0.0" />
   </ItemGroup>
 
   <ItemGroup>
